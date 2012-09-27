@@ -4,7 +4,13 @@
 #include <string>
 #include <vector>
 
-struct Software;
+#include "machine.h"
+
+struct Software
+{
+	std::string Name;
+	std::string Version;
+};
 
 class Job
 {
@@ -15,9 +21,11 @@ protected:
 private:
 	std::string _name;
 	int _priority;
-	float _requiredRam;
-	float _requiredDiskSpace;
+	float _requiredRam,
+          _requiredDiskSpace;
 	std::vector<Software> _requiredSoftware;
+
+    Machine* _machine;
 };
 
 #endif // JOB_H_
