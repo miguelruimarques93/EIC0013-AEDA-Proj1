@@ -1,12 +1,1 @@
-WSP - WebSite Provider
-
-Entities:
-    - WSP
-    - WSPManager
-    - WebSite
-        * EnterpriseWebSite
-        * UserWebSite
-    - Costumer
-        * User
-        * Enterprise
-    - Technology (struct)
+Grid Computing Jobs Management - GCJM
