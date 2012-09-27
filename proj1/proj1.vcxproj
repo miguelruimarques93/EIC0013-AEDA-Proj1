@@ -79,6 +79,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="job.h" />
     <ClInclude Include="machine.h" />
     <ClInclude Include="user.h" />
   </ItemGroup>
