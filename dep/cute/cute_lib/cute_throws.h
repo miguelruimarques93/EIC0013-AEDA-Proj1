@@ -25,22 +25,22 @@
 // should we allow arbitrary code and remove the parentheses around the macro expansion?
 // not now, strange compilation side-effects might result.
 namespace cute {
-	namespace do_not_use_this_namespace {
-		struct assert_throws_failure_exception {
-			struct cute::test_failure original;
-			assert_throws_failure_exception(std::string const &r,char const *f, int line):
-					original(r,f, line){}
-		};
-	}
+    namespace do_not_use_this_namespace {
+        struct assert_throws_failure_exception {
+            struct cute::test_failure original;
+            assert_throws_failure_exception(std::string const &r,char const *f, int line):
+                    original(r,f, line){}
+        };
+    }
 }
 #define ASSERT_THROWSM(msg,code,exc) \
-	do { \
-		try { \
-			{ code ; } \
-			throw cute::do_not_use_this_namespace::assert_throws_failure_exception(#msg,__FILE__,__LINE__); \
-		} catch(exc &){ \
-		} catch(cute::do_not_use_this_namespace::assert_throws_failure_exception &atf){throw atf.original;} \
-	} while(0)
+    do { \
+        try { \
+            { code ; } \
+            throw cute::do_not_use_this_namespace::assert_throws_failure_exception(#msg,__FILE__,__LINE__); \
+        } catch(exc &){ \
+        } catch(cute::do_not_use_this_namespace::assert_throws_failure_exception &atf){throw atf.original;} \
+    } while(0)
 #define ASSERT_THROWS(code,exc) ASSERT_THROWSM(" expecting " #code " to throw " #exc,code,exc)
 
 #endif /*CUTE_THROWS_H_*/

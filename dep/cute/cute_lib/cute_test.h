@@ -25,22 +25,22 @@
 // make plain functions as tests more 'cute':
 namespace cute {
 
-	struct test{
-		void operator()()const{ theTest(); }
-		std::string name()const{ return name_;}
+    struct test{
+        void operator()()const{ theTest(); }
+        std::string name()const{ return name_;}
 
 
-		// (real) functor types can (almost) spell their name
-		// but a name can also be given explicitely, e.g. for CUTE() macro
-		// for simple test functions
-		template <typename VoidFunctor>
-		test(VoidFunctor const &t, std::string sname = demangle(typeid(VoidFunctor).name()))
-		:theTest(t),name_(sname){}
+        // (real) functor types can (almost) spell their name
+        // but a name can also be given explicitely, e.g. for CUTE() macro
+        // for simple test functions
+        template <typename VoidFunctor>
+        test(VoidFunctor const &t, std::string sname = demangle(typeid(VoidFunctor).name()))
+        :theTest(t),name_(sname){}
 
-	private:
-		boost_or_tr1::function<void()> theTest;
-		std::string name_;
-	};
+    private:
+        boost_or_tr1::function<void()> theTest;
+        std::string name_;
+    };
 
 }
 #define CUTE(name) cute::test((&name),(#name))

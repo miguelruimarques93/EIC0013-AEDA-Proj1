@@ -30,18 +30,18 @@
 namespace cute {
 
 inline std::string demangle(char const *name){
-	if (!name) return "unknown";
-	char *toBeFreed = abi::__cxa_demangle(name,0,0,0);
-	std::string result(toBeFreed?toBeFreed:name);
-	::free(toBeFreed);
-	return result;
+    if (!name) return "unknown";
+    char *toBeFreed = abi::__cxa_demangle(name,0,0,0);
+    std::string result(toBeFreed?toBeFreed:name);
+    ::free(toBeFreed);
+    return result;
 }
 }
 #else
 namespace cute {
 // this default works reasonably with MSVC71 and 8, hopefully for others as well
 inline std::string demangle(char const *name){
-	return std::string(name?name:"unknown");
+    return std::string(name?name:"unknown");
 }
 }
 #endif

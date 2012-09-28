@@ -28,37 +28,37 @@
 #include <sstream>
 #include <iostream>
 namespace cute{
-	class vstudio_listener
-	{
-	public:
-		void begin(suite const &t,char const *info){
-		}
-		void end(suite const &t, char const *info){
-		}
-		void start(test const &t){
-		}
-		void success(test const &t, char const *msg){
-			std::cerr <<  t.name() <<" " << msg<< std::endl;
-		}
-		void failure(test const &t,test_failure const &e){
-			std::ostringstream out;
-			out << e.filename << "(" << e.lineno << ") : testcase failed: " <<e.reason << " in " << t.name()<< std::endl;
-			OutputDebugString(out.str().c_str());
-			std::cerr << out.str() << std::flush;
-		}
-		void error(test const &t, char const *what){
-			std::ostringstream out;
-			out << what << " in " << t.name() << std::endl;
-			OutputDebugString(out.str().c_str());
-			std::cerr << out.str() << std::flush;
-		}
-	};
+    class vstudio_listener
+    {
+    public:
+        void begin(suite const &t,char const *info){
+        }
+        void end(suite const &t, char const *info){
+        }
+        void start(test const &t){
+        }
+        void success(test const &t, char const *msg){
+            std::cerr <<  t.name() <<" " << msg<< std::endl;
+        }
+        void failure(test const &t,test_failure const &e){
+            std::ostringstream out;
+            out << e.filename << "(" << e.lineno << ") : testcase failed: " <<e.reason << " in " << t.name()<< std::endl;
+            OutputDebugString(out.str().c_str());
+            std::cerr << out.str() << std::flush;
+        }
+        void error(test const &t, char const *what){
+            std::ostringstream out;
+            out << what << " in " << t.name() << std::endl;
+            OutputDebugString(out.str().c_str());
+            std::cerr << out.str() << std::flush;
+        }
+    };
 }
 #else
 // cheat for gnu use ostream_listener instead, so the type is defined
 #include "ostream_listener.h"
 namespace cute{
-	typedef cute::ostream_listener vstudio_listener;
+    typedef cute::ostream_listener vstudio_listener;
 }
 #endif
 #endif
