@@ -11,11 +11,12 @@ class Machine;
 struct Software
 {
     Software(const std::string& name, int major, int minor, int revision)
-        : Name(name), Version({ major, minor, revision }) {}
+        : Name(name), Version(major, minor, revision) {}
 
     std::string Name;
     struct Version
     {
+        Version(int major, int minor, int revision) : Major(major), Minor(minor), Revision(revision) {}
         int Major;
         int Minor;
         int Revision;
@@ -33,8 +34,8 @@ public:
 private:
     std::string _name;
     uint _priority;
-    float _requiredRam;
-    float _requiredDiskSpace;
+    double _requiredRam;
+    double _requiredDiskSpace;
     std::vector<Software> _requiredSoftware;
 
     Machine* _machine;
