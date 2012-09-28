@@ -4,26 +4,38 @@
 #include <string>
 #include <vector>
 
-#include "machine.h"
+#include "utils.h"
+
+class Machine;
 
 struct Software
 {
-	std::string Name;
-	std::string Version;
+    Software(const std::string& name, int major, int minor, int revision)
+        : Name(name), Version({ major, minor, revision }) {}
+
+    std::string Name;
+    struct Version
+    {
+        int Major;
+        int Minor;
+        int Revision;
+    } Version;
+
+    std::vector<Software> Dependencies;
 };
 
 class Job
 {
 public:
-
-protected:
+    Job(const std::string& name, uint priority, double requiredRAM, double requiredDiskSpace)
+        : _name(name), _priority(priority), _requiredRam(requiredRAM), _requiredDiskSpace(requiredDiskSpace) {}
 
 private:
-	std::string _name;
-	int _priority;
-	float _requiredRam,
-          _requiredDiskSpace;
-	std::vector<Software> _requiredSoftware;
+    std::string _name;
+    uint _priority;
+    float _requiredRam;
+    float _requiredDiskSpace;
+    std::vector<Software> _requiredSoftware;
 
     Machine* _machine;
 };
