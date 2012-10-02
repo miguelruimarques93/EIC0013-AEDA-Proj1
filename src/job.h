@@ -14,12 +14,18 @@ class Job
 {
 public:
     Job(const std::string& name, uint priority, double requiredRAM, double requiredDiskSpace)
-        : _name(name), _priority(priority), _requiredRam(requiredRAM), _requiredDiskSpace(requiredDiskSpace) {}
+        : _name(name), _priority(priority), _requiredRAM(requiredRAM), _requiredDiskSpace(requiredDiskSpace) {}
+
+    const std::string& GetName() const { return _name; }
+    uint GetPriority() const { return _priority; }
+    double GetRequiredRAM() const { return _requiredRAM; }
+    double GetRequiredDiskSpace() const { return _requiredDiskSpace; }
+    const std::vector<Software>& GetRequiredSoftware() const { return _requiredSoftware; }
 
 private:
     std::string _name;
     uint _priority;
-    double _requiredRam;
+    double _requiredRAM;
     double _requiredDiskSpace;
     std::vector<Software> _requiredSoftware;
 
