@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\gridmanager.h" />
     <ClInclude Include="..\src\job.h" />
     <ClInclude Include="..\src\machine.h" />
     <ClInclude Include="..\src\user.h" />
