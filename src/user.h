@@ -8,7 +8,6 @@
 
 class Job;
 
-
 class User
 {
 public:
