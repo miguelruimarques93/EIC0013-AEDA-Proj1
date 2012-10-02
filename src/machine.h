@@ -6,6 +6,7 @@
 
 #include "job.h"
 #include "utils.h"
+#include "software.h"
 
 class Machine
 {
