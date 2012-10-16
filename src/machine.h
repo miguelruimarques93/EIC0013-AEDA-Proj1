@@ -3,11 +3,13 @@
 
 #include <unordered_set>
 #include <string>
-#include <algorithm>
+#include <map>
 
 #include "job.h"
 #include "utils.h"
 #include "software.h"
+
+typedef std::unordered_set<Software, Software::Hash> SoftwareSet;
 
 class Machine
 {
@@ -25,51 +27,23 @@ public:
 
     void AddRequiredSoftware(const Software& sw) { _availableSoftware.insert(sw); }
     bool IsRequiredSoftware(const Software& sw) const { return _availableSoftware.find(sw) != _availableSoftware.end(); }
-    bool SoftwareMeetsRequirements(const Software& sw) const
-    {
-        if (sw.Dependencies.empty())
-            return true;
+    bool SoftwareMeetsRequirements(const Software& sw) const;
 
-        for (auto it = sw.Dependencies.begin(); it != sw.Dependencies.end(); ++it)
-            if (_availableSoftware.find(*it) == _availableSoftware.end())
-                return false;
-
-        return true;
-    }
-
-    bool AddJob(const Job& job)
-    {
-        if (_currentJobs.size() >= _maxJobs)
-            return false;
-
-        if (job.GetRequiredRAM() > _availableRAM)
-            return false;
-
-        if (job.GetRequiredDiskSpace() > _availableDiskSpace)
-            return false;
-        
-        const std::vector<Software>& requiredSoftware = job.GetRequiredSoftware();
-        for (auto it = requiredSoftware.begin(); it != requiredSoftware.end(); ++it)
-            if (!SoftwareMeetsRequirements(*it))
-                return false;
-
-        _availableRAM -= job.GetRequiredRAM();
-        _availableDiskSpace -= job.GetRequiredDiskSpace();
-
-        _currentJobs.push_back(job);
-    }
+    bool AddJob(Job* job);
+    bool RemoveJob(uint id);
 
 private:
-    std::string _name;
+    const std::string _name;
     double _availableRAM;
     double _availableDiskSpace;
-    std::unordered_set<Software, Software::Hash> _availableSoftware;
+    SoftwareSet _availableSoftware;
 
     const uint _maxJobs;
     const double _totalRAM;
     const double _totalDiskSpace;
 
-    std::vector<Job> _currentJobs;
+    std::map<uint, Job*> _currentJobs;
+    static uint _lastJobId;
 };
 
 #endif // MACHINE_H_
