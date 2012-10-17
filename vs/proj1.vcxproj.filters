@@ -39,6 +39,12 @@
     <ClInclude Include="..\src\bytebuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\consolereader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -59,5 +65,8 @@
     <ClCompile Include="..\src\bytebuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
