@@ -7,11 +7,12 @@
 
 #include "job.h"
 #include "utils.h"
+#include "utilclasses.h"
 #include "software.h"
 
 typedef std::unordered_set<Software, Software::Hash> SoftwareSet;
 
-class Machine
+class Machine : public Saveable
 {
 public:
     Machine(const std::string& machineName, uint maxJobs, double totalRAM, double totalDiskSpace)
@@ -31,6 +32,8 @@ public:
 
     bool AddJob(Job* job);
     bool RemoveJob(uint id);
+
+    bool Save(ByteBuffer& bb) const override;
 
 private:
     const std::string _name;

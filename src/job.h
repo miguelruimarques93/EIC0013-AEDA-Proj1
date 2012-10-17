@@ -7,11 +7,12 @@
 #include <chrono>
 
 #include "utils.h"
+#include "utilclasses.h"
 #include "software.h"
 
 class Machine;
 
-class Job
+class Job : public Saveable
 {
 public:
     Job(const std::string& name, uint priority, double requiredRAM, double requiredDiskSpace, uint executionTime)
@@ -27,9 +28,11 @@ public:
     bool Finished() const { return (_totalExecutionTime - _elapsedTime) <= 0; }
     void Finish() { _elapsedTime = _totalExecutionTime; }
 
+    bool Save(ByteBuffer& bb) const override;
+
 private:
     const std::string _name;
-    const uint _priority;
+    const uint8 _priority;
     const double _requiredRAM;
     const double _requiredDiskSpace;
     const std::vector<Software> _requiredSoftware;

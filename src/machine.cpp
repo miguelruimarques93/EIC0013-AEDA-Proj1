@@ -58,3 +58,23 @@ bool Machine::SoftwareMeetsRequirements(const Software& sw) const
 
     return true;
 }
+
+bool Machine::Save(ByteBuffer& bb) const 
+{
+    bb.WriteString(_name);
+    bb.WriteDouble(_availableRAM);
+    bb.WriteDouble(_availableDiskSpace);
+    bb.WriteUInt32(_maxJobs);
+    bb.WriteDouble(_totalRAM);
+    bb.WriteDouble(_totalDiskSpace);
+
+    bb.WriteUInt32(_currentJobs.size());
+    for (auto job : _currentJobs)
+        job.second->Save(bb);
+
+    bb.WriteUInt32(_availableSoftware.size());
+    for (auto sw : _availableSoftware)
+        sw.Save(bb);
+
+    return true;
+}

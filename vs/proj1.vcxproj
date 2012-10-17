@@ -11,17 +11,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\bytebuffer.h" />
     <ClInclude Include="..\src\gridmanager.h" />
     <ClInclude Include="..\src\job.h" />
     <ClInclude Include="..\src\machine.h" />
     <ClInclude Include="..\src\software.h" />
     <ClInclude Include="..\src\user.h" />
+    <ClInclude Include="..\src\utilclasses.h" />
     <ClInclude Include="..\src\utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\bytebuffer.cpp" />
     <ClCompile Include="..\src\gridmanager.cpp" />
+    <ClCompile Include="..\src\job.cpp" />
     <ClCompile Include="..\src\machine.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\user.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{30265119-2583-4A3F-B33B-5F549A0C0821}</ProjectGuid>
