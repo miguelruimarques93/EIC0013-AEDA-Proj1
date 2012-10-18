@@ -7,7 +7,7 @@
 #include <functional>
 #include <sstream>
 
-struct Software : Saveable
+struct Software : ISave
 {
     Software(const std::string& name, int major, int minor, int revision)
         : Name(name), Version(major, minor, revision) {}

@@ -17,7 +17,8 @@ bool GridManager::Save(ByteBuffer& bb) const
         machine.second->Save(bb);
 
     // ...
-	return true;
+
+    return true;
 }
 
 bool GridManager::RemoveUser( const User* user )

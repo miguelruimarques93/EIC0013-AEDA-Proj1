@@ -12,7 +12,7 @@
 
 class Machine;
 
-class Job : public Saveable
+class Job : public ISave, public IUpdate
 {
 public:
     Job(const std::string& name, uint priority, double requiredRAM, double requiredDiskSpace, uint executionTime)
@@ -29,6 +29,12 @@ public:
     void Finish() { _elapsedTime = _totalExecutionTime; }
 
     bool Save(ByteBuffer& bb) const override;
+
+    void Update(uint32 diff)
+    {
+        if (_elapsedTime <= _totalExecutionTime)
+            _elapsedTime += diff;
+    }
 
 private:
     const std::string _name;

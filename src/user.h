@@ -15,7 +15,7 @@ enum SaveUserType
     SAVE_USER_TYPE_ENTERPRISE,
 };
 
-class User : public Saveable
+class User : public ISave
 {
 public:
     const std::string& GetName() const { return _name; }

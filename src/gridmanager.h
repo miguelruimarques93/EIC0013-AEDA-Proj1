@@ -7,7 +7,7 @@
 #include "utilclasses.h"
 #include <map>
 
-class GridManager : public Saveable
+class GridManager : public ISave
 {
 public:
     uint AddUser(User* user) { _users[_lastUserId++] = user; return _lastUserId-1; }

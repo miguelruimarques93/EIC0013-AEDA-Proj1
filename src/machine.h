@@ -12,7 +12,7 @@
 
 typedef std::unordered_set<Software, Software::Hash> SoftwareSet;
 
-class Machine : public Saveable
+class Machine : public ISave, public IUpdate
 {
 public:
     Machine(const std::string& machineName, uint maxJobs, double totalRAM, double totalDiskSpace)
@@ -34,6 +34,17 @@ public:
     bool RemoveJob(uint id);
 
     bool Save(ByteBuffer& bb) const override;
+
+    void Update(uint diff)
+    {
+        for (auto job : _currentJobs)
+        {
+            job.second->Update(diff);
+
+            if (job.second->Finished())
+                RemoveJob(job.first);
+        }
+    }
 
 private:
     const std::string _name;
