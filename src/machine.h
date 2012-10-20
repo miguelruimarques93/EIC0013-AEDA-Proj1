@@ -5,10 +5,11 @@
 #include <string>
 #include <map>
 
-#include "job.h"
 #include "utils.h"
-#include "utilclasses.h"
+#include "interfaces.h"
 #include "software.h"
+
+class Job;
 
 typedef std::unordered_set<Software, Software::Hash> SoftwareSet;
 
@@ -18,6 +19,8 @@ public:
     Machine(const std::string& machineName, uint maxJobs, double totalRAM, double totalDiskSpace)
         : _name(machineName), _maxJobs(maxJobs), _totalRAM(totalRAM), _totalDiskSpace(totalDiskSpace),
           _availableDiskSpace(totalDiskSpace), _availableRAM(totalRAM) {}
+
+    ~Machine();
 
     const std::string& GetMachineName() const { return _name; }
     uint GetMaxJobs() const { return _maxJobs; }
@@ -34,17 +37,9 @@ public:
     bool RemoveJob(uint id);
 
     bool Save(ByteBuffer& bb) const override;
+    static Machine* Load(ByteBuffer& bb);
 
-    void Update(uint diff)
-    {
-        for (auto job : _currentJobs)
-        {
-            job.second->Update(diff);
-
-            if (job.second->Finished())
-                RemoveJob(job.first);
-        }
-    }
+    void Update(uint diff);
 
 private:
     const std::string _name;

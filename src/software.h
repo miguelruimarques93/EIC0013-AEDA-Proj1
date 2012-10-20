@@ -1,13 +1,13 @@
 #ifndef SOFTWARE_H_
 #define SOFTWARE_H_
 
-#include "utilclasses.h"
+#include "interfaces.h"
 #include "bytebuffer.h"
 #include <string>
 #include <functional>
 #include <sstream>
 
-struct Software : ISave
+struct Software : public ISave
 {
     Software(const std::string& name, int major, int minor, int revision)
         : Name(name), Version(major, minor, revision) {}
@@ -20,6 +20,16 @@ struct Software : ISave
         bb.WriteUInt32(Version.Revision);
 
         return true;
+    }
+
+    static Software Load(ByteBuffer& bb)
+    {
+        std::string name = bb.ReadString();
+        uint32 major = bb.ReadUInt32();
+        uint32 minor = bb.ReadUInt32();
+        uint32 revision = bb.ReadUInt32();
+
+        return Software(name, major, minor, revision);
     }
 
     bool operator== (const Software& other) const { return Name == other.Name && Version == other.Version; }

@@ -1,7 +1,17 @@
 #include "machine.h"
+#include "job.h"
+
 #include <algorithm>
+#include <iostream>
 
 uint Machine::_lastJobId = 0;
+
+Machine::~Machine()
+{
+    for (auto job : _currentJobs)
+        delete job.second;
+}
+
 
 bool Machine::AddJob(Job* job)
 {
@@ -14,7 +24,7 @@ bool Machine::AddJob(Job* job)
     if (job->GetRequiredDiskSpace() > _availableDiskSpace)
         return false;
 
-    const std::vector<Software>& requiredSoftware = job->GetRequiredSoftware();
+    const SoftwareSet& requiredSoftware = job->GetRequiredSoftware();
     for (auto it = requiredSoftware.begin(); it != requiredSoftware.end(); ++it)
         if (!SoftwareMeetsRequirements(*it))
             return false;
@@ -77,4 +87,53 @@ bool Machine::Save(ByteBuffer& bb) const
         sw.Save(bb);
 
     return true;
+}
+
+Machine* Machine::Load( ByteBuffer& bb )
+{
+    std::string name = bb.ReadString();
+    double availableRAM = bb.ReadDouble();
+    double availableDiskSpace = bb.ReadDouble();
+    uint32 maxJobs = bb.ReadUInt32();
+    double totalRAM = bb.ReadDouble();
+    double totalDiskSpace = bb.ReadDouble();
+
+    Machine* m = new Machine(name, maxJobs, totalRAM, totalDiskSpace);
+    m->_availableRAM = availableRAM;
+    m->_availableDiskSpace = availableDiskSpace;
+
+    uint32 jobCount = bb.ReadUInt32();
+    for (uint32 i = 0; i < jobCount; ++i)
+        m->AddJob(Job::Load(bb));
+
+    uint32 softwareCount = bb.ReadUInt32();
+    for (uint32 i = 0; i < softwareCount; ++i)
+        m->_availableSoftware.insert(Software::Load(bb));
+
+    return m;
+}
+
+void Machine::Update( uint diff )
+{
+    for (std::map<uint, Job*>::iterator it = _currentJobs.begin(); it != _currentJobs.end();)
+    {
+        it->second->Update(diff);
+
+        if (it->second->Finished())
+        {
+            std::cout << "Job: " << it->second->GetName() << " removed." << std::endl;
+
+            // Duplicated logic in RemoveJob()
+            _availableRAM += it->second->GetRequiredRAM();
+            _availableDiskSpace += it->second->GetRequiredDiskSpace();
+
+            delete it->second;
+            //
+
+            _currentJobs.erase(it++);
+
+        }
+        else
+            ++it;
+    }
 }

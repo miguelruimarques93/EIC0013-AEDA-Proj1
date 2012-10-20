@@ -1,5 +1,7 @@
-#ifndef UTILCLASSES_H_
-#define UTILCLASSES_H_
+#ifndef INTERFACES_H_
+#define INTERFACES_H_
+
+#include "utils.h"
 
 class ByteBuffer;
 
@@ -15,4 +17,4 @@ public:
     virtual void Update(uint32 diff) = 0;
 };
 
-#endif // UTILCLASSES_H_
+#endif // INTERFACES_H_

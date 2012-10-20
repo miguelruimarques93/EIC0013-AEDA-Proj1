@@ -1,10 +1,24 @@
 #include "gridmanager.h"
+#include "user.h"
+#include "machine.h"
 
+#include <chrono>
+#include <iostream>
 #include <map>
 #include <algorithm>
 
 uint GridManager::_lastUserId = 0;
 uint GridManager::_lastMachineId = 0;
+
+
+GridManager::~GridManager()
+{
+    for (auto user : _users)
+        delete user.second;
+
+    for (auto machine : _machines)
+        delete machine.second;
+}
 
 bool GridManager::Save(ByteBuffer& bb) const 
 {
@@ -21,7 +35,22 @@ bool GridManager::Save(ByteBuffer& bb) const
     return true;
 }
 
-bool GridManager::RemoveUser( const User* user )
+GridManager* GridManager::Load(ByteBuffer& bb)
+{
+    GridManager* gm = new GridManager();
+
+    uint32 usersCount = bb.ReadUInt32();
+    for (uint32 i = 0; i < usersCount; ++i)
+        gm->AddUser(User::Load(bb));
+
+    uint32 machinesCount = bb.ReadUInt32();
+    for (uint32 i = 0; i < machinesCount; ++i)
+        gm->AddMachine(Machine::Load(bb));
+
+    return gm;
+}
+
+bool GridManager::RemoveUser(const User* user)
 {
 	auto it = std::find_if(_users.begin(), _users.end(), [user] (std::pair<uint,User*> usr) { return usr.second == user; });
 	if (it == _users.end())
@@ -33,7 +62,7 @@ bool GridManager::RemoveUser( const User* user )
 	return true;
 }
 
-bool GridManager::RemoveUser( uint id )
+bool GridManager::RemoveUser(uint id)
 {
 	auto it = _users.find(id);
 	if (it == _users.end())
@@ -45,7 +74,7 @@ bool GridManager::RemoveUser( uint id )
 	return true;
 }
 
-bool GridManager::RemoveMachine( const Machine* machine )
+bool GridManager::RemoveMachine(const Machine* machine)
 {
 	auto it = std::find_if(_machines.begin(), _machines.end(), [machine] (std::pair<uint,Machine*> mach) { return mach.second == machine; });
 	if (it == _machines.end())
@@ -57,7 +86,7 @@ bool GridManager::RemoveMachine( const Machine* machine )
 	return true;
 }
 
-bool GridManager::RemoveMachine( uint id )
+bool GridManager::RemoveMachine(uint id)
 {
 	auto it = _machines.find(id);
 	if (it == _machines.end())
@@ -69,7 +98,7 @@ bool GridManager::RemoveMachine( uint id )
 	return true;
 }
 
-User* GridManager::GetUser( uint id ) const
+User* GridManager::GetUser(uint id) const
 {
 	auto it = _users.find(id);
 	if (it == _users.end())
@@ -79,7 +108,7 @@ User* GridManager::GetUser( uint id ) const
 
 }
 
-Machine* GridManager::GetMachine( uint id ) const
+Machine* GridManager::GetMachine(uint id) const
 {
 	auto it = _machines.find(id);
 	if (it == _machines.end())
@@ -87,4 +116,29 @@ Machine* GridManager::GetMachine( uint id ) const
 
 	return it->second;
 
+}
+
+void GridManager::Update(uint32 diff)
+{
+    for (auto machine : _machines)
+        machine.second->Update(diff);
+}
+
+void GridManager::Run()
+{
+    _realCurrTime = GetCurrentTime();
+
+    while (!_stop)
+    {
+        _realPrevTime = _realCurrTime;
+        _realCurrTime = GetCurrentTime();
+
+        uint32 diff = GetTimeDiff(_realCurrTime, _realPrevTime);
+
+        std::cout << diff << std::endl;
+
+        Update(diff);
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    }
 }

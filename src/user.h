@@ -5,7 +5,8 @@
 #include <vector>
 
 #include "utils.h"
-#include "utilclasses.h"
+#include "interfaces.h"
+#include "bytebuffer.h"
 
 class Job;
 
@@ -23,6 +24,8 @@ public:
     virtual bool Save(ByteBuffer& bb) const override = 0;
 
     virtual ~User() { };
+
+    static User* Load(ByteBuffer& bb);
 
 protected:
     User(const std::string& name) : _name(name) {}

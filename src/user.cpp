@@ -18,3 +18,29 @@ bool EnterpriseUser::Save(ByteBuffer& bb) const
 
     return true;
 }
+
+User* User::Load( ByteBuffer& bb )
+{
+    uint8 type = bb.ReadUInt8();
+    std::string name = bb.ReadString();
+
+    switch (type)
+    {
+    case SAVE_USER_TYPE_ACADEMIC:
+        {
+            uint32 jobCount = bb.ReadUInt32();
+            return new AcademicUser(name, jobCount);
+        }
+    case SAVE_USER_TYPE_ENTERPRISE:
+        {
+            double budget = bb.ReadDouble();
+            return new EnterpriseUser(name, budget);
+        }
+    default:
+        {
+            // Log("Invalid type(%u) in file.\n", type);
+        }
+    }
+
+    return NULL;
+}
