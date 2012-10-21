@@ -1,7 +1,7 @@
 #include "job.h"
 #include "bytebuffer.h"
 
-bool Job::Save(ByteBuffer& bb) const 
+bool Job::Save(ByteBuffer& bb) const
 {
     bb.WriteString(_name);
     bb.WriteUInt8(_priority);

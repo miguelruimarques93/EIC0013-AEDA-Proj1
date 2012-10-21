@@ -20,7 +20,7 @@ GridManager::~GridManager()
         delete machine.second;
 }
 
-bool GridManager::Save(ByteBuffer& bb) const 
+bool GridManager::Save(ByteBuffer& bb) const
 {
     bb.WriteUInt32(_users.size());
     for (auto user : _users)
@@ -52,69 +52,69 @@ GridManager* GridManager::Load(ByteBuffer& bb)
 
 bool GridManager::RemoveUser(const User* user)
 {
-	auto it = std::find_if(_users.begin(), _users.end(), [user] (std::pair<uint,User*> usr) { return usr.second == user; });
-	if (it == _users.end())
-		return false;
+    auto it = std::find_if(_users.begin(), _users.end(), [user] (std::pair<uint,User*> usr) { return usr.second == user; });
+    if (it == _users.end())
+        return false;
 
-	delete it->second;
-	_users.erase(it);
+    delete it->second;
+    _users.erase(it);
 
-	return true;
+    return true;
 }
 
 bool GridManager::RemoveUser(uint id)
 {
-	auto it = _users.find(id);
-	if (it == _users.end())
-		return false;
+    auto it = _users.find(id);
+    if (it == _users.end())
+        return false;
 
-	delete it->second;
-	_users.erase(it);
+    delete it->second;
+    _users.erase(it);
 
-	return true;
+    return true;
 }
 
 bool GridManager::RemoveMachine(const Machine* machine)
 {
-	auto it = std::find_if(_machines.begin(), _machines.end(), [machine] (std::pair<uint,Machine*> mach) { return mach.second == machine; });
-	if (it == _machines.end())
-		return false;
+    auto it = std::find_if(_machines.begin(), _machines.end(), [machine] (std::pair<uint,Machine*> mach) { return mach.second == machine; });
+    if (it == _machines.end())
+        return false;
 
-	delete it->second;
-	_machines.erase(it);
+    delete it->second;
+    _machines.erase(it);
 
-	return true;
+    return true;
 }
 
 bool GridManager::RemoveMachine(uint id)
 {
-	auto it = _machines.find(id);
-	if (it == _machines.end())
-		return false;
+    auto it = _machines.find(id);
+    if (it == _machines.end())
+        return false;
 
-	delete it->second;
-	_machines.erase(it);
+    delete it->second;
+    _machines.erase(it);
 
-	return true;
+    return true;
 }
 
 User* GridManager::GetUser(uint id) const
 {
-	auto it = _users.find(id);
-	if (it == _users.end())
-		return NULL;
+    auto it = _users.find(id);
+    if (it == _users.end())
+        return NULL;
 
-	return it->second;
+    return it->second;
 
 }
 
 Machine* GridManager::GetMachine(uint id) const
 {
-	auto it = _machines.find(id);
-	if (it == _machines.end())
-		return NULL;
+    auto it = _machines.find(id);
+    if (it == _machines.end())
+        return NULL;
 
-	return it->second;
+    return it->second;
 
 }
 

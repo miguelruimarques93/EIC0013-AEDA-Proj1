@@ -69,7 +69,7 @@ bool Machine::SoftwareMeetsRequirements(const Software& sw) const
     return true;
 }
 
-bool Machine::Save(ByteBuffer& bb) const 
+bool Machine::Save(ByteBuffer& bb) const
 {
     bb.WriteString(_name);
     bb.WriteDouble(_availableRAM);

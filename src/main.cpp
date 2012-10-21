@@ -25,8 +25,7 @@ int main(int argc, char* argv[])
 
         gm->AddMachine(m);
         gm->AddUser(u);
-    }    
-
+    }   
     ByteBuffer bb(100);
     gm->Save(bb);
 
@@ -43,6 +42,6 @@ int main(int argc, char* argv[])
     system("PAUSE");
 
     // delete gm;
-    
+   
     return EXIT_SUCCESS;
 }
