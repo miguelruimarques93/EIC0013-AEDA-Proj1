@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstdlib>
 
 #include "gridmanager.h"
 #include "loader.h"
@@ -7,6 +6,7 @@
 #include "machine.h"
 #include "bytebuffer.h"
 #include "job.h"
+#include "file.h"
 
 int main(int argc, char* argv[])
 {
@@ -25,19 +25,12 @@ int main(int argc, char* argv[])
 
         gm->AddMachine(m);
         gm->AddUser(u);
-    }   
+    }
+
     ByteBuffer bb(100);
     gm->Save(bb);
 
-    FILE* file = fopen("test", "wb");
-    if (!file)
-        return EXIT_FAILURE;
-
-    size_t result = fwrite(bb.Data(), sizeof(char), bb.Size(), file);
-    if (result != bb.Size())
-        return EXIT_FAILURE;
-
-    fclose(file);
+    File::Save("test", (char*)bb.Data(), bb.Size());
 
     system("PAUSE");
 
