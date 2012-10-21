@@ -56,6 +56,7 @@ public:
     void WriteCString(const char* value);
     void WriteCString(const std::string& value) { WriteCString(value.c_str()); }
     void WriteBuffer(const ByteBuffer& other);
+    void WriteBuffer(const char* src, uint32 count) { Append(src, count); }
 
     bool   ReadBool();
     uint8  ReadUInt8();

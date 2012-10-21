@@ -17,7 +17,7 @@ bool Job::Save(ByteBuffer& bb) const
     return true;
 }
 
-Job* Job::Load( ByteBuffer& bb )
+Job* Job::Load(ByteBuffer& bb)
 {
     std::string name = bb.ReadString();
     uint8 priority = bb.ReadUInt8();
