@@ -31,7 +31,6 @@ public:
 
     void AddRequiredSoftware(const Software& sw) { _availableSoftware.insert(sw); }
     bool IsRequiredSoftware(const Software& sw) const { return _availableSoftware.find(sw) != _availableSoftware.end(); }
-    bool SoftwareMeetsRequirements(const Software& sw) const;
 
     bool AddJob(Job* job);
     bool RemoveJob(uint id);
@@ -42,6 +41,8 @@ public:
     void Update(uint diff);
 
 private:
+    bool SoftwareMeetsRequirements(const Software& sw) const;
+
     const std::string _name;
     double _availableRAM;
     double _availableDiskSpace;

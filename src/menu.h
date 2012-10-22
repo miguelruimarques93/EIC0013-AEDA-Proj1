@@ -35,7 +35,7 @@ template <typename T>
 class Menu : public IMenu<T>
 {
 public:
-	Menu(std::string label) : IMenu(label) { }
+    Menu(std::string label) : IMenu(label) { }
 
     T Print()
     {
@@ -60,7 +60,7 @@ public:
         return subMenu->second->Print();
     }
 
-	Menu& addMenu(char val, IMenu* m) { _subMenus[val] = m; return *this; }
+    Menu& addMenu(char val, IMenu* m) { _subMenus[val] = m; return *this; }
     IMenu<T>* operator[](const char index) { return _subMenus[index]; }
 private:
     std::map<char, IMenu<T>*> _subMenus;

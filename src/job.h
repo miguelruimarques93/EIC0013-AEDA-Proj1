@@ -42,7 +42,7 @@ public:
             if (_elapsedTime <= _totalExecutionTime)
                 _elapsedTime += 1;
             _ms = 0;
-        }      
+        }
     }
 
 private:
