@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GridManager">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAIAAAQAAQBAAAAAAAAAAAAAABICgEAAAAAAAAAA=</HashCode>
+      <FileName>C:\Devel\College\workspaces\AEDA\EIC0013-AEDA-Proj1\src\gridmanager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Job">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QSAAIIAAAABAAAAAAAQQAAABAAACQgAAAAAAAAAAhAg=</HashCode>
+      <FileName>C:\Devel\College\workspaces\AEDA\EIC0013-AEDA-Proj1\src\job.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Machine">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACEAIICACAAOCAAEAAAAEAAAAAAAAAgEBJAAAgiAABA=</HashCode>
+      <FileName>C:\Devel\College\workspaces\AEDA\EIC0013-AEDA-Proj1\src\machine.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="User">
+    <Position X="10.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABIJAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>C:\Devel\College\workspaces\AEDA\EIC0013-AEDA-Proj1\src\user.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AcademicUser">
+    <Position X="12.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAACAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAgAA=</HashCode>
+      <FileName>C:\Devel\College\workspaces\AEDA\EIC0013-AEDA-Proj1\src\user.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnterpriseUser">
+    <Position X="9" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAIAAAAAAAAAAAAAAAAAEAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>C:\Devel\College\workspaces\AEDA\EIC0013-AEDA-Proj1\src\user.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Saveable" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Devel\College\workspaces\AEDA\EIC0013-AEDA-Proj1\src\utilclasses.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Software">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <NestedTypes>
+      <Struct Name="Software::VersionData" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>C:\Devel\College\workspaces\AEDA\EIC0013-AEDA-Proj1\src\software.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="Software::Hash" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>C:\Devel\College\workspaces\AEDA\EIC0013-AEDA-Proj1\src\software.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>IAAAAIAAAAEAAACAAAAAAQQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Devel\College\workspaces\AEDA\EIC0013-AEDA-Proj1\src\software.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,20 +1,55 @@
 #include <iostream>
+<<<<<<< Updated upstream
+=======
 #include <cstdlib>
 #include <fstream>
 #include <functional>
+>>>>>>> Stashed changes
 
 #include "gridmanager.h"
 #include "loader.h"
 #include "user.h"
+<<<<<<< Updated upstream
 #include "machine.h"
 #include "bytebuffer.h"
 #include "job.h"
 #include "file.h"
+=======
+#include "menu.h"
 #include "log.h"
 
+>>>>>>> Stashed changes
 
 struct MultipleWriter
 {
+<<<<<<< Updated upstream
+    Loader loader("test");
+
+    GridManager* gm = loader.Load();
+
+    if (!gm)
+    {
+        gm = new GridManager();
+        Machine* m = new Machine("Machine1", 2, 200, 200);
+        User* u = new EnterpriseUser("User1", 200);
+        Job* j = new Job("Job1", 100, 200, 200, 5);
+
+        m->AddJob(j);
+
+        gm->AddMachine(m);
+        gm->AddUser(u);
+    }
+
+    ByteBuffer bb(100);
+    gm->Save(bb);
+
+    File::Save("test", (char*)bb.Data(), bb.Size());
+
+    system("PAUSE");
+
+    // delete gm;
+   
+=======
 	void Write(const std::string& val)
 	{
 		for (auto out: outs)
@@ -53,11 +88,12 @@ struct MyFormatter
 	}
 };
 
+
 int main(int argc, char* argv[])
 {
-    Loader loader("test");
+	LoggerImpl<MyFormatter, MyWriter> MyLogger;
 
-	/*MyLogger.Log("TODO: Everything %d", 10);
+	MyLogger.Log("TODO: Everything %d", 10);
 	
     typedef std::function<void(void)> T;
     bool executing = true;
@@ -70,36 +106,17 @@ int main(int argc, char* argv[])
     AddUserMenu->addMenu('E', new MenuItem<T>("Add Enterprise User", [](){return;}));
 
 	mainMenu.addMenu('A', AddUserMenu);
-    mainMenu.addMenu('E', new MenuItem<T>("Exit", [&executing](){executing=false;}));*/
+    mainMenu.addMenu('E', new MenuItem<T>("Exit", [&executing](){executing=false;}));
 
-   GridManager* gm = loader.Load();
-
-    if (!gm)
+    while(executing)
     {
-        gm = new GridManager();
-        Machine* m = new Machine("Machine1", 2, 200, 200);
-        User* u = new EnterpriseUser("User1", 200);
-        Job* j = new Job("Job1", 100, 200, 200, 5);
-
-        m->AddJob(j);
-
-        gm->AddMachine(m);
-        gm->AddUser(u);
+        mainMenu.Print()();
     }
-	
+
     
 
 
 	system("pause");
-
-    ByteBuffer bb(100);
-    gm->Save(bb);
-
-    File::Save("test", (char*)bb.Data(), bb.Size());
-
-    system("PAUSE");
-
-    // delete gm;
-   
+>>>>>>> Stashed changes
     return EXIT_SUCCESS;
 }

@@ -11,6 +11,7 @@ template <typename T>
 class IMenu
 {
 public:
+    IMenu(std::string label) : Label(label) { }
     virtual T Print() = 0;
 
     std::string Label;
@@ -21,7 +22,7 @@ template <typename T>
 class MenuItem : public IMenu<T>
 {
 public:
-    MenuItem();
+    MenuItem(std::string label, T val) : IMenu(label), value(val) { }
     T Print()
     {
         return value;
@@ -34,7 +35,7 @@ template <typename T>
 class Menu : public IMenu<T>
 {
 public:
-    Menu() { }
+	Menu(std::string label) : IMenu(label) { }
 
     T Print()
     {
@@ -54,10 +55,13 @@ public:
                 std::cout << "Invalid option. Please try again." << std::endl;
         } while (subMenu == _subMenus.end());
 
+        ClearScreen();
+
         return subMenu->second->Print();
     }
 
-    void addMenu(IMenu* m) { _subMenus.push_back(m); }
+	Menu& addMenu(char val, IMenu* m) { _subMenus[val] = m; return *this; }
+    IMenu<T>* operator[](const char index) { return _subMenus[index]; }
 private:
     std::map<char, IMenu<T>*> _subMenus;
 };

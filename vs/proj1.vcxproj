@@ -18,11 +18,13 @@
     <ClInclude Include="..\src\interfaces.h" />
     <ClInclude Include="..\src\job.h" />
     <ClInclude Include="..\src\loader.h" />
+    <ClInclude Include="..\src\log.h" />
     <ClInclude Include="..\src\machine.h" />
     <ClInclude Include="..\src\menu.h" />
     <ClInclude Include="..\src\runnable.h" />
     <ClInclude Include="..\src\software.h" />
     <ClInclude Include="..\src\user.h" />
+    <ClInclude Include="..\src\utilclasses.h" />
     <ClInclude Include="..\src\utils.h" />
   </ItemGroup>
   <ItemGroup>
@@ -35,6 +37,9 @@
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\user.cpp" />
     <ClCompile Include="..\src\utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{30265119-2583-4A3F-B33B-5F549A0C0821}</ProjectGuid>
