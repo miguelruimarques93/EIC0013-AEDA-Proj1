@@ -17,9 +17,11 @@ typedef std::unordered_set<Software, Software::Hash> SoftwareSet;
 class Job : public ISave, public IUpdate
 {
 public:
-    Job(const std::string& name, uint priority, double requiredRAM, double requiredDiskSpace, uint executionTime)
+    Job(const std::string& name, uint8 priority, double requiredRAM, double requiredDiskSpace, uint executionTime)
         : _name(name), _priority(priority), _requiredRAM(requiredRAM), _requiredDiskSpace(requiredDiskSpace), _totalExecutionTime(executionTime),
           _elapsedTime(0), _ms(0) {}
+
+    virtual ~Job() {}
 
     const std::string& GetName() const { return _name; }
     uint GetPriority() const { return _priority; }
@@ -46,16 +48,19 @@ public:
     }
 
 private:
-    const std::string _name;
-    const uint8 _priority;
     const double _requiredRAM;
     const double _requiredDiskSpace;
     const uint _totalExecutionTime;
-
-    SoftwareSet _requiredSoftware;
-
     uint _elapsedTime;
-    uint32 _ms;
+    uint _ms;
+    SoftwareSet _requiredSoftware;
+    const uint8 _priority;
+
+    const std::string _name;
+
+private: // no copying
+    Job(const Job&);
+    Job& operator =(Job const&);
 };
 
 #endif // JOB_H_

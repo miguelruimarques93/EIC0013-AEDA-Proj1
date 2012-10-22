@@ -20,7 +20,7 @@ public:
         : _name(machineName), _maxJobs(maxJobs), _totalRAM(totalRAM), _totalDiskSpace(totalDiskSpace),
           _availableDiskSpace(totalDiskSpace), _availableRAM(totalRAM) {}
 
-    ~Machine();
+    virtual ~Machine();
 
     const std::string& GetMachineName() const { return _name; }
     uint GetMaxJobs() const { return _maxJobs; }
@@ -43,17 +43,22 @@ public:
 private:
     bool SoftwareMeetsRequirements(const Software& sw) const;
 
-    const std::string _name;
     double _availableRAM;
     double _availableDiskSpace;
-    SoftwareSet _availableSoftware;
-
-    const uint _maxJobs;
     const double _totalRAM;
     const double _totalDiskSpace;
+    const uint _maxJobs;
 
-    std::map<uint, Job*> _currentJobs;
     static uint _lastJobId;
+
+    SoftwareSet _availableSoftware;
+    std::map<uint, Job*> _currentJobs;
+
+    const std::string _name;    
+
+private: // no copying
+    Machine(const Machine&);
+    Machine& operator =(Machine const&);
 };
 
 #endif // MACHINE_H_

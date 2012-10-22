@@ -50,7 +50,7 @@ private:
 
 private: // no copying
     GridManager(const GridManager &);
-    Runnable& operator =(Runnable const&);
+    GridManager& operator =(GridManager const&);
 };
 
 #endif // GRIDMANAGER_H_

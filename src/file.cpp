@@ -5,7 +5,7 @@
 namespace File
 {
 
-    bool Load(const char* fileName, char*& buffer, int& size)
+    bool Load(const char* fileName, char*& buffer, size_t& size)
     {
         if (!fileName)
             return false;
@@ -16,7 +16,7 @@ namespace File
 
         // Get file size
         fseek(file, 0, SEEK_END);
-        size = ftell(file);
+        size = (size_t)ftell(file);
         rewind(file);
 
         if (!size)
@@ -34,7 +34,7 @@ namespace File
         return true;
     }
 
-    bool Save(const char* fileName, const char* buffer, int size)
+    bool Save(const char* fileName, const char* buffer, size_t size)
     {
         if (!fileName || !buffer || !size)
             return false;

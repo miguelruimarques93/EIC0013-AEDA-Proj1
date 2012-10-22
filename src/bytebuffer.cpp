@@ -202,9 +202,10 @@ void ByteBuffer::WriteString(const std::string& value)
 
 void ByteBuffer::WriteCString(const char* str)
 {
-    size_t length = 0;
-    if (str && (length = strlen(str)))
-        Append((Byte const*)str, length);
+    if (str)   
+        if (size_t length = strlen(str))
+            Append((Byte const*)str, length);
+
     Append<char>(0); // null terminator
 }
 
@@ -266,7 +267,7 @@ uint32 ByteBuffer::Read7BitEncodedInt()
     for (uint8 i = 0, shift = 0; i < 4; ++i, shift += 7) // read max 4 bytes (max value 0xFFFFFFF)
     {
         Byte val = Read<Byte>();
-        Byte realVal = val & 0x7F;
+        Byte realVal = Byte(val & 0x7F);
         result |= realVal << shift;
         if (!(val & 0x80)) // if highbit is 1, continue reading otherwise stop
             break;

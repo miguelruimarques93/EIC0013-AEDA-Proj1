@@ -77,10 +77,10 @@ public:
     ByteBuffer& operator <<(uint16 value) { WriteUInt16(value); return *this; }
     ByteBuffer& operator <<(uint32 value) { WriteUInt32(value); return *this; }
     ByteBuffer& operator <<(uint64 value) { WriteUInt64(value); return *this; }
-    ByteBuffer& operator <<(int8 value) { WriteUInt8(value); return *this; }
-    ByteBuffer& operator <<(int16 value) { WriteUInt16(value); return *this; }
-    ByteBuffer& operator <<(int32 value) { WriteUInt32(value); return *this; }
-    ByteBuffer& operator <<(int64 value) { WriteUInt64(value); return *this; }
+    ByteBuffer& operator <<(int8 value) { WriteInt8(value); return *this; }
+    ByteBuffer& operator <<(int16 value) { WriteInt16(value); return *this; }
+    ByteBuffer& operator <<(int32 value) { WriteInt32(value); return *this; }
+    ByteBuffer& operator <<(int64 value) { WriteInt64(value); return *this; }
     ByteBuffer& operator <<(float value) { WriteFloat(value); return *this; }
     ByteBuffer& operator <<(double value) { WriteDouble(value); return *this; }
     ByteBuffer& operator <<(const std::string& value) { WriteString(value); return *this; }

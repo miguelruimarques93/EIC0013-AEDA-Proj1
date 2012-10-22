@@ -5,7 +5,7 @@
 
 GridManager* Loader::Load()
 {
-    int size;
+    size_t size;
     char* buffer;
     File::Load(_fileName.c_str(), buffer, size);
 
