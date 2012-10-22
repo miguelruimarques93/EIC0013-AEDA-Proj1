@@ -1,54 +1,76 @@
 #ifndef LOG_H_
 #define LOG_H_
 
-#include <iostream>
 #include <string>
-#include <sstream>
-#include <ctime>
+#include <fstream>
+#include <mutex>
+#include <iostream>
 #include <cstdarg>
-
-class Logger
-{
-public:
-    virtual ~Logger() { }
-
-    virtual void Log(const char * format, ...) = 0;
-};
 
 struct Writer
 {
-    void Write(const std::string& val)
-    {
-        std::cout << val << std::endl;
-    }
+    virtual void Write(const std::string& val) = 0;
 };
 
-struct Formatter
+struct ConsoleWritePolicy : public Writer
 {
-    std::string Format(const char* format, va_list args)
-    {
-        char res[1000];
-        vsprintf(res, format, args);
-        std::ostringstream out;
-        out << time(NULL) << ": " << res;
-        return out.str();
-    }
+    void Write(const std::string& val) { std::cout << val << std::endl; }
 };
 
-template <class FormatPolicy, class WritePolicy>
-class LoggerImpl : public Logger, public WritePolicy
+struct FileWritePolicy : public Writer
+{
+    FileWritePolicy() { _file.open("log.txt"); }
+
+    ~FileWritePolicy() { _file.close(); }
+
+    void Write(const std::string& val) { _file << val << std::endl; }
+
+    std::ofstream _file;
+};
+
+template <class WritePolicy>
+class Logger
 {
 public:
-    virtual void Log(const char * format, ...)
+    static Logger* Instance()
     {
-        va_list args;
-        va_start(args, format);
-        WritePolicy::Write(_formatter.Format(format, args));
-        va_end(args);
+        if (!_instance)
+            _instance = new Logger<WritePolicy>;
+        return _instance;
     }
 
+    void Log(const char* format, ...)
+    {
+        char buffer[512];
+        va_list args;
+        va_start(args, format);
+        vsprintf(buffer, format, args);
+        va_end(args);
 
-    FormatPolicy _formatter;
+        std::ostringstream out;
+
+        _mutex.lock();
+
+        time_t now = time(0);
+        tm* current = localtime(&now);
+
+        out << '[' << current->tm_hour << ':' << current->tm_min << ':' << current->tm_sec << ']' << ": " << buffer;
+        _writer.Write(out.str());
+
+        _mutex.unlock();
+    }
+
+private:
+    static Logger* _instance;
+    std::mutex _mutex;
+    WritePolicy _writer;
 };
+
+template <class WritePolicy>
+Logger<WritePolicy>* Logger<WritePolicy>::_instance = NULL;
+
+#define Console ConsoleWritePolicy
+#define FileWP FileWritePolicy
+#define sLog(policy) Logger<policy>::Instance()
 
 #endif // LOG_H_

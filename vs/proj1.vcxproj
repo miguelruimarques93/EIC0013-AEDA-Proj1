@@ -24,7 +24,6 @@
     <ClInclude Include="..\src\runnable.h" />
     <ClInclude Include="..\src\software.h" />
     <ClInclude Include="..\src\user.h" />
-    <ClInclude Include="..\src\utilclasses.h" />
     <ClInclude Include="..\src\utils.h" />
   </ItemGroup>
   <ItemGroup>

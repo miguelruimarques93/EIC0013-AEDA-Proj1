@@ -12,52 +12,11 @@
 #include "file.h"
 #include "log.h"
 
-
-struct MultipleWriter
-{
-    void Write(const std::string& val)
-    {
-        for (auto out: outs)
-            *out << "GridManager -> " << val << std::endl;
-    }
-
-    void AddDestination(std::ostream* out) { outs.push_back(out); }
-
-private:
-    std::vector<std::ostream*> outs;
-};
-
-struct MyWriter : public MultipleWriter
-{
-    MyWriter()
-    {
-        file.open("file.txt");
-
-        /*AddDestination(&std::cout);*/
-        AddDestination(&file);
-
-    }
-private:
-    std::ofstream file;
-};
-
-struct MyFormatter
-{
-    std::string Format(const char* format, va_list args)
-    {
-        char res[1000];
-        vsprintf(res, format, args);
-        std::ostringstream out;
-        out << res;
-        return out.str();
-    }
-};
-
 int main(int argc, char* argv[])
 {
-    /*
-    MyLogger.Log("TODO: Everything %d", 10);
+    sLog(Console)->Log("TODO: Everything %d", 10);
 
+    /*
     typedef std::function<void(void)> T;
     bool executing = true;
 
@@ -88,14 +47,12 @@ int main(int argc, char* argv[])
         gm->AddUser(u);
     }
 
-    system("pause");
+    system("PAUSE");
 
     ByteBuffer bb(100);
     gm->Save(bb);
 
     File::Save("test", (char*)bb.Data(), bb.Size());
-
-    system("PAUSE");
 
     return EXIT_SUCCESS;
 }
