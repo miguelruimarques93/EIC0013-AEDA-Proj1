@@ -32,7 +32,7 @@ protected:
     std::vector<Job*> _jobs;
 
 private:
-    const std::string _name;
+    std::string _name;
 };
 
 class AcademicUser : public User
