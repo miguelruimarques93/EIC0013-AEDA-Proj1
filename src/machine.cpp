@@ -89,7 +89,7 @@ bool Machine::Save(ByteBuffer& bb) const
     return true;
 }
 
-Machine* Machine::Load( ByteBuffer& bb )
+Machine* Machine::Load(ByteBuffer& bb)
 {
     std::string name = bb.ReadString();
     double availableRAM = bb.ReadDouble();
@@ -113,7 +113,7 @@ Machine* Machine::Load( ByteBuffer& bb )
     return m;
 }
 
-void Machine::Update( uint diff )
+void Machine::Update(uint diff)
 {
     for (std::map<uint, Job*>::iterator it = _currentJobs.begin(); it != _currentJobs.end();)
     {

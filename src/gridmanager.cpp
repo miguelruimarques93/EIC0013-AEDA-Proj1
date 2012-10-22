@@ -1,6 +1,8 @@
 #include "gridmanager.h"
 #include "user.h"
 #include "machine.h"
+#include "job.h"
+#include "log.h"
 
 #include <chrono>
 #include <iostream>
@@ -141,4 +143,32 @@ void GridManager::Run()
 
         std::this_thread::sleep_for(std::chrono::milliseconds(500)); // sleep for half a second
     }
+}
+
+bool GridManager::AddJob(Job* job)
+{
+    std::list<Machine*> machineList; // TODO: Every time a job is added this sorted list is being rebuilt; change that
+
+    // put machines in the map into a list so we can sort them
+    std::transform(_machines.begin(), _machines.end(), std::back_inserter(machineList),
+        [](std::map<uint, Machine*>::value_type& val) { return val.second; });
+
+    // sort of load balancing, better machines get assigned jobs first
+    machineList.sort([](Machine* m1, Machine* m2) {
+        double score1 = ((m1->GetMaxJobs() - m1->GetCurrentJobs()) + m1->GetAvailableDiskSpace() + m1->GetAvailableRAM());
+        double score2 = ((m2->GetMaxJobs() - m2->GetCurrentJobs()) + m2->GetAvailableDiskSpace() + m2->GetAvailableRAM());
+
+        return score1 > score2;
+    });
+
+    for (auto it = machineList.begin(); it != machineList.end(); ++it)
+    {
+        if ((*it)->AddJob(job))
+        {
+            sLog(Console)->Log("Job %s added to machine %s", job->GetName().c_str(), (*it)->GetMachineName().c_str());
+            return true;
+        }
+    }
+
+    return false;
 }

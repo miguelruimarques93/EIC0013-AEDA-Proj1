@@ -14,23 +14,35 @@
 
 int main(int argc, char* argv[])
 {
-    sLog(Console)->Log("TODO: Everything %d", 10);
+    std::auto_ptr<GridManager> gm(new GridManager());
+
+    Machine* m1 = new Machine("Machine1", 2, 200, 200);
+    Machine* m2 = new Machine("Machine2", 1, 200, 200);
+    Machine* m3 = new Machine("Machine3", 5, 500, 500);
+
+    Job* j1 = new Job("Job1", 100, 100, 100, 1);
+    Job* j2 = new Job("Job2", 100, 100, 100, 2);
+    Job* j3 = new Job("Job3", 100, 100, 100, 3);
+    Job* j4 = new Job("Job4", 100, 100, 100, 4);
+
+    gm->AddMachine(m1);
+    gm->AddMachine(m2);
+    gm->AddMachine(m3);
+
+    if (gm->AddJob(j1))
+        sLog(Console)->Log("j1 added");
+    if (gm->AddJob(j2))
+        sLog(Console)->Log("j2 added");
+
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+
+    if (gm->AddJob(j3))
+        sLog(Console)->Log("j3 added");
+    if (gm->AddJob(j4))
+        sLog(Console)->Log("j4 added");
+
 
     /*
-    typedef std::function<void(void)> T;
-    bool executing = true;
-
-    Menu<T> mainMenu("Main Menu");
-
-    Menu<T>* AddUserMenu = new Menu<T>("Add User");
-
-    AddUserMenu->addMenu('A', new MenuItem<T>("Add Academic User", [](){return;}));
-    AddUserMenu->addMenu('E', new MenuItem<T>("Add Enterprise User", [](){return;}));
-
-    mainMenu.addMenu('A', AddUserMenu);
-    mainMenu.addMenu('E', new MenuItem<T>("Exit", [&executing](){executing=false;}));
-    */
-
     Loader loader("test");
     std::auto_ptr<GridManager> gm(loader.Load());
 
@@ -46,13 +58,16 @@ int main(int argc, char* argv[])
         gm->AddMachine(m);
         gm->AddUser(u);
     }
+    */
 
     system("PAUSE");
 
+    /*
     ByteBuffer bb(100);
     gm->Save(bb);
 
     File::Save("test", (char*)bb.Data(), bb.Size());
+    */
 
     return EXIT_SUCCESS;
 }

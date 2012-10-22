@@ -24,6 +24,7 @@ public:
 
     const std::string& GetMachineName() const { return _name; }
     uint GetMaxJobs() const { return _maxJobs; }
+    uint GetCurrentJobs() const { return _currentJobs.size(); }
     double GetAvailableRAM() const { return _availableRAM; }
     double GetAvailableDiskSpace() const { return _availableDiskSpace; }
     double GetTotalRAM() const { return _totalRAM; }

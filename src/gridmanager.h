@@ -9,6 +9,7 @@
 
 class User;
 class Machine;
+class Job;
 
 class GridManager : public ISave, public IUpdate, public Runnable
 {
@@ -33,6 +34,8 @@ public:
     void Update(uint32 diff);
 
     static GridManager* Load(ByteBuffer& bb);
+
+    bool AddJob(Job* job);
 
 protected:
 
