@@ -24,11 +24,17 @@ namespace File
 
         buffer = new char[size];
         if (!buffer)
+        {
+            delete[] buffer;
             return false;
+        }
 
         size_t result = fread(buffer, sizeof(char), size, file);
         if (result != size)
+        {
+            delete[] buffer;
             return false;
+        }
 
         fclose(file);
         return true;
