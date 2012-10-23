@@ -1,17 +1,27 @@
 #include "menu.h"
-#include "consolereader.h"
+#include <string>
+#include <vector>
 #include <iostream>
-#include <sstream>
 #include <algorithm>
+#include <functional>
+#include <sstream>
+#include "consolereader.h"
 
-IMenu::IMenu(const std::string& label, Menu* parent /*= NULL*/) :  _parent(parent), _label(label)
+IMenu::IMenu( const std::string& label, Menu* Parent /*= NULL*/ ) :  _parent(Parent)
 {
-    std::string::iterator it = std::find(_label.begin(), _label.end(), '\r');
-    while (it != _label.end())
-    {
-        _label.erase(it);
-        it = find(_label.begin(), _label.end(), '\r');
-    }
+    _label = [] (const std::string& label) 
+    { 
+        std::string result(label);
+
+        std::string::const_iterator it = std::find(result.begin(), result.end(), '\r');
+        while (it != result.end())
+        {
+            result.erase(it);
+            it = find(result.begin(), result.end(), '\r');
+        }
+
+        return result;
+    } (label);
 }
 
 RetType Menu::Print()
@@ -22,29 +32,29 @@ RetType Menu::Print()
         std::cout << sm.first << " - " << sm.second->GetLabel() << std::endl;
     }
     char option;
-    std::map<char, IMenu*>::iterator subMenu;
+    IMenu* subMenu;
 
     do
     {
         option = ReadValue<char>("? ");
-        subMenu = _subMenus.find(option);
-        if (subMenu == _subMenus.end())
+        subMenu = (*this)[option];
+        if (subMenu == NULL)
             std::cout << "Invalid option. Please try again." << std::endl;
-    } while (subMenu == _subMenus.end());
+    } while (subMenu == NULL);
 
     ClearScreen();
 
-    return subMenu->second->Print();
+    return subMenu->Print();
 }
 
-Menu* Menu::Load(ByteBuffer& bb)
+Menu* Menu::Load( ByteBuffer& bb )
 {
     std::istringstream buffer(bb);
 
     std::string name; 
     std::getline(buffer, name, '\n');
 
-    Menu* result = new Menu(name);
+    Menu* result = new Menu(name,0);
 
     uint16 level = 0;
     Menu* levelMenu = result;
@@ -91,18 +101,4 @@ Menu* Menu::Load(ByteBuffer& bb)
     }
 
     return result;
-}
-
-IMenu* Menu::addMenu(char val, const std::string& label)
-{
-    _subMenus[val] = new Menu(label, &(*this));
-    _lastAddedKey = val;
-    return _subMenus[val];
-}
-
-IMenu* Menu::addMenu(char val, const std::string& label, RetType value)
-{
-    _subMenus[val] = new MenuItem(label, value, &(*this));
-    _lastAddedKey = val;
-    return _subMenus[val];
 }
