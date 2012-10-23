@@ -31,7 +31,6 @@
     <ClCompile Include="..\src\file.cpp" />
     <ClCompile Include="..\src\gridmanager.cpp" />
     <ClCompile Include="..\src\job.cpp" />
-    <ClCompile Include="..\src\loader.cpp" />
     <ClCompile Include="..\src\machine.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\user.cpp" />
