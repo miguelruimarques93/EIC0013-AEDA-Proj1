@@ -4,6 +4,7 @@
 #include <unordered_set>
 #include <string>
 #include <map>
+#include <mutex>
 
 #include "utils.h"
 #include "interfaces.h"
@@ -24,7 +25,7 @@ public:
 
     const std::string& GetMachineName() const { return _name; }
     uint GetMaxJobs() const { return _maxJobs; }
-    uint GetCurrentJobs() const { return _currentJobs.size(); }
+    uint GetCurrentJobs() const;
     double GetAvailableRAM() const { return _availableRAM; }
     double GetAvailableDiskSpace() const { return _availableDiskSpace; }
     double GetTotalRAM() const { return _totalRAM; }
@@ -55,7 +56,9 @@ private:
     SoftwareSet _availableSoftware;
     std::map<uint, Job*> _currentJobs;
 
-    const std::string _name;    
+    const std::string _name;
+
+    mutable std::mutex _mutex;
 
 private: // no copying
     Machine(const Machine&);
