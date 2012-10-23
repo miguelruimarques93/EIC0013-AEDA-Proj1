@@ -1,10 +1,7 @@
 #ifndef UTILS_H_
 #define UTILS_H_
 
-
 #include <cstdint>
-
-
 
 typedef int8_t int8;
 typedef int16_t int16;
@@ -19,7 +16,6 @@ typedef uint32 uint;
 
 uint64 GetCurrentTime();
 uint32 GetTimeDiff(uint64 curTime, uint64 prevTime);
-
 
 // ...
 

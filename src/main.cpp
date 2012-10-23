@@ -29,6 +29,7 @@ int main(int argc, char* argv[])
     gm->AddMachine(m2);
     gm->AddMachine(m3);
 
+    /*
     if (gm->AddJob(j1))
         sLog(Console)->Log("j1 added");
     if (gm->AddJob(j2))
@@ -40,6 +41,7 @@ int main(int argc, char* argv[])
         sLog(Console)->Log("j3 added");
     if (gm->AddJob(j4))
         sLog(Console)->Log("j4 added");
+        */
 
 
     /*

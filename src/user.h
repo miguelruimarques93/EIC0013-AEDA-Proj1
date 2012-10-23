@@ -23,6 +23,9 @@ public:
 
     virtual bool Save(ByteBuffer& bb) const override = 0;
 
+    virtual bool CanCreateJob(const Job* job) = 0;
+    virtual void CreatedJob(const Job* job) = 0;
+
     virtual ~User() { };
 
     static User* Load(ByteBuffer& bb);
@@ -44,6 +47,10 @@ public:
 
     bool Save(ByteBuffer& bb) const override;
 
+    void CreatedJob(const Job* job) override { if (job) _jobCount++; }
+
+    bool CanCreateJob(const Job* job) override { return true; }
+
 private:
     uint _jobCount;
 };
@@ -56,6 +63,10 @@ public:
     double GetBudget() const { return _budget; }
 
     bool Save(ByteBuffer& bb) const override;
+
+    void CreatedJob(const Job* job) override { _budget -= job->GetPrice(); }
+
+    bool CanCreateJob(const Job* job) override { return job && job->GetPrice() > _budget; }
 
 private:
     double _budget;

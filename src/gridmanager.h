@@ -35,13 +35,13 @@ public:
 
     static GridManager* Load(ByteBuffer& bb);
 
-    bool AddJob(Job* job);
-
-protected:
-
-    void Run();
+    bool AddJobByUser(int userId, Job* job) { return AddJobByUser(GetUser(userId), job); }
+    bool AddJobByUser(User* user, Job* job);
 
 private:
+    void Run();
+    bool AddJob(Job* job);
+
     static uint _lastUserId;
     static uint _lastMachineId;
 

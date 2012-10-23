@@ -172,3 +172,22 @@ bool GridManager::AddJob(Job* job)
 
     return false;
 }
+
+bool GridManager::AddJobByUser(User* user, Job* job)
+{
+    if (!user)
+        return false;
+
+    if (!job)
+        return false;
+
+    if (!user->CanCreateJob(job))
+        return false;
+
+    if (!AddJob(job))
+        return false;
+
+    user->CreatedJob(job);
+
+    return true;
+}

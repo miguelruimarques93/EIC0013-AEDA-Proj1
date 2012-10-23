@@ -29,6 +29,8 @@ public:
     double GetRequiredDiskSpace() const { return _requiredDiskSpace; }
     const SoftwareSet& GetRequiredSoftware() const { return _requiredSoftware; }
 
+    double GetPrice() const { return 0.05 * _requiredRAM; } // TODO: Find a suitable price
+
     bool Finished() const { return (_totalExecutionTime - _elapsedTime) <= 0; }
     void Finish() { _elapsedTime = _totalExecutionTime; }
 
