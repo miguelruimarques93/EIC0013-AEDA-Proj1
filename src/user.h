@@ -6,9 +6,9 @@
 
 #include "utils.h"
 #include "interfaces.h"
-#include "bytebuffer.h"
 
 class Job;
+class ByteBuffer;
 
 enum SaveUserType
 {
@@ -49,7 +49,7 @@ public:
 
     void CreatedJob(const Job* job) override { if (job) _jobCount++; }
 
-    bool CanCreateJob(const Job* job) override { return true; }
+    bool CanCreateJob(const Job* job) override { return !!job; }
 
 private:
     uint _jobCount;
@@ -64,9 +64,9 @@ public:
 
     bool Save(ByteBuffer& bb) const override;
 
-    void CreatedJob(const Job* job) override { _budget -= job->GetPrice(); }
+    void CreatedJob(const Job* job) override;
 
-    bool CanCreateJob(const Job* job) override { return job && job->GetPrice() > _budget; }
+    bool CanCreateJob(const Job* job) override;
 
 private:
     double _budget;

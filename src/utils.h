@@ -17,6 +17,8 @@ typedef uint32 uint;
 uint64 GetCurrentTime();
 uint32 GetTimeDiff(uint64 curTime, uint64 prevTime);
 
+void PauseConsole();
+
 // ...
 
 #endif // UTILS_H_

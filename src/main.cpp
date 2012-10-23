@@ -11,6 +11,7 @@
 #include "job.h"
 #include "file.h"
 #include "log.h"
+#include "utils.h"
 
 int main(int argc, char* argv[])
 {
@@ -62,7 +63,7 @@ int main(int argc, char* argv[])
     }
     */
 
-    system("PAUSE");
+    PauseConsole();
 
     /*
     ByteBuffer bb(100);

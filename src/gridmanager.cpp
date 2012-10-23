@@ -137,7 +137,7 @@ void GridManager::Run()
 
         uint32 diff = GetTimeDiff(_realCurrTime, _realPrevTime);
 
-        std::cout << diff << std::endl;
+        sLog(Console)->Log("Diff: %u", diff);
 
         Update(diff);
 

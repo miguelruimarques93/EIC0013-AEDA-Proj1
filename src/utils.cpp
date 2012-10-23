@@ -1,6 +1,7 @@
 #include "utils.h"
 #include <chrono>
 #include <cassert>
+#include <iostream>
 
 uint64 GetCurrentTime()
 {
@@ -11,4 +12,10 @@ uint32 GetTimeDiff(uint64 curTime, uint64 prevTime)
 {
     assert(curTime >= prevTime);
     return uint32(curTime - prevTime);
+}
+
+void PauseConsole()
+{
+    std::cout << "Press any key to continue..." << std::endl;
+    std::cin.get();
 }

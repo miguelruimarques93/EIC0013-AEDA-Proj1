@@ -1,5 +1,6 @@
 #include "machine.h"
 #include "job.h"
+#include "log.h"
 
 #include <algorithm>
 #include <iostream>
@@ -121,7 +122,7 @@ void Machine::Update(uint diff)
 
         if (it->second->Finished())
         {
-            std::cout << "Job: " << it->second->GetName() << " removed." << std::endl;
+            sLog(Console)->Log("Job %s removed from machine %s.", it->second->GetName(), _name);
 
             // Duplicated logic in RemoveJob()
             _availableRAM += it->second->GetRequiredRAM();

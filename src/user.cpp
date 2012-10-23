@@ -1,5 +1,6 @@
 #include "user.h"
 #include "bytebuffer.h"
+#include "job.h"
 
 bool AcademicUser::Save(ByteBuffer& bb) const
 {
@@ -17,6 +18,17 @@ bool EnterpriseUser::Save(ByteBuffer& bb) const
     bb.WriteDouble(_budget);
 
     return true;
+}
+
+void EnterpriseUser::CreatedJob(const Job* job)
+{
+    if (job)
+        _budget -= job->GetPrice();
+}
+
+bool EnterpriseUser::CanCreateJob(const Job* job)
+{
+    return job && job->GetPrice() > _budget;
 }
 
 User* User::Load( ByteBuffer& bb )
