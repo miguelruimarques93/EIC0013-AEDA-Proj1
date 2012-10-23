@@ -1,0 +1,11 @@
+Main Menu
+- U#Manage Users
+-- A#Add User
+---* A#001#Add Academic User
+---* E#002#Add Enterprise User
+--* R#003#Remove User
+- M#Manage Machines
+--* A#004#Add Machine
+- J#Manage Jobs
+--* C#005#Create New Job
+-* E#006#Exit

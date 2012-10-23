@@ -12,6 +12,7 @@
 #include "file.h"
 #include "log.h"
 #include "utils.h"
+#include "menu.h"
 
 int main(int argc, char* argv[])
 {
@@ -62,6 +63,24 @@ int main(int argc, char* argv[])
         gm->AddUser(u);
     }
     */
+    
+    Loader<Menu> MenuLoad("mainMenu.txt");
+    
+    Menu*  menu = MenuLoad.Load();
+
+    bool executing = true;
+
+    std::function<void()> functions[6] = {
+        [] () { sLog(Console)->Log("New Academic User"); },
+        [] () { sLog(Console)->Log("New Enterprise User"); },
+        [] () { sLog(Console)->Log("Remove User"); },
+        [] () { sLog(Console)->Log("New Machine"); },
+        [] () { sLog(Console)->Log("New Job"); },
+        [&executing] () { executing = false; }
+    };
+
+    while(executing)
+        functions[menu->Print()-1]();
 
     PauseConsole();
 

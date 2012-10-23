@@ -8,23 +8,23 @@
 #include <stdexcept>
 
 
-#ifdef _WIN32
-#include <windows.h>
-#endif
+//#ifdef _WIN32
+//#include <windows.h>
+//#endif
 
 void ClearScreen() // multi-platform, by "Cat Plus Plus"
 {
 #ifdef _WIN32 // Windows: Windows API
-    COORD topLeft  = { 0, 0 };
-    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
-    CONSOLE_SCREEN_BUFFER_INFO screen;
-    DWORD written;
-
-    GetConsoleScreenBufferInfo(console, &screen);
-    FillConsoleOutputCharacterA(console, ' ', screen.dwSize.X * screen.dwSize.Y, topLeft, &written);
-    FillConsoleOutputAttribute(console, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE, screen.dwSize.X * screen.dwSize.Y, topLeft, &written);
-    SetConsoleCursorPosition(console, topLeft);
-
+    //COORD topLeft  = { 0, 0 };
+    //HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+    //CONSOLE_SCREEN_BUFFER_INFO screen;
+    //DWORD written;
+    //
+    //GetConsoleScreenBufferInfo(console, &screen);
+    //FillConsoleOutputCharacterA(console, ' ', screen.dwSize.X * screen.dwSize.Y, topLeft, &written);
+    //FillConsoleOutputAttribute(console, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE, screen.dwSize.X * screen.dwSize.Y, topLeft, &written);
+    //SetConsoleCursorPosition(console, topLeft);
+    system("cls");
 #else // UNIX: ANSI escape codes
     std::cout << "\x1B[2J\x1B[H";
 #endif
