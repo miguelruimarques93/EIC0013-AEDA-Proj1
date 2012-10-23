@@ -5,7 +5,6 @@
 #include "bytebuffer.h"
 #include <string>
 #include <vector>
-#include <algorithm>
 
 typedef uint32 RetType;
 
@@ -14,8 +13,8 @@ class Menu;
 class IMenu
 {
 public:
-    IMenu(const std::string& label, Menu* Parent = NULL);
-    virtual RetType Print() = 0;
+    IMenu(const std::string& label, Menu* parent = NULL);
+    virtual RetType Print() const = 0;
 
     const std::string& GetLabel() const { return _label; }
 
@@ -30,8 +29,8 @@ class MenuItem : public IMenu
 {
 public:
     MenuItem(const std::string& label, RetType value, Menu* parent = NULL) : IMenu(label, parent), _value(value) { }
-    RetType Print() override { return _value; }
- 
+    RetType Print() const override { return _value; }
+
 private:
     RetType _value;
 };
@@ -40,25 +39,14 @@ class Menu : public IMenu
 {
 public:
     Menu(const std::string& label, Menu* parent = NULL) : IMenu(label, parent) { }
-    RetType Print() override;
+    RetType Print() const override;
 
-    IMenu* addMenu(char val, std::string label)
-    { 
-        _subMenus.push_back(std::pair<char, IMenu*>(val, new Menu(label, this)));
-        return GetLastSubMenu(); 
-    }
+    IMenu* AddMenu(char val, const std::string& label);
 
-    IMenu* addMenu(char val, std::string label, RetType value)
-    { 
-        _subMenus.push_back(std::pair<char, IMenu*>(val, new MenuItem(label, value, this)));
-        return GetLastSubMenu();
-    }
+    IMenu* AddMenuItem(char val, const std::string& label, RetType value);
 
-    IMenu* operator[](const char index)
-    {
-        auto it = std::find_if(_subMenus.begin(), _subMenus.end(), [index] (std::pair<char, IMenu*> elem) { return elem.first == index; });
-        return (it == _subMenus.end() ? NULL: it->second);
-    }
+    IMenu* operator[](char index);
+    IMenu* operator[](char index) const;
 
     IMenu* GetLastSubMenu() { return _subMenus[_subMenus.size()-1].second; }
 

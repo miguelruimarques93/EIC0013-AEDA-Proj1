@@ -7,24 +7,17 @@
 #include <sstream>
 #include "consolereader.h"
 
-IMenu::IMenu( const std::string& label, Menu* Parent /*= NULL*/ ) :  _parent(Parent)
+IMenu::IMenu(const std::string& label, Menu* parent /*= NULL*/) :  _parent(parent), _label(label)
 {
-    _label = [] (const std::string& label) 
-    { 
-        std::string result(label);
-
-        std::string::const_iterator it = std::find(result.begin(), result.end(), '\r');
-        while (it != result.end())
-        {
-            result.erase(it);
-            it = find(result.begin(), result.end(), '\r');
-        }
-
-        return result;
-    } (label);
+    std::string::const_iterator it = std::find(_label.begin(), _label.end(), '\r');
+    while (it != _label.end())
+    {
+        _label.erase(it);
+        it = std::find(_label.begin(), _label.end(), '\r');
+    }
 }
 
-RetType Menu::Print()
+RetType Menu::Print() const
 {
     std::cout << _label << ":" << std::endl;
     for (std::pair<char, IMenu*> sm : _subMenus)
@@ -37,24 +30,24 @@ RetType Menu::Print()
     do
     {
         option = ReadValue<char>("? ");
-        subMenu = (*this)[option];
-        if (subMenu == NULL)
+        subMenu = operator[](option);
+        if (!subMenu)
             std::cout << "Invalid option. Please try again." << std::endl;
-    } while (subMenu == NULL);
+    } while (!subMenu);
 
     ClearScreen();
 
     return subMenu->Print();
 }
 
-Menu* Menu::Load( ByteBuffer& bb )
+Menu* Menu::Load(ByteBuffer& bb)
 {
     std::istringstream buffer(bb);
 
-    std::string name; 
+    std::string name;
     std::getline(buffer, name, '\n');
 
-    Menu* result = new Menu(name,0);
+    Menu* result = new Menu(name, 0);
 
     uint16 level = 0;
     Menu* levelMenu = result;
@@ -70,25 +63,25 @@ Menu* Menu::Load( ByteBuffer& bb )
         {
             if (buffer.peek() == '*')
             {
-                buffer.ignore(1,'*');
+                buffer.ignore(1, '*');
                 char shortcut;
                 buffer >> shortcut;
-                buffer.ignore(1,'#');
+                buffer.ignore(1, '#');
                 uint32 ret;
                 buffer >> ret;
-                buffer.ignore(1,'#');
+                buffer.ignore(1, '#');
                 std::string label;
                 std::getline(buffer, label, '\n');
-                levelMenu->addMenu(shortcut, label, ret);
+                levelMenu->AddMenuItem(shortcut, label, ret);
             }
             else
             {
                 char shortcut;
                 buffer >> shortcut;
-                buffer.ignore(1,'#');
+                buffer.ignore(1, '#');
                 std::string label;
                 std::getline(buffer, label, '\n');
-                levelMenu = (Menu*)levelMenu->addMenu(shortcut, label);
+                levelMenu = (Menu*)levelMenu->AddMenu(shortcut, label);
                 level++;
             }
         }
@@ -96,9 +89,32 @@ Menu* Menu::Load( ByteBuffer& bb )
         {
             buffer.seekg(position);
             level--;
-            levelMenu = (Menu*)levelMenu->GetParent();
+            levelMenu = levelMenu->GetParent();
         }
     }
 
     return result;
+}
+
+IMenu* Menu::operator[](char index)
+{
+    return const_cast<IMenu*>(static_cast<const Menu&>(*this)[index]);
+}
+
+IMenu* Menu::operator[](char index) const
+{
+    auto it = std::find_if(_subMenus.begin(), _subMenus.end(), [index](std::pair<char, IMenu*> elem) { return elem.first == index; });
+    return it == _subMenus.end() ? NULL: it->second;
+}
+
+IMenu* Menu::AddMenuItem(char val, const std::string& label, RetType value)
+{
+    _subMenus.push_back(std::pair<char, IMenu*>(val, new MenuItem(label, value, this)));
+    return GetLastSubMenu();
+}
+
+IMenu* Menu::AddMenu(char val, const std::string& label)
+{
+    _subMenus.push_back(std::pair<char, IMenu*>(val, new Menu(label, this)));
+    return GetLastSubMenu();
 }

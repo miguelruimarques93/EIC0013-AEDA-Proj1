@@ -31,7 +31,7 @@ bool EnterpriseUser::CanCreateJob(const Job* job)
     return job && job->GetPrice() > _budget;
 }
 
-User* User::Load( ByteBuffer& bb )
+User* User::Load(ByteBuffer& bb)
 {
     uint8 type = bb.ReadUInt8();
     std::string name = bb.ReadString();

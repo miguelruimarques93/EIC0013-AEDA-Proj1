@@ -63,7 +63,7 @@ int main(int argc, char* argv[])
         gm->AddUser(u);
     }
     */
-    
+
     Menu* menu = Loader<Menu>("mainMenu.txt").Load();
 
     bool executing = !!menu;

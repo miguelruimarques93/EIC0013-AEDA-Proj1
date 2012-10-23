@@ -202,7 +202,7 @@ void ByteBuffer::WriteString(const std::string& value)
 
 void ByteBuffer::WriteCString(const char* str)
 {
-    if (str)   
+    if (str)
         if (size_t length = strlen(str))
             Append((Byte const*)str, length);
 
