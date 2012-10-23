@@ -64,22 +64,20 @@ int main(int argc, char* argv[])
     }
     */
     
-    Loader<Menu> MenuLoad("mainMenu.txt");
-    
-    Menu*  menu = MenuLoad.Load();
+    Menu* menu = Loader<Menu>("mainMenu.txt").Load();
 
-    bool executing = true;
+    bool executing = !!menu;
 
     std::function<void()> functions[6] = {
-        [] () { sLog(Console)->Log("New Academic User"); },
-        [] () { sLog(Console)->Log("New Enterprise User"); },
-        [] () { sLog(Console)->Log("Remove User"); },
-        [] () { sLog(Console)->Log("New Machine"); },
-        [] () { sLog(Console)->Log("New Job"); },
+        []           () { sLog(Console)->Log("New Academic User"); },
+        []           () { sLog(Console)->Log("New Enterprise User"); },
+        []           () { sLog(Console)->Log("Remove User"); },
+        []           () { sLog(Console)->Log("New Machine"); },
+        []           () { sLog(Console)->Log("New Job"); },
         [&executing] () { executing = false; }
     };
 
-    while(executing)
+    while (executing)
         functions[menu->Print()-1]();
 
     PauseConsole();

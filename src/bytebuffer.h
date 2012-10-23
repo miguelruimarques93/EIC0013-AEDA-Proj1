@@ -100,7 +100,7 @@ public:
     ByteBuffer& operator >>(double& value) { value = ReadDouble(); return *this; }
     ByteBuffer& operator >>(std::string& value) { value = ReadString(); return *this; }
 
-    operator const char*() { return std::string(_buffer.begin(), _buffer.end()).c_str(); }
+    operator const char*() { return (const char*)Data(); }
     operator const std::string() { return std::string(_buffer.begin(), _buffer.end()); }
 
 protected:

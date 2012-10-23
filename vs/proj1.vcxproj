@@ -33,6 +33,7 @@
     <ClCompile Include="..\src\job.cpp" />
     <ClCompile Include="..\src\machine.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\menu.cpp" />
     <ClCompile Include="..\src\user.cpp" />
     <ClCompile Include="..\src\utils.cpp" />
   </ItemGroup>

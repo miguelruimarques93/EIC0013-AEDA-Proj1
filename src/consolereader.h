@@ -41,7 +41,7 @@ template <typename T>
 T ReadValue(std::string prompt = std::string(), std::istream& in = std::cin, std::ostream* out = &std::cout)
 {
     bool success = false;
-    T val;
+    T val = T();
 
     while (!success)
     {

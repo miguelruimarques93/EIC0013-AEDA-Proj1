@@ -2,12 +2,9 @@
 #define LOADER_H_
 
 #include "utils.h"
+#include "file.h"
+#include "bytebuffer.h"
 #include <string>
-
-class GridManager;
-
-class User;
-class Machine;
 
 template <class Loadable>
 class Loader
@@ -16,8 +13,6 @@ public:
     Loader(const std::string& fileName) : _fileName(fileName) {}
 
     Loadable* Load();
-    
-
 private:
     std::string _fileName;
 };
