@@ -13,9 +13,9 @@ class Menu;
 class IMenu
 {
 public:
-    IMenu(const std::string& label, Menu* Parent = NULL);
+    IMenu(const std::string& label, Menu* parent = NULL);
     virtual ~IMenu() { }
-    virtual uint32 Print() = 0;
+    virtual uint32 Print() const = 0;
 
     const std::string& GetLabel() const { return _label; }
     Menu* GetParent() const { return _parent; }
@@ -31,11 +31,12 @@ public:
     Menu(const std::string& label, Menu* parent = NULL) : IMenu(label, parent) { }
     ~Menu() { for (auto elem: _subMenus) delete elem.second; }
 
-    uint32 Print() override;
+    uint32 Print() const override;
 
     IMenu* addMenu (char indexer, const std::string& label);
     IMenu* addMenu (char indexer, const std::string& label, uint32 val);
-    IMenu* operator[] (const char indexer);
+    IMenu* operator[](char indexer);
+    IMenu* operator[](char indexer) const;
     IMenu* GetLastSubMenu() { return (_subMenus.end() - 1)->second; }
 
     static Menu* Load(ByteBuffer& bb);
@@ -46,7 +47,7 @@ private:
     public:
         Item(const std::string& label, uint32 val, Menu* parent = NULL) : IMenu(label, parent), _value(val) { }
         ~Item() { }
-        uint32 Print() override { return _value; }
+        uint32 Print() const override { return _value; }
 
     private:
         uint32 _value;
