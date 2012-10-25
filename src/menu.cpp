@@ -1,53 +1,84 @@
 #include "menu.h"
-#include <string>
-#include <vector>
-#include <iostream>
-#include <algorithm>
-#include <functional>
-#include <sstream>
 #include "consolereader.h"
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cctype>
+#include <vector>
+#include <algorithm>
 
-IMenu::IMenu(const std::string& label, Menu* parent /*= NULL*/) :  _parent(parent), _label(label)
+
+IMenu::IMenu( const std::string& label, Menu* Parent /*= NULL*/ ) : _parent(Parent), _label(label)
 {
-    std::string::const_iterator it = std::find(_label.begin(), _label.end(), '\r');
-    while (it != _label.end())
+    for (std::string::iterator it = std::find(_label.begin(), _label.end(), '\r'); 
+         it != _label.end(); 
+         it = std::find(_label.begin(), _label.end(), '\r'))
     {
         _label.erase(it);
-        it = std::find(_label.begin(), _label.end(), '\r');
+        it = find(_label.begin(), _label.end(), '\r');
     }
 }
 
-RetType Menu::Print() const
+uint32 Menu::Print()
 {
+    Menu* parent = this->GetParent();
     std::cout << _label << ":" << std::endl;
+
     for (std::pair<char, IMenu*> sm : _subMenus)
-    {
-        std::cout << sm.first << " - " << sm.second->GetLabel() << std::endl;
-    }
+        std::cout << std::left << std::setw(parent != NULL ? 6 : 1) << sm.first << " - " << sm.second->GetLabel() << std::endl;
+
+    if (parent != NULL) std::cout << "CTRL-Z - Back" << std::endl;
+
     char option;
     IMenu* subMenu;
 
-    do
+    do 
     {
-        option = ReadValue<char>("? ");
-        subMenu = operator[](option);
-        if (!subMenu)
+        try
+        {
+            option = ReadValue<char>("? ");
+            subMenu = this->operator[](toupper(option));
+        }
+        catch (EOFCharacterValue)
+        {
+        	subMenu = this->GetParent();
+        }
+
+        if (subMenu == NULL) 
             std::cout << "Invalid option. Please try again." << std::endl;
-    } while (!subMenu);
+    } while (subMenu == NULL);
 
     ClearScreen();
 
     return subMenu->Print();
 }
 
-Menu* Menu::Load(ByteBuffer& bb)
+inline IMenu* Menu::addMenu( char indexer, const std::string& label )
+{
+    _subMenus.push_back(std::pair<char, IMenu*>(indexer, new Menu(label, this)));
+    return GetLastSubMenu();
+}
+
+inline IMenu* Menu::addMenu( char indexer, const std::string& label, uint32 val )
+{
+    _subMenus.push_back(std::pair<char, IMenu*>(indexer, new Menu::Item(label, val, this)));
+    return GetLastSubMenu();
+}
+
+inline IMenu* Menu::operator[]( const char indexer )
+{
+    std::vector<std::pair<char, IMenu*>>::iterator it = std::find_if(_subMenus.begin(), _subMenus.end(), [indexer] (std::pair<char, IMenu*> elem){ return elem.first == indexer; });
+    return (it == _subMenus.end() ? NULL : it->second);
+}
+
+Menu* Menu::Load( ByteBuffer& bb )
 {
     std::istringstream buffer(bb);
 
-    std::string name;
+    std::string name; 
     std::getline(buffer, name, '\n');
 
-    Menu* result = new Menu(name, 0);
+    Menu* result = new Menu(name,0);
 
     uint16 level = 0;
     Menu* levelMenu = result;
@@ -63,25 +94,25 @@ Menu* Menu::Load(ByteBuffer& bb)
         {
             if (buffer.peek() == '*')
             {
-                buffer.ignore(1, '*');
+                buffer.ignore(1,'*');
                 char shortcut;
                 buffer >> shortcut;
-                buffer.ignore(1, '#');
+                buffer.ignore(1,'#');
                 uint32 ret;
                 buffer >> ret;
-                buffer.ignore(1, '#');
+                buffer.ignore(1,'#');
                 std::string label;
                 std::getline(buffer, label, '\n');
-                levelMenu->AddMenuItem(shortcut, label, ret);
+                levelMenu->addMenu(shortcut, label, ret);
             }
             else
             {
                 char shortcut;
                 buffer >> shortcut;
-                buffer.ignore(1, '#');
+                buffer.ignore(1,'#');
                 std::string label;
                 std::getline(buffer, label, '\n');
-                levelMenu = (Menu*)levelMenu->AddMenu(shortcut, label);
+                levelMenu = (Menu*)levelMenu->addMenu(shortcut, label);
                 level++;
             }
         }
@@ -89,32 +120,9 @@ Menu* Menu::Load(ByteBuffer& bb)
         {
             buffer.seekg(position);
             level--;
-            levelMenu = levelMenu->GetParent();
+            levelMenu = (Menu*)levelMenu->GetParent();
         }
     }
 
     return result;
-}
-
-IMenu* Menu::operator[](char index)
-{
-    return const_cast<IMenu*>(static_cast<const Menu&>(*this)[index]);
-}
-
-IMenu* Menu::operator[](char index) const
-{
-    auto it = std::find_if(_subMenus.begin(), _subMenus.end(), [index](std::pair<char, IMenu*> elem) { return elem.first == index; });
-    return it == _subMenus.end() ? NULL: it->second;
-}
-
-IMenu* Menu::AddMenuItem(char val, const std::string& label, RetType value)
-{
-    _subMenus.push_back(std::pair<char, IMenu*>(val, new MenuItem(label, value, this)));
-    return GetLastSubMenu();
-}
-
-IMenu* Menu::AddMenu(char val, const std::string& label)
-{
-    _subMenus.push_back(std::pair<char, IMenu*>(val, new Menu(label, this)));
-    return GetLastSubMenu();
 }
