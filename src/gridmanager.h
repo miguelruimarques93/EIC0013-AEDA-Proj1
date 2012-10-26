@@ -6,6 +6,7 @@
 #include "runnable.h"
 
 #include <map>
+#include <vector>
 
 class User;
 class Machine;
@@ -37,6 +38,9 @@ public:
 
     bool AddJobByUser(int userId, Job* job) { return AddJobByUser(GetUser(userId), job); }
     bool AddJobByUser(User* user, Job* job);
+
+    template<class T>
+    std::vector<T*> ApplyPredicate(std::function<bool(T*)> predicate) const;
 
 private:
     void Run();

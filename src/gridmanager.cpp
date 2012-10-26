@@ -147,6 +147,9 @@ void GridManager::Run()
 
 bool GridManager::AddJob(Job* job)
 {
+    if (!job)
+        return false;
+
     std::list<Machine*> machineList; // TODO: Every time a job is added this sorted list is being rebuilt; change that
 
     // put machines in the map into a list so we can sort them
@@ -190,4 +193,47 @@ bool GridManager::AddJobByUser(User* user, Job* job)
     user->CreatedJob(job);
 
     return true;
+}
+
+template<class T>
+std::vector<T*> GridManager::ApplyPredicate(std::function<bool(T*)> predicate) const
+{
+    return std::vector<T*>();
+}
+
+template<>
+std::vector<Job*> GridManager::ApplyPredicate<Job>(std::function<bool(Job*)> predicate) const
+{
+    std::vector<Job*> result;
+
+    for (auto machine : _machines)
+        for (auto job : machine.second->GetJobs())
+            if (predicate(job.second))
+                result.push_back(job.second);
+
+    return result;
+}
+
+template<>
+std::vector<User*> GridManager::ApplyPredicate<User>(std::function<bool(User*)> predicate) const
+{
+    std::vector<User*> result;
+
+    for (auto user : _users)
+        if (predicate(user.second))
+            result.push_back(user.second);
+
+    return result;
+}
+
+template<>
+std::vector<Machine*> GridManager::ApplyPredicate<Machine>(std::function<bool(Machine*)> predicate) const
+{
+    std::vector<Machine*> result;
+
+    for (auto machine : _machines)
+        if (predicate(machine.second))
+            result.push_back(machine.second);
+
+    return result;
 }

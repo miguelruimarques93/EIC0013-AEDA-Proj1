@@ -35,3 +35,15 @@ Job* Job::Load(ByteBuffer& bb)
 
     return j;
 }
+
+void Job::Update(uint32 diff)
+{
+    _ms += diff;
+
+    if (_ms >= 1000) // diff is in seconds, job times are in seconds
+    {
+        if (_elapsedTime <= _totalExecutionTime)
+            _elapsedTime += 1;
+        _ms = 0;
+    }
+}

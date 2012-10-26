@@ -40,6 +40,8 @@ public:
     bool Save(ByteBuffer& bb) const override;
     static Machine* Load(ByteBuffer& bb);
 
+    const std::map<uint, Job*>& GetJobs() const { return _currentJobs; }
+
     void Update(uint diff);
 
 private:

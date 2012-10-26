@@ -37,17 +37,7 @@ public:
     bool Save(ByteBuffer& bb) const override;
     static Job* Load(ByteBuffer& bb);
 
-    void Update(uint32 diff)
-    {
-        _ms += diff;
-
-        if (_ms >= 1000) // diff is in seconds, job times are in seconds
-        {
-            if (_elapsedTime <= _totalExecutionTime)
-                _elapsedTime += 1;
-            _ms = 0;
-        }
-    }
+    void Update(uint32 diff);
 
 private:
     const double _requiredRAM;
