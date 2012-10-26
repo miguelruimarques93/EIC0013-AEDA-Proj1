@@ -57,6 +57,9 @@
     <ClInclude Include="..\src\log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\menugrid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -84,6 +87,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\consolereader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\menugrid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

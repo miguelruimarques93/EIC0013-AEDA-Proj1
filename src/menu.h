@@ -54,4 +54,5 @@ private:
 
     std::vector<std::pair<char, IMenu*>> _subMenus;
 };
+
 #endif // MENU_H_

@@ -21,6 +21,7 @@
     <ClInclude Include="..\src\log.h" />
     <ClInclude Include="..\src\machine.h" />
     <ClInclude Include="..\src\menu.h" />
+    <ClInclude Include="..\src\menugrid.h" />
     <ClInclude Include="..\src\runnable.h" />
     <ClInclude Include="..\src\software.h" />
     <ClInclude Include="..\src\user.h" />
@@ -28,12 +29,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\bytebuffer.cpp" />
+    <ClCompile Include="..\src\consolereader.cpp" />
     <ClCompile Include="..\src\file.cpp" />
     <ClCompile Include="..\src\gridmanager.cpp" />
     <ClCompile Include="..\src\job.cpp" />
     <ClCompile Include="..\src\machine.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\menu.cpp" />
+    <ClCompile Include="..\src\menugrid.cpp" />
     <ClCompile Include="..\src\user.cpp" />
     <ClCompile Include="..\src\utils.cpp" />
   </ItemGroup>

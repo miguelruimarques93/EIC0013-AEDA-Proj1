@@ -18,7 +18,6 @@ uint64 GetCurrentTime();
 uint32 GetTimeDiff(uint64 curTime, uint64 prevTime);
 
 void PauseConsole();
-
-// ...
+void ClearConsole();
 
 #endif // UTILS_H_

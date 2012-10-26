@@ -14,6 +14,15 @@ uint32 GetTimeDiff(uint64 curTime, uint64 prevTime)
     return uint32(curTime - prevTime);
 }
 
+void ClearConsole()
+{
+#ifdef _WIN32 // Windows: Console command (alternative: Windows API)
+    system("cls");
+#else // UNIX: ANSI escape codes
+    std::cout << "\x1B[2J\x1B[H";
+#endif
+}
+
 void PauseConsole()
 {
     std::cout << "Press any key to continue..." << std::endl;

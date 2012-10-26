@@ -7,11 +7,10 @@
 #include <vector>
 #include <algorithm>
 
-
 IMenu::IMenu(const std::string& label, Menu* parent /*= NULL*/) : _parent(parent), _label(label)
 {
-    for (std::string::iterator it = std::find(_label.begin(), _label.end(), '\r'); 
-         it != _label.end(); 
+    for (std::string::iterator it = std::find(_label.begin(), _label.end(), '\r');
+         it != _label.end();
          it = std::find(_label.begin(), _label.end(), '\r'))
     {
         _label.erase(it);
@@ -24,15 +23,16 @@ uint32 Menu::Print() const
     Menu* parent = this->GetParent();
     std::cout << _label << ":" << std::endl;
 
-    for (std::pair<char, IMenu*> sm : _subMenus)
+    for (auto sm : _subMenus)
         std::cout << std::left << std::setw(parent != NULL ? 6 : 1) << sm.first << " - " << sm.second->GetLabel() << std::endl;
 
-    if (parent != NULL) std::cout << "CTRL-Z - Back" << std::endl;
+    if (parent != NULL)
+        std::cout << "CTRL-Z - Back" << std::endl;
 
     char option;
     IMenu* subMenu;
 
-    do 
+    do
     {
         try
         {
@@ -41,27 +41,27 @@ uint32 Menu::Print() const
         }
         catch (EOFCharacterValue)
         {
-        	subMenu = GetParent();
+            subMenu = GetParent();
         }
 
-        if (!subMenu) 
+        if (!subMenu)
             std::cout << "Invalid option. Please try again." << std::endl;
     } while (!subMenu);
 
-    ClearScreen();
+    ClearConsole();
 
     return subMenu->Print();
 }
 
 inline IMenu* Menu::AddMenu(char indexer, const std::string& label)
 {
-    _subMenus.push_back(std::pair<char, IMenu*>(indexer, new Menu(label, this)));
+    _subMenus.push_back(std::make_pair(indexer, new Menu(label, this)));
     return GetLastSubMenu();
 }
 
 inline IMenu* Menu::AddMenuItem(char indexer, const std::string& label, uint32 val)
 {
-    _subMenus.push_back(std::pair<char, IMenu*>(indexer, new Menu::Item(label, val, this)));
+    _subMenus.push_back(std::make_pair(indexer, new Menu::Item(label, val, this)));
     return GetLastSubMenu();
 }
 
@@ -80,7 +80,7 @@ Menu* Menu::Load(ByteBuffer& bb)
 {
     std::istringstream buffer(bb);
 
-    std::string name; 
+    std::string name;
     std::getline(buffer, name, '\n');
 
     Menu* result = new Menu(name, 0);

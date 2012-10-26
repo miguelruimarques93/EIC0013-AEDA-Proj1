@@ -5,6 +5,7 @@
 #include "log.h"
 #include "utils.h"
 #include "menu.h"
+#include "menugrid.h"
 
 #define GRID_SAVE_FILE "gridComputing.grid"
 #define MENU_SAVE_FILE "mainMenu.txt"
@@ -20,22 +21,24 @@ int main(int argc, char* argv[])
     }
 
     std::auto_ptr<GridManager> gm(Loader<GridManager>(GRID_SAVE_FILE).Load());
-    if (!gm.get())
+    if (!gm.get()) // no previous saves
         gm = std::auto_ptr<GridManager>(new GridManager());
 
     bool executing = true;
 
-    std::function<void()> functions[6] = {
-        []           () { sLog(Console)->Log("New Academic User"); },
-        []           () { sLog(Console)->Log("New Enterprise User"); },
-        []           () { sLog(Console)->Log("Remove User"); },
-        []           () { sLog(Console)->Log("New Machine"); },
-        []           () { sLog(Console)->Log("New Job"); },
-        [&executing] () { executing = false; }
+    std::function<void(GridManager*)> functions[] =
+    {
+        [&executing](GridManager*) { executing = false; },  // 1
+        NewAcademicUser,                                    // 2
+        NewEnterpriseUser,                                  // 3
+        RemoveUser,                                         // 4
+        NewMachine,                                         // 5
+        RemoveMachine,                                      // 6
+        NewJob                                              // 7
     };
 
     while (executing)
-        functions[menu->Print()-1]();
+        functions[menu->Print()-1](gm.get());
 
     ByteBuffer bb(100);
     gm->Save(bb);

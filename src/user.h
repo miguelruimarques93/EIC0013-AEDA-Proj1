@@ -41,6 +41,7 @@ private:
 class AcademicUser : public User
 {
 public:
+    AcademicUser(const std::string& name) : User(name), _jobCount(0) {}
     AcademicUser(const std::string& name, uint jobCount) : User(name), _jobCount(jobCount) {}
 
     uint GetJobCount() const { return _jobCount; }
