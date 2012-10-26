@@ -33,8 +33,8 @@ public:
 
     uint32 Print() const override;
 
-    IMenu* addMenu (char indexer, const std::string& label);
-    IMenu* addMenu (char indexer, const std::string& label, uint32 val);
+    IMenu* AddMenu(char indexer, const std::string& label);
+    IMenu* AddMenuItem(char indexer, const std::string& label, uint32 val);
     IMenu* operator[](char indexer);
     IMenu* operator[](char indexer) const;
     IMenu* GetLastSubMenu() { return (_subMenus.end() - 1)->second; }
@@ -46,7 +46,6 @@ private:
     {
     public:
         Item(const std::string& label, uint32 val, Menu* parent = NULL) : IMenu(label, parent), _value(val) { }
-        ~Item() { }
         uint32 Print() const override { return _value; }
 
     private:

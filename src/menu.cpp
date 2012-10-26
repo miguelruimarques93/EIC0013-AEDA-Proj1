@@ -37,11 +37,11 @@ uint32 Menu::Print() const
         try
         {
             option = ReadValue<char>("? ");
-            subMenu = this->operator[](toupper(option));
+            subMenu = operator[]((char)toupper(option));
         }
         catch (EOFCharacterValue)
         {
-        	subMenu = this->GetParent();
+        	subMenu = GetParent();
         }
 
         if (!subMenu) 
@@ -53,27 +53,26 @@ uint32 Menu::Print() const
     return subMenu->Print();
 }
 
-inline IMenu* Menu::addMenu(char indexer, const std::string& label)
+inline IMenu* Menu::AddMenu(char indexer, const std::string& label)
 {
     _subMenus.push_back(std::pair<char, IMenu*>(indexer, new Menu(label, this)));
     return GetLastSubMenu();
 }
 
-inline IMenu* Menu::addMenu(char indexer, const std::string& label, uint32 val)
+inline IMenu* Menu::AddMenuItem(char indexer, const std::string& label, uint32 val)
 {
     _subMenus.push_back(std::pair<char, IMenu*>(indexer, new Menu::Item(label, val, this)));
     return GetLastSubMenu();
 }
 
-inline IMenu* Menu::operator[](const char indexer)
+inline IMenu* Menu::operator[](char indexer)
 {
-    std::vector<std::pair<char, IMenu*>>::iterator it = std::find_if(_subMenus.begin(), _subMenus.end(), [indexer] (std::pair<char, IMenu*> elem){ return elem.first == indexer; });
-    return (it == _subMenus.end() ? NULL : it->second);
+    return const_cast<IMenu*>(static_cast<const Menu&>(*this)[indexer]); // call const version
 }
 
-inline IMenu* Menu::operator[](const char indexer) const
+inline IMenu* Menu::operator[](char indexer) const
 {
-    std::vector<std::pair<char, IMenu*>>::const_iterator it = std::find_if(_subMenus.begin(), _subMenus.end(), [indexer] (std::pair<char, IMenu*> elem){ return elem.first == indexer; });
+    auto it = std::find_if(_subMenus.begin(), _subMenus.end(), [indexer](std::pair<char, IMenu*> elem){ return elem.first == indexer; });
     return (it == _subMenus.end() ? NULL : it->second);
 }
 
@@ -84,10 +83,10 @@ Menu* Menu::Load(ByteBuffer& bb)
     std::string name; 
     std::getline(buffer, name, '\n');
 
-    Menu* result = new Menu(name,0);
+    Menu* result = new Menu(name, 0);
+    Menu* levelMenu = result;
 
     uint16 level = 0;
-    Menu* levelMenu = result;
 
     while (!buffer.eof())
     {
@@ -109,7 +108,7 @@ Menu* Menu::Load(ByteBuffer& bb)
                 buffer.ignore(1, '#');
                 std::string label;
                 std::getline(buffer, label, '\n');
-                levelMenu->addMenu(shortcut, label, ret);
+                levelMenu->AddMenuItem(shortcut, label, ret);
             }
             else
             {
@@ -118,7 +117,7 @@ Menu* Menu::Load(ByteBuffer& bb)
                 buffer.ignore(1, '#');
                 std::string label;
                 std::getline(buffer, label, '\n');
-                levelMenu = (Menu*)levelMenu->addMenu(shortcut, label);
+                levelMenu = (Menu*)levelMenu->AddMenu(shortcut, label);
                 level++;
             }
         }

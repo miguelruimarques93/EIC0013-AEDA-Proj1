@@ -7,23 +7,9 @@
 #include <string>
 #include <stdexcept>
 
-
-//#ifdef _WIN32
-//#include <windows.h>
-//#endif
-
 void ClearScreen() // multi-platform, by "Cat Plus Plus"
 {
-#ifdef _WIN32 // Windows: Windows API
-    //COORD topLeft  = { 0, 0 };
-    //HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
-    //CONSOLE_SCREEN_BUFFER_INFO screen;
-    //DWORD written;
-    //
-    //GetConsoleScreenBufferInfo(console, &screen);
-    //FillConsoleOutputCharacterA(console, ' ', screen.dwSize.X * screen.dwSize.Y, topLeft, &written);
-    //FillConsoleOutputAttribute(console, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE, screen.dwSize.X * screen.dwSize.Y, topLeft, &written);
-    //SetConsoleCursorPosition(console, topLeft);
+#ifdef _WIN32 // Windows: Console command (alternative: windows API)
     system("cls");
 #else // UNIX: ANSI escape codes
     std::cout << "\x1B[2J\x1B[H";
@@ -36,7 +22,7 @@ public:
     InvalidValue(const char* val) : std::runtime_error(val) { }
 };
 
-class EOFCharacterValue : InvalidValue
+class EOFCharacterValue : public InvalidValue
 {
 public:
     EOFCharacterValue() : InvalidValue("") { }
@@ -50,12 +36,14 @@ T ReadValue(std::string prompt = std::string(), std::istream& in = std::cin, std
 
     while (!success)
     {
-        if (out) (*out) << prompt;
+        if (out)
+            (*out) << prompt;
 
         std::string input;
         std::getline(in, input);
 
         if (in.fail())
+        {
             if (in.eof())
             {
                 in.clear();
@@ -70,6 +58,7 @@ T ReadValue(std::string prompt = std::string(), std::istream& in = std::cin, std
                     throw InvalidValue("ReadValue: Invalid value found with no out stream.");
                 continue;
             }
+        }
 
         // convert string to T
         std::stringstream ss(input);
@@ -86,10 +75,12 @@ T ReadValue(std::string prompt = std::string(), std::istream& in = std::cin, std
     return val;
 }
 
+// special case for strings
 template <>
-std::string ReadValue<std::string> (std::string prompt /* = std::string()*/, std::istream& in /*= std::cin */, std::ostream* out/* = &std::cout */)
+std::string ReadValue<std::string>(std::string prompt /* = std::string()*/, std::istream& in /*= std::cin */, std::ostream* out/* = &std::cout */)
 {
-    if (out) (*out) << prompt;
+    if (out)
+        (*out) << prompt;
 
     std::string input;
     std::getline(in, input);

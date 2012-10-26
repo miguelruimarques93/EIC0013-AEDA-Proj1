@@ -6,6 +6,7 @@
 #include <mutex>
 #include <iostream>
 #include <cstdarg>
+#include <sstream>
 
 struct Writer
 {

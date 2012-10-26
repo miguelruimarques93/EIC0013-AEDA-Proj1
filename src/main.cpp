@@ -1,72 +1,29 @@
-#include <iostream>
-#include <cstdlib>
-#include <fstream>
-#include <functional>
-
 #include "gridmanager.h"
 #include "loader.h"
-#include "user.h"
-#include "machine.h"
 #include "bytebuffer.h"
-#include "job.h"
 #include "file.h"
 #include "log.h"
 #include "utils.h"
 #include "menu.h"
 
+#define GRID_SAVE_FILE "gridComputing.grid"
+#define MENU_SAVE_FILE "mainMenu.txt"
+
 int main(int argc, char* argv[])
 {
-    std::auto_ptr<GridManager> gm(new GridManager());
+    std::auto_ptr<Menu> menu(Loader<Menu>(MENU_SAVE_FILE).Load());
 
-    Machine* m1 = new Machine("Machine1", 2, 200, 200);
-    Machine* m2 = new Machine("Machine2", 1, 200, 200);
-    Machine* m3 = new Machine("Machine3", 5, 500, 500);
-
-    Job* j1 = new Job("Job1", 100, 100, 100, 1);
-    Job* j2 = new Job("Job2", 100, 100, 100, 2);
-    Job* j3 = new Job("Job3", 100, 100, 100, 3);
-    Job* j4 = new Job("Job4", 100, 100, 100, 4);
-
-    gm->AddMachine(m1);
-    gm->AddMachine(m2);
-    gm->AddMachine(m3);
-
-    /*
-    if (gm->AddJob(j1))
-        sLog(Console)->Log("j1 added");
-    if (gm->AddJob(j2))
-        sLog(Console)->Log("j2 added");
-
-    std::this_thread::sleep_for(std::chrono::seconds(2));
-
-    if (gm->AddJob(j3))
-        sLog(Console)->Log("j3 added");
-    if (gm->AddJob(j4))
-        sLog(Console)->Log("j4 added");
-        */
-
-
-    /*
-    Loader loader("test");
-    std::auto_ptr<GridManager> gm(loader.Load());
-
-    if (!gm.get())
+    if (!menu.get())
     {
-        gm = std::auto_ptr<GridManager>(new GridManager());
-        Machine* m = new Machine("Machine1", 2, 200, 200);
-        User* u = new EnterpriseUser("User1", 200);
-        Job* j = new Job("Job1", 100, 200, 200, 5);
-
-        m->AddJob(j);
-
-        gm->AddMachine(m);
-        gm->AddUser(u);
+        std::cerr << "mainMenu.text could not be loaded." << std::endl;
+        return EXIT_FAILURE;
     }
-    */
 
-    Menu* menu = Loader<Menu>("mainMenu.txt").Load();
+    std::auto_ptr<GridManager> gm(Loader<GridManager>(GRID_SAVE_FILE).Load());
+    if (!gm.get())
+        gm = std::auto_ptr<GridManager>(new GridManager());
 
-    bool executing = !!menu;
+    bool executing = true;
 
     std::function<void()> functions[6] = {
         []           () { sLog(Console)->Log("New Academic User"); },
@@ -80,14 +37,12 @@ int main(int argc, char* argv[])
     while (executing)
         functions[menu->Print()-1]();
 
-    PauseConsole();
-
-    /*
     ByteBuffer bb(100);
     gm->Save(bb);
 
-    File::Save("test", (char*)bb.Data(), bb.Size());
-    */
+    File::Save(GRID_SAVE_FILE, bb, bb.Size());
+
+    PauseConsole();
 
     return EXIT_SUCCESS;
 }
