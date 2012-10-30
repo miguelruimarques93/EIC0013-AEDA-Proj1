@@ -25,7 +25,7 @@ public:
     virtual ~Job() {}
 
     const std::string& GetName() const { return _name; }
-    uint GetPriority() const { return _priority; }
+    uint8 GetPriority() const { return _priority; }
     double GetRequiredRAM() const { return _requiredRAM; }
     double GetRequiredDiskSpace() const { return _requiredDiskSpace; }
     const SoftwareSet& GetRequiredSoftware() const { return _requiredSoftware; }

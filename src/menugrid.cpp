@@ -299,14 +299,14 @@ void SearchJobs( GridManager* gm )
 
     switch (option)
     {
-    case ByName:
+        case ByName:
         {
             std::string name = ReadValueStr("Name: ");
             vec = gm->ApplyPredicate<Job>([name](Job* job) { return job->GetName() == name; });
             break;
         }
 
-    case ByRAM:
+        case ByRAM:
         {
             char comp = ReadValue<char>("Comparison ( > or < or = ): ");
             double value = ReadValue<double>("Value: ");
@@ -315,22 +315,22 @@ void SearchJobs( GridManager* gm )
 
             switch (comp)
             {
-            case '>':
+                case '>':
                 {
                     func = [value](Job* job) { return job->GetRequiredRAM() > value; };
                     break;
                 }
-            case '<':
+                case '<':
                 {
                     func = [value](Job* job) { return job->GetRequiredRAM() < value; };
                     break;
                 }
-            default:
+                default:
                 {
                     std::cout << "Invalid comparison, using equality." << std::endl;
                     // no break intended
                 }
-            case '=':
+                case '=':
                 {
                     func = [value](Job* job) { return job->GetRequiredRAM() == value; };
                     break;
@@ -340,7 +340,7 @@ void SearchJobs( GridManager* gm )
             vec = gm->ApplyPredicate(func);
             break;
         }
-    case ByDisk:
+        case ByDisk:
         {
             char comp = ReadValue<char>("Comparison ( > or < or = ): ");
             double value = ReadValue<double>("Value: ");
@@ -349,22 +349,22 @@ void SearchJobs( GridManager* gm )
 
             switch (comp)
             {
-            case '>':
+                case '>':
                 {
                     func = [value](Job* job) { return job->GetRequiredDiskSpace() > value; };
                     break;
                 }
-            case '<':
+                case '<':
                 {
                     func = [value](Job* job) { return job->GetRequiredDiskSpace() < value; };
                     break;
                 }
-            default:
+                default:
                 {
                     std::cout << "Invalid comparison, using equality." << std::endl;
                     // no break intended
                 }
-            case '=':
+                case '=':
                 {
                     func = [value](Job* job) { return job->GetRequiredDiskSpace() == value; };
                     break;
@@ -374,7 +374,7 @@ void SearchJobs( GridManager* gm )
             vec = gm->ApplyPredicate(func);
             break;
         }
-    case ByPriority:
+        case ByPriority:
         {
             char comp = ReadValue<char>("Comparison ( > or < or = ): ");
             uint8 value = ReadValue<uint8>("Value: ");
@@ -383,22 +383,22 @@ void SearchJobs( GridManager* gm )
 
             switch (comp)
             {
-            case '>':
+                case '>':
                 {
                     func = [value](Job* job) { return job->GetPriority() > value; };
                     break;
                 }
-            case '<':
+                case '<':
                 {
                     func = [value](Job* job) { return job->GetPriority() < value; };
                     break;
                 }
-            default:
+                default:
                 {
                     std::cout << "Invalid comparison, using equality." << std::endl;
                     // no break intended
                 }
-            case '=':
+                case '=':
                 {
                     func = [value](Job* job) { return job->GetPriority() == value; };
                     break;
@@ -408,7 +408,7 @@ void SearchJobs( GridManager* gm )
             vec = gm->ApplyPredicate(func);
             break;
         }
-    case ByElapseTime:
+        case ByElapseTime:
         {
             char comp = ReadValue<char>("Comparison ( > or < or = ): ");
             uint value = ReadValue<uint>("Value: ");
@@ -417,22 +417,22 @@ void SearchJobs( GridManager* gm )
 
             switch (comp)
             {
-            case '>':
+                case '>':
                 {
                     func = [value](Job* job) { return job->GetElapsedTime() > value; };
                     break;
                 }
-            case '<':
+                case '<':
                 {
                     func = [value](Job* job) { return job->GetElapsedTime() < value; };
                     break;
                 }
-            default:
+                default:
                 {
                     std::cout << "Invalid comparison, using equality." << std::endl;
                     // no break intended
                 }
-            case '=':
+                case '=':
                 {
                     func = [value](Job* job) { return job->GetElapsedTime() == value; };
                     break;
@@ -442,12 +442,18 @@ void SearchJobs( GridManager* gm )
             vec = gm->ApplyPredicate(func);
             break;
         }
-    case All:
+        default:
         {
-            vec= gm->ApplyPredicate<Job>([](Job*){return true;});
+            std::cout << "You need to provide an option between 1 and 4, showing all users." << std::endl;
+            // no break intended
+        }
+        case All:
+        {
+            vec = gm->ApplyPredicate<Job>([](Job*) { return true; });
             break;
         }
     }
+
     if (vec.size() == 0)
     {
         std::cout << "No results." << std::endl;
