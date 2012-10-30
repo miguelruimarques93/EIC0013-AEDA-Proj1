@@ -2,6 +2,7 @@
 #include <chrono>
 #include <cassert>
 #include <iostream>
+#include <string>
 
 uint64 GetCurrentTime()
 {
@@ -23,8 +24,8 @@ void ClearConsole()
 #endif
 }
 
-void PauseConsole()
+void PauseConsole(const std::string& message/* = "Press any key to continue..."*/)
 {
-    std::cout << "Press any key to continue..." << std::endl;
+    std::cout << message << std::endl;
     std::cin.get();
 }

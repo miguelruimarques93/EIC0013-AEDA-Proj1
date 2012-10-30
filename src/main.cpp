@@ -6,6 +6,7 @@
 #include "utils.h"
 #include "menu.h"
 #include "menugrid.h"
+#include "consolereader.h"
 
 #define GRID_SAVE_FILE "gridComputing.grid"
 #define MENU_SAVE_FILE "mainMenu.txt"
@@ -41,14 +42,24 @@ int main(int argc, char* argv[])
     };
 
     while (executing)
-        functions[menu->Print()-1](gm.get());
+    {
+        try
+        {
+            functions[menu->Print()-1](gm.get());
+        }
+        catch (EOFCharacterValue)
+        {
+            
+            PauseConsole("Action canceled...\nPress any key to continue...");
+            ClearConsole();
+            continue;
+        }
+    }
 
     ByteBuffer bb(100);
     gm->Save(bb);
 
     File::Save(GRID_SAVE_FILE, bb, bb.Size());
-
-    PauseConsole();
 
     return EXIT_SUCCESS;
 }

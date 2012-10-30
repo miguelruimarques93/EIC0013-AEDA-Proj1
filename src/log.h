@@ -15,7 +15,7 @@ struct Writer
 
 struct ConsoleWritePolicy : public Writer
 {
-    void Write(const std::string& val) { std::cout << val << std::endl; }
+    void Write(const std::string& val) { std::cout << '\r' << val << std::endl; }
 };
 
 struct FileWritePolicy : public Writer

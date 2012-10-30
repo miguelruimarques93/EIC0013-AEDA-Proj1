@@ -2,6 +2,7 @@
 #define UTILS_H_
 
 #include <cstdint>
+#include <string>
 
 typedef int8_t int8;
 typedef int16_t int16;
@@ -17,7 +18,7 @@ typedef uint32 uint;
 uint64 GetCurrentTime();
 uint32 GetTimeDiff(uint64 curTime, uint64 prevTime);
 
-void PauseConsole();
+void PauseConsole(const std::string& message = "Press any key to continue...");
 void ClearConsole();
 
 #endif // UTILS_H_

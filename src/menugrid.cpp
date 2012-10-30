@@ -16,6 +16,9 @@ void NewAcademicUser(GridManager* gm)
     uint id = gm->AddUser(user);
 
     std::cout << "Academic user created, assigned id " << id << "." << std::endl;
+
+    PauseConsole();
+    ClearConsole();
 }
 
 void NewEnterpriseUser(GridManager* gm)
@@ -27,6 +30,9 @@ void NewEnterpriseUser(GridManager* gm)
     uint id = gm->AddUser(user);
 
     std::cout << "Enterprise user created, assigned id " << id << "." << std::endl;
+
+    PauseConsole();
+    ClearConsole();
 }
 
 void RemoveUser(GridManager* gm)
@@ -37,6 +43,9 @@ void RemoveUser(GridManager* gm)
         std::cout << "User with id " << id << " was removed." << std::endl;
     else
         std::cout << "Could not remove user with id " << id << "." << std::endl;
+
+    PauseConsole();
+    ClearConsole();
 }
 
 void NewMachine(GridManager* gm)
@@ -50,6 +59,9 @@ void NewMachine(GridManager* gm)
     uint id = gm->AddMachine(machine);
 
     std::cout << "Machine created, assigned id " << id << "." << std::endl;
+
+    PauseConsole();
+    ClearConsole();
 }
 
 void RemoveMachine(GridManager* gm)
@@ -60,6 +72,9 @@ void RemoveMachine(GridManager* gm)
         std::cout << "Machine with id " << id << " was removed." << std::endl;
     else
         std::cout << "Could not remove machine with id " << id << "." << std::endl;
+
+    PauseConsole();
+    ClearConsole();
 }
 
 void NewJob(GridManager* gm)
@@ -67,7 +82,7 @@ void NewJob(GridManager* gm)
     uint userId = ReadValue<uint>("User Id: ");
 
     std::string name = ReadValueStr("Name: ");
-    uint8 priority = ReadValue<uint8>("Priority (0-100%): ");
+    uint8 priority = static_cast<uint8>(ReadValue<uint16>("Priority (0-100%): "));
     double requiredRAM = ReadValue<double>("Required RAM usage (MB): ");
     double requiredDiskSpace = ReadValue<double>("Required disk space usage (MB): ");
     uint executionTime = ReadValue<uint>("Estimated execution time (s): ");
@@ -77,6 +92,9 @@ void NewJob(GridManager* gm)
         std::cout << "Job added successfully." << std::endl;
     else
         std::cout << "Could not create job." << std::endl; // why not?
+
+    PauseConsole();
+    ClearConsole();
 }
 
 void SearchUsers(GridManager* gm)
@@ -131,6 +149,9 @@ void SearchUsers(GridManager* gm)
 
     for (User* user : vec)
         user->Print(std::cout);
+
+    PauseConsole();
+    ClearConsole();
 }
 
 void SearchMachines(GridManager* gm)
@@ -278,6 +299,9 @@ void SearchMachines(GridManager* gm)
 
     for (Machine* machine : vec)
         machine->Print(std::cout);
+
+    PauseConsole();
+    ClearConsole();
 }
 
 void SearchJobs( GridManager* gm )
@@ -462,4 +486,7 @@ void SearchJobs( GridManager* gm )
 
     for (Job* job : vec)
         job->Print(std::cout);  
+
+    PauseConsole();
+    ClearConsole();
 }

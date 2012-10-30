@@ -52,7 +52,7 @@ void Job::Print( std::ostream& os/*=std::cout*/ ) const
 {
     os << "| Name: " << _name << " | RAM: " << _requiredRAM;
     os << " MB | Disk: " << _requiredDiskSpace;
-    os << " MB | Priority: " << _priority;
+    os << " MB | Priority: " << static_cast<uint16>(_priority);
     os << "% | Time: " << _elapsedTime << " / " << _totalExecutionTime << " s |\n";
 
 }
