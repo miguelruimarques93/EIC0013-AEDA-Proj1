@@ -169,3 +169,10 @@ uint Machine::GetCurrentJobs() const
     _mutex.unlock();
     return size;
 }
+
+void Machine::Print(std::ostream& os /* = std::cout */) const
+{
+    os << "| Name: " << _name << " | RAM: " << _availableRAM << "/" << _totalRAM;
+    os << " MB | Disk: " << _availableDiskSpace << "/" << _totalDiskSpace;
+    os << " MB | Jobs: " << _currentJobs.size() << "/" << _maxJobs << " |\n";
+}

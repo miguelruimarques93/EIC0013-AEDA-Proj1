@@ -34,7 +34,10 @@ int main(int argc, char* argv[])
         RemoveUser,                                         // 4
         NewMachine,                                         // 5
         RemoveMachine,                                      // 6
-        NewJob                                              // 7
+        NewJob,                                             // 7
+        SearchUsers,                                        // 8
+        SearchMachines,                                     // 9
+        SearchJobs,                                         //10
     };
 
     while (executing)

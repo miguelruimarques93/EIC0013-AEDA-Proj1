@@ -26,6 +26,8 @@ public:
     virtual bool CanCreateJob(const Job* job) = 0;
     virtual void CreatedJob(const Job* job) = 0;
 
+    virtual void Print(std::ostream& os) const = 0;
+
     virtual ~User() { };
 
     static User* Load(ByteBuffer& bb);
@@ -52,6 +54,8 @@ public:
 
     bool CanCreateJob(const Job* job) override { return !!job; }
 
+    void Print(std::ostream& os) const override;
+
 private:
     uint _jobCount;
 };
@@ -68,6 +72,8 @@ public:
     void CreatedJob(const Job* job) override;
 
     bool CanCreateJob(const Job* job) override;
+
+    void Print(std::ostream& os) const override;
 
 private:
     double _budget;

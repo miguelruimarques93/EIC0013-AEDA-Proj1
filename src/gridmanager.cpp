@@ -32,8 +32,6 @@ bool GridManager::Save(ByteBuffer& bb) const
     for (auto machine : _machines)
         machine.second->Save(bb);
 
-    // ...
-
     return true;
 }
 
@@ -168,7 +166,7 @@ bool GridManager::AddJob(Job* job)
     {
         if ((*it)->AddJob(job))
         {
-            sLog(Console)->Log("Job %s added to machine %s", job->GetName().c_str(), (*it)->GetMachineName().c_str());
+            sLog(Console)->Log("Job %s added to machine %s", job->GetName().c_str(), (*it)->GetName().c_str());
             return true;
         }
     }

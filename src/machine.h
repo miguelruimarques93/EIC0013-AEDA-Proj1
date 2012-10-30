@@ -5,6 +5,7 @@
 #include <string>
 #include <map>
 #include <mutex>
+#include <iostream>
 
 #include "utils.h"
 #include "interfaces.h"
@@ -23,7 +24,7 @@ public:
 
     virtual ~Machine();
 
-    const std::string& GetMachineName() const { return _name; }
+    const std::string& GetName() const { return _name; }
     uint GetMaxJobs() const { return _maxJobs; }
     uint GetCurrentJobs() const;
     double GetAvailableRAM() const { return _availableRAM; }
@@ -43,6 +44,8 @@ public:
     const std::map<uint, Job*>& GetJobs() const { return _currentJobs; }
 
     void Update(uint diff);
+
+    void Print(std::ostream& os = std::cout) const;
 
 private:
     bool SoftwareMeetsRequirements(const Software& sw) const;

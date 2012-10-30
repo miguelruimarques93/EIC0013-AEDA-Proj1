@@ -11,6 +11,16 @@ bool AcademicUser::Save(ByteBuffer& bb) const
     return true;
 }
 
+void AcademicUser::Print(std::ostream& os /*= std::cout */) const
+{
+    os << "| Name: " << GetName() << " | Job count: " << _jobCount << " |\n";
+}
+
+void EnterpriseUser::Print(std::ostream& os /*= std::cout */) const
+{
+    os << "| Name: " << GetName() << " | Budget: " << _budget << " |\n";
+}
+
 bool EnterpriseUser::Save(ByteBuffer& bb) const
 {
     bb.WriteUInt8(SAVE_USER_TYPE_ENTERPRISE);

@@ -5,6 +5,7 @@
 #include <unordered_set>
 #include <sstream>
 #include <chrono>
+#include <iostream>
 
 #include "utils.h"
 #include "interfaces.h"
@@ -28,6 +29,8 @@ public:
     double GetRequiredRAM() const { return _requiredRAM; }
     double GetRequiredDiskSpace() const { return _requiredDiskSpace; }
     const SoftwareSet& GetRequiredSoftware() const { return _requiredSoftware; }
+    uint GetTotalExecutionTime() const { return _totalExecutionTime; }
+    uint GetElapsedTime() const { return _elapsedTime; }
 
     double GetPrice() const { return 0.05 * _requiredRAM; } // TODO: Find a suitable price
 
@@ -38,6 +41,8 @@ public:
     static Job* Load(ByteBuffer& bb);
 
     void Update(uint32 diff);
+
+    void Print(std::ostream& os=std::cout) const;
 
 private:
     const double _requiredRAM;

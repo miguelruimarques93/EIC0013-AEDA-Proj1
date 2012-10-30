@@ -4,9 +4,12 @@ Main Menu
 ---* A#002#Add Academic User
 ---* E#003#Add Enterprise User
 --* R#004#Remove User
+--* L#008#Search Users
 - M#Manage Machines
 --* A#005#Add Machine
 --* R#006#Remove Machine
+--* L#009#Search Machines
 - J#Manage Jobs
 --* C#007#Create New Job
+--* L#010#Search Jobs
 -* E#001#Exit

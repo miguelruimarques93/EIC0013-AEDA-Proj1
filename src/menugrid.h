@@ -9,5 +9,8 @@ void RemoveUser(GridManager* gm);
 void NewMachine(GridManager* gm);
 void RemoveMachine(GridManager* gm);
 void NewJob(GridManager* gm);
+void SearchUsers(GridManager* gm);
+void SearchMachines(GridManager* gm);
+void SearchJobs(GridManager* gm);
 
 #endif // MENUGRID_H_

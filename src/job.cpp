@@ -47,3 +47,12 @@ void Job::Update(uint32 diff)
         _ms = 0;
     }
 }
+
+void Job::Print( std::ostream& os/*=std::cout*/ ) const
+{
+    os << "| Name: " << _name << " | RAM: " << _requiredRAM;
+    os << " MB | Disk: " << _requiredDiskSpace;
+    os << " MB | Priority: " << _priority;
+    os << "% | Time: " << _elapsedTime << " / " << _totalExecutionTime << " s |\n";
+
+}
