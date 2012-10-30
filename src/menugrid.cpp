@@ -12,8 +12,7 @@ void NewAcademicUser(GridManager* gm)
 {
     std::string name = ReadValueStr("Name: ");
 
-    User* user = new AcademicUser(name);
-    uint id = gm->AddUser(user);
+    uint id = gm->AddUser(name);
 
     std::cout << "Academic user created, assigned id " << id << "." << std::endl;
 
@@ -26,8 +25,7 @@ void NewEnterpriseUser(GridManager* gm)
     std::string name = ReadValueStr("Name: ");
     double budget = ReadValue<double>("Budget: ");
 
-    User* user = new EnterpriseUser(name, budget);
-    uint id = gm->AddUser(user);
+    uint id = gm->AddUser(name, budget);
 
     std::cout << "Enterprise user created, assigned id " << id << "." << std::endl;
 
@@ -55,8 +53,7 @@ void NewMachine(GridManager* gm)
     double totalRAM = ReadValue<double>("Amount of RAM: ");
     double totalDiskSpace = ReadValue<double>("Amount of disk space: ");
 
-    Machine* machine = new Machine(name, maxJobs, totalRAM, totalDiskSpace);
-    uint id = gm->AddMachine(machine);
+    uint id = gm->AddMachine(name, maxJobs, totalRAM, totalDiskSpace);
 
     std::cout << "Machine created, assigned id " << id << "." << std::endl;
 

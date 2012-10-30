@@ -20,6 +20,8 @@ class User : public ISave
 {
 public:
     const std::string& GetName() const { return _name; }
+    uint GetID() const { return _id; }
+    void SetID(const uint val) { _id = val; }
 
     virtual bool Save(ByteBuffer& bb) const override = 0;
 
@@ -33,18 +35,19 @@ public:
     static User* Load(ByteBuffer& bb);
 
 protected:
-    User(const std::string& name) : _name(name) {}
+    User(uint id, const std::string& name) : _id(id), _name(name) {}
     std::vector<Job*> _jobs;
 
 private:
     std::string _name;
+    uint _id;
 };
 
 class AcademicUser : public User
 {
 public:
-    AcademicUser(const std::string& name) : User(name), _jobCount(0) {}
-    AcademicUser(const std::string& name, uint jobCount) : User(name), _jobCount(jobCount) {}
+    AcademicUser(uint id, const std::string& name) : User(id, name), _jobCount(0) {}
+    AcademicUser(uint id, const std::string& name, uint jobCount) : User(id, name), _jobCount(jobCount) {}
 
     uint GetJobCount() const { return _jobCount; }
 
@@ -63,7 +66,7 @@ private:
 class EnterpriseUser : public User
 {
 public:
-    EnterpriseUser(const std::string& name, double budget) : User(name), _budget(budget) {}
+    EnterpriseUser(uint id, const std::string& name, double budget) : User(id, name), _budget(budget) {}
 
     double GetBudget() const { return _budget; }
 

@@ -13,12 +13,12 @@ bool AcademicUser::Save(ByteBuffer& bb) const
 
 void AcademicUser::Print(std::ostream& os /*= std::cout */) const
 {
-    os << "| Name: " << GetName() << " | Job count: " << _jobCount << " |\n";
+    os << "| Id: " << GetID() << " | Name: " << GetName() << " | Job count: " << _jobCount << " |\n";
 }
 
 void EnterpriseUser::Print(std::ostream& os /*= std::cout */) const
 {
-    os << "| Name: " << GetName() << " | Budget: " << _budget << " |\n";
+    os << "| Id: " << GetID() << " | Name: " << GetName() << " | Budget: " << _budget << " |\n";
 }
 
 bool EnterpriseUser::Save(ByteBuffer& bb) const
@@ -51,12 +51,12 @@ User* User::Load(ByteBuffer& bb)
         case SAVE_USER_TYPE_ACADEMIC:
         {
             uint32 jobCount = bb.ReadUInt32();
-            return new AcademicUser(name, jobCount);
+            return new AcademicUser(-1, name, jobCount);
         }
         case SAVE_USER_TYPE_ENTERPRISE:
         {
             double budget = bb.ReadDouble();
-            return new EnterpriseUser(name, budget);
+            return new EnterpriseUser(-1, name, budget);
         }
         default:
         {

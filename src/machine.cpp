@@ -120,7 +120,7 @@ Machine* Machine::Load(ByteBuffer& bb)
     double totalRAM = bb.ReadDouble();
     double totalDiskSpace = bb.ReadDouble();
 
-    Machine* m = new Machine(name, maxJobs, totalRAM, totalDiskSpace);
+    Machine* m = new Machine(-1, name, maxJobs, totalRAM, totalDiskSpace);
     m->_availableRAM = availableRAM;
     m->_availableDiskSpace = availableDiskSpace;
 
@@ -172,7 +172,8 @@ uint Machine::GetCurrentJobs() const
 
 void Machine::Print(std::ostream& os /* = std::cout */) const
 {
-    os << "| Name: " << _name << " | RAM: " << _availableRAM << "/" << _totalRAM;
+    os << "| ID: " << GetID();
+    os << " | Name: " << _name << " | RAM: " << _availableRAM << "/" << _totalRAM;
     os << " MB | Disk: " << _availableDiskSpace << "/" << _totalDiskSpace;
     os << " MB | Jobs: " << _currentJobs.size() << "/" << _maxJobs << " |\n";
 }

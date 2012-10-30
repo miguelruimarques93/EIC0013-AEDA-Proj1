@@ -4,12 +4,12 @@
 #include "utils.h"
 #include "interfaces.h"
 #include "runnable.h"
+#include "user.h"
+#include "machine.h"
 
 #include <map>
 #include <vector>
 
-class User;
-class Machine;
 class Job;
 
 class GridManager : public ISave, public IUpdate, public Runnable
@@ -18,8 +18,12 @@ public:
     GridManager() : _realPrevTime(0), _realCurrTime(0) { Start(); }
     ~GridManager();
 
-    uint AddUser(User* user) { _users[_lastUserId++] = user; return _lastUserId-1; }
-    uint AddMachine(Machine* machine) { _machines[_lastMachineId++] = machine; return _lastMachineId-1; }
+    uint AddUser(User* user) { user->SetID(_lastUserId); _users[_lastUserId] = user; return _lastUserId++; }
+    uint AddUser(const std::string& name, double budget) { _users[_lastUserId] = new EnterpriseUser(_lastUserId, name, budget); return _lastUserId++; }
+    uint AddUser(const std::string& name, uint jobCount = 0) { _users[_lastUserId] = new AcademicUser(_lastUserId, name, jobCount); return _lastUserId++; }
+
+    uint AddMachine(Machine* machine) { machine->SetID(_lastMachineId); _machines[_lastMachineId] = machine; return _lastMachineId++; }
+    uint AddMachine(const std::string& machineName, uint maxJobs, double totalRAM, double totalDiskSpace) { _machines[_lastMachineId] = new Machine(_lastMachineId, machineName, maxJobs, totalRAM, totalDiskSpace); return _lastMachineId++; }
 
     bool RemoveUser(const User* user);
     bool RemoveUser(uint id);

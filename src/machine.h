@@ -18,8 +18,8 @@ typedef std::unordered_set<Software, Software::Hash> SoftwareSet;
 class Machine : public ISave, public IUpdate
 {
 public:
-    Machine(const std::string& machineName, uint maxJobs, double totalRAM, double totalDiskSpace)
-        : _name(machineName), _maxJobs(maxJobs), _totalRAM(totalRAM), _totalDiskSpace(totalDiskSpace),
+    Machine(uint id, const std::string& machineName, uint maxJobs, double totalRAM, double totalDiskSpace)
+        : _id(id), _name(machineName), _maxJobs(maxJobs), _totalRAM(totalRAM), _totalDiskSpace(totalDiskSpace),
           _availableDiskSpace(totalDiskSpace), _availableRAM(totalRAM) {}
 
     virtual ~Machine();
@@ -31,9 +31,11 @@ public:
     double GetAvailableDiskSpace() const { return _availableDiskSpace; }
     double GetTotalRAM() const { return _totalRAM; }
     double GetTotalDiskSpace() const { return _totalDiskSpace; }
+    uint GetID() const { return _id; }
 
     void AddRequiredSoftware(const Software& sw) { _availableSoftware.insert(sw); }
     bool IsRequiredSoftware(const Software& sw) const { return _availableSoftware.find(sw) != _availableSoftware.end(); }
+    void SetID(const uint id) { _id = id; }
 
     bool AddJob(Job* job);
     bool RemoveJob(uint id);
@@ -62,6 +64,7 @@ private:
     std::map<uint, Job*> _currentJobs;
 
     const std::string _name;
+    uint _id;
 
     mutable std::mutex _mutex;
 
