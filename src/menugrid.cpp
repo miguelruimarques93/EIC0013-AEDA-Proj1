@@ -149,9 +149,9 @@ void SearchUsers(GridManager* gm)
         return;
     }
 
-    User::PrintHeader(std::cout);
+    User::PrintHeader();
     for (User* user : vec)
-        user->Print(std::cout);
+        user->Print();
 
     PauseConsole();
     ClearConsole();
@@ -600,7 +600,7 @@ void ChangeMachineInfo(GridManager* gm)
             
             case 4: // Change Machine Max Jobs
             {
-                uint maxJobs = ReadValue<double>("New Max Jobs: ");
+                uint maxJobs = ReadValue<uint>("New Max Jobs: ");
                 try
                 {
                     machine->SetMaxJobs(maxJobs);
