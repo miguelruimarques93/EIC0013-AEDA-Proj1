@@ -7,7 +7,6 @@
 #include <iomanip>
 #include <cctype>
 #include <malloc.h>
-#include <cassert>
 
 #ifdef _WIN32
 #define alloca _alloca
@@ -66,13 +65,21 @@ void ByteBuffer::FinishRead()
 
 void ByteBuffer::ReadSkip(uint32 size)
 {
-    assert(_readPos + size <= Size());
+    // assert(_readPos + size <= Size());
+
+    if (_readPos + size > Size())
+        throw ByteBufferException();
+
     _readPos += size;
 }
 
 void ByteBuffer::Read(Byte* dest, uint32 count)
 {
-    assert(_readPos + count <= Size());
+    // assert(_readPos + count <= Size());
+
+    if (_readPos + count > Size())
+        throw ByteBufferException();
+
     memcpy(dest, &_buffer[_readPos], count);
     _readPos += count;
 }
@@ -85,9 +92,12 @@ void ByteBuffer::Append(const ByteBuffer& other)
 
 void ByteBuffer::Append(const Byte* src, uint32 count)
 {
-    assert(count);
-    assert(src);
-    assert(Size() < 100000);
+    // assert(count);
+    // assert(src);
+    // assert(Size() < 100000);
+
+    if (!count || !src || Size() >= 100000)
+        throw ByteBufferException();
 
     if (Size() < _writePos + count)
         _buffer.resize(_writePos + count);
@@ -97,8 +107,11 @@ void ByteBuffer::Append(const Byte* src, uint32 count)
 
 void ByteBuffer::Put(uint32 pos, const Byte* src, uint32 count)
 {
-    assert(pos + count <= Size());
-    assert(src);
+    // assert(pos + count <= Size());
+    // assert(src);
+
+    if (pos + count > Size() || !src)
+        throw ByteBufferException();
 
     memcpy(&_buffer[pos], src, count);
 }
@@ -223,7 +236,11 @@ double ByteBuffer::ReadDouble() { return Read<double>(); }
 std::string ByteBuffer::ReadString()
 {
     uint32 length = Read7BitEncodedInt();
-    assert(length < 250000); // alloca is dangerous when allocating many bytes
+    // assert(length < 250000); // alloca is dangerous when allocating many bytes
+
+    if (length >= 250000)
+        throw ByteBufferException();
+
     Byte* res = (Byte*)alloca(length+1);
     Read(res, length);
     res[length] = 0; // null terminator
@@ -251,7 +268,10 @@ std::string ByteBuffer::ReadCString()
 
 void ByteBuffer::Append7BitEncodedInt(uint32 value)
 {
-    assert(value <= 0xFFFFFFF); // 8*4 - 4 bits
+    // assert(value <= 0xFFFFFFF); // 8*4 - 4*1 bits
+
+    if (value > 0xFFFFFFF)
+        throw ByteBufferException();
 
     while (value >= 0x80)
     {

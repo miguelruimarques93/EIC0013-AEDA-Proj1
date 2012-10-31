@@ -5,6 +5,7 @@ namespace File
 {
     bool Load(const char* fileName, char*& buffer, size_t& size);
     bool Save(const char* fileName, const char* buffer, size_t size);
+    bool Remove(const char* fileName);
 }
 
 #endif // FILE_H_

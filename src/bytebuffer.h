@@ -3,10 +3,13 @@
 
 #include <vector>
 #include <ostream>
-#include <cassert>
+// #include <cassert>
+#include <stdexcept>
 #include "utils.h"
 
 typedef uint8 Byte;
+
+class ByteBufferException : public std::exception {};
 
 class ByteBuffer
 {
@@ -132,7 +135,11 @@ void ByteBuffer::ReadSkip()
 template <typename T>
 T ByteBuffer::Read(uint32 position) const
 {
-    assert(position + sizeof(T) <= Size());
+    //assert(position + sizeof(T) <= Size());
+
+    if (position + sizeof(T) > Size())
+        throw ByteBufferException();
+
     T value = *((T const*)&_buffer[position]);
     return value;
 }

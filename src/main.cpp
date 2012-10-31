@@ -17,11 +17,24 @@ int main(int argc, char* argv[])
 
     if (!menu.get())
     {
-        std::cerr << "mainMenu.text could not be loaded." << std::endl;
+        std::cerr << MENU_SAVE_FILE << " could not be loaded." << std::endl;
         return EXIT_FAILURE;
     }
 
-    std::auto_ptr<GridManager> gm(Loader<GridManager>(GRID_SAVE_FILE).Load());
+    std::auto_ptr<GridManager> gm;
+    
+    try
+    {
+        gm = std::auto_ptr<GridManager>(Loader<GridManager>(GRID_SAVE_FILE).Load());
+    }
+    catch (std::exception)
+    {
+        std::cout << "Error while loading " << GRID_SAVE_FILE << ". Corrupted file?" << std::endl;
+        std::cout << "Deleting old file and continuing with a new Grid Manager" << std::endl;
+
+        File::Remove(GRID_SAVE_FILE);
+    }
+    
     if (!gm.get()) // no previous saves
         gm = std::auto_ptr<GridManager>(new GridManager());
 

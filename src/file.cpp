@@ -56,4 +56,9 @@ namespace File
         fclose(file);
         return true;
     }
+
+    bool Remove(const char* fileName)
+    {
+        return !remove(fileName);
+    }
 }
