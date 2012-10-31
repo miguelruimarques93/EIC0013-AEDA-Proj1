@@ -3,6 +3,7 @@
 #include "machine.h"
 #include "job.h"
 #include "log.h"
+#include "loader.h"
 
 #include <chrono>
 #include <iostream>
@@ -132,6 +133,8 @@ void GridManager::Run()
 {
     _realCurrTime = GetCurrentTime();
 
+    uint saveDiff = 0;
+
     while (!_stop)
     {
         _realPrevTime = _realCurrTime;
@@ -142,6 +145,15 @@ void GridManager::Run()
         /*sLog(Console)->Log("Diff: %u", diff);*/
 
         Update(diff);
+
+        saveDiff += diff;
+        if (saveDiff >= 5000) // save every 5 seconds
+        {
+            saveDiff = 0;
+            
+            if (!Saver<GridManager>(GRID_SAVE_FILE).Save(this))
+                sLog(Console)->Log("GridManager save failed in Update()");
+        }
 
         std::this_thread::sleep_for(std::chrono::milliseconds(500)); // sleep for half a second
     }

@@ -33,4 +33,26 @@ Loadable* Loader<Loadable>::Load()
     return Loadable::Load(bb);
 }
 
+template <class Savable>
+class Saver
+{
+public:
+    Saver(const std::string& fileName) : _fileName(fileName) {}
+
+    bool Save(Savable* s);
+
+private:
+    std::string _fileName;
+};
+
+template <class Savable>
+bool Saver<Savable>::Save(Savable* s)
+{
+    ByteBuffer bb(100);
+    if (!s->Save(bb))
+        return false;
+
+    return File::Save(_fileName.c_str(), bb, bb.Size());
+}
+
 #endif // LOADER_H_

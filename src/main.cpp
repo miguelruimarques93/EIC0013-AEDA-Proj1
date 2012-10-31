@@ -8,7 +8,6 @@
 #include "menugrid.h"
 #include "consolereader.h"
 
-#define GRID_SAVE_FILE "gridComputing.grid"
 #define MENU_SAVE_FILE "mainMenu.txt"
 
 int main(int argc, char* argv[])

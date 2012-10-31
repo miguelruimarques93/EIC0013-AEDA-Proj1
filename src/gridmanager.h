@@ -12,6 +12,8 @@ class Job;
 class Machine;
 class User;
 
+#define GRID_SAVE_FILE "gridComputing.grid"
+
 class GridManager : public ISave, public IUpdate, public Runnable
 {
 public:
