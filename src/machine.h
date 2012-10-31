@@ -15,7 +15,7 @@ class Job;
 
 typedef std::unordered_set<Software, Software::Hash> SoftwareSet;
 
-class Machine : public ISave, public IUpdate
+class Machine : public ISave, public IUpdate, public IPrint
 {
 public:
     Machine(const std::string& machineName, uint maxJobs, double totalRAM, double totalDiskSpace)
@@ -47,7 +47,8 @@ public:
 
     void Update(uint diff);
 
-    void Print(std::ostream& os = std::cout) const;
+    void Print(std::ostream& os = std::cout) const override;
+    static void PrintHeader(std::ostream& os = std::cout);
 
 private:
     bool SoftwareMeetsRequirements(const Software& sw) const;

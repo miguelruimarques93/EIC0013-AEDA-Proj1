@@ -48,11 +48,15 @@ void Job::Update(uint32 diff)
     }
 }
 
-void Job::Print( std::ostream& os/*=std::cout*/ ) const
+void Job::PrintHeader(std::ostream& os /*= std::cout*/)
 {
-    os << "| Name: " << _name << " | RAM: " << _requiredRAM;
-    os << " MB | Disk: " << _requiredDiskSpace;
-    os << " MB | Priority: " << static_cast<uint16>(_priority);
-    os << "% | Time: " << _elapsedTime << " / " << _totalExecutionTime << " s |\n";
+    os << "---------------------------------------------------------\n"
+       << "| Name | RAM (MB) | Disk (MB) | Priority (%) | Time (s) |\n";
+}
 
+void Job::Print(std::ostream& os /*=std::cout*/) const
+{
+    os << "| " << _name << " | " << _requiredRAM << " | " << _requiredDiskSpace
+       << " | " << static_cast<uint16>(_priority)
+       << " | " << _elapsedTime << " / " << _totalExecutionTime << " |\n";
 }

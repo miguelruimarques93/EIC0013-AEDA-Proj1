@@ -12,10 +12,11 @@
 #include "software.h"
 
 class Machine;
+class User;
 
 typedef std::unordered_set<Software, Software::Hash> SoftwareSet;
 
-class Job : public ISave, public IUpdate
+class Job : public ISave, public IUpdate, public IPrint
 {
 public:
     Job(const std::string& name, uint8 priority, double requiredRAM, double requiredDiskSpace, uint executionTime)
@@ -42,7 +43,8 @@ public:
 
     void Update(uint32 diff);
 
-    void Print(std::ostream& os=std::cout) const;
+    void Print(std::ostream& os = std::cout) const override;
+    static void PrintHeader(std::ostream& os = std::cout);
 
 private:
     const double _requiredRAM;

@@ -16,7 +16,7 @@ enum SaveUserType
     SAVE_USER_TYPE_ENTERPRISE,
 };
 
-class User : public ISave
+class User : public ISave, public IPrint
 {
 public:
     const std::string& GetName() const { return _name; }
@@ -28,7 +28,8 @@ public:
     virtual bool CanCreateJob(const Job* job) = 0;
     virtual void CreatedJob(const Job* job) = 0;
 
-    virtual void Print(std::ostream& os) const = 0;
+    virtual void Print(std::ostream& os = std::cout) const override;
+    static void PrintHeader(std::ostream& os = std::cout);
 
     virtual ~User() { };
 
@@ -56,7 +57,7 @@ public:
 
     bool CanCreateJob(const Job* job) override { return !!job; }
 
-    void Print(std::ostream& os) const override;
+    void Print(std::ostream& os = std::cout) const override;
 
 private:
     uint _jobCount;
@@ -75,7 +76,7 @@ public:
 
     bool CanCreateJob(const Job* job) override;
 
-    void Print(std::ostream& os) const override;
+    void Print(std::ostream& os = std::cout) const override;
 
 private:
     double _budget;

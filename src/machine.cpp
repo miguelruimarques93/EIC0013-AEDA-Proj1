@@ -173,10 +173,16 @@ uint Machine::GetCurrentJobs() const
     return size;
 }
 
+void Machine::PrintHeader(std::ostream& os /*= std::cout*/)
+{
+    os << "-------------------------------------------\n";
+    os << "| Id | Name | RAM (MB) | Disk (MB) | Jobs |\n";
+}
+
 void Machine::Print(std::ostream& os /* = std::cout */) const
 {
-    os << "| ID: " << GetID();
-    os << " | Name: " << _name << " | RAM: " << _availableRAM << "/" << _totalRAM;
-    os << " MB | Disk: " << _availableDiskSpace << "/" << _totalDiskSpace;
-    os << " MB | Jobs: " << _currentJobs.size() << "/" << _maxJobs << " |\n";
+    os << "| " << _id << " | " << _name
+       << " | " << _availableRAM << "/" << _totalRAM
+       << " | " << _availableDiskSpace << "/" << _totalDiskSpace
+       << " | " << _currentJobs.size() << "/" << _maxJobs << " |\n";
 }
