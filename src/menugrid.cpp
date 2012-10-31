@@ -5,6 +5,7 @@
 #include "machine.h"
 #include "job.h"
 #include "gridmanager.h"
+
 #include <iostream>
 #include <typeinfo>
 
@@ -12,7 +13,8 @@ void NewAcademicUser(GridManager* gm)
 {
     std::string name = ReadValueStr("Name: ");
 
-    uint id = gm->AddUser(name);
+    User* user = new AcademicUser(name);
+    uint id = gm->AddUser(user);
 
     std::cout << "Academic user created, assigned id " << id << "." << std::endl;
 
@@ -25,7 +27,8 @@ void NewEnterpriseUser(GridManager* gm)
     std::string name = ReadValueStr("Name: ");
     double budget = ReadValue<double>("Budget: ");
 
-    uint id = gm->AddUser(name, budget);
+    User* user = new EnterpriseUser(name, budget);
+    uint id = gm->AddUser(user);
 
     std::cout << "Enterprise user created, assigned id " << id << "." << std::endl;
 
@@ -53,7 +56,8 @@ void NewMachine(GridManager* gm)
     double totalRAM = ReadValue<double>("Amount of RAM: ");
     double totalDiskSpace = ReadValue<double>("Amount of disk space: ");
 
-    uint id = gm->AddMachine(name, maxJobs, totalRAM, totalDiskSpace);
+    Machine* machine = new Machine(name, maxJobs, totalRAM, totalDiskSpace);
+    uint id = gm->AddMachine(machine);
 
     std::cout << "Machine created, assigned id " << id << "." << std::endl;
 
@@ -278,7 +282,7 @@ void SearchMachines(GridManager* gm)
         }
         default:
         {
-            std::cout << "You need to provide an option between 1 and 4, showing all users." << std::endl;
+            std::cout << "You need to provide an option between 1 and 5, showing all machines." << std::endl;
             // no break intended
         }
         case All:
@@ -301,7 +305,7 @@ void SearchMachines(GridManager* gm)
     ClearConsole();
 }
 
-void SearchJobs( GridManager* gm )
+void SearchJobs(GridManager* gm)
 {
     enum JobSearchOption
     {
@@ -465,7 +469,7 @@ void SearchJobs( GridManager* gm )
         }
         default:
         {
-            std::cout << "You need to provide an option between 1 and 4, showing all users." << std::endl;
+            std::cout << "You need to provide an option between 1 and 6, showing all jobs." << std::endl;
             // no break intended
         }
         case All:

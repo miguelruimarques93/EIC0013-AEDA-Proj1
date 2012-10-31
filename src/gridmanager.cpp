@@ -12,7 +12,6 @@
 uint GridManager::_lastUserId = 0;
 uint GridManager::_lastMachineId = 0;
 
-
 GridManager::~GridManager()
 {
     for (auto user : _users)
@@ -24,6 +23,9 @@ GridManager::~GridManager()
 
 bool GridManager::Save(ByteBuffer& bb) const
 {
+    bb.WriteUInt32(_lastUserId);
+    bb.WriteUInt32(_lastMachineId);
+
     bb.WriteUInt32(_users.size());
     for (auto user : _users)
         user.second->Save(bb);
@@ -38,6 +40,9 @@ bool GridManager::Save(ByteBuffer& bb) const
 GridManager* GridManager::Load(ByteBuffer& bb)
 {
     GridManager* gm = new GridManager();
+
+    _lastUserId = bb.ReadUInt32();
+    _lastMachineId = bb.ReadUInt32();
 
     uint32 usersCount = bb.ReadUInt32();
     for (uint32 i = 0; i < usersCount; ++i)
@@ -115,7 +120,6 @@ Machine* GridManager::GetMachine(uint id) const
         return NULL;
 
     return it->second;
-
 }
 
 void GridManager::Update(uint32 diff)
@@ -234,4 +238,40 @@ std::vector<Machine*> GridManager::ApplyPredicate<Machine>(std::function<bool(Ma
             result.push_back(machine.second);
 
     return result;
+}
+
+uint GridManager::AddUser(User* user)
+{
+    if (!user)
+        return 0;
+
+    if (user->GetId() != 0) // loading old user
+    {
+        _users[user->GetId()] = user;
+        return user->GetId();
+    }
+
+    _lastUserId++;
+
+    _users[_lastUserId] = user;
+    user->SetId(_lastUserId);
+    return _lastUserId;
+}
+
+uint GridManager::AddMachine(Machine* machine)
+{
+    if (!machine)
+        return 0;
+
+    if (machine->GetId() != 0) // loading old machine
+    {
+        _machines[machine->GetId()] = machine;
+        return machine->GetId();
+    }
+
+    _lastMachineId++;
+
+    _machines[_lastMachineId] = machine;
+    machine->SetId(_lastMachineId);
+    return _lastUserId;
 }

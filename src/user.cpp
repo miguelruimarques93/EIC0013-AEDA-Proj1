@@ -2,32 +2,27 @@
 #include "bytebuffer.h"
 #include "job.h"
 
-bool AcademicUser::Save(ByteBuffer& bb) const
+void User::PrintHeader(std::ostream& os /*= std::cout*/)
 {
-    bb.WriteUInt8(SAVE_USER_TYPE_ACADEMIC);
-    bb.WriteString(GetName());
-    bb.WriteUInt32(_jobCount);
+    os << "----------------------------------\n";
+    os << "| Id | Name | Job count | Budget |\n";
+}
 
-    return true;
+void User::Print(std::ostream& os /*= std::cout */) const
+{
+    os << "| " << _id << " | " << _name;
 }
 
 void AcademicUser::Print(std::ostream& os /*= std::cout */) const
 {
-    os << "| Id: " << GetID() << " | Name: " << GetName() << " | Job count: " << _jobCount << " |\n";
+    User::Print(os);
+    os << " | " << _jobCount << " | - |\n";
 }
 
 void EnterpriseUser::Print(std::ostream& os /*= std::cout */) const
 {
-    os << "| Id: " << GetID() << " | Name: " << GetName() << " | Budget: " << _budget << " |\n";
-}
-
-bool EnterpriseUser::Save(ByteBuffer& bb) const
-{
-    bb.WriteUInt8(SAVE_USER_TYPE_ENTERPRISE);
-    bb.WriteString(GetName());
-    bb.WriteDouble(_budget);
-
-    return true;
+    User::Print(os);
+    os << " | - | " << _budget << "|\n";
 }
 
 void EnterpriseUser::CreatedJob(const Job* job)
@@ -43,26 +38,69 @@ bool EnterpriseUser::CanCreateJob(const Job* job)
 
 User* User::Load(ByteBuffer& bb)
 {
-    uint8 type = bb.ReadUInt8();
+    User* user = NULL;
+
+    uint id = bb.ReadUInt32();
     std::string name = bb.ReadString();
+    uint8 type = bb.ReadUInt8();
 
     switch (type)
     {
         case SAVE_USER_TYPE_ACADEMIC:
         {
             uint32 jobCount = bb.ReadUInt32();
-            return new AcademicUser(-1, name, jobCount);
+
+            user = new AcademicUser(name, jobCount);
+            break;
         }
         case SAVE_USER_TYPE_ENTERPRISE:
         {
             double budget = bb.ReadDouble();
-            return new EnterpriseUser(-1, name, budget);
+
+            user = new EnterpriseUser(name, budget);
+            break;
         }
         default:
         {
             // Log("Invalid type(%u) in file.\n", type);
+            break;
         }
     }
 
-    return NULL;
+    if (user)
+        user->SetId(id);
+    return user;
+}
+
+bool User::Save(ByteBuffer& bb) const
+{
+    if (_id == 0)
+        return false;
+
+    bb.WriteUInt32(_id);
+    bb.WriteString(_name);
+
+    return true;
+}
+
+bool AcademicUser::Save(ByteBuffer& bb) const
+{
+    if (!User::Save(bb))
+        return false;
+
+    bb.WriteUInt8(SAVE_USER_TYPE_ACADEMIC);
+    bb.WriteUInt32(_jobCount);
+
+    return true;
+}
+
+bool EnterpriseUser::Save(ByteBuffer& bb) const
+{
+    if (!User::Save(bb))
+        return false;
+
+    bb.WriteUInt8(SAVE_USER_TYPE_ENTERPRISE);
+    bb.WriteDouble(_budget);
+
+    return true;
 }

@@ -93,6 +93,7 @@ bool Machine::SoftwareMeetsRequirements(const Software& sw) const
 
 bool Machine::Save(ByteBuffer& bb) const
 {
+    bb.WriteUInt32(_id);
     bb.WriteString(_name);
     bb.WriteDouble(_availableRAM);
     bb.WriteDouble(_availableDiskSpace);
@@ -113,6 +114,7 @@ bool Machine::Save(ByteBuffer& bb) const
 
 Machine* Machine::Load(ByteBuffer& bb)
 {
+    uint32 id = bb.ReadUInt32();
     std::string name = bb.ReadString();
     double availableRAM = bb.ReadDouble();
     double availableDiskSpace = bb.ReadDouble();
@@ -120,7 +122,8 @@ Machine* Machine::Load(ByteBuffer& bb)
     double totalRAM = bb.ReadDouble();
     double totalDiskSpace = bb.ReadDouble();
 
-    Machine* m = new Machine(-1, name, maxJobs, totalRAM, totalDiskSpace);
+    Machine* m = new Machine(name, maxJobs, totalRAM, totalDiskSpace);
+    m->_id = id;
     m->_availableRAM = availableRAM;
     m->_availableDiskSpace = availableDiskSpace;
 
