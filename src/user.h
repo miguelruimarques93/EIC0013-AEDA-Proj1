@@ -39,9 +39,10 @@ public:
     static Menu* GetMenu() { return _menu; }
 
 protected:
-    User(const std::string& name) : _id(0), _name(name) {}
+    User(const std::string& name);
 
-    static Menu* _menu;    
+    static Menu* _menu;
+    static uint _maxNameLength;
 
 private:
     std::string _name;

@@ -7,9 +7,18 @@
 #include <algorithm>
 #include <iostream>
 #include <numeric>
+#include <iomanip>
 
 uint Machine::_lastJobId = 0;
+uint Machine::_maxNameLength = 0;
 Menu* Machine::_menu = Loader<Menu>("machineMenu.txt").Load();
+
+Machine::Machine(const std::string& machineName, uint maxJobs, double totalRAM, double totalDiskSpace) :
+    _id(0), _name(machineName), _maxJobs(maxJobs), _totalRAM(totalRAM), _totalDiskSpace(totalDiskSpace)
+{
+    if (_name.length() > _maxNameLength)
+        _maxNameLength = _name.length();
+}
 
 Machine::~Machine()
 {
@@ -163,18 +172,20 @@ uint Machine::GetCurrentJobs() const
 void Machine::PrintHeader(std::ostream& os /*= std::cout*/)
 {
     os << "-------------------------------------------\n";
-    os << "| Id | Name | RAM (MB) | Disk (MB) | Jobs |\n";
+    os << "|  Id  | " << std::setw(_maxNameLength) << "Name" << " |   RAM (MB)    |   Disk (MB)   |    Jobs     |\n";
 }
 
 void Machine::Print(std::ostream& os /* = std::cout */) const
 {
-    os << "| " << _id << " | " << _name
-       << " | " << GetAvailableRAM() << "/" << _totalRAM
-       << " | " << GetAvailableDiskSpace() << "/" << _totalDiskSpace
-       << " | " << _currentJobs.size() << "/" << _maxJobs << " |\n";
+    os << "| " << std::setfill('0') << std::setw(4) << std::right << _id << " | "
+       << std::setfill(' ') << std::setw(_maxNameLength) << std::left << _name
+
+       << " | " << std::setw(5) << std::left << GetAvailableRAM() << " / " << std::right << std::setw(5) << _totalRAM
+       << " | " << std::setw(5) << std::left << GetAvailableDiskSpace() << " / " << std::right << std::setw(5) << _totalDiskSpace
+       << " | " << std::setw(4) << std::left << _currentJobs.size() << " / " << std::right << std::setw(4) << _maxJobs << " |\n";
 }
 
-void Machine::SetMaxJobs( uint val )
+void Machine::SetMaxJobs(uint val)
 {
     if (val < _currentJobs.size())   // If the value is smaller than the current number of jobs we can't modify this parameter.
         throw MachineInExecution(this); 
@@ -182,7 +193,7 @@ void Machine::SetMaxJobs( uint val )
     _maxJobs = val;
 }
 
-void Machine::SetTotalRAM( double val )
+void Machine::SetTotalRAM(double val)
 {
     if (val < GetInUseRAM()) // If the value is smaller than the current needed RAM we can't modify this parameter.
         throw MachineInExecution(this);
@@ -190,7 +201,7 @@ void Machine::SetTotalRAM( double val )
     _totalRAM = val;
 }
 
-void Machine::SetTotalDiskSpace( double val )
+void Machine::SetTotalDiskSpace(double val)
 {
     if (val < GetInUseDiskSpace()) // If the value is smaller than the current needed Disk Space we can't modify this parameter.
         throw MachineInExecution(this);
@@ -200,10 +211,12 @@ void Machine::SetTotalDiskSpace( double val )
 
 double Machine::GetInUseRAM() const
 {
-    return std::accumulate(_currentJobs.begin(), _currentJobs.end(), 0.0, [](double sum, std::pair<uint, Job*> j) { return sum + j.second->GetRequiredRAM(); } );
+    return std::accumulate(_currentJobs.begin(), _currentJobs.end(), 0.0,
+        [](double sum, std::pair<uint, Job*> j) { return sum + j.second->GetRequiredRAM(); });
 }
 
 double Machine::GetInUseDiskSpace() const
 {
-    return std::accumulate(_currentJobs.begin(), _currentJobs.end(), 0.0, [](double sum, std::pair<uint, Job*> j) { return sum + j.second->GetRequiredDiskSpace(); } );
+    return std::accumulate(_currentJobs.begin(), _currentJobs.end(), 0.0,
+        [](double sum, std::pair<uint, Job*> j) { return sum + j.second->GetRequiredDiskSpace(); });
 }

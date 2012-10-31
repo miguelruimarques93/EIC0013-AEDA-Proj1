@@ -19,11 +19,7 @@ typedef std::unordered_set<Software, Software::Hash> SoftwareSet;
 class Job : public ISave, public IUpdate, public IPrint
 {
 public:
-    Job(const std::string& name, uint8 priority, double requiredRAM, double requiredDiskSpace, uint executionTime)
-        : _name(name), _priority(priority), _requiredRAM(requiredRAM), _requiredDiskSpace(requiredDiskSpace), _totalExecutionTime(executionTime),
-          _elapsedTime(0), _ms(0) {}
-
-    virtual ~Job() {}
+    Job(const std::string& name, uint8 priority, double requiredRAM, double requiredDiskSpace, uint executionTime);
 
     const std::string& GetName() const { return _name; }
     uint8 GetPriority() const { return _priority; }
@@ -56,6 +52,8 @@ private:
     const uint8 _priority;
 
     const std::string _name;
+
+    static uint _maxNameLength;
 
 private: // no copying
     Job(const Job&);

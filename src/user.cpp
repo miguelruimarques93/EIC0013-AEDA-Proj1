@@ -4,29 +4,39 @@
 #include "menu.h"
 #include "loader.h"
 
+#include <iomanip>
+
 Menu* User::_menu = Loader<Menu>("userMenu.txt").Load();
+uint User::_maxNameLength = 0;
+
+User::User(const std::string& name) : _id(0), _name(name)
+{
+    if (_name.length() > _maxNameLength)
+        _maxNameLength = _name.length();
+}
 
 void User::PrintHeader(std::ostream& os /*= std::cout*/)
 {
     os << "----------------------------------\n";
-    os << "| Id | Name | Job count | Budget |\n";
+    os << "|  Id  | " << std::setw(_maxNameLength) << "Name" << " | Job count | Budget |\n";
 }
 
 void User::Print(std::ostream& os /*= std::cout */) const
 {
-    os << "| " << _id << " | " << _name;
+    os << "| " << std::setfill('0') << std::setw(4) << std::right << _id << " | "
+       << std::setfill(' ') << std::setw(_maxNameLength) << std::left << _name;
 }
 
 void AcademicUser::Print(std::ostream& os /*= std::cout */) const
 {
     User::Print(os);
-    os << " | " << _jobCount << " | - |\n";
+    os << " | " << std::setw(9) << std::right << _jobCount << " |      - |\n";
 }
 
 void EnterpriseUser::Print(std::ostream& os /*= std::cout */) const
 {
     User::Print(os);
-    os << " | - | " << _budget << "|\n";
+    os << " |         - | " << std::setw(6) << std::right << _budget << " |\n";
 }
 
 void EnterpriseUser::CreatedJob(const Job* job)

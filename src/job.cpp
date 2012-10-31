@@ -1,5 +1,16 @@
 #include "job.h"
 #include "bytebuffer.h"
+#include <iomanip>
+
+uint Job::_maxNameLength = 0;
+
+Job::Job(const std::string& name, uint8 priority, double requiredRAM, double requiredDiskSpace, uint executionTime) :
+    _name(name), _priority(priority), _requiredRAM(requiredRAM), _requiredDiskSpace(requiredDiskSpace),
+    _totalExecutionTime(executionTime), _elapsedTime(0), _ms(0)
+{
+    if (_name.length() > _maxNameLength)
+        _maxNameLength = _name.length();
+}
 
 bool Job::Save(ByteBuffer& bb) const
 {
@@ -51,12 +62,14 @@ void Job::Update(uint32 diff)
 void Job::PrintHeader(std::ostream& os /*= std::cout*/)
 {
     os << "---------------------------------------------------------\n"
-       << "| Name | RAM (MB) | Disk (MB) | Priority (%) | Time (s) |\n";
+       << "| " << std::setw(_maxNameLength) << "Name" << " | RAM (MB) | Disk (MB) | Priority (%) |  Time (s)   |\n";
 }
 
 void Job::Print(std::ostream& os /*=std::cout*/) const
 {
-    os << "| " << _name << " | " << _requiredRAM << " | " << _requiredDiskSpace
-       << " | " << static_cast<uint16>(_priority)
-       << " | " << _elapsedTime << " / " << _totalExecutionTime << " |\n";
+    os << "| "  << std::left << std::setfill(' ') << std::setw(_maxNameLength) << _name
+       << " | " << std::right << std::setw(8) << _requiredRAM
+       << " | " << std::setw(9) << _requiredDiskSpace
+       << " | " << std::setw(12) << static_cast<uint16>(_priority)
+       << " | " << std::setw(4) << std::left << _elapsedTime << " / " << std::setw(4) << std::right << _totalExecutionTime << " |\n";
 }

@@ -18,10 +18,10 @@ typedef std::unordered_set<Software, Software::Hash> SoftwareSet;
 
 class Machine;
 
-class MachineInExecution
+class MachineInExecution : public std::exception
 {
 public:
-    MachineInExecution(const Machine* m) : _machine(m) { }
+    MachineInExecution(const Machine* m) : exception("Machine in execution"), _machine(m) { }
     const Machine* GetMachine() const { return _machine; }
 private:
     const Machine* _machine;
@@ -30,8 +30,7 @@ private:
 class Machine : public ISave, public IUpdate, public IPrint
 {
 public:
-    Machine(const std::string& machineName, uint maxJobs, double totalRAM, double totalDiskSpace)
-        : _id(0), _name(machineName), _maxJobs(maxJobs), _totalRAM(totalRAM), _totalDiskSpace(totalDiskSpace) {}
+    Machine(const std::string& machineName, uint maxJobs, double totalRAM, double totalDiskSpace);
 
     virtual ~Machine();
 
@@ -95,6 +94,7 @@ private:
     mutable std::mutex _mutex;
 
     static Menu* _menu;
+    static uint _maxNameLength;
 
 private: // no copying
     Machine(const Machine&);
