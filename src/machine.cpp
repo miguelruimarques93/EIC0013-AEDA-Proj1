@@ -1,11 +1,15 @@
 #include "machine.h"
 #include "job.h"
 #include "log.h"
+#include "menu.h"
+#include "loader.h"
 
 #include <algorithm>
 #include <iostream>
+#include <numeric>
 
 uint Machine::_lastJobId = 0;
+Menu* Machine::_menu = Loader<Menu>("machineMenu.txt").Load();
 
 Machine::~Machine()
 {
@@ -23,13 +27,13 @@ bool Machine::AddJob(Job* job)
         return false;
     }
 
-    if (job->GetRequiredRAM() > _availableRAM)
+    if (job->GetRequiredRAM() > GetAvailableRAM())
     {
         _mutex.unlock();
         return false;
     }
 
-    if (job->GetRequiredDiskSpace() > _availableDiskSpace)
+    if (job->GetRequiredDiskSpace() > GetAvailableDiskSpace())
     {
         _mutex.unlock();
         return false;
@@ -44,9 +48,6 @@ bool Machine::AddJob(Job* job)
             return false;
         }
     }
-
-    _availableRAM -= job->GetRequiredRAM();
-    _availableDiskSpace -= job->GetRequiredDiskSpace();
 
     _currentJobs[_lastJobId] = job;
     _lastJobId++;
@@ -67,9 +68,6 @@ bool Machine::RemoveJob(uint id)
     }
 
     Job* job = it->second;
-
-    _availableRAM += job->GetRequiredRAM();
-    _availableDiskSpace += job->GetRequiredDiskSpace();
 
     delete job;
 
@@ -95,8 +93,6 @@ bool Machine::Save(ByteBuffer& bb) const
 {
     bb.WriteUInt32(_id);
     bb.WriteString(_name);
-    bb.WriteDouble(_availableRAM);
-    bb.WriteDouble(_availableDiskSpace);
     bb.WriteUInt32(_maxJobs);
     bb.WriteDouble(_totalRAM);
     bb.WriteDouble(_totalDiskSpace);
@@ -116,16 +112,12 @@ Machine* Machine::Load(ByteBuffer& bb)
 {
     uint32 id = bb.ReadUInt32();
     std::string name = bb.ReadString();
-    double availableRAM = bb.ReadDouble();
-    double availableDiskSpace = bb.ReadDouble();
     uint32 maxJobs = bb.ReadUInt32();
     double totalRAM = bb.ReadDouble();
     double totalDiskSpace = bb.ReadDouble();
 
     Machine* m = new Machine(name, maxJobs, totalRAM, totalDiskSpace);
     m->_id = id;
-    m->_availableRAM = availableRAM;
-    m->_availableDiskSpace = availableDiskSpace;
 
     uint32 jobCount = bb.ReadUInt32();
     for (uint32 i = 0; i < jobCount; ++i)
@@ -149,12 +141,7 @@ void Machine::Update(uint diff)
         {
             sLog(Console)->Log("Job %s removed from machine %s.", it->second->GetName().c_str(), _name.c_str());
 
-            // Duplicated logic in RemoveJob()
-            _availableRAM += it->second->GetRequiredRAM();
-            _availableDiskSpace += it->second->GetRequiredDiskSpace();
-
             delete it->second;
-            //
 
             _currentJobs.erase(it++);
 
@@ -182,7 +169,41 @@ void Machine::PrintHeader(std::ostream& os /*= std::cout*/)
 void Machine::Print(std::ostream& os /* = std::cout */) const
 {
     os << "| " << _id << " | " << _name
-       << " | " << _availableRAM << "/" << _totalRAM
-       << " | " << _availableDiskSpace << "/" << _totalDiskSpace
+       << " | " << GetAvailableRAM() << "/" << _totalRAM
+       << " | " << GetAvailableDiskSpace() << "/" << _totalDiskSpace
        << " | " << _currentJobs.size() << "/" << _maxJobs << " |\n";
+}
+
+void Machine::SetMaxJobs( uint val )
+{
+    if (val < _currentJobs.size())   // If the value is smaller than the current number of jobs we can't modify this parameter.
+        throw MachineInExecution(this); 
+    
+    _maxJobs = val;
+}
+
+void Machine::SetTotalRAM( double val )
+{
+    if (val < GetInUseRAM()) // If the value is smaller than the current needed RAM we can't modify this parameter.
+        throw MachineInExecution(this);
+
+    _totalRAM = val;
+}
+
+void Machine::SetTotalDiskSpace( double val )
+{
+    if (val < GetInUseDiskSpace()) // If the value is smaller than the current needed Disk Space we can't modify this parameter.
+        throw MachineInExecution(this);
+
+    _totalDiskSpace = val;
+}
+
+double Machine::GetInUseRAM() const
+{
+    return std::accumulate(_currentJobs.begin(), _currentJobs.end(), 0.0, [](double sum, std::pair<uint, Job*> j) { return sum + j.second->GetRequiredRAM(); } );
+}
+
+double Machine::GetInUseDiskSpace() const
+{
+    return std::accumulate(_currentJobs.begin(), _currentJobs.end(), 0.0, [](double sum, std::pair<uint, Job*> j) { return sum + j.second->GetRequiredDiskSpace(); } );
 }

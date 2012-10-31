@@ -52,21 +52,24 @@ int main(int argc, char* argv[])
         SearchUsers,                                        // 8
         SearchMachines,                                     // 9
         SearchJobs,                                         //10
+        ChangeUserInfo,                                     //11
+        ChangeMachineInfo                                   //12
     };
 
     while (executing)
     {
         try
         {
-            functions[menu->Print()-1](gm.get());
+            uint32 option = menu->Print();
+            functions[option == 0 ? 0 : option - 1](gm.get());
         }
         catch (EOFCharacterValue)
         {
-            
             PauseConsole("Action canceled...\nPress any key to continue...");
             ClearConsole();
             continue;
         }
+        
     }
 
     ByteBuffer bb(100);

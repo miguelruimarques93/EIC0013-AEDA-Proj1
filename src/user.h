@@ -9,6 +9,7 @@
 
 class Job;
 class ByteBuffer;
+class Menu;
 
 enum SaveUserType
 {
@@ -22,6 +23,7 @@ public:
     const std::string& GetName() const { return _name; }
     uint GetId() const { return _id; }
     void SetId(uint val) { _id = val; }
+    void SetName(const std::string& val) { if (val.size()) _name = val; }
 
     virtual bool Save(ByteBuffer& bb) const override;
 
@@ -34,9 +36,12 @@ public:
     virtual ~User() { };
 
     static User* Load(ByteBuffer& bb);
+    static Menu* GetMenu() { return _menu; }
 
 protected:
     User(const std::string& name) : _id(0), _name(name) {}
+
+    static Menu* _menu;    
 
 private:
     std::string _name;
@@ -69,6 +74,8 @@ public:
     EnterpriseUser(const std::string& name, double budget) : User(name), _budget(budget) {}
 
     double GetBudget() const { return _budget; }
+    
+    void SetBudget(double val) { _budget = val; }
 
     bool Save(ByteBuffer& bb) const override;
 

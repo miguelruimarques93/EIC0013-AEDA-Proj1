@@ -3,10 +3,12 @@ Main Menu
 -- A#Add User
 ---* A#002#Add Academic User
 ---* E#003#Add Enterprise User
+--* C#011#Change User Information
 --* R#004#Remove User
 --* L#008#Search Users
 - M#Manage Machines
 --* A#005#Add Machine
+--* C#012#Change Machine Information
 --* R#006#Remove Machine
 --* L#009#Search Machines
 - J#Manage Jobs

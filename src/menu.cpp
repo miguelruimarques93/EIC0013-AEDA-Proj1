@@ -42,6 +42,7 @@ uint32 Menu::Print() const
         catch (EOFCharacterValue)
         {
             subMenu = GetParent();
+            if (!subMenu) return 0;
         }
 
         if (!subMenu)

@@ -12,5 +12,7 @@ void NewJob(GridManager* gm);
 void SearchUsers(GridManager* gm);
 void SearchMachines(GridManager* gm);
 void SearchJobs(GridManager* gm);
+void ChangeUserInfo(GridManager* gm);
+void ChangeMachineInfo(GridManager* gm);
 
 #endif // MENUGRID_H_

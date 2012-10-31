@@ -12,25 +12,48 @@
 #include "software.h"
 
 class Job;
+class Menu;
 
 typedef std::unordered_set<Software, Software::Hash> SoftwareSet;
+
+class Machine;
+
+class MachineInExecution
+{
+public:
+    MachineInExecution(const Machine* m) : _machine(m) { }
+    const Machine* GetMachine() const { return _machine; }
+private:
+    const Machine* _machine;
+};
 
 class Machine : public ISave, public IUpdate, public IPrint
 {
 public:
     Machine(const std::string& machineName, uint maxJobs, double totalRAM, double totalDiskSpace)
-        : _id(0), _name(machineName), _maxJobs(maxJobs), _totalRAM(totalRAM), _totalDiskSpace(totalDiskSpace),
-          _availableDiskSpace(totalDiskSpace), _availableRAM(totalRAM) {}
+        : _id(0), _name(machineName), _maxJobs(maxJobs), _totalRAM(totalRAM), _totalDiskSpace(totalDiskSpace) {}
 
     virtual ~Machine();
 
     const std::string& GetName() const { return _name; }
+    void SetName(const std::string& name) { if (name.size() != 0) _name = name; }
+
     uint GetMaxJobs() const { return _maxJobs; }
+    void SetMaxJobs(uint val);
+
     uint GetCurrentJobs() const;
-    double GetAvailableRAM() const { return _availableRAM; }
-    double GetAvailableDiskSpace() const { return _availableDiskSpace; }
+    double GetAvailableRAM() const { return _totalRAM - GetInUseRAM(); }
+    double GetAvailableDiskSpace() const { return _totalDiskSpace - GetInUseDiskSpace(); }
+
+    double GetInUseRAM() const;
+    double GetInUseDiskSpace() const;
+
     double GetTotalRAM() const { return _totalRAM; }
+    void SetTotalRAM(double val);
+
     double GetTotalDiskSpace() const { return _totalDiskSpace; }
+    void SetTotalDiskSpace(double val);
+
     uint GetId() const { return _id; }
 
     void AddRequiredSoftware(const Software& sw) { _availableSoftware.insert(sw); }
@@ -41,7 +64,9 @@ public:
     bool RemoveJob(uint id);
 
     bool Save(ByteBuffer& bb) const override;
+
     static Machine* Load(ByteBuffer& bb);
+    static Menu* GetMenu() { return _menu; }
 
     const std::map<uint, Job*>& GetJobs() const { return _currentJobs; }
 
@@ -50,24 +75,26 @@ public:
     void Print(std::ostream& os = std::cout) const override;
     static void PrintHeader(std::ostream& os = std::cout);
 
+    /*static void SetMenuParent(Menu* val) { _menu->SetParent(val); }*/
+
 private:
     bool SoftwareMeetsRequirements(const Software& sw) const;
 
-    double _availableRAM;
-    double _availableDiskSpace;
-    const double _totalRAM;
-    const double _totalDiskSpace;
-    const uint _maxJobs;
+    double _totalRAM;
+    double _totalDiskSpace;
+    uint _maxJobs;
 
     static uint _lastJobId;
 
     SoftwareSet _availableSoftware;
     std::map<uint, Job*> _currentJobs;
 
-    const std::string _name;
+    std::string _name;
     uint _id;
 
     mutable std::mutex _mutex;
+
+    static Menu* _menu;
 
 private: // no copying
     Machine(const Machine&);

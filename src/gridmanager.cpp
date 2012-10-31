@@ -273,5 +273,5 @@ uint GridManager::AddMachine(Machine* machine)
 
     _machines[_lastMachineId] = machine;
     machine->SetId(_lastMachineId);
-    return _lastUserId;
+    return _lastMachineId;
 }

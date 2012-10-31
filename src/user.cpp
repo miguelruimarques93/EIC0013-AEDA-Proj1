@@ -1,6 +1,10 @@
 #include "user.h"
 #include "bytebuffer.h"
 #include "job.h"
+#include "menu.h"
+#include "loader.h"
+
+Menu* User::_menu = Loader<Menu>("userMenu.txt").Load();
 
 void User::PrintHeader(std::ostream& os /*= std::cout*/)
 {

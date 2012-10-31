@@ -1,0 +1,6 @@
+Manage Machine
+-* N#001#Change Machine Name
+-* R#002#Change Machine RAM
+-* D#003#Change Machine Disk Space
+-* J#004#Change Machine Max Jobs
+-* S#005#Change Available Software

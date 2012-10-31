@@ -10,6 +10,12 @@
 
 class Menu;
 
+class ParentNULL : public std::runtime_error
+{
+public:
+    ParentNULL() : runtime_error("") { }
+};
+
 class IMenu
 {
 public:
@@ -19,6 +25,7 @@ public:
 
     const std::string& GetLabel() const { return _label; }
     Menu* GetParent() const { return _parent; }
+    void SetParent(Menu* val) { _parent = val; }
 
 protected:
     Menu* _parent;

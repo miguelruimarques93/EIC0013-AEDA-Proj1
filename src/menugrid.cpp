@@ -4,6 +4,7 @@
 #include "user.h"
 #include "machine.h"
 #include "job.h"
+#include "menu.h"
 #include "gridmanager.h"
 
 #include <iostream>
@@ -122,12 +123,12 @@ void SearchUsers(GridManager* gm)
         }
         case AllAcademic:
         {
-            vec = gm->ApplyPredicate<User>([](User* user) { return typeid(user) == typeid(AcademicUser); });
+            vec = gm->ApplyPredicate<User>([](User* user) { return typeid(*user) == typeid(AcademicUser); });
             break;
         }
         case AllEnterprise:
         {
-            vec = gm->ApplyPredicate<User>([](User* user) { return typeid(user) == typeid(EnterpriseUser); });
+            vec = gm->ApplyPredicate<User>([](User* user) { return typeid(*user) == typeid(EnterpriseUser); });
             break;
         }
         default:
@@ -148,6 +149,7 @@ void SearchUsers(GridManager* gm)
         return;
     }
 
+    User::PrintHeader(std::cout);
     for (User* user : vec)
         user->Print(std::cout);
 
@@ -298,6 +300,7 @@ void SearchMachines(GridManager* gm)
         return;
     }
 
+    Machine::PrintHeader(std::cout);
     for (Machine* machine : vec)
         machine->Print(std::cout);
 
@@ -485,9 +488,141 @@ void SearchJobs(GridManager* gm)
         return;
     }
 
+    Job::PrintHeader(std::cout);
     for (Job* job : vec)
         job->Print(std::cout);  
 
     PauseConsole();
     ClearConsole();
+}
+
+void ChangeUserInfo(GridManager* gm)
+{
+    User* user = gm->GetUser(ReadValue<uint>("Id: "));
+    bool success = false;
+
+    do 
+    {
+        uint32 option = User::GetMenu()->Print();
+        
+        switch (option)
+        {
+            case 0:
+            {
+                throw EOFCharacterValue();
+            }
+
+            case 1:
+            {
+                std::string val = ReadValueStr("New name: ");
+                user->SetName(val);
+                success = true;
+                break;
+            }
+
+            case 2:
+            {
+                if (typeid(user) == typeid(EnterpriseUser*))
+                {
+                    double val = ReadValue<double>("New buget: ");
+                    ((EnterpriseUser*)user)->SetBudget(val);
+                    success = true;
+                }
+                else
+                {
+                    std::cout << "This action is not available to academic users." << std::endl;
+                }
+                break;
+            }
+        }
+    } while (!success);
+}
+
+void ChangeMachineInfo(GridManager* gm)
+{
+    Machine* machine = gm->GetMachine(ReadValue<uint>("Id: "));
+    bool success = false;
+
+    do 
+    {
+        uint32 option = Machine::GetMenu()->Print();
+
+        switch (option)
+        {
+            case 0:
+            {
+                throw EOFCharacterValue();
+            }
+
+            case 1: // Change Machine Name
+            {
+                std::string val = ReadValueStr("New name: ");
+                machine->SetName(val);
+                success = true;
+                break;
+            }
+
+            case 2: // Change Machine Ram
+            {
+                double ram = ReadValue<double>("New RAM: ");
+                try
+                {
+                    machine->SetTotalRAM(ram);
+                }
+                catch (MachineInExecution& err)
+                {
+                    std::cout << "Unable to modify RAM in machine " << err.GetMachine()->GetName() << " (id:" << err.GetMachine()->GetId() << ") because it is executing." << std::endl;
+                    PauseConsole();
+                    ClearConsole();
+                    return;
+                }
+                success = true;
+                break;
+            }
+
+            case 3: // Change Machine Disk Space
+            {
+                double diskSpace = ReadValue<double>("New Disk Space: ");
+                try
+                {
+                    machine->SetTotalDiskSpace(diskSpace);
+                }
+                catch (MachineInExecution& err)
+                {
+                    std::cout << "Unable to modify disk space in machine " << err.GetMachine()->GetName() << " (id:" << err.GetMachine()->GetId() << ") because it is executing." << std::endl;
+                    PauseConsole();
+                    ClearConsole();
+                    return;
+                }
+                success = true;
+                break;
+            }
+            
+            case 4: // Change Machine Max Jobs
+            {
+                uint maxJobs = ReadValue<double>("New Max Jobs: ");
+                try
+                {
+                    machine->SetMaxJobs(maxJobs);
+                }
+                catch (MachineInExecution& err)
+                {
+                    std::cout << "Unable to modify max jobs in machine " << err.GetMachine()->GetName() << " (id:" << err.GetMachine()->GetId() << ") because it is executing." << std::endl;
+                    PauseConsole();
+                    ClearConsole();
+                    return;
+                }
+                success = true;
+                break;
+            }
+
+            case 5: // Change Machine Available Software
+            {
+                PauseConsole("Not implemented yet.\n Press any key to continue...");
+                ClearConsole();
+                success = true;
+                break;
+            }
+        }
+    } while (!success);
 }
