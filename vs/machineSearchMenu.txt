@@ -1,0 +1,6 @@
+Search Machine
+-* 1#001#By Name
+-* 2#002#By Avaiable RAM
+-* 3#003#By Available Disk Space
+-* 4#004#By Number of Jobs
+-* 5#005#All Machines

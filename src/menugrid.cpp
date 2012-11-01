@@ -6,13 +6,23 @@
 #include "job.h"
 #include "menu.h"
 #include "gridmanager.h"
-
+#include "loader.h"
 #include <iostream>
 #include <typeinfo>
 
+
+
 void NewAcademicUser(GridManager* gm)
 {
-    std::string name = ReadValueStr("Name: ");
+    std::string name;
+    try
+    {
+        name = ReadValueStr("Name: ");
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("New Academic User");
+    }
 
     User* user = new AcademicUser(name);
     uint id = gm->AddUser(user);
@@ -25,8 +35,17 @@ void NewAcademicUser(GridManager* gm)
 
 void NewEnterpriseUser(GridManager* gm)
 {
-    std::string name = ReadValueStr("Name: ");
-    double budget = ReadValue<double>("Budget: ");
+    std::string name;
+    double budget;
+    try
+    {
+        name = ReadValueStr("Name: ");
+        budget = ReadValue<double>("Budget: ");
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("New Enterprise User");
+    }
 
     User* user = new EnterpriseUser(name, budget);
     uint id = gm->AddUser(user);
@@ -39,7 +58,15 @@ void NewEnterpriseUser(GridManager* gm)
 
 void RemoveUser(GridManager* gm)
 {
-    uint id = ReadValue<uint>("Id: ");
+    uint id;
+    try
+    {
+        id = ReadValue<uint>("Id: ");
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("Remove User");
+    }
 
     if (gm->RemoveUser(id))
         std::cout << "User with id " << id << " was removed." << std::endl;
@@ -52,10 +79,22 @@ void RemoveUser(GridManager* gm)
 
 void NewMachine(GridManager* gm)
 {
-    std::string name = ReadValueStr("Name: ");
-    uint maxJobs = ReadValue<uint>("Max number of jobs: ");
-    double totalRAM = ReadValue<double>("Amount of RAM: ");
-    double totalDiskSpace = ReadValue<double>("Amount of disk space: ");
+    std::string name;      
+    uint maxJobs;          
+    double totalRAM;       
+    double totalDiskSpace; 
+
+    try
+    {
+        name = ReadValueStr("Name: ");
+        maxJobs = ReadValue<uint>("Max number of jobs: ");
+        totalRAM = ReadValue<double>("Amount of RAM: ");
+        totalDiskSpace = ReadValue<double>("Amount of disk space: ");
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("New Machine");
+    }
 
     Machine* machine = new Machine(name, maxJobs, totalRAM, totalDiskSpace);
     uint id = gm->AddMachine(machine);
@@ -68,7 +107,16 @@ void NewMachine(GridManager* gm)
 
 void RemoveMachine(GridManager* gm)
 {
-    uint id = ReadValue<uint>("Id: ");
+    uint id; 
+    
+    try
+    {
+        id = ReadValue<uint>("Id: ");
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("Remove Machine");
+    }
 
     if (gm->RemoveMachine(id))
         std::cout << "Machine with id " << id << " was removed." << std::endl;
@@ -81,13 +129,26 @@ void RemoveMachine(GridManager* gm)
 
 void NewJob(GridManager* gm)
 {
-    uint userId = ReadValue<uint>("User Id: ");
+    uint userId;             
+    std::string name;        
+    uint8 priority;          
+    double requiredRAM;      
+    double requiredDiskSpace;
+    uint executionTime;      
 
-    std::string name = ReadValueStr("Name: ");
-    uint8 priority = static_cast<uint8>(ReadValue<uint16>("Priority (0-100%): "));
-    double requiredRAM = ReadValue<double>("Required RAM usage (MB): ");
-    double requiredDiskSpace = ReadValue<double>("Required disk space usage (MB): ");
-    uint executionTime = ReadValue<uint>("Estimated execution time (s): ");
+    try
+    {
+        userId = ReadValue<uint>("User Id: ");
+        name = ReadValueStr("Name: ");
+        priority = static_cast<uint8>(ReadValue<uint16>("Priority (0-100%): "));
+        requiredRAM = ReadValue<double>("Required RAM usage (MB): ");
+        requiredDiskSpace = ReadValue<double>("Required disk space usage (MB): ");
+        executionTime = ReadValue<uint>("Estimated execution time (s): ");
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("New Job");
+    }
 
     Job* job = new Job(name, priority, requiredRAM, requiredDiskSpace, executionTime);
     if (gm->AddJobByUser(userId, job))
@@ -109,12 +170,19 @@ void SearchUsers(GridManager* gm)
         All = 4
     };
 
-    uint option = ReadValue<uint>("Option (1 - by name, 2 - all academic, 3 - all enterprise, 4 - all users): ");
+    static Menu* searchMenu = Loader<Menu>("userSearchMenu.txt").Load();
+
+    uint option = searchMenu->Print();
+    
 
     std::vector<User*> vec;
 
     switch (option)
     {
+        case 0:
+        {
+            throw ActionCanceled("Search Users");
+        }
         case ByName:
         {
             std::string name = ReadValueStr("Name: ");
@@ -130,11 +198,6 @@ void SearchUsers(GridManager* gm)
         {
             vec = gm->ApplyPredicate<User>([](User* user) { return typeid(*user) == typeid(EnterpriseUser); });
             break;
-        }
-        default:
-        {
-            std::cout << "You need to provide an option between 1 and 4, showing all users." << std::endl;
-            // no break intended
         }
         case All:
         {
@@ -168,12 +231,20 @@ void SearchMachines(GridManager* gm)
         All = 5
     };
 
-    uint option = ReadValue<uint>("Option (1 - by name, 2 - by available RAM, 3 -by available disk space, 4 - by number of jobs, 5 - all): ");
+    static Menu* searchMenu = Loader<Menu>("machineSearchMenu.txt").Load();
+
+    uint option = searchMenu->Print();
 
     std::vector<Machine*> vec;
 
+    try
+    {
     switch (option)
     {
+        case 0:
+        {
+             throw ActionCanceled("Search Machines");
+        }
         case ByName:
         {
             std::string name = ReadValueStr("Name: ");
@@ -293,7 +364,11 @@ void SearchMachines(GridManager* gm)
             break;
         }
     }
-
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("Search Machines");
+    }
     if (vec.size() == 0)
     {
         std::cout << "No results." << std::endl;
@@ -498,7 +573,26 @@ void SearchJobs(GridManager* gm)
 
 void ChangeUserInfo(GridManager* gm)
 {
-    User* user = gm->GetUser(ReadValue<uint>("Id: "));
+    std::cout << "Change User Information" << std::endl;
+
+    User* user;
+
+
+    try
+    {
+        do 
+        {
+            user = gm->GetUser(ReadValue<uint>("Id: "));
+            if (!user)
+                std::cout << "User ID doesn't exists." << std::endl << "Please try again..." << std::endl << std::endl;
+        } while (!user);
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("Change User Information");
+    }
+
+
     bool success = false;
 
     do 
@@ -524,7 +618,7 @@ void ChangeUserInfo(GridManager* gm)
             {
                 if (typeid(user) == typeid(EnterpriseUser*))
                 {
-                    double val = ReadValue<double>("New buget: ");
+                    double val = ReadValue<double>("New budget: ");
                     ((EnterpriseUser*)user)->SetBudget(val);
                     success = true;
                 }
@@ -540,7 +634,24 @@ void ChangeUserInfo(GridManager* gm)
 
 void ChangeMachineInfo(GridManager* gm)
 {
-    Machine* machine = gm->GetMachine(ReadValue<uint>("Id: "));
+    std::cout << "Change Machine Information" << std::endl;
+
+    Machine* machine;
+
+    try
+    {
+        do 
+        {
+            machine = gm->GetMachine(ReadValue<uint>("Id: "));
+            if (!machine)
+                std::cout << "Machine ID doesn't exists." << std::endl << "Please try again..." << std::endl << std::endl;
+        } while (!machine);
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("Change Machine Information");
+    }
+
     bool success = false;
 
     do 

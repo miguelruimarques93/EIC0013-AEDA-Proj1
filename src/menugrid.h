@@ -1,7 +1,15 @@
 #ifndef MENUGRID_H_
 #define MENUGRID_H_
 
+#include <stdexcept>
+
 class GridManager;
+
+class ActionCanceled : public std::exception
+{
+public:
+    ActionCanceled(const char * msg) : exception(msg) { }
+};
 
 void NewAcademicUser(GridManager* gm);
 void NewEnterpriseUser(GridManager* gm);

@@ -62,9 +62,9 @@ int main(int argc, char* argv[])
             uint32 option = menu->Print();
             functions[option == 0 ? 0 : option - 1](gm.get());
         }
-        catch (EOFCharacterValue)
+        catch (ActionCanceled& action)
         {
-            PauseConsole("Action canceled...\nPress any key to continue...");
+            PauseConsole(std::string(action.what()) + " canceled...\nPress any key to continue...");
             ClearConsole();
             continue;
         }
