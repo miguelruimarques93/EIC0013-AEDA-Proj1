@@ -29,7 +29,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\bytebuffer.cpp" />
-    <ClCompile Include="..\src\consolereader.cpp" />
     <ClCompile Include="..\src\file.cpp" />
     <ClCompile Include="..\src\gridmanager.cpp" />
     <ClCompile Include="..\src\job.cpp" />

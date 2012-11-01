@@ -67,21 +67,41 @@ T ReadValue(std::string prompt = std::string(), std::istream& in = std::cin, std
     return val;
 }
 
-std::string ReadValueStr(std::string prompt = std::string(), std::istream& in = std::cin, std::ostream* out = &std::cout);
-
-/* FIXME: couldn't make a template specialization without getting linker errors
-// special case for strings
 template<>
-std::string ReadValue(std::string prompt /* = std::string(), std::istream& in /*= std::cin , std::ostream* out/* = &std::cout )
+inline std::string ReadValue<std::string>(std::string prompt /* = std::string()*/, std::istream& in /*= std::cin*/ , std::ostream* out/* = &std::cout */)
 {
     if (out)
         (*out) << prompt;
 
     std::string input;
-    std::getline(in, input);
+    bool success = false;
+
+    while (!success) 
+    {        
+        std::getline(in, input);
+
+        if (in.fail())
+        {
+            if (in.eof())
+            {
+                in.clear();
+                throw EOFCharacterValue();
+            }
+            else
+            {
+                in.clear();
+                if (out)
+                    (*out) << "Invalid value. Please try again." << std::endl;
+                else
+                    throw InvalidValue("ReadValue: Invalid value found with no out stream.");
+                continue;
+            }
+        }
+        success = true;
+    }
 
     return input;
 }
-*/
+
 
 #endif // CONSOLEREADER_H_

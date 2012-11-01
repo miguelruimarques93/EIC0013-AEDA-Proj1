@@ -17,7 +17,7 @@ void NewAcademicUser(GridManager* gm)
     std::string name;
     try
     {
-        name = ReadValueStr("Name: ");
+        name = ReadValue<std::string>("Name: ");
     }
     catch (EOFCharacterValue)
     {
@@ -39,7 +39,7 @@ void NewEnterpriseUser(GridManager* gm)
     double budget;
     try
     {
-        name = ReadValueStr("Name: ");
+        name = ReadValue<std::string>("Name: ");
         budget = ReadValue<double>("Budget: ");
     }
     catch (EOFCharacterValue)
@@ -86,7 +86,7 @@ void NewMachine(GridManager* gm)
 
     try
     {
-        name = ReadValueStr("Name: ");
+        name = ReadValue<std::string>("Name: ");
         maxJobs = ReadValue<uint>("Max number of jobs: ");
         totalRAM = ReadValue<double>("Amount of RAM: ");
         totalDiskSpace = ReadValue<double>("Amount of disk space: ");
@@ -139,7 +139,7 @@ void NewJob(GridManager* gm)
     try
     {
         userId = ReadValue<uint>("User Id: ");
-        name = ReadValueStr("Name: ");
+        name = ReadValue<std::string>("Name: ");
         priority = static_cast<uint8>(ReadValue<uint16>("Priority (0-100%): "));
         requiredRAM = ReadValue<double>("Required RAM usage (MB): ");
         requiredDiskSpace = ReadValue<double>("Required disk space usage (MB): ");
@@ -185,7 +185,7 @@ void SearchUsers(GridManager* gm)
         }
         case ByName:
         {
-            std::string name = ReadValueStr("Name: ");
+            std::string name = ReadValue<std::string>("Name: ");
             vec = gm->ApplyPredicate<User>([name](User* user) { return user->GetName() == name; });
             break;
         }
@@ -247,7 +247,7 @@ void SearchMachines(GridManager* gm)
         }
         case ByName:
         {
-            std::string name = ReadValueStr("Name: ");
+            std::string name = ReadValue<std::string>("Name: ");
             vec = gm->ApplyPredicate<Machine>([name](Machine* machine) { return machine->GetName() == name; });
             break;
         }
@@ -404,7 +404,7 @@ void SearchJobs(GridManager* gm)
     {
         case ByName:
         {
-            std::string name = ReadValueStr("Name: ");
+            std::string name = ReadValue<std::string>("Name: ");
             vec = gm->ApplyPredicate<Job>([name](Job* job) { return job->GetName() == name; });
             break;
         }
@@ -608,7 +608,7 @@ void ChangeUserInfo(GridManager* gm)
 
             case 1:
             {
-                std::string val = ReadValueStr("New name: ");
+                std::string val = ReadValue<std::string>("New name: ");
                 user->SetName(val);
                 success = true;
                 break;
@@ -667,7 +667,7 @@ void ChangeMachineInfo(GridManager* gm)
 
             case 1: // Change Machine Name
             {
-                std::string val = ReadValueStr("New name: ");
+                std::string val = ReadValue<std::string>("New name: ");
                 machine->SetName(val);
                 success = true;
                 break;
