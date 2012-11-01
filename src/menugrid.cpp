@@ -108,7 +108,7 @@ void NewMachine(GridManager* gm)
 void RemoveMachine(GridManager* gm)
 {
     uint id; 
-    
+
     try
     {
         id = ReadValue<uint>("Id: ");
@@ -173,33 +173,33 @@ void SearchUsers(GridManager* gm)
     static Menu* searchMenu = Loader<Menu>("userSearchMenu.txt").Load();
 
     uint option = searchMenu->Print();
-    
+
 
     std::vector<User*> vec;
 
     switch (option)
     {
-        case 0:
+    case 0:
         {
             throw ActionCanceled("Search Users");
         }
-        case ByName:
+    case ByName:
         {
             std::string name = ReadValue<std::string>("Name: ");
             vec = gm->ApplyPredicate<User>([name](User* user) { return user->GetName() == name; });
             break;
         }
-        case AllAcademic:
+    case AllAcademic:
         {
             vec = gm->ApplyPredicate<User>([](User* user) { return typeid(*user) == typeid(AcademicUser); });
             break;
         }
-        case AllEnterprise:
+    case AllEnterprise:
         {
             vec = gm->ApplyPredicate<User>([](User* user) { return typeid(*user) == typeid(EnterpriseUser); });
             break;
         }
-        case All:
+    case All:
         {
             vec = gm->ApplyPredicate<User>([](User* user) { return true; });
             break;
@@ -239,131 +239,131 @@ void SearchMachines(GridManager* gm)
 
     try
     {
-    switch (option)
-    {
+        switch (option)
+        {
         case 0:
-        {
-             throw ActionCanceled("Search Machines");
-        }
+            {
+                throw ActionCanceled("Search Machines");
+            }
         case ByName:
-        {
-            std::string name = ReadValue<std::string>("Name: ");
-            vec = gm->ApplyPredicate<Machine>([name](Machine* machine) { return machine->GetName() == name; });
-            break;
-        }
+            {
+                std::string name = ReadValue<std::string>("Name: ");
+                vec = gm->ApplyPredicate<Machine>([name](Machine* machine) { return machine->GetName() == name; });
+                break;
+            }
         case ByRAM:
-        {
-            char comp = ReadValue<char>("Comparison ( > or < or = ): ");
-            double value = ReadValue<double>("Value: ");
-
-            std::function<bool(Machine*)> func;
-
-            switch (comp)
             {
-                case '>':
-                {
-                    func = [value](Machine* machine) { return machine->GetAvailableRAM() > value; };
-                    break;
-                }
-                case '<':
-                {
-                    func = [value](Machine* machine) { return machine->GetAvailableRAM() < value; };
-                    break;
-                }
-                default:
-                {
-                    std::cout << "Invalid comparison, using equality." << std::endl;
-                    // no break intended
-                }
-                case '=':
-                {
-                    func = [value](Machine* machine) { return machine->GetAvailableRAM() == value; };
-                    break;
-                }
-            }
+                char comp = ReadValue<char>("Comparison ( > or < or = ): ");
+                double value = ReadValue<double>("Value: ");
 
-            vec = gm->ApplyPredicate(func);
-            break;
-        }
+                std::function<bool(Machine*)> func;
+
+                switch (comp)
+                {
+                case '>':
+                    {
+                        func = [value](Machine* machine) { return machine->GetAvailableRAM() > value; };
+                        break;
+                    }
+                case '<':
+                    {
+                        func = [value](Machine* machine) { return machine->GetAvailableRAM() < value; };
+                        break;
+                    }
+                default:
+                    {
+                        std::cout << "Invalid comparison, using equality." << std::endl;
+                        // no break intended
+                    }
+                case '=':
+                    {
+                        func = [value](Machine* machine) { return machine->GetAvailableRAM() == value; };
+                        break;
+                    }
+                }
+
+                vec = gm->ApplyPredicate(func);
+                break;
+            }
         case ByDisk:
-        {
-            char comp = ReadValue<char>("Comparison ( > or < or = ): ");
-            double value = ReadValue<double>("Value: ");
-
-            std::function<bool(Machine*)> func;
-
-            switch (comp)
             {
-                case '>':
-                {
-                    func = [value](Machine* machine) { return machine->GetAvailableDiskSpace() > value; };
-                    break;
-                }
-                case '<':
-                {
-                    func = [value](Machine* machine) { return machine->GetAvailableDiskSpace() < value; };
-                    break;
-                }
-                default:
-                {
-                    std::cout << "Invalid comparison, using equality." << std::endl;
-                    // no break intended
-                }
-                case '=':
-                {
-                    func = [value](Machine* machine) { return machine->GetAvailableDiskSpace() == value; };
-                    break;
-                }
-            }
+                char comp = ReadValue<char>("Comparison ( > or < or = ): ");
+                double value = ReadValue<double>("Value: ");
 
-            vec = gm->ApplyPredicate(func);
-            break;
-        }
+                std::function<bool(Machine*)> func;
+
+                switch (comp)
+                {
+                case '>':
+                    {
+                        func = [value](Machine* machine) { return machine->GetAvailableDiskSpace() > value; };
+                        break;
+                    }
+                case '<':
+                    {
+                        func = [value](Machine* machine) { return machine->GetAvailableDiskSpace() < value; };
+                        break;
+                    }
+                default:
+                    {
+                        std::cout << "Invalid comparison, using equality." << std::endl;
+                        // no break intended
+                    }
+                case '=':
+                    {
+                        func = [value](Machine* machine) { return machine->GetAvailableDiskSpace() == value; };
+                        break;
+                    }
+                }
+
+                vec = gm->ApplyPredicate(func);
+                break;
+            }
         case ByNumberJobs:
-        {
-            char comp = ReadValue<char>("Comparison ( > or < or = ): ");
-            uint value = ReadValue<uint>("Value: ");
-
-            std::function<bool(Machine*)> func;
-
-            switch (comp)
             {
-                case '>':
-                {
-                    func = [value](Machine* machine) { return machine->GetCurrentJobs() > value; };
-                    break;
-                }
-                case '<':
-                {
-                    func = [value](Machine* machine) { return machine->GetCurrentJobs() < value; };
-                    break;
-                }
-                default:
-                {
-                    std::cout << "Invalid comparison, using equality." << std::endl;
-                    // no break intended
-                }
-                case '=':
-                {
-                    func = [value](Machine* machine) { return machine->GetCurrentJobs() == value; };
-                    break;
-                }
-            }
+                char comp = ReadValue<char>("Comparison ( > or < or = ): ");
+                uint value = ReadValue<uint>("Value: ");
 
-            vec = gm->ApplyPredicate(func);
-            break;
-        }
+                std::function<bool(Machine*)> func;
+
+                switch (comp)
+                {
+                case '>':
+                    {
+                        func = [value](Machine* machine) { return machine->GetCurrentJobs() > value; };
+                        break;
+                    }
+                case '<':
+                    {
+                        func = [value](Machine* machine) { return machine->GetCurrentJobs() < value; };
+                        break;
+                    }
+                default:
+                    {
+                        std::cout << "Invalid comparison, using equality." << std::endl;
+                        // no break intended
+                    }
+                case '=':
+                    {
+                        func = [value](Machine* machine) { return machine->GetCurrentJobs() == value; };
+                        break;
+                    }
+                }
+
+                vec = gm->ApplyPredicate(func);
+                break;
+            }
         default:
-        {
-            std::cout << "You need to provide an option between 1 and 5, showing all machines." << std::endl;
-            // no break intended
-        }
+            {
+                std::cout << "You need to provide an option between 1 and 5, showing all machines." << std::endl;
+                // no break intended
+            }
         case All:
-        {
-            vec = gm->ApplyPredicate<Machine>([](Machine*) { return true; });
-            break;
+            {
+                vec = gm->ApplyPredicate<Machine>([](Machine*) { return true; });
+                break;
+            }
         }
-    }
     }
     catch (EOFCharacterValue)
     {
@@ -395,166 +395,180 @@ void SearchJobs(GridManager* gm)
         All = 6
     };  
 
-    uint option = ReadValue<uint>("Option (1 - by name, 2 - by available RAM, 3 -by available disk space, 4 - by priority, 5 - by execution time, 6 - all): ");
-
-
     std::vector<Job*> vec;
 
-    switch (option)
+
+    static Menu* searchMenu = Loader<Menu>("jobSearchMenu.txt").Load();
+
+    uint option = searchMenu->Print();
+
+
+
+    try
     {
-        case ByName:
+        switch (option)
         {
-            std::string name = ReadValue<std::string>("Name: ");
-            vec = gm->ApplyPredicate<Job>([name](Job* job) { return job->GetName() == name; });
-            break;
-        }
+        case 0:
+            {
+                throw ActionCanceled("Search Machines");
+            }
+        case ByName:
+            {
+                std::string name = ReadValue<std::string>("Name: ");
+                vec = gm->ApplyPredicate<Job>([name](Job* job) { return job->GetName() == name; });
+                break;
+            }
 
         case ByRAM:
-        {
-            char comp = ReadValue<char>("Comparison ( > or < or = ): ");
-            double value = ReadValue<double>("Value: ");
-
-            std::function<bool(Job*)> func;
-
-            switch (comp)
             {
-                case '>':
-                {
-                    func = [value](Job* job) { return job->GetRequiredRAM() > value; };
-                    break;
-                }
-                case '<':
-                {
-                    func = [value](Job* job) { return job->GetRequiredRAM() < value; };
-                    break;
-                }
-                default:
-                {
-                    std::cout << "Invalid comparison, using equality." << std::endl;
-                    // no break intended
-                }
-                case '=':
-                {
-                    func = [value](Job* job) { return job->GetRequiredRAM() == value; };
-                    break;
-                }
-            }
+                char comp = ReadValue<char>("Comparison ( > or < or = ): ");
+                double value = ReadValue<double>("Value: ");
 
-            vec = gm->ApplyPredicate(func);
-            break;
-        }
+                std::function<bool(Job*)> func;
+
+                switch (comp)
+                {
+                case '>':
+                    {
+                        func = [value](Job* job) { return job->GetRequiredRAM() > value; };
+                        break;
+                    }
+                case '<':
+                    {
+                        func = [value](Job* job) { return job->GetRequiredRAM() < value; };
+                        break;
+                    }
+                default:
+                    {
+                        std::cout << "Invalid comparison, using equality." << std::endl;
+                        // no break intended
+                    }
+                case '=':
+                    {
+                        func = [value](Job* job) { return job->GetRequiredRAM() == value; };
+                        break;
+                    }
+                }
+
+                vec = gm->ApplyPredicate(func);
+                break;
+            }
         case ByDisk:
-        {
-            char comp = ReadValue<char>("Comparison ( > or < or = ): ");
-            double value = ReadValue<double>("Value: ");
-
-            std::function<bool(Job*)> func;
-
-            switch (comp)
             {
-                case '>':
-                {
-                    func = [value](Job* job) { return job->GetRequiredDiskSpace() > value; };
-                    break;
-                }
-                case '<':
-                {
-                    func = [value](Job* job) { return job->GetRequiredDiskSpace() < value; };
-                    break;
-                }
-                default:
-                {
-                    std::cout << "Invalid comparison, using equality." << std::endl;
-                    // no break intended
-                }
-                case '=':
-                {
-                    func = [value](Job* job) { return job->GetRequiredDiskSpace() == value; };
-                    break;
-                }
-            }
+                char comp = ReadValue<char>("Comparison ( > or < or = ): ");
+                double value = ReadValue<double>("Value: ");
 
-            vec = gm->ApplyPredicate(func);
-            break;
-        }
+                std::function<bool(Job*)> func;
+
+                switch (comp)
+                {
+                case '>':
+                    {
+                        func = [value](Job* job) { return job->GetRequiredDiskSpace() > value; };
+                        break;
+                    }
+                case '<':
+                    {
+                        func = [value](Job* job) { return job->GetRequiredDiskSpace() < value; };
+                        break;
+                    }
+                default:
+                    {
+                        std::cout << "Invalid comparison, using equality." << std::endl;
+                        // no break intended
+                    }
+                case '=':
+                    {
+                        func = [value](Job* job) { return job->GetRequiredDiskSpace() == value; };
+                        break;
+                    }
+                }
+
+                vec = gm->ApplyPredicate(func);
+                break;
+            }
         case ByPriority:
-        {
-            char comp = ReadValue<char>("Comparison ( > or < or = ): ");
-            uint8 value = ReadValue<uint8>("Value: ");
-
-            std::function<bool(Job*)> func;
-
-            switch (comp)
             {
-                case '>':
-                {
-                    func = [value](Job* job) { return job->GetPriority() > value; };
-                    break;
-                }
-                case '<':
-                {
-                    func = [value](Job* job) { return job->GetPriority() < value; };
-                    break;
-                }
-                default:
-                {
-                    std::cout << "Invalid comparison, using equality." << std::endl;
-                    // no break intended
-                }
-                case '=':
-                {
-                    func = [value](Job* job) { return job->GetPriority() == value; };
-                    break;
-                }
-            }
+                char comp = ReadValue<char>("Comparison ( > or < or = ): ");
+                uint8 value = ReadValue<uint8>("Value: ");
 
-            vec = gm->ApplyPredicate(func);
-            break;
-        }
+                std::function<bool(Job*)> func;
+
+                switch (comp)
+                {
+                case '>':
+                    {
+                        func = [value](Job* job) { return job->GetPriority() > value; };
+                        break;
+                    }
+                case '<':
+                    {
+                        func = [value](Job* job) { return job->GetPriority() < value; };
+                        break;
+                    }
+                default:
+                    {
+                        std::cout << "Invalid comparison, using equality." << std::endl;
+                        // no break intended
+                    }
+                case '=':
+                    {
+                        func = [value](Job* job) { return job->GetPriority() == value; };
+                        break;
+                    }
+                }
+
+                vec = gm->ApplyPredicate(func);
+                break;
+            }
         case ByElapseTime:
-        {
-            char comp = ReadValue<char>("Comparison ( > or < or = ): ");
-            uint value = ReadValue<uint>("Value: ");
-
-            std::function<bool(Job*)> func;
-
-            switch (comp)
             {
-                case '>':
-                {
-                    func = [value](Job* job) { return job->GetElapsedTime() > value; };
-                    break;
-                }
-                case '<':
-                {
-                    func = [value](Job* job) { return job->GetElapsedTime() < value; };
-                    break;
-                }
-                default:
-                {
-                    std::cout << "Invalid comparison, using equality." << std::endl;
-                    // no break intended
-                }
-                case '=':
-                {
-                    func = [value](Job* job) { return job->GetElapsedTime() == value; };
-                    break;
-                }
-            }
+                char comp = ReadValue<char>("Comparison ( > or < or = ): ");
+                uint value = ReadValue<uint>("Value: ");
 
-            vec = gm->ApplyPredicate(func);
-            break;
-        }
-        default:
-        {
-            std::cout << "You need to provide an option between 1 and 6, showing all jobs." << std::endl;
-            // no break intended
-        }
+                std::function<bool(Job*)> func;
+
+                switch (comp)
+                {
+                case '>':
+                    {
+                        func = [value](Job* job) { return job->GetElapsedTime() > value; };
+                        break;
+                    }
+                case '<':
+                    {
+                        func = [value](Job* job) { return job->GetElapsedTime() < value; };
+                        break;
+                    }
+                default:
+                    {
+                        std::cout << "Invalid comparison, using equality." << std::endl;
+                        // no break intended
+                    }
+                case '=':
+                    {
+                        func = [value](Job* job) { return job->GetElapsedTime() == value; };
+                        break;
+                    }
+                }
+
+                vec = gm->ApplyPredicate(func);
+                break;
+            }
         case All:
-        {
-            vec = gm->ApplyPredicate<Job>([](Job*) { return true; });
-            break;
+            {
+                vec = gm->ApplyPredicate<Job>([](Job*) { return true; });
+                break;
+            }
         }
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("Search Jobs");
+    }
+    catch (ParentNULL)
+    {
+        throw ActionCanceled("Search Jobs");
     }
 
     if (vec.size() == 0)
@@ -595,41 +609,48 @@ void ChangeUserInfo(GridManager* gm)
 
     bool success = false;
 
-    do 
+    try
     {
-        uint32 option = User::GetMenu()->Print();
-        
-        switch (option)
+        do 
         {
-            case 0:
+            uint32 option = User::GetMenu()->Print();
+
+            switch (option)
             {
-                throw EOFCharacterValue();
-            }
+            case 0:
+                {
+                    throw EOFCharacterValue();
+                }
 
             case 1:
-            {
-                std::string val = ReadValue<std::string>("New name: ");
-                user->SetName(val);
-                success = true;
-                break;
-            }
+                {
+                    std::string val = ReadValue<std::string>("New name: ");
+                    user->SetName(val);
+                    success = true;
+                    break;
+                }
 
             case 2:
-            {
-                if (typeid(user) == typeid(EnterpriseUser*))
                 {
-                    double val = ReadValue<double>("New budget: ");
-                    ((EnterpriseUser*)user)->SetBudget(val);
-                    success = true;
+                    if (typeid(user) == typeid(EnterpriseUser*))
+                    {
+                        double val = ReadValue<double>("New budget: ");
+                        ((EnterpriseUser*)user)->SetBudget(val);
+                        success = true;
+                    }
+                    else
+                    {
+                        std::cout << "This action is not available to academic users." << std::endl;
+                    }
+                    break;
                 }
-                else
-                {
-                    std::cout << "This action is not available to academic users." << std::endl;
-                }
-                break;
             }
-        }
-    } while (!success);
+        } while (!success);
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("Change User Information");
+    }
 }
 
 void ChangeMachineInfo(GridManager* gm)
@@ -654,86 +675,94 @@ void ChangeMachineInfo(GridManager* gm)
 
     bool success = false;
 
-    do 
+    try
     {
-        uint32 option = Machine::GetMenu()->Print();
-
-        switch (option)
+        do 
         {
-            case 0:
+            uint32 option = Machine::GetMenu()->Print();
+
+            switch (option)
             {
-                throw EOFCharacterValue();
-            }
+            case 0:
+                {
+                    throw EOFCharacterValue();
+                }
 
             case 1: // Change Machine Name
-            {
-                std::string val = ReadValue<std::string>("New name: ");
-                machine->SetName(val);
-                success = true;
-                break;
-            }
+                {
+                    std::string val = ReadValue<std::string>("New name: ");
+                    machine->SetName(val);
+                    success = true;
+                    break;
+                }
 
             case 2: // Change Machine Ram
-            {
-                double ram = ReadValue<double>("New RAM: ");
-                try
                 {
-                    machine->SetTotalRAM(ram);
+                    double ram = ReadValue<double>("New RAM: ");
+                    try
+                    {
+                        machine->SetTotalRAM(ram);
+                    }
+                    catch (MachineInExecution& err)
+                    {
+                        std::cout << "Unable to modify RAM in machine " << err.GetMachine()->GetName() << " (id:" << err.GetMachine()->GetId() << ") because it is executing." << std::endl;
+                        PauseConsole();
+                        ClearConsole();
+                        return;
+                    }
+                    success = true;
+                    break;
                 }
-                catch (MachineInExecution& err)
-                {
-                    std::cout << "Unable to modify RAM in machine " << err.GetMachine()->GetName() << " (id:" << err.GetMachine()->GetId() << ") because it is executing." << std::endl;
-                    PauseConsole();
-                    ClearConsole();
-                    return;
-                }
-                success = true;
-                break;
-            }
 
             case 3: // Change Machine Disk Space
-            {
-                double diskSpace = ReadValue<double>("New Disk Space: ");
-                try
                 {
-                    machine->SetTotalDiskSpace(diskSpace);
+                    double diskSpace = ReadValue<double>("New Disk Space: ");
+                    try
+                    {
+                        machine->SetTotalDiskSpace(diskSpace);
+                    }
+                    catch (MachineInExecution& err)
+                    {
+                        std::cout << "Unable to modify disk space in machine " << err.GetMachine()->GetName() << " (id:" << err.GetMachine()->GetId() << ") because it is executing." << std::endl;
+                        PauseConsole();
+                        ClearConsole();
+                        return;
+                    }
+                    success = true;
+                    break;
                 }
-                catch (MachineInExecution& err)
-                {
-                    std::cout << "Unable to modify disk space in machine " << err.GetMachine()->GetName() << " (id:" << err.GetMachine()->GetId() << ") because it is executing." << std::endl;
-                    PauseConsole();
-                    ClearConsole();
-                    return;
-                }
-                success = true;
-                break;
-            }
-            
+
             case 4: // Change Machine Max Jobs
-            {
-                uint maxJobs = ReadValue<uint>("New Max Jobs: ");
-                try
                 {
-                    machine->SetMaxJobs(maxJobs);
+                    uint maxJobs = ReadValue<uint>("New Max Jobs: ");
+                    try
+                    {
+                        machine->SetMaxJobs(maxJobs);
+                    }
+                    catch (MachineInExecution& err)
+                    {
+                        std::cout << "Unable to modify max jobs in machine " << err.GetMachine()->GetName() << " (id:" << err.GetMachine()->GetId() << ") because it is executing." << std::endl;
+                        PauseConsole();
+                        ClearConsole();
+                        return;
+                    }
+                    success = true;
+                    break;
                 }
-                catch (MachineInExecution& err)
-                {
-                    std::cout << "Unable to modify max jobs in machine " << err.GetMachine()->GetName() << " (id:" << err.GetMachine()->GetId() << ") because it is executing." << std::endl;
-                    PauseConsole();
-                    ClearConsole();
-                    return;
-                }
-                success = true;
-                break;
-            }
 
             case 5: // Change Machine Available Software
-            {
-                PauseConsole("Not implemented yet.\n Press any key to continue...");
-                ClearConsole();
-                success = true;
-                break;
+                {
+                    PauseConsole("Not implemented yet.\n Press any key to continue...");
+                    ClearConsole();
+                    success = true;
+                    break;
+                }
             }
-        }
-    } while (!success);
+        } while (!success);
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("Change Machine Information");
+    }
+
 }

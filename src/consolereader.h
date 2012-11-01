@@ -53,7 +53,7 @@ T ReadValue(std::string prompt = std::string(), std::istream& in = std::cin, std
         // convert string to T
         std::stringstream ss(input);
 
-        if (!(ss >> val))
+        if (!(ss >> val) || ss.rdbuf()->in_avail() != 0)
         {
             if (out)
                 (*out) << "Invalid value. Please try again." << std::endl;

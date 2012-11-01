@@ -1,0 +1,7 @@
+Search Machine
+-* 1#001#By Name
+-* 2#002#By Required RAM
+-* 3#003#By Required Disk Space
+-* 4#004#By Priority
+-* 5#005#By Execution Time
+-* 6#006#All Jobs
