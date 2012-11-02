@@ -77,6 +77,12 @@ public:
     *   @return A pointer to the User, NULL if id doesn't corresponds to any user.
     */
     User* GetUser(uint id) const;
+    
+    /**
+    *   @brief Returns the number of existing users.
+    *   @return Number of existing users.
+    */
+    uint GetNumberOfUsers() const { return _users.size(); }
 
     /**
     *   @brief Returns the machine with the given ID.
@@ -84,6 +90,12 @@ public:
     *   @return A pointer to the Machine, NULL if id doesn't corresponds to any Machine.
     */
     Machine* GetMachine(uint id) const;
+
+    /**
+    *   @brief Returns the number of existing machines.
+    *   @return Number of existing machines.
+    */
+    uint GetNumberOfMachines() const { return _machines.size(); }
 
     /**
     *   @brief Saves the information of the instance of the class to the given ByteBuffer.
@@ -120,6 +132,12 @@ public:
     *   @return A boolean value that indicates whether the insertion was successful or not.
     */
     bool AddJobByUser(User* user, Job* job);
+
+    /**
+    *   @brief Returns the number of existing jobs.
+    *   @return Number of existing jobs.
+    */
+    uint GetNumberOfJobs() const;
 
     /**
     *   @brief Applies the given predicate to the containers of the instance of the class based in the type and returns a vector with the values that meet the requirements.

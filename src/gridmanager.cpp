@@ -9,6 +9,7 @@
 #include <iostream>
 #include <map>
 #include <algorithm>
+#include <numeric>
 
 uint GridManager::_lastUserId = 0;
 uint GridManager::_lastMachineId = 0;
@@ -58,6 +59,7 @@ GridManager* GridManager::Load(ByteBuffer& bb)
 
 bool GridManager::RemoveUser(const User* user)
 {
+    if (!user) return NULL;
     auto it = std::find_if(_users.begin(), _users.end(), [user] (std::pair<uint,User*> usr) { return usr.second == user; });
     if (it == _users.end())
         return false;
@@ -286,4 +288,9 @@ uint GridManager::AddMachine(Machine* machine)
     _machines[_lastMachineId] = machine;
     machine->SetId(_lastMachineId);
     return _lastMachineId;
+}
+
+uint GridManager::GetNumberOfJobs() const
+{
+    return std::accumulate(_machines.begin(), _machines.end(), 0, [](uint sum, std::pair<uint,Machine*> mach) { return sum + mach.second->GetNumberOfJobs(); });
 }

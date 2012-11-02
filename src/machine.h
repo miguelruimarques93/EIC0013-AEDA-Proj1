@@ -61,6 +61,7 @@ public:
 
     bool AddJob(Job* job);
     bool RemoveJob(uint id);
+    uint GetNumberOfJobs() const { return _currentJobs.size(); }
 
     bool Save(ByteBuffer& bb) const override;
 

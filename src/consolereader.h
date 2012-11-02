@@ -55,7 +55,7 @@ T ReadValue(const std::string& prompt, std::function<bool(T)> validator)
         else
         {
             if (!validator(val))
-                std::cout << "Value does not match the requirements. Please try again." << std::endl;
+                std::cout << std::endl << prompt;
             else
                 success = true;
         }
@@ -98,7 +98,7 @@ inline std::string ReadValue<std::string>(const std::string& prompt, std::functi
         }
 
         if (!validator(input))
-            std::cout << "Value does not match the requirements. Please try again." << std::endl;
+            std::cout << std::endl << prompt;
         else
             success = true;
     }

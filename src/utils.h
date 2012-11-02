@@ -18,7 +18,7 @@ typedef uint32 uint;
 uint64 GetCurrentTime();
 uint32 GetTimeDiff(uint64 curTime, uint64 prevTime);
 
-void PauseConsole(const std::string& message = "Press any key to continue...");
+void PauseConsole(const std::string& message = "Press enter to continue...");
 void ClearConsole();
 
 #endif // UTILS_H_

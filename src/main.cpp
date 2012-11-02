@@ -66,7 +66,7 @@ int main(int argc, char* argv[])
         }
         catch (ActionCanceled& action)
         {
-            PauseConsole(std::string(action.what()) + " canceled...\nPress any key to continue...");
+            PauseConsole(std::string(action.what()) + " canceled...\nPress enter to continue...");
             ClearConsole();
             continue;
         }
