@@ -35,7 +35,7 @@ public:
     virtual ~Machine();
 
     const std::string& GetName() const { return _name; }
-    void SetName(const std::string& name) { if (name.size() != 0) _name = name; }
+    void SetName(const std::string& name);
 
     uint GetMaxJobs() const { return _maxJobs; }
     void SetMaxJobs(uint val);

@@ -20,10 +20,11 @@ enum SaveUserType
 class User : public ISave, public IPrint
 {
 public:
-    const std::string& GetName() const { return _name; }
     uint GetId() const { return _id; }
     void SetId(uint val) { _id = val; }
-    void SetName(const std::string& val) { if (val.size()) _name = val; }
+
+    void SetName(const std::string& name);
+    const std::string& GetName() const { return _name; }
 
     virtual bool Save(ByteBuffer& bb) const override;
 

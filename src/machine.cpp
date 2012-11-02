@@ -20,6 +20,16 @@ Machine::Machine(const std::string& machineName, uint maxJobs, double totalRAM, 
         _maxNameLength = _name.length();
 }
 
+void Machine::SetName( const std::string& name )
+{
+    if (name.size() != 0)
+    {
+        _name = name;
+        if (_name.length() > _maxNameLength)
+            _maxNameLength = _name.length();
+    }
+}
+
 Machine::~Machine()
 {
     for (auto job : _currentJobs)

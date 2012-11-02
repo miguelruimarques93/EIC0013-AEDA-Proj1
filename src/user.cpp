@@ -15,6 +15,16 @@ User::User(const std::string& name) : _id(0), _name(name)
         _maxNameLength = _name.length();
 }
 
+void User::SetName(const std::string& name)
+{
+    if (name.size() != 0)
+    {
+        _name = name;
+        if (_name.length() > _maxNameLength)
+            _maxNameLength = _name.length();
+    }
+}
+
 void User::PrintHeader(std::ostream& os /*= std::cout*/)
 {
     os << "---------" << std::string(_maxNameLength, '-')    << "-----------------------\n"
