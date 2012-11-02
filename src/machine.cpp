@@ -171,8 +171,9 @@ uint Machine::GetCurrentJobs() const
 
 void Machine::PrintHeader(std::ostream& os /*= std::cout*/)
 {
-    os << "-------------------------------------------\n";
-    os << "|  Id  | " << std::setw(_maxNameLength) << "Name" << " |   RAM (MB)    |   Disk (MB)   |    Jobs     |\n";
+    os << "---------" << std::string(_maxNameLength, '-')    << "------------------------------------------------\n"
+       << "|  Id  | " << std::setw(_maxNameLength) << "Name" << " |   RAM (MB)    |   Disk (MB)   |    Jobs     |\n"
+       << "---------" << std::string(_maxNameLength, '-')    << "------------------------------------------------\n";
 }
 
 void Machine::Print(std::ostream& os /* = std::cout */) const
@@ -182,7 +183,8 @@ void Machine::Print(std::ostream& os /* = std::cout */) const
 
        << " | " << std::setw(5) << std::left << GetAvailableRAM() << " / " << std::right << std::setw(5) << _totalRAM
        << " | " << std::setw(5) << std::left << GetAvailableDiskSpace() << " / " << std::right << std::setw(5) << _totalDiskSpace
-       << " | " << std::setw(4) << std::left << _currentJobs.size() << " / " << std::right << std::setw(4) << _maxJobs << " |\n";
+       << " | " << std::setw(4) << std::left << _currentJobs.size() << " / " << std::right << std::setw(4) << _maxJobs << " |\n"
+       << "---------" << std::string(_maxNameLength, '-') << "------------------------------------------------\n";
 }
 
 void Machine::SetMaxJobs(uint val)

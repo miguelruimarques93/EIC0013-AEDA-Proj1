@@ -17,8 +17,9 @@ User::User(const std::string& name) : _id(0), _name(name)
 
 void User::PrintHeader(std::ostream& os /*= std::cout*/)
 {
-    os << "----------------------------------\n";
-    os << "|  Id  | " << std::setw(_maxNameLength) << "Name" << " | Job count | Budget |\n";
+    os << "---------" << std::string(_maxNameLength, '-')    << "-----------------------\n"
+       << "|  Id  | " << std::setw(_maxNameLength) << "Name" << " | Job count | Budget |\n"
+       << "---------" << std::string(_maxNameLength, '-')    << "-----------------------\n";
 }
 
 void User::Print(std::ostream& os /*= std::cout */) const
@@ -30,13 +31,15 @@ void User::Print(std::ostream& os /*= std::cout */) const
 void AcademicUser::Print(std::ostream& os /*= std::cout */) const
 {
     User::Print(os);
-    os << " | " << std::setw(9) << std::right << _jobCount << " |      - |\n";
+    os << " | " << std::setw(9) << std::right << _jobCount << " |      - |\n"
+       << "---------" << std::string(_maxNameLength, '-')    << "-----------------------\n";
 }
 
 void EnterpriseUser::Print(std::ostream& os /*= std::cout */) const
 {
     User::Print(os);
-    os << " |         - | " << std::setw(6) << std::right << _budget << " |\n";
+    os << " |         - | " << std::setw(6) << std::right << _budget << " |\n"
+       << "---------" << std::string(_maxNameLength, '-')    << "-----------------------\n";
 }
 
 void EnterpriseUser::CreatedJob(const Job* job)
