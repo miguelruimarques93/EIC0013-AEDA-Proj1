@@ -5,6 +5,7 @@
 #include <string>
 #include <stdexcept>
 #include <sstream>
+#include <functional>
 
 class InvalidValue : public std::runtime_error
 {
@@ -19,33 +20,29 @@ public:
 };
 
 template <typename T>
-T ReadValue(std::string prompt = std::string(), std::istream& in = std::cin, std::ostream* out = &std::cout)
+T ReadValue(const std::string& prompt, std::function<bool(T)> validator)
 {
     bool success = false;
     T val = T();
 
     while (!success)
     {
-        if (out)
-            (*out) << prompt;
+        std::cout << prompt;
 
         std::string input;
-        std::getline(in, input);
+        std::getline(std::cin, input);
 
-        if (in.fail())
+        if (std::cin.fail())
         {
-            if (in.eof())
+            if (std::cin.eof())
             {
-                in.clear();
+                std::cin.clear();
                 throw EOFCharacterValue();
             }
             else
             {
-                in.clear();
-                if (out)
-                    (*out) << "Invalid value. Please try again." << std::endl;
-                else
-                    throw InvalidValue("ReadValue: Invalid value found with no out stream.");
+                std::cin.clear();
+                std::cout << "Invalid value. Please try again." << std::endl;
                 continue;
             }
         }
@@ -54,54 +51,59 @@ T ReadValue(std::string prompt = std::string(), std::istream& in = std::cin, std
         std::stringstream ss(input);
 
         if (!(ss >> val) || ss.rdbuf()->in_avail() != 0)
-        {
-            if (out)
-                (*out) << "Invalid value. Please try again." << std::endl;
-            else
-                throw InvalidValue("ReadValue: Invalid value found with no out stream.");
-        }
+            std::cout << "Invalid value. Please try again." << std::endl;
         else
-            success = true;
+        {
+            if (!validator(val))
+                std::cout << "Value does not match the requirements. Please try again." << std::endl;
+            else
+                success = true;
+        }
     }
 
     return val;
 }
 
-template<>
-inline std::string ReadValue<std::string>(std::string prompt /* = std::string()*/, std::istream& in /*= std::cin*/ , std::ostream* out/* = &std::cout */)
+template <typename T>
+T ReadValue(const std::string& prompt)
 {
-    if (out)
-        (*out) << prompt;
+    return ReadValue<T>(prompt, [](T) { return true; });
+}
+
+template<>
+inline std::string ReadValue<std::string>(const std::string& prompt, std::function<bool(std::string val)> validator)
+{
+    std::cout << prompt;
 
     std::string input;
     bool success = false;
 
     while (!success) 
     {        
-        std::getline(in, input);
+        std::getline(std::cin, input);
 
-        if (in.fail())
+        if (std::cin.fail())
         {
-            if (in.eof())
+            if (std::cin.eof())
             {
-                in.clear();
+                std::cin.clear();
                 throw EOFCharacterValue();
             }
             else
             {
-                in.clear();
-                if (out)
-                    (*out) << "Invalid value. Please try again." << std::endl;
-                else
-                    throw InvalidValue("ReadValue: Invalid value found with no out stream.");
+                std::cin.clear();
+                std::cout << "Invalid value. Please try again." << std::endl;
                 continue;
             }
         }
-        success = true;
+
+        if (!validator(input))
+            std::cout << "Value does not match the requirements. Please try again." << std::endl;
+        else
+            success = true;
     }
 
     return input;
 }
-
 
 #endif // CONSOLEREADER_H_

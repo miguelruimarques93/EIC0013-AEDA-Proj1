@@ -31,7 +31,7 @@ public:
 
     double GetPrice() const { return 0.05 * _requiredRAM; } // TODO: Find a suitable price
 
-    bool Finished() const { return (_totalExecutionTime - _elapsedTime) <= 0; }
+    bool Finished() const { return _totalExecutionTime <= _elapsedTime; }
     void Finish() { _elapsedTime = _totalExecutionTime; }
 
     bool Save(ByteBuffer& bb) const override;
