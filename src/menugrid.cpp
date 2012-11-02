@@ -17,7 +17,20 @@ void NewAcademicUser(GridManager* gm)
     std::string name;
     try
     {
-        name = ReadValue<std::string>("Name: ");
+        name = ReadValue<std::string>("Name: ",[](std::string val) 
+        { 
+            if (val.size() <= 0) 
+            {
+                std::cout << "Name cannot be empty." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            else if (val.size() > 25)
+            {
+                std::cout << "Name cannot have more than 25 characters." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        });
     }
     catch (EOFCharacterValue)
     {
@@ -39,8 +52,35 @@ void NewEnterpriseUser(GridManager* gm)
     double budget;
     try
     {
-        name = ReadValue<std::string>("Name: ");
-        budget = ReadValue<double>("Budget: ");
+        name = ReadValue<std::string>("Name: ",[](std::string val) 
+        { 
+            if (val.size() <= 0) 
+            {
+                std::cout << "Name cannot be empty." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            else if (val.size() > 25)
+            {
+                std::cout << "Name cannot have more than 25 characters." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        });
+
+        budget = ReadValue<double>("Budget: ",[](double val) 
+        { 
+            if (val < 0) 
+            {
+                std::cout << "Budget cannot be negative." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            else if (val > 99999)
+            {
+                std::cout << "Budget cannot be greater than 99999 €." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        });
     }
     catch (EOFCharacterValue)
     {
@@ -59,9 +99,21 @@ void NewEnterpriseUser(GridManager* gm)
 void RemoveUser(GridManager* gm)
 {
     uint id;
+
+    if (gm->GetNumberOfUsers() == 0)
+        throw std::runtime_error("There are no users in the GridManager.");
+
     try
     {
-        id = ReadValue<uint>("Id: ");
+        id = ReadValue<uint>("Id: ",[gm](uint val) 
+        { 
+            if (!gm->GetUser(val)) 
+            {
+                std::cout << "Id """ << val << """ is not currently in use."<< std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        });
     }
     catch (EOFCharacterValue)
     {
@@ -87,11 +139,58 @@ void NewMachine(GridManager* gm)
 
     try
     {
-        name = ReadValue<std::string>("Name: ");
-        maxJobs = ReadValue<uint>("Max number of jobs: ");
-        totalRAM = ReadValue<double>("Amount of RAM: ");
-        totalDiskSpace = ReadValue<double>("Amount of disk space: ");
-
+        name = ReadValue<std::string>("Name: ",[](std::string val) 
+        { 
+            if (val.size() <= 0) 
+            {
+                std::cout << "Name cannot be empty." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            else if (val.size() > 25)
+            {
+                std::cout << "Name cannot have more than 25 characters." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        });
+        maxJobs = ReadValue<uint>("Max number of jobs: ",[](uint val)
+        {
+            if (val > 9999)
+            {
+                std::cout << "Max number of Jobs cannot be greater than 9999." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        });
+        totalRAM = ReadValue<double>("Amount of RAM: ",[](double val) 
+        { 
+            if (val < 0) 
+            {
+                std::cout << "Amount of RAM cannot be negative." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            else if (val > 99999)
+            {
+                std::cout << "Amount of RAM cannot be greater than 99999 MB." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        });
+        totalDiskSpace = ReadValue<double>("Amount of disk space: ",[](double val) 
+        { 
+            if (val < 0) 
+            {
+                std::cout << "Amount of disk space cannot be negative." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            else if (val > 99999)
+            {
+                std::cout << "Amount of disk space cannot be greater than 99999 MB." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        });
+        
         std::cout << "Available software (-1 to end list): " << std::endl;
 
         for (int i = 1; i <= 100; ++i)
@@ -116,6 +215,7 @@ void NewMachine(GridManager* gm)
                 --i;
             }
         }
+
     }
     catch (EOFCharacterValue)
     {
@@ -138,9 +238,20 @@ void RemoveMachine(GridManager* gm)
 {
     uint id;
 
+    if (gm->GetNumberOfMachines() == 0)
+        throw std::runtime_error("There are no machines in the GridManager.");
+
     try
     {
-        id = ReadValue<uint>("Id: ");
+        id = ReadValue<uint>("Id: ",[gm](uint val) 
+        { 
+            if (!gm->GetMachine(val)) 
+            {
+                std::cout << "Id """ << val << """ is not currently in use."<< std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        });
     }
     catch (EOFCharacterValue)
     {
@@ -166,15 +277,83 @@ void NewJob(GridManager* gm)
     uint executionTime;
     std::vector<Software> software;
 
+    if (gm->GetNumberOfMachines() == 0)
+        throw std::runtime_error("There are no machines in the GridManager.");
+
+    if (gm->GetNumberOfUsers() == 0)
+        throw std::runtime_error("There are no users in the GridManager.");
+
     try
     {
-        userId = ReadValue<uint>("User Id: ");
-        name = ReadValue<std::string>("Name: ");
-        priority = static_cast<uint8>(ReadValue<uint16>("Priority (0-100%): "));
-        requiredRAM = ReadValue<double>("Required RAM usage (MB): ");
-        requiredDiskSpace = ReadValue<double>("Required disk space usage (MB): ");
-        executionTime = ReadValue<uint>("Estimated execution time (s): ");
-
+        userId = ReadValue<uint>("User Id: ",[gm](uint val) 
+        { 
+            if (!gm->GetUser(val)) 
+            {
+                std::cout << "Id """ << val << """ is not currently in use."<< std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        });
+        name = ReadValue<std::string>("Name: ",[](std::string val) 
+        { 
+            if (val.size() <= 0) 
+            {
+                std::cout << "Name cannot be empty." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            else if (val.size() > 25)
+            {
+                std::cout << "Name cannot have more than 25 characters." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        });
+        priority = static_cast<uint8>(ReadValue<uint16>("Priority (0-100%): ",[](uint16 val)
+        {
+            if (val < 0 || val > 100)
+            {
+                std::cout << "Priority must be between 0 % and 100 %."<< std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        }));
+        requiredRAM = ReadValue<double>("Required RAM usage (MB): ",[](double val) 
+        { 
+            if (val < 0) 
+            {
+                std::cout << "Required RAM cannot be negative." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            else if (val > 99999)
+            {
+                std::cout << "Required RAM cannot be greater than 99999 MB." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        });
+        requiredDiskSpace = ReadValue<double>("Required disk space usage (MB): ",[](double val) 
+        { 
+            if (val < 0) 
+            {
+                std::cout << "Required disk space cannot be negative." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            else if (val > 99999)
+            {
+                std::cout << "Required disk space cannot be greater than 99999 MB." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        });
+        executionTime = ReadValue<uint>("Estimated execution time (s): ",[](uint val)
+        {
+            if (val > 99999)
+            {
+                std::cout << "Estimated execution time cannot be greater than 99999 s." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        });
         std::cout << "Required software (-1 to end list): " << std::endl;
         
         // duplicated code with NewMachine()
@@ -230,6 +409,9 @@ void SearchUsers(GridManager* gm)
         All = 4
     };
 
+    if (gm->GetNumberOfUsers() == 0)
+        throw std::runtime_error("There are no users in the GridManager.");
+
     static Menu* searchMenu = Loader<Menu>("userSearchMenu.txt").Load();
 
     uint option = searchMenu->Print();
@@ -245,7 +427,20 @@ void SearchUsers(GridManager* gm)
         }
     case ByName:
         {
-            std::string name = ReadValue<std::string>("Name: ");
+            std::string name = ReadValue<std::string>("Name: ",[](std::string val) 
+            { 
+                if (val.size() <= 0) 
+                {
+                    std::cout << "Name cannot be empty." << std::endl << "Please try again." << std::endl;
+                    return false;
+                }
+                else if (val.size() > 25)
+                {
+                    std::cout << "Name cannot have more than 25 characters." << std::endl << "Please try again." << std::endl;
+                    return false;
+                }
+                return true;
+            });
             vec = gm->ApplyPredicate<User>([name](User* user) { return user->GetName() == name; });
             break;
         }
@@ -261,7 +456,7 @@ void SearchUsers(GridManager* gm)
         }
     case All:
         {
-            vec = gm->ApplyPredicate<User>([](User* user) { return true; });
+            vec = gm->ApplyPredicate<User>([](User*) { return true; });
             break;
         }
     }
@@ -269,12 +464,13 @@ void SearchUsers(GridManager* gm)
     if (vec.size() == 0)
     {
         std::cout << "No results." << std::endl;
-        return;
     }
-
-    User::PrintHeader();
-    for (User* user : vec)
-        user->Print();
+    else
+    {
+        User::PrintHeader();
+        for (User* user : vec)
+            user->Print();
+    }
 
     PauseConsole();
     ClearConsole();
@@ -290,6 +486,9 @@ void SearchMachines(GridManager* gm)
         ByNumberJobs = 4,
         All = 5
     };
+
+    if (gm->GetNumberOfMachines() == 0)
+        throw std::runtime_error("There are no machines in the GridManager.");
 
     static Menu* searchMenu = Loader<Menu>("machineSearchMenu.txt").Load();
 
@@ -307,7 +506,20 @@ void SearchMachines(GridManager* gm)
             }
         case ByName:
             {
-                std::string name = ReadValue<std::string>("Name: ");
+                std::string name = ReadValue<std::string>("Name: ",[](std::string val) 
+                { 
+                    if (val.size() <= 0) 
+                    {
+                        std::cout << "Name cannot be empty." << std::endl << "Please try again." << std::endl;
+                        return false;
+                    }
+                    else if (val.size() > 25)
+                    {
+                        std::cout << "Name cannot have more than 25 characters." << std::endl << "Please try again." << std::endl;
+                        return false;
+                    }
+                    return true;
+                });
                 vec = gm->ApplyPredicate<Machine>([name](Machine* machine) { return machine->GetName() == name; });
                 break;
             }
@@ -432,12 +644,13 @@ void SearchMachines(GridManager* gm)
     if (vec.size() == 0)
     {
         std::cout << "No results." << std::endl;
-        return;
     }
-
-    Machine::PrintHeader(std::cout);
-    for (Machine* machine : vec)
-        machine->Print(std::cout);
+    else
+    {
+        Machine::PrintHeader(std::cout);
+        for (Machine* machine : vec)
+            machine->Print(std::cout);
+    }
 
     PauseConsole();
     ClearConsole();
@@ -455,8 +668,10 @@ void SearchJobs(GridManager* gm)
         All = 6
     };
 
-    std::vector<Job*> vec;
+    if (gm->GetNumberOfJobs() == 0)
+        throw std::runtime_error("There are no jobs executing.");
 
+    std::vector<Job*> vec;
 
     static Menu* searchMenu = Loader<Menu>("jobSearchMenu.txt").Load();
 
@@ -474,7 +689,20 @@ void SearchJobs(GridManager* gm)
             }
         case ByName:
             {
-                std::string name = ReadValue<std::string>("Name: ");
+                std::string name = ReadValue<std::string>("Name: ",[](std::string val) 
+                { 
+                    if (val.size() <= 0) 
+                    {
+                        std::cout << "Name cannot be empty." << std::endl << "Please try again." << std::endl;
+                        return false;
+                    }
+                    else if (val.size() > 25)
+                    {
+                        std::cout << "Name cannot have more than 25 characters." << std::endl << "Please try again." << std::endl;
+                        return false;
+                    }
+                    return true;
+                });
                 vec = gm->ApplyPredicate<Job>([name](Job* job) { return job->GetName() == name; });
                 break;
             }
@@ -634,12 +862,13 @@ void SearchJobs(GridManager* gm)
     if (vec.size() == 0)
     {
         std::cout << "No results." << std::endl;
-        return;
     }
-
-    Job::PrintHeader(std::cout);
-    for (Job* job : vec)
+    else
+    {
+        Job::PrintHeader(std::cout);
+        for (Job* job : vec)
         job->Print(std::cout);
+    }
 
     PauseConsole();
     ClearConsole();
@@ -654,12 +883,15 @@ void ChangeUserInfo(GridManager* gm)
 
     try
     {
-        do
-        {
-            user = gm->GetUser(ReadValue<uint>("Id: "));
-            if (!user)
-                std::cout << "User ID doesn't exists." << std::endl << "Please try again..." << std::endl << std::endl;
-        } while (!user);
+        user = gm->GetUser(ReadValue<uint>("Id: ",[gm](uint val) 
+        { 
+            if (!gm->GetUser(val)) 
+            {
+                std::cout << "Id """ << val << """ is not currently in use."<< std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        }));
     }
     catch (EOFCharacterValue)
     {
@@ -684,8 +916,22 @@ void ChangeUserInfo(GridManager* gm)
 
             case 1:
                 {
-                    std::string val = ReadValue<std::string>("New name: ");
+                    std::string val = ReadValue<std::string>("New name: ",[](std::string val) 
+                    { 
+                        if (val.size() <= 0) 
+                        {
+                            std::cout << "Name cannot be empty." << std::endl << "Please try again." << std::endl;
+                            return false;
+                        }
+                        else if (val.size() > 25)
+                        {
+                            std::cout << "Name cannot have more than 25 characters." << std::endl << "Please try again." << std::endl;
+                            return false;
+                        }
+                        return true;
+                    });
                     user->SetName(val);
+                    std::cout << "User name changed with success." << std::endl;
                     success = true;
                     break;
                 }
@@ -694,8 +940,22 @@ void ChangeUserInfo(GridManager* gm)
                 {
                     if (typeid(user) == typeid(EnterpriseUser*))
                     {
-                        double val = ReadValue<double>("New budget: ");
+                        double val = ReadValue<double>("New budget: ",[](double val) 
+                        { 
+                            if (val < 0) 
+                            {
+                                std::cout << "Budget cannot be negative." << std::endl << "Please try again." << std::endl;
+                                return false;
+                            }
+                            else if (val > 99999)
+                            {
+                                std::cout << "Budget cannot be greater than 99999 €." << std::endl << "Please try again." << std::endl;
+                                return false;
+                            }
+                            return true;
+                        });
                         ((EnterpriseUser*)user)->SetBudget(val);
+                        std::cout << "Enterprise user budget changed with success." << std::endl;
                         success = true;
                     }
                     else
@@ -721,12 +981,15 @@ void ChangeMachineInfo(GridManager* gm)
 
     try
     {
-        do
-        {
-            machine = gm->GetMachine(ReadValue<uint>("Id: "));
-            if (!machine)
-                std::cout << "Machine ID doesn't exists." << std::endl << "Please try again..." << std::endl << std::endl;
-        } while (!machine);
+        machine = gm->GetMachine(ReadValue<uint>("Id: ",[gm](uint val) 
+        { 
+            if (!gm->GetMachine(val)) 
+            {
+                std::cout << "Id """ << val << """ is not currently in use."<< std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        }));
     }
     catch (EOFCharacterValue)
     {
@@ -750,15 +1013,42 @@ void ChangeMachineInfo(GridManager* gm)
 
             case 1: // Change Machine Name
                 {
-                    std::string val = ReadValue<std::string>("New name: ");
+                    std::string val = ReadValue<std::string>("New name: ",[](std::string val) 
+                    { 
+                        if (val.size() <= 0) 
+                        {
+                            std::cout << "Name cannot be empty." << std::endl << "Please try again." << std::endl;
+                            return false;
+                        }
+                        else if (val.size() > 25)
+                        {
+                            std::cout << "Name cannot have more than 25 characters." << std::endl << "Please try again." << std::endl;
+                            return false;
+                        }
+                        return true;
+                    });
                     machine->SetName(val);
+                    std::cout << "Machine name changed with success." << std::endl;
                     success = true;
                     break;
                 }
 
             case 2: // Change Machine Ram
                 {
-                    double ram = ReadValue<double>("New RAM: ");
+                    double ram = ReadValue<double>("New RAM: ",[](double val) 
+                    { 
+                        if (val < 0) 
+                        {
+                            std::cout << "Amount of RAM cannot be negative." << std::endl << "Please try again." << std::endl;
+                            return false;
+                        }
+                        else if (val > 99999)
+                        {
+                            std::cout << "Amount of RAM cannot be greater than 99999 MB." << std::endl << "Please try again." << std::endl;
+                            return false;
+                        }
+                        return true;
+                    });
                     try
                     {
                         machine->SetTotalRAM(ram);
@@ -770,13 +1060,27 @@ void ChangeMachineInfo(GridManager* gm)
                         ClearConsole();
                         return;
                     }
+                    std::cout << "Machine RAM changed with success." << std::endl;
                     success = true;
                     break;
                 }
 
             case 3: // Change Machine Disk Space
                 {
-                    double diskSpace = ReadValue<double>("New Disk Space: ");
+                    double diskSpace = ReadValue<double>("New Disk Space: ",[](double val) 
+                    { 
+                        if (val < 0) 
+                        {
+                            std::cout << "Amount of disk space cannot be negative." << std::endl << "Please try again." << std::endl;
+                            return false;
+                        }
+                        else if (val > 99999)
+                        {
+                            std::cout << "Amount of disk space cannot be greater than 99999 MB." << std::endl << "Please try again." << std::endl;
+                            return false;
+                        }
+                        return true;
+                    });
                     try
                     {
                         machine->SetTotalDiskSpace(diskSpace);
@@ -788,13 +1092,22 @@ void ChangeMachineInfo(GridManager* gm)
                         ClearConsole();
                         return;
                     }
+                    std::cout << "Machine disck space changed with success." << std::endl;
                     success = true;
                     break;
                 }
 
             case 4: // Change Machine Max Jobs
                 {
-                    uint maxJobs = ReadValue<uint>("New Max Jobs: ");
+                    uint maxJobs = ReadValue<uint>("New Max Jobs: ",[](uint val)
+                    {
+                        if (val > 9999)
+                        {
+                            std::cout << "Max number of Jobs cannot be greater than 9999." << std::endl << "Please try again." << std::endl;
+                            return false;
+                        }
+                        return true;
+                    });
                     try
                     {
                         machine->SetMaxJobs(maxJobs);
@@ -806,13 +1119,14 @@ void ChangeMachineInfo(GridManager* gm)
                         ClearConsole();
                         return;
                     }
+                    std::cout << "Machine max number of jobs changed with success." << std::endl;
                     success = true;
                     break;
                 }
 
             case 5: // Change Machine Available Software
                 {
-                    PauseConsole("Not implemented yet.\n Press any key to continue...");
+                    PauseConsole("Not implemented yet.\n Press enter to continue...");
                     ClearConsole();
                     success = true;
                     break;
@@ -825,4 +1139,6 @@ void ChangeMachineInfo(GridManager* gm)
         throw ActionCanceled("Change Machine Information");
     }
 
+    PauseConsole();
+    ClearConsole();
 }
