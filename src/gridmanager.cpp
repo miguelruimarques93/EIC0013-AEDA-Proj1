@@ -201,7 +201,7 @@ bool GridManager::AddJobByUser(User* user, Job* job)
         return false;
 
     if (!user->CanCreateJob(job))
-        return false;
+        throw std::runtime_error("Can't create Job because User doesn't have enough budget.");
 
     if (!AddJob(job))
         return false;

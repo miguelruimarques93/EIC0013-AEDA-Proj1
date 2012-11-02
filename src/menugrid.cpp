@@ -388,12 +388,12 @@ void NewJob(GridManager* gm)
 
     Job* job = new Job(name, priority, requiredRAM, requiredDiskSpace, executionTime);
 
-    std::for_each(software.begin(), software.end(), [&job](const Software& sw) { job->AddRequiredSoftwareSoftware(sw); });
+    std::for_each(software.begin(), software.end(), [&job](const Software& sw) { job->AddRequiredSoftware(sw); });
 
     if (gm->AddJobByUser(userId, job))
         std::cout << "Job added successfully." << std::endl;
     else
-        std::cout << "Could not create job." << std::endl; // why not?
+        std::cout << "Could not create job because there are no available machines that meet the needed requirements for this job right now." << std::endl; // why not?
 
     PauseConsole();
     ClearConsole();
