@@ -164,6 +164,7 @@ void NewJob(GridManager* gm)
     double requiredRAM;
     double requiredDiskSpace;
     uint executionTime;
+    std::vector<Software> software;
 
     try
     {
@@ -173,6 +174,33 @@ void NewJob(GridManager* gm)
         requiredRAM = ReadValue<double>("Required RAM usage (MB): ");
         requiredDiskSpace = ReadValue<double>("Required disk space usage (MB): ");
         executionTime = ReadValue<uint>("Estimated execution time (s): ");
+
+        std::cout << "Required software (-1 to end list): " << std::endl;
+        
+        // duplicated code with NewMachine()
+        for (int i = 1; i <= 100; ++i)
+        {
+            char temp[3];
+            sprintf_s(temp, "%i", i);
+
+            std::string prompt = "\t" + std::string(temp) + " - ";
+
+            const std::string input = ReadValue<std::string>(prompt);
+
+            if (input == "-1")
+                break;
+
+            std::tuple<bool, Software> sw = Software::ReadFromString(input);
+
+            if (std::get<0>(sw))
+                software.push_back(std::get<1>(sw));
+            else
+            {
+                std::cout << "Software needs to be in the format \"name major.minor.revision\". Try again." << std::endl;
+                --i;
+            }
+        }
+
     }
     catch (EOFCharacterValue)
     {
@@ -180,6 +208,9 @@ void NewJob(GridManager* gm)
     }
 
     Job* job = new Job(name, priority, requiredRAM, requiredDiskSpace, executionTime);
+
+    std::for_each(software.begin(), software.end(), [&job](const Software& sw) { job->AddRequiredSoftwareSoftware(sw); });
+
     if (gm->AddJobByUser(userId, job))
         std::cout << "Job added successfully." << std::endl;
     else
