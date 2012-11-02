@@ -7,10 +7,10 @@
 #include "menu.h"
 #include "gridmanager.h"
 #include "loader.h"
+#include "software.h"
+
 #include <iostream>
 #include <typeinfo>
-
-
 
 void NewAcademicUser(GridManager* gm)
 {
@@ -79,10 +79,11 @@ void RemoveUser(GridManager* gm)
 
 void NewMachine(GridManager* gm)
 {
-    std::string name;      
-    uint maxJobs;          
-    double totalRAM;       
-    double totalDiskSpace; 
+    std::string name;
+    uint maxJobs;
+    double totalRAM;
+    double totalDiskSpace;
+    std::vector<Software> software;
 
     try
     {
@@ -90,6 +91,31 @@ void NewMachine(GridManager* gm)
         maxJobs = ReadValue<uint>("Max number of jobs: ");
         totalRAM = ReadValue<double>("Amount of RAM: ");
         totalDiskSpace = ReadValue<double>("Amount of disk space: ");
+
+        std::cout << "Available software (-1 to end list): " << std::endl;
+
+        for (int i = 1; i <= 100; ++i)
+        {
+            char temp[3];
+            sprintf_s(temp, "%i", i);
+
+            std::string prompt = "\t" + std::string(temp) + " - ";
+
+            const std::string input = ReadValue<std::string>(prompt);
+
+            if (input == "-1")
+                break;
+
+            std::tuple<bool, Software> sw = Software::ReadFromString(input);
+
+            if (std::get<0>(sw))
+                software.push_back(std::get<1>(sw));
+            else
+            {
+                std::cout << "Software needs to be in the format \"name major.minor.revision\". Try again." << std::endl;
+                --i;
+            }
+        }
     }
     catch (EOFCharacterValue)
     {
@@ -97,6 +123,9 @@ void NewMachine(GridManager* gm)
     }
 
     Machine* machine = new Machine(name, maxJobs, totalRAM, totalDiskSpace);
+
+    std::for_each(software.begin(), software.end(), [&machine](const Software& sw) { machine->AddAvailableSoftware(sw); });
+
     uint id = gm->AddMachine(machine);
 
     std::cout << "Machine created, assigned id " << id << "." << std::endl;
@@ -107,7 +136,7 @@ void NewMachine(GridManager* gm)
 
 void RemoveMachine(GridManager* gm)
 {
-    uint id; 
+    uint id;
 
     try
     {
@@ -129,12 +158,12 @@ void RemoveMachine(GridManager* gm)
 
 void NewJob(GridManager* gm)
 {
-    uint userId;             
-    std::string name;        
-    uint8 priority;          
-    double requiredRAM;      
+    uint userId;
+    std::string name;
+    uint8 priority;
+    double requiredRAM;
     double requiredDiskSpace;
-    uint executionTime;      
+    uint executionTime;
 
     try
     {
@@ -393,7 +422,7 @@ void SearchJobs(GridManager* gm)
         ByPriority = 4,
         ByElapseTime =5,
         All = 6
-    };  
+    };
 
     std::vector<Job*> vec;
 
@@ -579,7 +608,7 @@ void SearchJobs(GridManager* gm)
 
     Job::PrintHeader(std::cout);
     for (Job* job : vec)
-        job->Print(std::cout);  
+        job->Print(std::cout);
 
     PauseConsole();
     ClearConsole();
@@ -594,7 +623,7 @@ void ChangeUserInfo(GridManager* gm)
 
     try
     {
-        do 
+        do
         {
             user = gm->GetUser(ReadValue<uint>("Id: "));
             if (!user)
@@ -611,7 +640,7 @@ void ChangeUserInfo(GridManager* gm)
 
     try
     {
-        do 
+        do
         {
             uint32 option = User::GetMenu()->Print();
 
@@ -661,7 +690,7 @@ void ChangeMachineInfo(GridManager* gm)
 
     try
     {
-        do 
+        do
         {
             machine = gm->GetMachine(ReadValue<uint>("Id: "));
             if (!machine)
@@ -677,7 +706,7 @@ void ChangeMachineInfo(GridManager* gm)
 
     try
     {
-        do 
+        do
         {
             uint32 option = Machine::GetMenu()->Print();
 

@@ -76,7 +76,7 @@ public:
     EnterpriseUser(const std::string& name, double budget) : User(name), _budget(budget) {}
 
     double GetBudget() const { return _budget; }
-    
+
     void SetBudget(double val) { _budget = val; }
 
     bool Save(ByteBuffer& bb) const override;

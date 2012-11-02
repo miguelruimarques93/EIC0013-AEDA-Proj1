@@ -42,6 +42,9 @@ public:
     void Print(std::ostream& os = std::cout) const override;
     static void PrintHeader(std::ostream& os = std::cout);
 
+    void AddRequiredSoftware(const Software& sw) { _requiredSoftware.insert(sw); }
+    bool IsRequiredSoftware(const Software& sw) const { return _requiredSoftware.find(sw) != _requiredSoftware.end(); }
+
 private:
     const double _requiredRAM;
     const double _requiredDiskSpace;

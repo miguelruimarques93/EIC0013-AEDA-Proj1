@@ -7,11 +7,15 @@
 #include <string>
 #include <functional>
 #include <sstream>
+#include <tuple>
+#include <regex>
 
 struct Software : public ISave
 {
     Software(const std::string& name, int major, int minor, int revision)
         : Name(name), Version(major, minor, revision) {}
+
+    Software() : Name(""), Version(0, 0, 0) {} // do not use
 
     bool Save(ByteBuffer& bb) const override
     {
@@ -73,6 +77,18 @@ struct Software : public ISave
             return std::hash<std::string>()(sw.Name) ^ Software::VersionData::Hash()(sw.Version);
         }
     };
+
+    static std::tuple<bool, Software> ReadFromString(const std::string& name)
+    {
+        const std::regex pattern("([A-Za-z0-9\\s]+) ([0-9]+)\\.([0-9]+)\\.([0-9]+)");
+
+        std::match_results<std::string::const_iterator> result;
+
+        if (!std::regex_match(name, result, pattern))
+            return std::make_tuple(false, Software());
+
+        return std::make_tuple(true, Software(result[1], std::atoi(result[2].str().c_str()), std::atoi(result[3].str().c_str()), std::atoi(result[4].str().c_str())));
+    }
 };
 
 #endif // SOFTWARE_H_

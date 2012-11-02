@@ -200,8 +200,8 @@ void Machine::Print(std::ostream& os /* = std::cout */) const
 void Machine::SetMaxJobs(uint val)
 {
     if (val < _currentJobs.size())   // If the value is smaller than the current number of jobs we can't modify this parameter.
-        throw MachineInExecution(this); 
-    
+        throw MachineInExecution(this);
+
     _maxJobs = val;
 }
 

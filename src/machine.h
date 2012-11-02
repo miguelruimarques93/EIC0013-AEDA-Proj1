@@ -54,10 +54,10 @@ public:
     void SetTotalDiskSpace(double val);
 
     uint GetId() const { return _id; }
-
-    void AddRequiredSoftware(const Software& sw) { _availableSoftware.insert(sw); }
-    bool IsRequiredSoftware(const Software& sw) const { return _availableSoftware.find(sw) != _availableSoftware.end(); }
     void SetId(uint id) { _id = id; }
+
+    void AddAvailableSoftware(const Software& sw) { _availableSoftware.insert(sw); }
+    bool IsAvailableSoftware(const Software& sw) const { return _availableSoftware.find(sw) != _availableSoftware.end(); }
 
     bool AddJob(Job* job);
     bool RemoveJob(uint id);
