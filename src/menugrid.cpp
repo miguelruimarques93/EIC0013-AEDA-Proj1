@@ -1092,7 +1092,7 @@ void ChangeMachineInfo(GridManager* gm)
                         ClearConsole();
                         return;
                     }
-                    std::cout << "Machine disck space changed with success." << std::endl;
+                    std::cout << "Machine disk space changed with success." << std::endl;
                     success = true;
                     break;
                 }
