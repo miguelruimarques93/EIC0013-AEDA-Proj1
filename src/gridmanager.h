@@ -12,7 +12,7 @@ class Job;
 class Machine;
 class User;
 
-//! Hard coded save file. 
+//! Hard coded save file.
 #define GRID_SAVE_FILE "gridComputing.grid"
 
 //! GridManager Class
@@ -36,7 +36,7 @@ public:
     */
     uint AddUser(User* user);
 
-    /** 
+    /**
     *   @brief Add a Machine.
     *   @param  machine a pointer to the machine to be added.
     *   @return The ID of the added machine.
@@ -50,7 +50,7 @@ public:
     */
     bool RemoveUser(const User* user);
 
-    /** 
+    /**
     *   @brief Removes the user with the given ID.
     *   @param  id of the user to be removed.
     *   @return A boolean value that indicates whether the removal was successful or not.
@@ -64,7 +64,7 @@ public:
     */
     bool RemoveMachine(const Machine* machine);
 
-    /** 
+    /**
     *   @brief Removes the given machine with the given ID.
     *   @param  id of the machine to be removed.
     *   @return A boolean value that indicates whether the removal was successful or not.

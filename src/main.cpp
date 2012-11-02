@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
     }
 
     std::unique_ptr<GridManager> gm;
-    
+
     try
     {
         gm = std::unique_ptr<GridManager>(Loader<GridManager>(GRID_SAVE_FILE).Load());
@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
 
         File::Remove(GRID_SAVE_FILE);
     }
-    
+
     if (!gm.get()) // no previous saves
         gm = std::unique_ptr<GridManager>(new GridManager());
 
@@ -70,7 +70,7 @@ int main(int argc, char* argv[])
             ClearConsole();
             continue;
         }
-        
+
     }
 
     ByteBuffer bb(100);

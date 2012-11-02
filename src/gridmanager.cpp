@@ -152,7 +152,7 @@ void GridManager::Run()
         if (saveDiff >= 5000) // save every 5 seconds
         {
             saveDiff = 0;
-            
+
             if (!Saver<GridManager>(GRID_SAVE_FILE).Save(this))
                 sLog(Console)->Log("GridManager save failed in Update()");
         }

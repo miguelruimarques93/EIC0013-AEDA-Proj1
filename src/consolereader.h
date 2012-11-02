@@ -78,8 +78,8 @@ inline std::string ReadValue<std::string>(const std::string& prompt, std::functi
     std::string input;
     bool success = false;
 
-    while (!success) 
-    {        
+    while (!success)
+    {
         std::getline(std::cin, input);
 
         if (std::cin.fail())

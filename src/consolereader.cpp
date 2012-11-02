@@ -8,8 +8,8 @@ std::string ReadValueStr(std::string prompt /*= std::string()*/, std::istream& i
     std::string input;
     bool success = false;
 
-    while (!success) 
-    {        
+    while (!success)
+    {
         std::getline(in, input);
 
         if (in.fail())
