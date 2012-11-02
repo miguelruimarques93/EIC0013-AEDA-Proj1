@@ -32,14 +32,14 @@ void AcademicUser::Print(std::ostream& os /*= std::cout */) const
 {
     User::Print(os);
     os << " | " << std::setw(9) << std::right << _jobCount << " |      - |\n"
-       << "---------" << std::string(_maxNameLength, '-')    << "-----------------------\n";
+       << "---------" << std::string(_maxNameLength, '-') << "-----------------------\n";
 }
 
 void EnterpriseUser::Print(std::ostream& os /*= std::cout */) const
 {
     User::Print(os);
     os << " |         - | " << std::setw(6) << std::right << _budget << " |\n"
-       << "---------" << std::string(_maxNameLength, '-')    << "-----------------------\n";
+       << "---------" << std::string(_maxNameLength, '-') << "-----------------------\n";
 }
 
 void EnterpriseUser::CreatedJob(const Job* job)
