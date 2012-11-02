@@ -8,11 +8,13 @@
 #include "menugrid.h"
 #include "consolereader.h"
 
+#include <memory>
+
 #define MENU_SAVE_FILE "mainMenu.txt"
 
 int main(int argc, char* argv[])
 {
-    std::auto_ptr<Menu> menu(Loader<Menu>(MENU_SAVE_FILE).Load());
+    std::unique_ptr<Menu> menu(Loader<Menu>(MENU_SAVE_FILE).Load());
 
     if (!menu.get())
     {
@@ -20,11 +22,11 @@ int main(int argc, char* argv[])
         return EXIT_FAILURE;
     }
 
-    std::auto_ptr<GridManager> gm;
+    std::unique_ptr<GridManager> gm;
     
     try
     {
-        gm = std::auto_ptr<GridManager>(Loader<GridManager>(GRID_SAVE_FILE).Load());
+        gm = std::unique_ptr<GridManager>(Loader<GridManager>(GRID_SAVE_FILE).Load());
     }
     catch (std::exception)
     {
@@ -35,7 +37,7 @@ int main(int argc, char* argv[])
     }
     
     if (!gm.get()) // no previous saves
-        gm = std::auto_ptr<GridManager>(new GridManager());
+        gm = std::unique_ptr<GridManager>(new GridManager());
 
     bool executing = true;
 

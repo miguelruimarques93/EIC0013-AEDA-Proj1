@@ -71,7 +71,7 @@ T ReadValue(const std::string& prompt)
 }
 
 template<>
-inline std::string ReadValue<std::string>(const std::string& prompt, std::function<bool(std::string val)> validator)
+inline std::string ReadValue<std::string>(const std::string& prompt, std::function<bool(std::string)> validator)
 {
     std::cout << prompt;
 
