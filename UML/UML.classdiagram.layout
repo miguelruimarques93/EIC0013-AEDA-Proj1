@@ -112,7 +112,7 @@
       <generalizationMoniker Id="dffe0af8-3f03-483d-887a-85405d392e07" />
       <relativeChildShapes />
       <moveableDecoratorHostShapes>
-        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="6.2866753339767465, 3.8216145783662796, 0.125, 0.1341145783662796" shapeFieldName="Stereotype" />
+        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="6.2936197780072707, 3.8216145783662796, 0.125, 0.1341145783662796" shapeFieldName="Stereotype" />
       </moveableDecoratorHostShapes>
       <nodes>
         <classShapeMoniker Id="70b799d2-cd8f-4d43-8cb2-2de53222c51a" />
@@ -227,7 +227,7 @@
         <interfaceShapeMoniker Id="42c4779d-07c2-40d3-b716-751350f1e031" />
       </nodes>
     </realizationConnector>
-    <realizationConnector edgePoints="[(10.75 : 1.40234373509884); (10.75 : 1.89968238565719); (8.625 : 1.89968238565719); (8.625 : 4.375)]" manuallyRouted="true" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" showAsLollipop="false">
+    <realizationConnector edgePoints="[(10.75 : 1.40234373509884); (10.75 : 1.89968238565719); (8.625 : 1.89968238565719); (8.625 : 4.375)]" manuallyRouted="true" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" showAsLollipop="false">
       <interfaceRealizationMoniker Id="ad98bbd2-fcd2-4e93-b72f-01685fc15e17" />
       <relativeChildShapes />
       <nodes>
@@ -313,7 +313,7 @@
         <interfaceShapeMoniker Id="ef2f455c-e589-469d-aadc-ba7135a05feb" />
       </nodes>
     </realizationConnector>
-    <realizationConnector edgePoints="[(10.75 : 1.40234373509884); (10.75 : 1.57942706843217); (12.625 : 1.57942706843217); (12.625 : 2.75)]" manuallyRouted="true" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" showAsLollipop="false">
+    <realizationConnector edgePoints="[(10.75 : 1.40234373509884); (10.75 : 1.57942706843217); (12.625 : 1.57942706843217); (12.625 : 2.75)]" manuallyRouted="true" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" showAsLollipop="false">
       <interfaceRealizationMoniker Id="66410c1f-82b7-4f1a-bde5-32bf48226288" />
       <relativeChildShapes />
       <nodes>

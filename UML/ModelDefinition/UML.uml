@@ -2,89 +2,7 @@
 <modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="6cb3895b-4cd2-4aa2-9784-609158a2d7b0"
-  name="Freixo" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
-  <appliedStereotypesInternal>
-    <stereotypeInstance
-      Id="d608282c-f0ba-4bdc-a30f-2e17b615c7cb"
-      name="namespace"
-      profile="CSharpProfile">
-      <propertyInstances>
-        <stereotypeInstanceHasPropertyInstances
-          Id="ffe49466-720d-4490-b76b-8d7ea48d1779">
-          <propertyInstance
-            Id="5c49339f-f1c7-4dc1-969f-ed22cdbe121c"
-            name="BaseName" />
-        </stereotypeInstanceHasPropertyInstances>
-        <stereotypeInstanceHasPropertyInstances
-          Id="89f166ac-a2cf-498d-adc4-429f8a8daeb0">
-          <propertyInstance
-            Id="2fda084b-c3ea-488e-984a-ff18e736bf49"
-            name="ClrAttributes" />
-        </stereotypeInstanceHasPropertyInstances>
-        <stereotypeInstanceHasPropertyInstances
-          Id="f971812c-1b0d-4174-aec4-c4b4436f323f">
-          <propertyInstance
-            Id="68ded8a1-bcbf-495e-baec-c5c2bc081cb1"
-            name="Usings" />
-        </stereotypeInstanceHasPropertyInstances>
-      </propertyInstances>
-    </stereotypeInstance>
-    <stereotypeInstance
-      Id="9d5e2d20-99d0-493a-aced-e52a30c5eb63"
-      name="TextTemplateBindings"
-      profile="TextTemplateBindings">
-      <propertyInstances>
-        <stereotypeInstanceHasPropertyInstances
-          Id="f3e27d60-6571-49a9-814f-04857372501d">
-          <propertyInstance
-            Id="7b032b54-b55c-4d48-bc70-ac82de22c30c"
-            name="Alias"
-            value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate" />
-        </stereotypeInstanceHasPropertyInstances>
-        <stereotypeInstanceHasPropertyInstances
-          Id="dbb15e97-6abd-4337-8faa-82be426a3ab1">
-          <propertyInstance
-            Id="1c91ba5b-c3bf-4fe8-891a-72d11cb71ae1"
-            name="TemplateFilePath"
-            value="ClassTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4|EnumTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4|InterfaceTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4|StructTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
-        </stereotypeInstanceHasPropertyInstances>
-        <stereotypeInstanceHasPropertyInstances
-          Id="a7b9d8e7-6c1f-4b43-83ec-9148ce5ae463">
-          <propertyInstance
-            Id="893d9882-ffbe-4562-bf52-8a8e8225a8fe"
-            name="ProjectPath"
-            value="ClassTemplate=..\FreixoLib\FreixoLib.csproj|EnumTemplate=..\FreixoLib\FreixoLib.csproj|InterfaceTemplate=..\FreixoLib\FreixoLib.csproj|StructTemplate=..\FreixoLib\FreixoLib.csproj" />
-        </stereotypeInstanceHasPropertyInstances>
-        <stereotypeInstanceHasPropertyInstances
-          Id="4d42a6c4-cef1-43d2-a828-73689c31ef44">
-          <propertyInstance
-            Id="a7d31548-e0a2-438a-9b20-735aedbf8268"
-            name="TargetDirectory"
-            value="ClassTemplate=GeneratedCode\{PackageStructure}|EnumTemplate=GeneratedCode\{PackageStructure}|InterfaceTemplate=GeneratedCode\{PackageStructure}|StructTemplate=GeneratedCode\{PackageStructure}" />
-        </stereotypeInstanceHasPropertyInstances>
-        <stereotypeInstanceHasPropertyInstances
-          Id="e128071e-d080-46ac-8ef6-2e5a8bf9d081">
-          <propertyInstance
-            Id="446a8e2b-c96f-42fd-ac67-ae53807f095f"
-            name="TargetName"
-            value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}" />
-        </stereotypeInstanceHasPropertyInstances>
-        <stereotypeInstanceHasPropertyInstances
-          Id="c480e8ea-933f-4506-afb7-7268aafbc1f0">
-          <propertyInstance
-            Id="67ba6e38-116f-4ef7-b3f8-5d6c9f096a45"
-            name="Overwrite"
-            value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True" />
-        </stereotypeInstanceHasPropertyInstances>
-        <stereotypeInstanceHasPropertyInstances
-          Id="20726548-a649-4070-b11e-8787fcbd8f0a">
-          <propertyInstance
-            Id="5b6955ed-089f-4b28-9664-534e42cd5c19"
-            name="Parameters" />
-        </stereotypeInstanceHasPropertyInstances>
-      </propertyInstances>
-    </stereotypeInstance>
-  </appliedStereotypesInternal>
+  name="UML" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
   <profileInstances>
     <packageHasProfileInstances
       Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
@@ -125,21 +43,21 @@
             <interfaceMoniker
               Id="06286794-99ea-4787-a1d8-e5b51819b59a"
               LastKnownName="IUpdate"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </interfaceRealization>
           <interfaceRealization
             Id="7a72fdd1-3293-41d5-a5ef-27dcf60392e2">
             <interfaceMoniker
               Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
               LastKnownName="ISave"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </interfaceRealization>
           <interfaceRealization
             Id="03209a66-9209-491a-b09a-f9e76aad2270">
             <interfaceMoniker
               Id="dad8ffa0-c3f4-47b5-bf1e-f55fca517ebf"
               LastKnownName="IPrint"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </interfaceRealization>
         </suppliersInternal>
         <ownedAttributesInternal>
@@ -216,7 +134,7 @@
               <undefinedTypeMoniker
                 Id="2eb53f15-adca-4c6a-9ebf-ab0100a04f39"
                 LastKnownName="string"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -292,7 +210,7 @@
               <undefinedTypeMoniker
                 Id="5e95f0c0-e16f-4369-8b9e-7c247bfb7ff4"
                 LastKnownName="const uint8"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -368,7 +286,7 @@
               <undefinedTypeMoniker
                 Id="afcea967-78aa-463b-a1de-2466ff222ff9"
                 LastKnownName="const double"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -444,7 +362,7 @@
               <undefinedTypeMoniker
                 Id="afcea967-78aa-463b-a1de-2466ff222ff9"
                 LastKnownName="const double"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -520,7 +438,7 @@
               <undefinedTypeMoniker
                 Id="20190548-c828-41c6-8f6b-6176ad015398"
                 LastKnownName="const vector&lt;Software&gt;"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -596,7 +514,7 @@
               <undefinedTypeMoniker
                 Id="96fc15e0-7ff2-4ccd-b771-1ca6421b413d"
                 LastKnownName="const uint"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -672,7 +590,7 @@
               <undefinedTypeMoniker
                 Id="90071b89-7a91-40c2-8527-4bf8cf9b9f6d"
                 LastKnownName="uint"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -1331,7 +1249,7 @@
               <undefinedTypeMoniker
                 Id="df3cc953-5a8a-4d6f-a60e-91bff9dc49ca"
                 LastKnownName="uint32"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -1350,7 +1268,7 @@
               <undefinedTypeMoniker
                 Id="df3cc953-5a8a-4d6f-a60e-91bff9dc49ca"
                 LastKnownName="uint32"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -1369,7 +1287,7 @@
               <undefinedTypeMoniker
                 Id="830625e8-3cf3-4723-887f-5828d7189afc"
                 LastKnownName="vector&lt;Byte&gt;"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -2252,14 +2170,14 @@
             <interfaceMoniker
               Id="06286794-99ea-4787-a1d8-e5b51819b59a"
               LastKnownName="IUpdate"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </interfaceRealization>
           <interfaceRealization
             Id="4a4a878d-664d-4ae2-9916-77d53ff03b12">
             <interfaceMoniker
               Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
               LastKnownName="ISave"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </interfaceRealization>
         </suppliersInternal>
         <generalsInternal>
@@ -2269,7 +2187,7 @@
             <classMoniker
               Id="58638c7e-dd2a-4c52-be03-8639e1db3148"
               LastKnownName="Runnable"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </generalization>
           <generalization
             Id="a9e2d975-1241-420b-a06c-1e7d8b7cad48"
@@ -2277,7 +2195,7 @@
             <classMoniker
               Id="b1d37dce-10c3-447b-afff-250e08b55169"
               LastKnownName="Runnable"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </generalization>
         </generalsInternal>
         <ownedAttributesInternal>
@@ -2297,7 +2215,7 @@
               <undefinedTypeMoniker
                 Id="0e469a49-eab3-4096-8831-a7dcbfbc7eaf"
                 LastKnownName="static uint"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -2316,7 +2234,7 @@
               <undefinedTypeMoniker
                 Id="0e469a49-eab3-4096-8831-a7dcbfbc7eaf"
                 LastKnownName="static uint"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -2335,7 +2253,7 @@
               <undefinedTypeMoniker
                 Id="b3788826-63bb-4de6-bc55-d4b856b85e89"
                 LastKnownName="map&lt;uint, User*&gt;"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -2354,7 +2272,7 @@
               <undefinedTypeMoniker
                 Id="d3d6a169-72c2-4350-a3ab-e8f143d620dc"
                 LastKnownName="map&lt;uint, Machine*&gt;"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -2373,7 +2291,7 @@
               <undefinedTypeMoniker
                 Id="7789f4e4-7365-4d34-aaa3-10376b017f38"
                 LastKnownName="uint64"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -2392,7 +2310,7 @@
               <undefinedTypeMoniker
                 Id="7789f4e4-7365-4d34-aaa3-10376b017f38"
                 LastKnownName="uint64"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -2734,21 +2652,21 @@
             <interfaceMoniker
               Id="06286794-99ea-4787-a1d8-e5b51819b59a"
               LastKnownName="IUpdate"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </interfaceRealization>
           <interfaceRealization
             Id="39b7af48-bba4-43b8-b1dc-69b1b35e8753">
             <interfaceMoniker
               Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
               LastKnownName="ISave"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </interfaceRealization>
           <interfaceRealization
             Id="49aeaf34-da4c-4c6c-9360-1c1f53d94129">
             <interfaceMoniker
               Id="dad8ffa0-c3f4-47b5-bf1e-f55fca517ebf"
               LastKnownName="IPrint"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </interfaceRealization>
         </suppliersInternal>
         <ownedAttributesInternal>
@@ -2767,7 +2685,7 @@
               <undefinedTypeMoniker
                 Id="1e68af0a-def4-415b-8995-1f2f87042443"
                 LastKnownName="const string"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -2785,7 +2703,7 @@
               <undefinedTypeMoniker
                 Id="29901603-9b89-4cdd-8190-e705a7dead88"
                 LastKnownName="double"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -2803,7 +2721,7 @@
               <undefinedTypeMoniker
                 Id="29901603-9b89-4cdd-8190-e705a7dead88"
                 LastKnownName="double"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -2821,7 +2739,7 @@
               <undefinedTypeMoniker
                 Id="4b85ea4c-0774-47c9-bc21-027a610170a3"
                 LastKnownName="SoftwareSet"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -2839,7 +2757,7 @@
               <undefinedTypeMoniker
                 Id="96fc15e0-7ff2-4ccd-b771-1ca6421b413d"
                 LastKnownName="const uint"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -2857,7 +2775,7 @@
               <undefinedTypeMoniker
                 Id="afcea967-78aa-463b-a1de-2466ff222ff9"
                 LastKnownName="const double"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -2875,7 +2793,7 @@
               <undefinedTypeMoniker
                 Id="afcea967-78aa-463b-a1de-2466ff222ff9"
                 LastKnownName="const double"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -2893,7 +2811,7 @@
               <undefinedTypeMoniker
                 Id="553816d4-32d0-4e94-a4f3-3407820b3895"
                 LastKnownName="map&lt;uint, Job*&gt;"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -2911,7 +2829,7 @@
               <undefinedTypeMoniker
                 Id="0e469a49-eab3-4096-8831-a7dcbfbc7eaf"
                 LastKnownName="static uint"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -3163,7 +3081,7 @@
             <interfaceMoniker
               Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
               LastKnownName="ISave"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </interfaceRealization>
         </suppliersInternal>
         <ownedAttributesInternal>
@@ -3182,7 +3100,7 @@
               <undefinedTypeMoniker
                 Id="2eb53f15-adca-4c6a-9ebf-ab0100a04f39"
                 LastKnownName="string"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -3200,7 +3118,7 @@
               <undefinedTypeMoniker
                 Id="c7ff555a-069b-4904-b13b-a7fdc1ae161d"
                 LastKnownName="VersionData"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -3218,7 +3136,7 @@
               <undefinedTypeMoniker
                 Id="c1fe513f-a3b7-4313-bea8-12cd8856a01d"
                 LastKnownName="vector&lt;Software&gt;"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -3350,14 +3268,14 @@
             <interfaceMoniker
               Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
               LastKnownName="ISave"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </interfaceRealization>
           <interfaceRealization
             Id="72034cbb-e9dd-4a1c-a301-c4d6a059b19c">
             <interfaceMoniker
               Id="dad8ffa0-c3f4-47b5-bf1e-f55fca517ebf"
               LastKnownName="IPrint"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </interfaceRealization>
         </suppliersInternal>
         <ownedAttributesInternal>
@@ -3376,7 +3294,7 @@
               <undefinedTypeMoniker
                 Id="652bd2f4-5e75-4542-a67e-b212fd09ceca"
                 LastKnownName="vector&lt;Job*&gt;"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -3394,7 +3312,7 @@
               <undefinedTypeMoniker
                 Id="2eb53f15-adca-4c6a-9ebf-ab0100a04f39"
                 LastKnownName="string"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -3575,7 +3493,7 @@
             <classMoniker
               Id="ad315868-38a3-42c6-8dd7-42b16d1d11c2"
               LastKnownName="Software"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </dependency>
         </suppliersInternal>
       </class>
@@ -3625,7 +3543,7 @@
             <classMoniker
               Id="39e957d9-f0ba-496c-8332-f9d1fa13dab0"
               LastKnownName="User"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </generalization>
         </generalsInternal>
         <ownedAttributesInternal>
@@ -3644,7 +3562,7 @@
               <undefinedTypeMoniker
                 Id="90071b89-7a91-40c2-8527-4bf8cf9b9f6d"
                 LastKnownName="uint"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -3796,7 +3714,7 @@
             <classMoniker
               Id="39e957d9-f0ba-496c-8332-f9d1fa13dab0"
               LastKnownName="User"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </generalization>
         </generalsInternal>
         <ownedAttributesInternal>
@@ -3815,7 +3733,7 @@
               <undefinedTypeMoniker
                 Id="29901603-9b89-4cdd-8190-e705a7dead88"
                 LastKnownName="double"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -4028,7 +3946,7 @@
               <undefinedTypeMoniker
                 Id="e76212ba-62df-44dc-a74e-66d84301ca44"
                 LastKnownName="atomic&lt;bool&gt;"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -4105,7 +4023,7 @@
               <undefinedTypeMoniker
                 Id="2eb53f15-adca-4c6a-9ebf-ab0100a04f39"
                 LastKnownName="string"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -4171,7 +4089,7 @@
               <undefinedTypeMoniker
                 Id="e76212ba-62df-44dc-a74e-66d84301ca44"
                 LastKnownName="atomic&lt;bool&gt;"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -4190,7 +4108,7 @@
               <undefinedTypeMoniker
                 Id="ca6db659-08a0-41b0-95eb-d876c32f7e3a"
                 LastKnownName="thread"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -4299,7 +4217,7 @@
             <interfaceMoniker
               Id="f3eb253d-25b5-4d30-9724-f0094475965b"
               LastKnownName="IMenu"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </interfaceRealization>
         </suppliersInternal>
         <generalsInternal>
@@ -4309,7 +4227,7 @@
             <classMoniker
               Id="0195a126-32e1-4f46-a797-dc81c9fde55d"
               LastKnownName="IMenu"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </generalization>
         </generalsInternal>
         <ownedAttributesInternal>
@@ -4328,7 +4246,7 @@
               <undefinedTypeMoniker
                 Id="f2435c9c-708e-4fa0-bce4-1db4eeb6ef7c"
                 LastKnownName="vector&lt;pair&lt;char, IMenu*&gt;&gt;"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -4562,7 +4480,7 @@
             <interfaceMoniker
               Id="f3eb253d-25b5-4d30-9724-f0094475965b"
               LastKnownName="IMenu"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </interfaceRealization>
         </suppliersInternal>
         <generalsInternal>
@@ -4572,7 +4490,7 @@
             <classMoniker
               Id="0195a126-32e1-4f46-a797-dc81c9fde55d"
               LastKnownName="IMenu"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </generalization>
         </generalsInternal>
         <ownedAttributesInternal>
@@ -4591,7 +4509,7 @@
               <undefinedTypeMoniker
                 Id="df3cc953-5a8a-4d6f-a60e-91bff9dc49ca"
                 LastKnownName="uint32"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -4778,7 +4696,7 @@
             <classMoniker
               Id="273e43e6-bd59-486f-b283-ea6df5703a66"
               LastKnownName="Writer"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </generalization>
         </generalsInternal>
         <ownedOperationsInternal>
@@ -4817,7 +4735,7 @@
             <classMoniker
               Id="273e43e6-bd59-486f-b283-ea6df5703a66"
               LastKnownName="Writer"
-              LastKnownLocation="Freixo.uml" />
+              LastKnownLocation="UML.uml" />
           </generalization>
         </generalsInternal>
         <ownedAttributesInternal>
@@ -4836,7 +4754,7 @@
               <undefinedTypeMoniker
                 Id="9497a81c-e4cc-4498-984d-c3b3f324367c"
                 LastKnownName="ofstream"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -5024,7 +4942,7 @@
               <undefinedTypeMoniker
                 Id="e89e93e7-b432-4e42-a3b7-416effc991fd"
                 LastKnownName="Menu*"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -5042,7 +4960,7 @@
               <undefinedTypeMoniker
                 Id="2eb53f15-adca-4c6a-9ebf-ab0100a04f39"
                 LastKnownName="string"
-                LastKnownLocation="Freixo.uml" />
+                LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributes>
