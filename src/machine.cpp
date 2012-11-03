@@ -86,11 +86,8 @@ bool Machine::RemoveJob(uint id)
         return false;
     }
 
-    Job* job = it->second;
+    it->second->Finish();
 
-    delete job;
-
-    _currentJobs.erase(it);
     _mutex.unlock();
 
     return true;

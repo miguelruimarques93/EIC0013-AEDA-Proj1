@@ -15,7 +15,7 @@ class ByteBufferException : public std::exception {};
 //! ByteBuffer Class
 /*!
     ByteBuffer is a container of bytes.
-    It allows to represent multiple types (ints, strings, floats) in
+    It allows to represent multiple types (ints, strings, floats, etc) in
      a binary format (great for any form of communication (files, network, etc.)
 */
 class ByteBuffer
