@@ -2,5 +2,14 @@ Manage Machine
 -* N#001#Change Machine Name
 -* R#002#Change Machine RAM
 -* D#003#Change Machine Disk Space
--* J#004#Change Machine Max Jobs
--* S#005#Change Available Software
+- J#Manage Machine Jobs
+--* M#004#Change Machine Max Jobs
+--* L#008#List Machine Jobs
+--* R#009#Remove Job From Machine
+--* C#010#Cancel All Jobs
+--* J#011#List Job Required Software
+- S#Manage Available Software
+--* L#007#List Available Software
+-- C#Change Available Software
+---* A#005#Add Software
+---* R#006#Remove Software

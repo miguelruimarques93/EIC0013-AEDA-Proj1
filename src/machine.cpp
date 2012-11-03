@@ -220,3 +220,24 @@ double Machine::GetInUseDiskSpace() const
     return std::accumulate(_currentJobs.begin(), _currentJobs.end(), 0.0,
         [](double sum, std::pair<uint, Job*> j) { return sum + j.second->GetRequiredDiskSpace(); });
 }
+
+bool Machine::RemoveAllJobs()
+{
+    if (GetNumberOfJobs() == 0)
+        return false;
+
+    for (auto elem : _currentJobs)
+        RemoveJob(elem.first);
+
+    return true;
+}
+
+Job* Machine::GetJob( uint ID )
+{
+    auto elem = _currentJobs.find(ID);
+
+    if (elem == _currentJobs.end())
+        return NULL;
+    
+    return elem->second;
+}

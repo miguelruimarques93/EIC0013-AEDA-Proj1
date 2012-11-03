@@ -12,6 +12,7 @@
 #include <iostream>
 #include <typeinfo>
 #include <functional>
+#include <iomanip>
 
 static std::function<bool(std::string)> _namePredicate = [](std::string val)
 {
@@ -1021,42 +1022,115 @@ void ChangeMachineInfo(GridManager* gm)
                     success = true;
                     break;
                 }
-                case 5: // Change Machine Available Software
+                case 5: // Add Software
                 {
-                    char c = ReadValue<char>("_A_dd or _R_remove software? ", [](char val) { return val == 'A' || val == 'a' || val == 'R' || val == 'r'; });
-
                     bool successSW = false;
 
                     while (!successSW)
                     {
-                        if (c == 'A' || c == 'a') // add
-                        {
-                            auto sw = Software::ReadFromString(ReadValue<std::string>("Software: "));
+                        auto sw = Software::ReadFromString(ReadValue<std::string>("Software: "));
 
-                            if (std::get<0>(sw))
-                            {
-                                machine->AddAvailableSoftware(std::get<1>(sw));
-                                successSW = true;
-                            }
-                            else
-                                std::cout << "You need to provide a valid software in the format \"name major.minor.revision\". Try again." << std::endl;
+                        if (std::get<0>(sw))
+                        {
+                            machine->AddAvailableSoftware(std::get<1>(sw));
+                            successSW = true;
                         }
-                        else // remove
-                        {
-                            auto sw = Software::ReadFromString(ReadValue<std::string>("Software: "));
+                        else
+                            std::cout << "You need to provide a valid software in the format \"name major.minor.revision\". Try again." << std::endl;
 
-                            if (std::get<0>(sw))
-                            {
-                                machine->RemoveAvailableSoftware(std::get<1>(sw));
-                                successSW = true;
-                            }
-                            else
-                                std::cout << "You need to provide a valid software in the format \"name major.minor.revision\". Try again." << std::endl;
+                    }
+
+                    std::cout << "Machine software added with success." << std::endl;
+                    success = true;
+                    break;
+                }
+                case 6: // Remove Software
+                {
+                    bool successSW = false;
+
+                    while (!successSW)
+                    {
+                        auto sw = Software::ReadFromString(ReadValue<std::string>("Software: "));
+
+                        if (std::get<0>(sw))
+                        {
+                            machine->RemoveAvailableSoftware(std::get<1>(sw));
+                            successSW = true;
+                        }
+                        else
+                            std::cout << "You need to provide a valid software in the format \"name major.minor.revision\". Try again." << std::endl;
+                    }
+
+                    std::cout << "Machine software removed with success." << std::endl;
+                    success = true;
+                    break;
+                }
+                case 7: // List Available Software
+                {
+                    std::cout << "Not implemented." << std::endl;
+
+                    break;
+                }
+                case 8: // List Machine Jobs
+                {
+                    if (machine->GetNumberOfJobs() == 0)
+                        std::cout << "No jobs on this machine." << std::endl;
+                    else
+                    {
+                        Job::PrintHeader(std::cout, true);
+                        for (auto elem : machine->GetJobs())
+                        {
+                            std::cout << "| " << std::setfill('0') << std::setw(4) << std::right << elem.first << " ";
+                            elem.second->Print(std::cout);
+                            std::cout << "-------";
                         }
                     }
 
-                    std::cout << "Machine software changed with success." << std::endl;
+                    PauseConsole();
+                    ClearConsole();
                     success = true;
+                    break;
+                }
+                case 9: // Remove Job From Machine
+                {
+                    uint JobID = ReadValue<uint>("Id: ", [machine](uint val)
+                    {
+                        if (!machine->GetJob(val))
+                        {
+                            std::cout << "Id """ << val << """ is not currently in use."<< std::endl << "Please try again." << std::endl;
+                            return false;
+                        }
+                        return true;
+                    });
+
+                    if (machine->RemoveJob(JobID))
+                        std::cout << "Job removed with success." << std::endl;
+                    else
+                        std::cout << "Error removing job." << std::endl;
+
+                    PauseConsole();
+                    ClearConsole();
+                    break;
+                }
+                case 10: // Cancel All Jobs
+                {
+                    if (machine->RemoveAllJobs())
+                    {
+                        std::cout << "Jobs removed with success." << std::endl;
+                    }
+                    else
+                    {
+                        std::cout << "Error removing jobs." << std::endl;
+                    }
+
+                    PauseConsole();
+                    ClearConsole();
+                    break;
+                }
+                case 11: // List Job Required Software
+                {
+                    std::cout << "Not implemented." << std::endl;
+
                     break;
                 }
             }

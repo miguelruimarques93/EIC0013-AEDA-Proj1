@@ -59,17 +59,18 @@ void Job::Update(uint32 diff)
     }
 }
 
-void Job::PrintHeader(std::ostream& os /*= std::cout*/)
+void Job::PrintHeader(std::ostream& os /*= std::cout*/, bool ID /*= false*/)
 {
-    os << "--" << std::string(_maxNameLength, '-')
-                                            << "------------------------------------------------------------------\n"
-       << "| " << std::setw(_maxNameLength) << "Name" << " | RAM (MB) | Disk (MB) | Priority (%) |   Time (s)    |\n"
-       << "--" << std::string(_maxNameLength, '-') << "------------------------------------------------------------------\n";
+    os << (ID ? "---------" : "--") << std::string(_maxNameLength, '-')
+                                            << "-----------------------------------------------------------" 
+                                            << (!ID ? "-------" : "" ) << "\n"
+       << (ID ? "|  Id  | " : "| ") << std::setw(_maxNameLength) << "Name" << " | RAM (MB) | Disk (MB) | Priority (%) |   Time (s)    |\n"
+       << (ID ? "---------" : "--") << std::string(_maxNameLength, '-') << "-----------------------------------------------------------" << (!ID ? "-------" : "" ) << "\n";
 }
 
 void Job::Print(std::ostream& os /*=std::cout*/) const
 {
-    os << "| "  << std::left << std::setfill(' ') << std::setw(_maxNameLength) << _name
+    os << "| "  << std::left << std::setfill(' ') << std::setw(_maxNameLength) << _name << " "
        << " | " << std::right << std::setw(8) << _requiredRAM
        << " | " << std::setw(9) << _requiredDiskSpace
        << " | " << std::setw(12) << static_cast<uint16>(_priority)

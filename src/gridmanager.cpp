@@ -289,3 +289,11 @@ uint GridManager::GetNumberOfJobs() const
     return std::accumulate(_machines.begin(), _machines.end(), 0,
         [](uint sum, std::pair<uint, Machine*> mach) { return sum + mach.second->GetNumberOfJobs(); });
 }
+
+bool GridManager::RemoveMachineJob(Machine* machine, uint jobID)
+{
+    if (!machine)
+        return false;
+
+    return machine->RemoveJob(jobID);
+}

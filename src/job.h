@@ -39,7 +39,7 @@ public:
     void Update(uint32 diff);
 
     void Print(std::ostream& os = std::cout) const override;
-    static void PrintHeader(std::ostream& os = std::cout);
+    static void PrintHeader(std::ostream& os = std::cout, bool ID = false);
 
     void AddRequiredSoftware(const Software& sw) { _requiredSoftware.insert(sw); }
     bool IsRequiredSoftware(const Software& sw) const { return _requiredSoftware.find(sw) != _requiredSoftware.end(); }

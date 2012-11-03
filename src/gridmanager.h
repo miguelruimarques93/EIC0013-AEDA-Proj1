@@ -134,6 +134,15 @@ public:
     bool AddJobByUser(User* user, Job* job);
 
     /**
+    *   @brief Removes the given job from the given machine.
+    *   @param machine pointer to the machine that contains the job.
+    *   @param job pointer to the job to be removed.
+    *   @return A boolean value that indicates whether the removal was successful or not.
+    */
+    bool RemoveMachineJob(Machine* machine, uint jobID);
+
+
+    /**
     *   @brief Returns the number of existing jobs.
     *   @return Number of existing jobs.
     */
