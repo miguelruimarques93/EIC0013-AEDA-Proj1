@@ -52,7 +52,7 @@ void Software::PrintHeader(std::ostream& os /*= std::cout*/)
 
 void Software::Print(std::ostream& os /*= std::cout*/) const 
 {
-    os << "| " << std::setw(_maxNameLength) << std::left << _name
+    os << "| " << std::setw(_maxNameLength) << std::left << _name << " | "
        << std::right << std::setw(8) << _version.Major << " | "
        << std::right << std::setw(8) << _version.Minor << " | "
        << std::right << std::setw(8) << _version.Revision << " |\n"

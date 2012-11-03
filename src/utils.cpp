@@ -24,7 +24,7 @@ void ClearConsole()
 #endif
 }
 
-void PauseConsole(const std::string& message/* = "Press any key to continue..."*/)
+void PauseConsole(const std::string& message/* = "Press enter to continue..."*/)
 {
     std::cout << message << std::endl;
     std::cin.get();

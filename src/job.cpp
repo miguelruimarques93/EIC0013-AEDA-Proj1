@@ -62,10 +62,9 @@ void Job::Update(uint32 diff)
 void Job::PrintHeader(std::ostream& os /*= std::cout*/, bool withId /*= false*/)
 {
     os << (withId ? "---------" : "--") << std::string(_maxNameLength, '-')
-                                            << "-----------------------------------------------------------" 
-                                            << (withId ? "" : "-------" ) << "\n"
+                                            << "---------------------------------------------------------\n"
        << (withId ? "|  Id  | " : "| ") << std::setw(_maxNameLength) << "Name" << " | RAM (MB) | Disk (MB) | Priority (%) |   Time (s)    |\n"
-       << (withId ? "---------" : "--") << std::string(_maxNameLength, '-') << "-----------------------------------------------------------" << (withId ? "" : "-------" ) << "\n";
+       << (withId ? "---------" : "--") << std::string(_maxNameLength, '-') << "---------------------------------------------------------\n";
 }
 
 void Job::Print(std::ostream& os /*=std::cout*/) const
@@ -75,5 +74,15 @@ void Job::Print(std::ostream& os /*=std::cout*/) const
        << " | " << std::setw(9) << _requiredDiskSpace
        << " | " << std::setw(12) << static_cast<uint16>(_priority)
        << " | " << std::setw(5) << std::left << _elapsedTime << " / " << std::setw(5) << std::right << _totalExecutionTime << " |\n"
-       << "--" << std::string(_maxNameLength, '-') << "------------------------------------------------------------------\n";
+       << "--" << std::string(_maxNameLength, '-') << "---------------------------------------------------------\n";
+}
+
+void Job::PrintWithID( std::ostream& os /*= std::cout*/ ) const
+{
+    os << "| "  << std::left << std::setfill(' ') << std::setw(_maxNameLength) << _name << " "
+        << " | " << std::right << std::setw(8) << _requiredRAM
+        << " | " << std::setw(9) << _requiredDiskSpace
+        << " | " << std::setw(12) << static_cast<uint16>(_priority)
+        << " | " << std::setw(5) << std::left << _elapsedTime << " / " << std::setw(5) << std::right << _totalExecutionTime << " |\n"
+        << "--" << std::string(_maxNameLength, '-') << "----------------------------------------------------------------\n";
 }

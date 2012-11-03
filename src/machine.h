@@ -59,6 +59,7 @@ public:
     void AddAvailableSoftware(const Software& sw) { _availableSoftware.insert(sw); }
     void RemoveAvailableSoftware(const Software& sw) { _availableSoftware.erase(sw); }
     bool IsAvailableSoftware(const Software& sw) const { return _availableSoftware.find(sw) != _availableSoftware.end(); }
+    const SoftwareSet& GetAvailableSoftware() const { return _availableSoftware; }
 
     bool AddJob(Job* job);
     Job* GetJob(uint id);

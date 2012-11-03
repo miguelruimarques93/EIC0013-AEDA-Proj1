@@ -1067,8 +1067,16 @@ void ChangeMachineInfo(GridManager* gm)
                 }
                 case 7: // List Available Software
                 {
-                    std::cout << "Not implemented." << std::endl;
+                    if (machine->GetAvailableSoftware().size() == 0)
+                        std::cout << "This machine doesn't have any software installed." << std::endl;
+                    else
+                    {
+                        Software::PrintHeader(std::cout);
+                        for (auto sw : machine->GetAvailableSoftware())
+                            sw.Print(std::cout);
+                    }
 
+                    success = true;
                     break;
                 }
                 case 8: // List Machine Jobs
@@ -1081,13 +1089,10 @@ void ChangeMachineInfo(GridManager* gm)
                         for (auto elem : machine->GetJobs())
                         {
                             std::cout << "| " << std::setfill('0') << std::setw(4) << std::right << elem.first << " ";
-                            elem.second->Print(std::cout);
-                            std::cout << "-------";
+                            elem.second->PrintWithID(std::cout);
                         }
                     }
 
-                    PauseConsole();
-                    ClearConsole();
                     success = true;
                     break;
                 }
@@ -1108,8 +1113,7 @@ void ChangeMachineInfo(GridManager* gm)
                     else
                         std::cout << "Error removing job." << std::endl;
 
-                    PauseConsole();
-                    ClearConsole();
+                    success = true;
                     break;
                 }
                 case 10: // Cancel All Jobs
@@ -1123,14 +1127,31 @@ void ChangeMachineInfo(GridManager* gm)
                         std::cout << "Error removing jobs." << std::endl;
                     }
 
-                    PauseConsole();
-                    ClearConsole();
+                    success = true;
                     break;
                 }
                 case 11: // List Job Required Software
                 {
-                    std::cout << "Not implemented." << std::endl;
+                    Job* job = machine->GetJob(ReadValue<uint>("Id: ", [machine](uint val)
+                    {
+                        if (!machine->GetJob(val))
+                        {
+                            std::cout << "Id """ << val << """ is not currently in use."<< std::endl << "Please try again." << std::endl;
+                            return false;
+                        }
+                        return true;
+                    }));
 
+                    if (job->GetRequiredSoftware().size() == 0)
+                        std::cout << "This job doesn't require any software to execute." << std::endl;
+                    else
+                    {
+                        Software::PrintHeader(std::cout);
+                        for (auto sw : job->GetRequiredSoftware())
+                            sw.Print(std::cout);
+                    }
+
+                    success = true;
                     break;
                 }
             }
