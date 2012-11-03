@@ -1,4 +1,4 @@
-Main Menu (CTRL-Z to exit)
+=== Job Management in Grid Computing === (CTRL-Z or E to exit)
 - U#Manage Users
 -- A#Add User
 ---* A#002#Add Academic User
