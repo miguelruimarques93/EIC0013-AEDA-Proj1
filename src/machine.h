@@ -76,10 +76,8 @@ public:
     void Print(std::ostream& os = std::cout) const override;
     static void PrintHeader(std::ostream& os = std::cout);
 
-    /*static void SetMenuParent(Menu* val) { _menu->SetParent(val); }*/
-
 private:
-    bool SoftwareMeetsRequirements(const Software& sw) const;
+    bool SoftwareMeetsRequirements(const Software& sw) const { return _availableSoftware.find(sw) != _availableSoftware.end(); }
 
     double _totalRAM;
     double _totalDiskSpace;

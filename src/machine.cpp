@@ -96,18 +96,6 @@ bool Machine::RemoveJob(uint id)
     return true;
 }
 
-bool Machine::SoftwareMeetsRequirements(const Software& sw) const
-{
-    if (sw.Dependencies.empty())
-        return true;
-
-    for (auto it = sw.Dependencies.begin(); it != sw.Dependencies.end(); ++it)
-        if (_availableSoftware.find(*it) == _availableSoftware.end())
-            return false;
-
-    return true;
-}
-
 bool Machine::Save(ByteBuffer& bb) const
 {
     bb.WriteUInt32(_id);

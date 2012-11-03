@@ -5,42 +5,20 @@
 #include "bytebuffer.h"
 
 #include <string>
-#include <functional>
 #include <sstream>
 #include <tuple>
-#include <regex>
 
-struct Software : public ISave
+class Software : public ISave, public IPrint
 {
-    Software(const std::string& name, int major, int minor, int revision)
-        : Name(name), Version(major, minor, revision) {}
+public:
+    Software(const std::string& name, int major, int minor, int revision);
 
-    Software() : Name(""), Version(0, 0, 0) {} // do not use
+    bool Save(ByteBuffer& bb) const override;
+    static Software Load(ByteBuffer& bb);
 
-    bool Save(ByteBuffer& bb) const override
-    {
-        bb.WriteString(Name);
-        bb.WriteUInt32(Version.Major);
-        bb.WriteUInt32(Version.Minor);
-        bb.WriteUInt32(Version.Revision);
-
-        return true;
-    }
-
-    static Software Load(ByteBuffer& bb)
-    {
-        std::string name = bb.ReadString();
-        uint32 major = bb.ReadUInt32();
-        uint32 minor = bb.ReadUInt32();
-        uint32 revision = bb.ReadUInt32();
-
-        return Software(name, major, minor, revision);
-    }
-
-    bool operator== (const Software& other) const { return Name == other.Name && Version == other.Version; }
+    bool operator== (const Software& other) const { return _name == other._name && _version == other._version; }
     bool operator!= (const Software& other) const { return !(*this == other); }
 
-    std::string Name;
     struct VersionData
     {
         VersionData(int major, int minor, int revision) : Major(major), Minor(minor), Revision(revision) {}
@@ -66,29 +44,26 @@ struct Software : public ISave
         };
     };
 
-    VersionData Version;
-
-    std::vector<Software> Dependencies;
-
     struct Hash
     {
-        size_t operator()(const Software& sw)
-        {
-            return std::hash<std::string>()(sw.Name) ^ Software::VersionData::Hash()(sw.Version);
-        }
+        size_t operator()(const Software& sw);
     };
 
-    static std::tuple<bool, Software> ReadFromString(const std::string& name)
-    {
-        const std::regex pattern("([A-Za-z0-9\\s]+) ([0-9]+)\\.([0-9]+)\\.([0-9]+)");
+    const std::string& GetName() const { return _name; }
+    const VersionData& GetVersion() const { return _version; }
 
-        std::match_results<std::string::const_iterator> result;
+    static std::tuple<bool, Software> ReadFromString(const std::string& name);
 
-        if (!std::regex_match(name, result, pattern))
-            return std::make_tuple(false, Software());
+    void Print(std::ostream& os = std::cout) const override;
+    static void PrintHeader(std::ostream& os = std::cout);
 
-        return std::make_tuple(true, Software(result[1], std::atoi(result[2].str().c_str()), std::atoi(result[3].str().c_str()), std::atoi(result[4].str().c_str())));
-    }
+private:
+    Software() : _name(""), _version(0, 0, 0) {}
+
+    std::string _name;
+    VersionData _version;
+
+    static uint _maxNameLength;
 };
 
 #endif // SOFTWARE_H_
