@@ -43,7 +43,8 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{30265119-2583-4A3F-B33B-5F549A0C0821}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>proj1</RootNamespace>
+    <RootNamespace>GridComputing</RootNamespace>
+    <ProjectName>GridComputing</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

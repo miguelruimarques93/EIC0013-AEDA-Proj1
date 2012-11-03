@@ -12,8 +12,8 @@ O Grid Manager
 --------------
 
 O **Grid Manager** é um gestor de uma rede de computação composta por várias máquinas de diferentes
-características, vários utilizadores que podem ser utilizadores académicos ou utilizadores de empresas.
-Estes utilizadores podem criar novos trabalhos (*jobs*) que seram executados num determinado tempo
+características e de vários utilizadores que podem ser utilizadores académicos ou utilizadores de empresas.
+Estes utilizadores podem criar novos trabalhos (*jobs*) que serão executados num determinado tempo
 especificado pelo utilizador que o criou.
 
 
@@ -32,13 +32,13 @@ Para o simulador foram implementadas duas interfaces:
 - **Runnable** - Objeto que pode executar algum trabalho num *thread* separado.
 
 
-Diagrama de classes
--------------------
+Diagrama de classes (UML)
+-------------------------
 
 ...
 
 
-Casos de Utitlização
+Casos de Utilização
 --------------------
 
 - Adicionar utilizadores ao sistema
@@ -58,9 +58,9 @@ Casos de Utitlização
 - Alterar o número máximo de trabalhos de uma máquina
 - Listar os trabalhos em execução numa máquina
 - Remover um trabalho de uma máquina
-- Remover todos os trabalhos de uma márquina
+- Remover todos os trabalhos de uma máquina
 - Listar o Software necessário de um trabalho
-- Listar o Software disponível uma máquina
+- Listar o Software disponível numa máquina
 - Procurar máquinas no sistema através do nome, RAM disponível, espaço do disco disponível ou número de trabalhos
 - Listar todas as máquinas
 - Criar novos trabalhos
@@ -71,7 +71,7 @@ Casos de Utitlização
 Dificuldades
 ------------
 
-Não houve grandes dificuldades no planeamento nem na implementação do trabalho com exceção de alguns entraves na especialização de funções genéricas e na execução de funções quando se fecha a consola abruptamente, casos que nos deram mais trabalho a resolver.
+Não houve grandes dificuldades no planeamento nem na implementação do trabalho com exceção de alguns entraves na especialização de funções genéricas (com recurso a *templates*) e na execução de funções quando se fecha a consola abruptamente, casos que nos deram mais trabalho a resolver.
 
 
 Distribuição do trabalho pelos elementos do grupo

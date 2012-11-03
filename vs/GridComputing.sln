@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "proj1", "proj1.vcxproj", "{30265119-2583-4A3F-B33B-5F549A0C0821}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GridComputing", "GridComputing.vcxproj", "{30265119-2583-4A3F-B33B-5F549A0C0821}"
+EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "UML", "..\UML\UML.modelproj", "{DBD91B0D-91BA-49BD-AD88-42D4B2F3B305}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,16 @@ Global
 		{30265119-2583-4A3F-B33B-5F549A0C0821}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{30265119-2583-4A3F-B33B-5F549A0C0821}.Release|Win32.ActiveCfg = Release|Win32
 		{30265119-2583-4A3F-B33B-5F549A0C0821}.Release|Win32.Build.0 = Release|Win32
+		{DBD91B0D-91BA-49BD-AD88-42D4B2F3B305}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBD91B0D-91BA-49BD-AD88-42D4B2F3B305}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBD91B0D-91BA-49BD-AD88-42D4B2F3B305}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DBD91B0D-91BA-49BD-AD88-42D4B2F3B305}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DBD91B0D-91BA-49BD-AD88-42D4B2F3B305}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{DBD91B0D-91BA-49BD-AD88-42D4B2F3B305}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBD91B0D-91BA-49BD-AD88-42D4B2F3B305}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBD91B0D-91BA-49BD-AD88-42D4B2F3B305}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DBD91B0D-91BA-49BD-AD88-42D4B2F3B305}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DBD91B0D-91BA-49BD-AD88-42D4B2F3B305}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

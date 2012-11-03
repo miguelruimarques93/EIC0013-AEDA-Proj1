@@ -1,0 +1,5171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="6cb3895b-4cd2-4aa2-9784-609158a2d7b0"
+  name="Freixo" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <appliedStereotypesInternal>
+    <stereotypeInstance
+      Id="d608282c-f0ba-4bdc-a30f-2e17b615c7cb"
+      name="namespace"
+      profile="CSharpProfile">
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="ffe49466-720d-4490-b76b-8d7ea48d1779">
+          <propertyInstance
+            Id="5c49339f-f1c7-4dc1-969f-ed22cdbe121c"
+            name="BaseName" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="89f166ac-a2cf-498d-adc4-429f8a8daeb0">
+          <propertyInstance
+            Id="2fda084b-c3ea-488e-984a-ff18e736bf49"
+            name="ClrAttributes" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="f971812c-1b0d-4174-aec4-c4b4436f323f">
+          <propertyInstance
+            Id="68ded8a1-bcbf-495e-baec-c5c2bc081cb1"
+            name="Usings" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance
+      Id="9d5e2d20-99d0-493a-aced-e52a30c5eb63"
+      name="TextTemplateBindings"
+      profile="TextTemplateBindings">
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="f3e27d60-6571-49a9-814f-04857372501d">
+          <propertyInstance
+            Id="7b032b54-b55c-4d48-bc70-ac82de22c30c"
+            name="Alias"
+            value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="dbb15e97-6abd-4337-8faa-82be426a3ab1">
+          <propertyInstance
+            Id="1c91ba5b-c3bf-4fe8-891a-72d11cb71ae1"
+            name="TemplateFilePath"
+            value="ClassTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4|EnumTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4|InterfaceTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4|StructTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="a7b9d8e7-6c1f-4b43-83ec-9148ce5ae463">
+          <propertyInstance
+            Id="893d9882-ffbe-4562-bf52-8a8e8225a8fe"
+            name="ProjectPath"
+            value="ClassTemplate=..\FreixoLib\FreixoLib.csproj|EnumTemplate=..\FreixoLib\FreixoLib.csproj|InterfaceTemplate=..\FreixoLib\FreixoLib.csproj|StructTemplate=..\FreixoLib\FreixoLib.csproj" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="4d42a6c4-cef1-43d2-a828-73689c31ef44">
+          <propertyInstance
+            Id="a7d31548-e0a2-438a-9b20-735aedbf8268"
+            name="TargetDirectory"
+            value="ClassTemplate=GeneratedCode\{PackageStructure}|EnumTemplate=GeneratedCode\{PackageStructure}|InterfaceTemplate=GeneratedCode\{PackageStructure}|StructTemplate=GeneratedCode\{PackageStructure}" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="e128071e-d080-46ac-8ef6-2e5a8bf9d081">
+          <propertyInstance
+            Id="446a8e2b-c96f-42fd-ac67-ae53807f095f"
+            name="TargetName"
+            value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="c480e8ea-933f-4506-afb7-7268aafbc1f0">
+          <propertyInstance
+            Id="67ba6e38-116f-4ef7-b3f8-5d6c9f096a45"
+            name="Overwrite"
+            value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="20726548-a649-4070-b11e-8787fcbd8f0a">
+          <propertyInstance
+            Id="5b6955ed-089f-4b28-9664-534e42cd5c19"
+            name="Parameters" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="0c7addd0-6521-45f4-896e-22fd1b8cf03e">
+      <profileInstance
+        Id="125fc321-fc2e-44fe-b25f-61bb8e892099"
+        name="CSharpProfile" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="82a9e06c-4626-4e11-a3bc-4c4ddbdb3043">
+      <profileInstance
+        Id="a6a728f5-c095-414b-9522-0032e4e751f4"
+        name="TextTemplateBindings" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="9b37aa59-42c9-42ba-9057-84cf53629dcc"
+        name="Job"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="171081bc-6f94-454a-945f-cb1103a95f2f">
+            <interfaceMoniker
+              Id="06286794-99ea-4787-a1d8-e5b51819b59a"
+              LastKnownName="IUpdate"
+              LastKnownLocation="Freixo.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="7a72fdd1-3293-41d5-a5ef-27dcf60392e2">
+            <interfaceMoniker
+              Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
+              LastKnownName="ISave"
+              LastKnownLocation="Freixo.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="03209a66-9209-491a-b09a-f9e76aad2270">
+            <interfaceMoniker
+              Id="dad8ffa0-c3f4-47b5-bf1e-f55fca517ebf"
+              LastKnownName="IPrint"
+              LastKnownLocation="Freixo.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="d6591637-a6ef-4550-bf5e-03adb5b9ba02"
+            name="_name"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="a6bca2ee-02ec-4bde-b032-208ab1e72240"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="01bd9f94-8a52-4db3-9aa5-3f55ea372627">
+                    <propertyInstance
+                      Id="2a0e73e6-e99a-4b45-9f6b-f82c6a458729"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c8d18020-3dab-47de-9fa8-8111bcf3fc02">
+                    <propertyInstance
+                      Id="f425aee0-3f85-4712-b857-729863eb19a0"
+                      name="Get"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f5e5685e-02af-4a0f-8793-c01e8c28ef2d">
+                    <propertyInstance
+                      Id="d99119bc-d022-4237-af7d-b0c2276bcc27"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b273616e-dc40-4339-b689-8f9c850c426f">
+                    <propertyInstance
+                      Id="e345e154-579d-432f-a26d-09dd2a0a64a1"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a14a14c3-cbc7-4c82-8473-8b42daf27907">
+                    <propertyInstance
+                      Id="9079b70f-38ce-4ac4-b1c3-d7c99492fa27"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ebdf454d-8ab6-4f39-bfad-6bb6b77426f3">
+                    <propertyInstance
+                      Id="b98a36fc-4eb5-464d-9f60-013f94b7f9f0"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a46e03b9-c24b-45ef-b69a-dbac9004737d">
+                    <propertyInstance
+                      Id="ada613b9-3900-4ceb-994d-0cc04cf0845f"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="2eb53f15-adca-4c6a-9ebf-ab0100a04f39"
+                LastKnownName="string"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="395d5ea0-4118-45fb-aa02-e1260497d348"
+            name="_priority"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="acfa0f48-01df-42f1-bdb8-2e641cf24d31"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f2706f90-5db7-414e-b2d2-9a408b3c6858">
+                    <propertyInstance
+                      Id="3124d581-9cfe-4b68-8e6e-062f12092ac3"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="49b6fbf4-3763-4924-bb37-3bd2d2ca2cc3">
+                    <propertyInstance
+                      Id="20e6dd10-7664-410d-970c-4a1323737b62"
+                      name="Get"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cdd4534e-3bba-43e9-a978-9f16240e3d38">
+                    <propertyInstance
+                      Id="f7398072-5d23-45e0-afcb-f649e4bd4812"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="12e57355-eda0-4b34-92fe-a92b8d5ca8a2">
+                    <propertyInstance
+                      Id="1017872d-30a0-4c0f-bc39-6b791f11339c"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="836e9c93-1d76-4484-aceb-9c912264d503">
+                    <propertyInstance
+                      Id="9b4e9eeb-52d5-432f-b35f-6c37bdbbf9c5"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5f7ee7f4-72ca-4918-9c88-a269eb26bc73">
+                    <propertyInstance
+                      Id="5da3474a-1290-48d3-84d3-3fe6aa8ae79f"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bf1cf2f9-0a65-459b-aa80-159de25ccd0c">
+                    <propertyInstance
+                      Id="305d06d8-a913-47e0-a771-9cb2e8fed140"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="5e95f0c0-e16f-4369-8b9e-7c247bfb7ff4"
+                LastKnownName="const uint8"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="5f8adc1c-8b94-47a9-9caf-1f8c69b683a2"
+            name="_requiredRAM"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="083f9f5a-1d11-4c30-9213-acd668ade8b9"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="552a96e0-7388-45a9-96e4-6552288ca871">
+                    <propertyInstance
+                      Id="03b97d03-3b3c-4d24-84d7-2e9fce31e71c"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="924e8734-ceef-44d6-9ad0-7a6544703369">
+                    <propertyInstance
+                      Id="663cc26c-a181-4618-b2e6-80020402bbff"
+                      name="Get"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="408db091-016c-468f-858d-d93ac6b29907">
+                    <propertyInstance
+                      Id="d03ce215-f8ab-42c5-8416-f69b6a3bc3bc"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9b421a24-e0f7-45e9-ac7f-67548df6ec8d">
+                    <propertyInstance
+                      Id="b03edf5a-0af6-42b2-8ff0-d69234d3544c"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="595b7829-d3c4-4e7c-825b-1fc8e1b53196">
+                    <propertyInstance
+                      Id="3c973d52-093e-462d-b6ab-a251a50ba198"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e8234ff3-565d-41ff-bc75-2cf0284f1368">
+                    <propertyInstance
+                      Id="44b08fd5-ca4a-4a6c-9599-11eb7b2b5650"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0d8047f3-4b41-4a67-8871-e11c0f40cc75">
+                    <propertyInstance
+                      Id="29dccb55-a580-4ab3-a47b-1121fd7041b2"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="afcea967-78aa-463b-a1de-2466ff222ff9"
+                LastKnownName="const double"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="1e3d55cf-91de-4d24-b756-b4b1aa4dfc92"
+            name="_requiredDiskSpace"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8ab29e33-5f23-4478-962c-44181e9804f8"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f9edbf2d-ae2b-4113-8cdd-d8844d37a665">
+                    <propertyInstance
+                      Id="4ca51cde-4810-4702-90ac-7f8ea855ae8c"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="907b99cb-ab9b-41ae-8898-0436e96a9410">
+                    <propertyInstance
+                      Id="4cc673dc-4aa4-459d-ae11-14c972498495"
+                      name="Get"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="81bcef3e-caa1-4ea5-ac21-45e16c669c8c">
+                    <propertyInstance
+                      Id="d5d4bd77-bb65-411b-9d3e-ceb67abd318b"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="79399f86-e7b2-4c10-b18c-ccbd61fa7821">
+                    <propertyInstance
+                      Id="703112b1-3dd9-4f3e-8c82-b95dab9e45b3"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="be562094-bf0a-4bde-a5a0-f8f82f1e49fe">
+                    <propertyInstance
+                      Id="37d7ec77-f009-49b0-8516-3694620917cf"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bf4ccac2-3ee3-40ec-88dc-2f972a228a7d">
+                    <propertyInstance
+                      Id="ac2aa273-1db9-4543-9e13-ac7335a193fa"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7aacaefd-4418-4b35-b2b9-723e69d05c5f">
+                    <propertyInstance
+                      Id="12c95e6f-84f6-4f9b-940d-946303b4cfe9"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="afcea967-78aa-463b-a1de-2466ff222ff9"
+                LastKnownName="const double"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="a64c4fde-a922-4673-ae31-70257cb6bfcf"
+            name="_requiredSoftware"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="0bde3771-2a50-44d0-86b6-13012089e3cb"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b15e75e9-74ac-4f51-b6f4-9a8f21da535d">
+                    <propertyInstance
+                      Id="434f55ff-b309-4968-b5a5-caff44b512d7"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f24c4a35-72f3-4386-9a3e-4c6d91b02727">
+                    <propertyInstance
+                      Id="2263ed9f-21cd-4c48-8534-4e028f16fa20"
+                      name="Get"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d2115416-8173-4f92-a0e0-847e05d17a42">
+                    <propertyInstance
+                      Id="da8330d6-a2ef-4b07-8639-ead23f0eabe7"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="696ea4ec-959f-4fb5-ac5a-fa317cf46a95">
+                    <propertyInstance
+                      Id="9ee3ff49-4d11-4c58-911d-e8ed1cb54576"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a4580e13-93e5-4122-9b37-b8bad93a424c">
+                    <propertyInstance
+                      Id="a5ce2274-a1aa-488e-be74-ff089126b1ad"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b9c569fd-94d3-4009-a083-eab79c065f2e">
+                    <propertyInstance
+                      Id="d8c257af-0724-4c98-9e10-a09c67cb49bf"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b11e3884-b88e-4088-9413-4d8e8891a6be">
+                    <propertyInstance
+                      Id="12897ed3-1ee7-42b6-8b02-5e6758c99ef4"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="20190548-c828-41c6-8f6b-6176ad015398"
+                LastKnownName="const vector&lt;Software&gt;"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="0e357d3c-84b2-4b53-9b75-c868ad7b1a91"
+            name="_totalExecutionTime"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="1abb4dae-9a6c-4e73-98e2-a9ad4c84bf66"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="60a2cb02-b70f-46f2-9bdb-b472e9a962c2">
+                    <propertyInstance
+                      Id="6ebc7da9-544b-4435-8cb1-e01360e68ca1"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4246eab0-82ee-472e-909c-953661b2d319">
+                    <propertyInstance
+                      Id="7b1fa6de-8d27-4c33-b034-b37586911fe1"
+                      name="Get"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3abad193-9de9-4092-a629-26066c09c2b6">
+                    <propertyInstance
+                      Id="967d0b90-11ee-4802-9642-4fc5b5af03ef"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8fcf226e-f6b3-40ce-9503-dc54b418f3c0">
+                    <propertyInstance
+                      Id="2c6ec78f-7aa9-4981-90c8-071a2dfbd918"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ab625822-7c7c-4291-af93-d0bef59a4c05">
+                    <propertyInstance
+                      Id="942ff732-dd20-4139-a9a3-8866dd8794ed"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0911d7a9-7384-4dc5-a088-5533722f4bf5">
+                    <propertyInstance
+                      Id="fee77071-575f-44d2-be58-dfc63056474e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="39959215-2fd8-4bc8-bab1-18524159a0a0">
+                    <propertyInstance
+                      Id="47c3a432-60f6-485f-9794-57d6730ff6a3"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="96fc15e0-7ff2-4ccd-b771-1ca6421b413d"
+                LastKnownName="const uint"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="4a94d77b-3c67-4cd1-972f-295b779550c7"
+            name="_elapsedTime"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="17dc382b-8fb5-4538-98e8-ea9d00042c37"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="86144875-3021-4d2a-9103-7fff863c4bee">
+                    <propertyInstance
+                      Id="7d7dd774-f2fa-4d49-b890-3609ff675db8"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0613db48-1632-4a5d-ab25-b9e769b8bafd">
+                    <propertyInstance
+                      Id="994ceec7-ac5d-4dc4-8f8f-100385b03398"
+                      name="Get"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="00a709d6-c3e7-4c80-a6ba-ec212b1a257b">
+                    <propertyInstance
+                      Id="3136b065-df9a-481c-beaf-123b3c480b2f"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="25cf0bc9-d020-4a0b-bc54-144c1342c74d">
+                    <propertyInstance
+                      Id="372bf97f-10ca-4e06-a396-be6f87a3ca99"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c547433a-9c17-407a-83db-27daac42ac27">
+                    <propertyInstance
+                      Id="e83ae57e-30f0-4b76-8267-6204f11f811f"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6b201d7b-1077-446a-871d-fb15da4e3cb1">
+                    <propertyInstance
+                      Id="d7b18b48-53d8-4c86-bb03-4522e8bf5548"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1cb3ffe7-b4a7-4907-8ce6-57e635d795ec">
+                    <propertyInstance
+                      Id="01a9e487-22dc-4d56-8bb5-ace107a2af0e"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="90071b89-7a91-40c2-8527-4bf8cf9b9f6d"
+                LastKnownName="uint"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="61a0b91f-f09e-4dea-bb24-b332e4b22eaa"
+            name="Job"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="bf77dfc9-a619-43a3-abc0-e85381da419f"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9b486eed-ef14-4943-ae4f-e7bc7a2f638e">
+                    <propertyInstance
+                      Id="0033fb9c-4ece-4071-8a6e-0d072a998d16"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bd77f0f0-9661-4424-a6f9-8ebdd0abc136">
+                    <propertyInstance
+                      Id="addfc98c-2f73-4daf-9998-51074a4de69c"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e00a7555-44ee-417c-9ed8-b3df15236d5a">
+                    <propertyInstance
+                      Id="911b549a-90d4-4085-8b5e-cef13c28dd2a"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1b68585f-504f-4e88-86f2-db04612ec15e">
+                    <propertyInstance
+                      Id="e0dc07f4-0c50-4fdc-8087-d0674c6bd787"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3c8f6fdd-dd24-4c22-8a7f-90378b1bb5e1">
+                    <propertyInstance
+                      Id="de7e432e-86f1-4139-bbfc-616dfef30b5d"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5125efc9-33be-4c6b-884a-2efd24d15023">
+                    <propertyInstance
+                      Id="b54da1b4-5cd3-407a-858f-64bf232c926b"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="48002d8f-dc42-442a-a870-5ad4e8722a93"
+                  name="const string&amp; name"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="71c6c14c-aeb5-4e10-9af4-dd99a78d5c78"
+                  name="uint priority"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="70ee2e62-c795-4838-9cad-0ee818b49146"
+                  name="double requiredRAM"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="273a1891-9a55-406d-bb49-be002b1f9765"
+                  name="double requiredDiskSpace"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="63d86b56-9a92-489e-92e5-f81897dc7a9c"
+                  name="uint executionTime"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="7ccf320a-755e-4361-aeec-eb13cbd9dd7d"
+            name="GetName"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="42008096-c3ca-4ac2-a4b6-de095a911c1b"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3be73af2-9271-4ed4-aa3b-ebd27b18b2d9">
+                    <propertyInstance
+                      Id="a42039be-eae2-4f79-b3cd-0dc499430ab2"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4f3a1fe0-247e-4186-9695-e612cf632319">
+                    <propertyInstance
+                      Id="61d9db84-c40b-4ca5-a158-d3c3df946968"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4c1d8498-d968-4fba-8cfb-2b92c16591b0">
+                    <propertyInstance
+                      Id="c744fe72-3d02-47f9-9262-a85c63811944"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ae45e324-58ca-4227-a951-9dc20e39e905">
+                    <propertyInstance
+                      Id="1c6de9f1-2173-40ae-8cd7-88c08b36549d"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="01a90291-77f0-4daa-ba98-e7f6d2421869">
+                    <propertyInstance
+                      Id="0e8355f6-e64a-4248-b210-b8de4805d0ea"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cf1399f1-f4b7-4cd6-b75a-af52ba002df9">
+                    <propertyInstance
+                      Id="83971500-40dd-4fdb-9de5-621d250b67e7"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="86f6a751-4e80-45b8-913e-22ee2be2d9d6"
+            name="GetPriority"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="b3ca6a8d-172a-454f-848d-deb00f3df5b1"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e8008228-b5f7-4f32-9c28-65fad646475f">
+                    <propertyInstance
+                      Id="9b46a222-d031-45d6-b181-ced6cb8228c8"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1b3ab390-3121-4cec-ae6d-0681f72cfda9">
+                    <propertyInstance
+                      Id="9ff7448f-bb26-41e0-a4ea-ec31f78c15e8"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="963f133e-b098-478a-879e-be8ceb08807e">
+                    <propertyInstance
+                      Id="864f3dce-f4b3-49ec-b3ed-8e1c4e806a37"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5af065a6-4a2b-44d6-b934-0af0d67170ea">
+                    <propertyInstance
+                      Id="c12e96af-0f54-42d9-b5de-f01e5918ee6b"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3565e964-4237-436d-b493-a8a7813b256a">
+                    <propertyInstance
+                      Id="c1aed9e2-da66-4d4c-8d33-96893abaff91"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6e263c44-c886-410b-b4c2-89f112efa30d">
+                    <propertyInstance
+                      Id="a2aea324-6776-4fd0-8a7d-45f9f115f108"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="4643e609-e07d-4f46-ae0a-1e87707efca6"
+            name="GetRequiredRAM"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="c7e0ada5-0213-48a7-aeec-fa8096ac9592"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="314c9e4b-515b-48fc-b823-4ed9123834af">
+                    <propertyInstance
+                      Id="b7d35211-dec3-4562-8f39-f4dc3c81f437"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="700a5751-1f2a-49b9-b9a9-971f5c0f81c0">
+                    <propertyInstance
+                      Id="4197db83-fe2f-4b17-8dbd-f5c12cb32da9"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a769e4c5-b0c3-4607-a576-6aa77b0df20f">
+                    <propertyInstance
+                      Id="aaaf3c57-d3fd-4ee0-97db-eafe673cd550"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="88300453-917a-44c4-9b4d-c6ec648eeb12">
+                    <propertyInstance
+                      Id="ab64d0b2-c4dd-4842-ae8a-2054a8b4b4ca"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6f388096-bf40-4bb2-875b-588934a9d5cc">
+                    <propertyInstance
+                      Id="b871dca4-5bdc-4ba4-8d38-2139318b2328"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4822eb83-ee70-48cd-b589-fe19b4f684ac">
+                    <propertyInstance
+                      Id="24d995c3-a6a9-4da8-96a3-f4005865f887"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="08a64402-14c1-4b36-9d29-8c4d648c6b10"
+            name="GetRequiredDiskSpace"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="60934e66-a68c-4e24-b823-37b08ce57c7d"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5b63f881-6128-446f-9beb-9670971d22cd">
+                    <propertyInstance
+                      Id="de43df7b-5d17-49dc-a087-2f3ead4e69b3"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="50b6ab21-08ac-4a21-a16d-7b9a65bd7182">
+                    <propertyInstance
+                      Id="cdb6f4de-ff26-4c3d-bcb3-f6f68a054402"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="43b29fd6-306d-407e-9d96-869d91a9bac4">
+                    <propertyInstance
+                      Id="b90b934d-7e2e-4b75-be1e-d7935b4460bc"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cd8a059e-21cf-4359-8340-c60f4e437650">
+                    <propertyInstance
+                      Id="95a073e3-7505-4316-b0b2-c19b2fe65d11"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="44d387fe-a341-4e87-89b9-f39367ab86ea">
+                    <propertyInstance
+                      Id="280af3f4-cc2f-4564-b00e-33e14daf17d2"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a43eb2d0-ed4c-48c6-a7fb-5841947ae7b2">
+                    <propertyInstance
+                      Id="b38d2c18-6f84-4203-9191-612298cebd13"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="680cfc33-ffd1-454f-844a-05983a92b102"
+            name="GetRequiredSoftware"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="da77a32e-e8f6-43f3-a923-f366c4ac89a8"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2e260800-b0e4-4cd0-ba4e-adf0f6fee77e">
+                    <propertyInstance
+                      Id="4c9abd3e-28ce-4786-978a-c94927258c15"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="43ebb138-e2ce-4654-9333-20b2e7f19b9c">
+                    <propertyInstance
+                      Id="caa32a35-c45b-4f36-beb1-da54db7ca6db"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="be7ea1bc-09ae-4822-a45d-15411fcbb73a">
+                    <propertyInstance
+                      Id="ee1b95be-5897-42ff-ac13-7e0a9c97f98d"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8715f379-3eac-4e26-acb0-fbafd6b31c5d">
+                    <propertyInstance
+                      Id="be09e41d-9f3f-4fda-8504-88688e6a1caa"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6f98e09b-cae8-4da3-b770-ecb7116808e7">
+                    <propertyInstance
+                      Id="c4048536-03c1-4e7c-a404-cb25fbfef3a0"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="05e9d7b1-4390-4180-b6c3-72f93e7e7c88">
+                    <propertyInstance
+                      Id="6008272c-3340-4314-9a63-8f26f2d62fcd"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="96354290-7066-4a93-8109-449ac636e835"
+            name="Finished"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="75983771-0e31-484c-9b26-ed759c1336d4"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7c8edd09-bff8-4a9b-8b77-784fb6994950">
+                    <propertyInstance
+                      Id="a2f0146c-8629-4997-9d00-e638e8cee992"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0ffdc731-196b-4515-90ef-ab41a93cef13">
+                    <propertyInstance
+                      Id="f53dce4d-bc77-47e4-9a8d-44a111472d7e"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b4b2a84b-d5c2-426b-b3c7-27716b2f2149">
+                    <propertyInstance
+                      Id="d39e0803-e51c-403b-8356-057628dc41d8"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="13879480-3122-4e00-bc0d-25a00e97d8b1">
+                    <propertyInstance
+                      Id="600026ae-53b7-487e-bec6-ffa7bb1218b5"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="46ac523a-028c-4e0d-806b-1af9c23fa3c2">
+                    <propertyInstance
+                      Id="92ae8957-e719-4950-8d09-e4ed58726006"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c5fdec5e-f6dc-46fd-830f-9f04f75d9164">
+                    <propertyInstance
+                      Id="8d2144ac-054f-4dfc-bf52-4e172dea0132"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="cf267212-cf43-4007-924d-2d94522e8caa"
+            name="Finish"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="3a2b093e-1d58-4016-aa51-f19090471254"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6270d73b-9718-483a-8889-f2707347e2ea">
+                    <propertyInstance
+                      Id="c4b29373-f7d8-46a7-9e0c-30d4477cf986"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="28a0f41e-d8d2-4123-acdc-411df085564a">
+                    <propertyInstance
+                      Id="5fab8f5f-dde9-45f4-89a1-98009d9a1c86"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9263b0f0-9722-4851-8cc8-15d2f5038ca8">
+                    <propertyInstance
+                      Id="d2886088-eb67-4e12-801e-016ebc5dfb82"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0783aa4d-2682-4228-96b6-7b7c8c1cc460">
+                    <propertyInstance
+                      Id="9ce1fb73-a364-4054-b2dd-2c63782e3d0e"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c565ca21-45f7-4380-8afb-a6dada2ad8a4">
+                    <propertyInstance
+                      Id="0bfbcca8-9a8d-4ab2-8709-a6d807a9a8da"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8087b40e-8ac1-4990-af2e-6d30181e1dc0">
+                    <propertyInstance
+                      Id="09c4010f-9d8a-418c-a3c9-9c4d96418695"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="6e7c118f-8faf-4564-8178-ef6e1bff6f4f"
+            name="~Job"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="31e0af2d-77bf-4f72-95b9-247ab856add3"
+            name="GetTotalExecutionTime"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="59a64c50-3293-4d43-b64c-4585c8fa0d43"
+            name="GetElapsedTime"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="7ce24f3d-166b-4c1d-a066-be67bedbb704"
+            name="Save"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="127bc35c-ea33-454c-9d53-cb0fee0b1f59"
+                  name="ByteBuffer&amp; bb"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="be7d58bf-c62b-439d-a2a0-4696a149d615"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ab658ff2-d60d-4f7b-bba4-b2e29a0135d3"
+                  name="uint32 diff"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="47b172ca-943f-463c-96f9-1c8d73fb31a1"
+            name="Print"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="13ffa88d-2dfa-4e2c-a214-16f02c6fee0a"
+                  name="ostream&amp; os=std::cout"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="4551e629-78f4-4fec-b8c7-f9603d0956e7"
+        name="std::string" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="5e95f0c0-e16f-4369-8b9e-7c247bfb7ff4"
+        name="const uint8" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="2eb53f15-adca-4c6a-9ebf-ab0100a04f39"
+        name="string" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="afcea967-78aa-463b-a1de-2466ff222ff9"
+        name="const double" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="ec484a17-b305-4115-869f-5932d297551a"
+        name="const std::vector&lt;Software&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="20190548-c828-41c6-8f6b-6176ad015398"
+        name="const vector&lt;Software&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="96fc15e0-7ff2-4ccd-b771-1ca6421b413d"
+        name="const uint" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="90071b89-7a91-40c2-8527-4bf8cf9b9f6d"
+        name="uint" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="3c05d334-40a9-4f5d-9345-b433872b8ff9"
+        name="ByteBuffer"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="a1983d63-1854-489b-a0f5-61e7b573f3d1"
+            name="_writePos"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="df3cc953-5a8a-4d6f-a60e-91bff9dc49ca"
+                LastKnownName="uint32"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="71bdb77e-f9f8-43f0-b726-c52fb5fb9ea8"
+            name="_readPos"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="df3cc953-5a8a-4d6f-a60e-91bff9dc49ca"
+                LastKnownName="uint32"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="c50d3a2d-4f2b-47e6-b4eb-5d83690e6954"
+            name="_buffer"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="830625e8-3cf3-4723-887f-5828d7189afc"
+                LastKnownName="vector&lt;Byte&gt;"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="7f67ee25-00ad-455c-b868-3ced7ba214a0"
+            name="ByteBuffer"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f3ca91da-8ad1-42af-a98e-0aa50f8816c3"
+                  name="uint32 capacity"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="e97881bd-7d4a-41b6-a287-e49132e1fe67"
+            name="ByteBuffer"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="68924112-6176-4265-937d-cb536e063d60"
+                  name="const ByteBuffer&amp; other"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="33bbf320-12d7-486b-a940-c28d1912a445"
+            name="Data"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="2bc6e22d-25b8-43e6-9744-0bcc06b2cfc3"
+            name="Clear"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="1c545d5f-ff64-4af1-a349-393159dc6111"
+            name="operator[]"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="bbb0553b-d173-4114-9bd2-681ec67555ef"
+                  name="uint32 pos"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="12d88aee-7d72-45a3-90c2-22746082b738"
+            name="GetReadPos"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="d45fb81f-a3e4-4657-a35c-57ece735fc89"
+            name="SetReadPos"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3246ef7a-5fb6-47ad-ad96-a855615cfd00"
+                  name="uint32 readPos"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="0745f459-a682-41e0-a2b1-1d0406810383"
+            name="GetWritePos"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="669c69db-f796-4272-ab2f-32aa7ca52029"
+            name="SetWritePos"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="76c09245-612b-44ce-b9a0-8cba54d55547"
+                  name="uint32 writePos"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="55b7912c-549a-472f-8403-86a7d1bee6bf"
+            name="FinishRead"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="4cc582cc-995a-4a38-9e7d-fc470fe5b85f"
+            name="ReadSkip"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="499038ec-1baf-4706-97b2-f64803936927"
+            name="ReadSkip"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f7bc3685-448b-4d31-b3f1-1ae1c22f6a0c"
+                  name="uint32 size"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="0431c62d-9ccd-4005-93a0-446ad986b856"
+            name="Size"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="8c02f5b6-b8bc-44fc-90fc-12f324049174"
+            name="IsEmpty"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="6a6dfae6-6eb8-4a1f-bf7b-12ddd2111bd3"
+            name="Resize"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="bbe5ebb7-ad63-4c49-b285-4896b2c36aea"
+                  name="uint32 newSize"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="b02131fe-26fd-4260-98f0-7c5a57c5457a"
+            name="Reserve"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="1def8597-617d-423f-9ccb-b05df7441ac5"
+                  name="uint32 size"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="bced0c2b-534d-4365-b7f8-58cc76649240"
+            name="Print"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="90467428-9e9d-4b44-a9d1-1324116e4b6a"
+                  name="ostream&amp; stream"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="1e116803-dd8f-483d-afe9-930c939d781d"
+            name="WriteBool"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="184dfc9d-e317-4c70-8c71-f7a23ee4e7ad"
+                  name="bool value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="de115a81-05ce-47e7-8c08-9ad89fadf8e0"
+            name="WriteUInt8"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="38c940d2-bdc3-4373-a880-36d5ee36e68a"
+                  name="uint8 value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="fc2edb6c-93d1-4f11-9b60-3272156b75ff"
+            name="WriteUInt16"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0475df98-01e8-4216-bd37-de6a994fc1fa"
+                  name="uint16 value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="0473f98a-563c-4e44-8f0b-dd639e2a40a6"
+            name="WriteUInt32"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="13d6051a-5c2e-4e55-8664-7d756f748ddb"
+                  name="uint32 value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="c87efc3a-9a47-4c58-b1d0-03aa0336b749"
+            name="WriteUInt64"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e43cbd41-7c49-4d51-98b0-67a1d37dc89f"
+                  name="uint64 value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="cc49bfcc-2d89-4e70-a731-99eda61942a0"
+            name="WriteInt8(int8 value);"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="ecfe5b09-13af-4d84-bf66-f4f1a6874544"
+            name="WriteInt16"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c7ea610b-d719-4c1f-90e8-8e96291a1bec"
+                  name="int16 value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="cb832b91-6191-4f87-8cf0-063c0ae3dd28"
+            name="WriteInt32"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="53fde4df-019e-438a-b47c-69c15c9493a6"
+                  name="int32 value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="4968fe5d-6dbf-4943-bdf8-5a23cfe62e3d"
+            name="WriteInt64"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e7ae7bf4-ad9e-486d-8430-5481fe11bb05"
+                  name="int64 value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="b6a02eaa-61c9-4949-8eb7-ee45a1c29fe6"
+            name="WriteFloat"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f6e03f26-75cb-4f46-a772-1eaffb1ebe39"
+                  name="float value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="b89602d1-e788-4052-b314-4964cf336234"
+            name="WriteDouble"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a14334c8-d186-483c-ac84-f959f95106d3"
+                  name="double value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f78d2164-f63f-4c1f-bcaa-a1079f53c18e"
+            name="WriteString"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ee3f9173-7f15-48ba-8a55-00fa0ae88745"
+                  name="const string&amp; value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="c3f94003-8dc2-4d0d-9d8c-f85e39d0b3ec"
+            name="WriteString"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7950d583-8e71-4b8c-8049-dd574b761ba7"
+                  name="const char* value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f7236c0d-5b22-4772-9fb6-67b2d5c90d00"
+            name="WriteCString"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c71a8f9b-f9df-4d59-92d1-c7c903569764"
+                  name="const char* value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f0ae466c-36dc-4902-9780-c5bb284d9a33"
+            name="WriteCString"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="77bf3ed7-de40-4dad-9611-63e7fe91aa89"
+                  name="const string&amp; value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="a72a7dcf-2da7-46b0-a665-4c4de06e6f93"
+            name="WriteBuffer"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="2c0adf77-d215-49e2-9bbf-93ea8a4541cc"
+                  name="const ByteBuffer&amp; other"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="1cb9052e-410b-41a6-9810-2a368f4d738c"
+            name="ReadBool"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="dcf23388-e36f-456b-ae91-68e42e829f7e"
+            name="ReadUInt8"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="2e53b6e8-2228-46d0-8aac-5fb86d0a75a7"
+            name="ReadUInt16"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="b97d9a73-9ea8-4af3-ae4d-27eec2695847"
+            name="ReadUInt32"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="c1aadf96-dd5a-493d-9776-fe74044241fc"
+            name="ReadUInt64"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="e897c038-38eb-44e1-841c-edeab273e0ca"
+            name="ReadInt8"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="98c1eddb-4e21-4464-9d9c-a6f8c2fb088c"
+            name="ReadInt16"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="8ab6f76f-2a39-4cb7-b1a3-e8ca1f2d2889"
+            name="ReadInt32"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="a8efa366-2e5f-4175-bee7-a7e01f424b3d"
+            name="ReadInt64"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="2bf294ce-a930-47a9-92f2-12e81e20790e"
+            name="ReadFloat"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="0588691b-d7bb-4557-92f4-c04fac809742"
+            name="ReadDouble"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="d8a94340-1a78-4c72-ac41-b2cd2862e3ae"
+            name="ReadString"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="a260f466-883e-4af7-adea-1884a7540123"
+            name="ReadCString"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="c48fe3e4-3669-41d2-9789-ddedd6751d48"
+            name="operator &gt;&gt;"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="bc27f22b-57a6-4bde-b106-9bf2c2b8e0ac"
+                  name="bool&amp; value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="dcbd71e2-3bcf-4cae-95ea-ae20274ee5fa"
+            name="operator &gt;&gt;"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7e39c4e9-88d2-4cc5-b9d8-9ddff0ef1d74"
+                  name="uint8&amp; value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="96f333af-d22c-4530-baf0-3c13906b2a07"
+            name="operator &gt;&gt;"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="42a14f4f-ae3c-45f2-b62c-d15bfce90e77"
+                  name="uint16&amp; value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="2c185f68-72c2-4fa4-ad3f-60dee0cbf546"
+            name="operator &gt;&gt;"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8e5eb43d-5681-4c80-80ce-7e61fa01c3e4"
+                  name="uint32&amp; value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="ae5d0349-ba98-4b7b-aa8e-821b4cff4259"
+            name="operator &gt;&gt;"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e97dcbb9-a53d-4e6e-a2e7-55c82c629caf"
+                  name="uint64&amp; value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="62fdf165-e402-47fd-b151-7dfdaf3d3af4"
+            name="operator &gt;&gt;"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b2370923-f92e-40eb-86ad-9ba069297edc"
+                  name="int8&amp; value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="e30eb528-4e51-467f-96d6-c0bdc140150b"
+            name="operator &gt;&gt;"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="2e20d128-f059-4069-a4b7-5b05f7f954ba"
+                  name="int16&amp; value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="141abab9-c7da-4b4d-a445-183ed33d921a"
+            name="operator &gt;&gt;"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3726b00e-b786-4c4d-8de6-2c5967a67d75"
+                  name="int32&amp; value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="0722ba5a-7e08-4b23-a1cc-1ad70b43189f"
+            name="operator &gt;&gt;"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0850fdeb-87ba-4a4a-beff-5174555c8488"
+                  name="int64&amp; value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="fa0f7953-70b3-4426-ba19-28e728115bc2"
+            name="operator &gt;&gt;"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="fd55d4b3-99a3-4662-bf52-008827ef14fb"
+                  name="float&amp; value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="e3be8abe-2b00-466f-87b5-1eb158892ae2"
+            name="operator &gt;&gt;"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="682a3fd1-4972-4c70-a61c-d792c4b169b5"
+                  name="double&amp; value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f50171e6-06c4-42c2-9277-fcabbd56fe55"
+            name="operator &gt;&gt;"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e491ad20-ba85-408c-9fe7-21a15ea4575b"
+                  name="string&amp; value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="d5fa4361-4d2c-4e49-9b4d-548183925e3c"
+            name="Append7BitEncodedInt"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="604c179c-289b-4c35-be03-c59910008abb"
+                  name="uint32 value"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="e341ae3e-ff4c-46ba-ad3e-9c033e2e5619"
+            name="Read7BitEncodedInt"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="df3cc953-5a8a-4d6f-a60e-91bff9dc49ca"
+        name="uint32" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="830625e8-3cf3-4723-887f-5828d7189afc"
+        name="vector&lt;Byte&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="64349730-984f-4d93-9bd3-6ef9b833d23d"
+        name="GridManager"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="02ee0ae3-7771-42da-bfe4-3125fbe74d19">
+            <interfaceMoniker
+              Id="06286794-99ea-4787-a1d8-e5b51819b59a"
+              LastKnownName="IUpdate"
+              LastKnownLocation="Freixo.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="4a4a878d-664d-4ae2-9916-77d53ff03b12">
+            <interfaceMoniker
+              Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
+              LastKnownName="ISave"
+              LastKnownLocation="Freixo.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization
+            Id="a5872eb2-91f8-496b-b7db-d7b88b848c52"
+            isSubstitutable="false">
+            <classMoniker
+              Id="58638c7e-dd2a-4c52-be03-8639e1db3148"
+              LastKnownName="Runnable"
+              LastKnownLocation="Freixo.uml" />
+          </generalization>
+          <generalization
+            Id="a9e2d975-1241-420b-a06c-1e7d8b7cad48"
+            isSubstitutable="false">
+            <classMoniker
+              Id="b1d37dce-10c3-447b-afff-250e08b55169"
+              LastKnownName="Runnable"
+              LastKnownLocation="Freixo.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="9aae637c-d887-4b1d-897d-b14e3db74dd3"
+            name="_lastUserId"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0e469a49-eab3-4096-8831-a7dcbfbc7eaf"
+                LastKnownName="static uint"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="fb1c0dba-ccad-4af3-b3ce-1422bac506df"
+            name="_lastMachineId"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0e469a49-eab3-4096-8831-a7dcbfbc7eaf"
+                LastKnownName="static uint"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="de46fef4-c133-4cb5-b64b-a3459e794a17"
+            name="_users"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="b3788826-63bb-4de6-bc55-d4b856b85e89"
+                LastKnownName="map&lt;uint, User*&gt;"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="39404ad4-b41e-4ae5-8447-7bf44c6582aa"
+            name="_machines"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="d3d6a169-72c2-4350-a3ab-e8f143d620dc"
+                LastKnownName="map&lt;uint, Machine*&gt;"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="e39e950b-e194-4c23-a63d-1d22d2317c00"
+            name="_realPrevTime"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="7789f4e4-7365-4d34-aaa3-10376b017f38"
+                LastKnownName="uint64"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="3bcd2485-cd2f-4d2c-baac-5e22783a8c15"
+            name="_realCurrTime"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="7789f4e4-7365-4d34-aaa3-10376b017f38"
+                LastKnownName="uint64"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="3fff624e-4bf3-4430-9f45-378575eb2cdc"
+            name="AddUser"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a8014a77-5ca2-456a-ada6-5b8460c476cd"
+                  name="User* user"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="7027506f-4f30-4909-b331-a745479c1f6e"
+            name="AddMachine"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="9dce21ae-f0ba-461e-a280-51798756c48b"
+                  name="Machine* machine"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="a4638c6a-5d53-4f21-b478-5f70ce62fe4d"
+            name="GridManager"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="a5b9746b-7843-481d-959b-7b621e5b213c"
+            name="~GridManager"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="08ca80dc-fb7f-4a39-83e2-1883a22c56cd"
+            name="RemoveUser"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="99f480e4-95c3-47ce-9a26-7bf9a53bb9dd"
+                  name="const User* user"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="c11e5303-f392-4e9d-b105-38a76d7d1726"
+            name="RemoveUser"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="2cf83708-522d-4412-a5b8-5929ba929221"
+                  name="uint id"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="93d11b6f-b942-49fc-9882-d3d2814b6dec"
+            name="RemoveMachine"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="97e55001-1ce2-41ab-baeb-5e87eebe46a7"
+                  name="const Machine* machine"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="c06cfd39-c0ed-4add-ae1a-5965484ebe5d"
+            name="RemoveMachine"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c99ae0e0-d049-42ad-b5a7-6af23e867ee7"
+                  name="uint id"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f0946a56-aea2-4eee-9aa5-92c74868136c"
+            name="GetUser"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="1d8cc443-e186-47d3-a452-7a9d264303d5"
+                  name="uint id"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="2f3b905b-06db-4441-a893-5decdde1bf1f"
+            name="GetMachine"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="57f425c4-c146-481b-a9ea-7ee9719b8f9d"
+                  name="uint id"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="13a40c91-f686-4c0a-9f22-f8b4928fb669"
+            name="Save"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="96cb2173-6096-4c5d-8a4d-ce2bc871d477"
+                  name="ByteBuffer&amp; bb"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="a9a529bc-9b3f-44ae-8dc5-2ad49d0ba82c"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="db30b8f8-9c7a-4056-8d6e-534b99b6d6bf"
+                  name="uint32 diff"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="acef8905-393d-45e3-a2ff-4bdf91a49987"
+            name="Load"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3ec7ae08-4d49-4307-8da1-82d67e05c267"
+                  name="ByteBuffer&amp; bb"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="fb189175-9b60-46dc-8188-9e4d998b6d50"
+            name="AddJobByUser"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="698ce6ea-b678-4279-860f-89950d830734"
+                  name="int userId"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="fe1f2438-c8f8-4d7a-9ea5-676222d6e811"
+                  name="Job* job"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="78dff9dd-f1e6-4424-8525-e884ebe5c1f0"
+            name="AddJobByUser"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0d19bb38-1e4f-43b9-ac10-8100f7c027ae"
+                  name="User* user"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="adce53ba-e3f7-447a-9037-3ccbbe8f802f"
+                  name="Job* job"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="6cf311b4-44d1-4024-9fdc-0623ba663b20"
+            name="Run"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="bb69c723-05a8-4080-a595-0a11fb281ad8"
+            name="AddJob"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="98010730-5650-4447-a5d0-4546db0eaa15"
+                  name="Job* job"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="4ad4eb0d-3a23-46b2-9e34-13eb4cbd03b2"
+        name="ISave"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="d44169ca-5297-4f8d-b2ab-9c40e9586aef"
+            name="Save"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7282253b-c0ee-45e7-ab84-faf0ec909a06"
+                  name="ByteBuffer&amp; bb"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="e4e7d6cf-a1c6-43de-86a5-a76204269ca7"
+        name="Machine"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="2a6fb8ab-e07a-403b-a4f9-23cd86e5fb2f">
+            <interfaceMoniker
+              Id="06286794-99ea-4787-a1d8-e5b51819b59a"
+              LastKnownName="IUpdate"
+              LastKnownLocation="Freixo.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="39b7af48-bba4-43b8-b1dc-69b1b35e8753">
+            <interfaceMoniker
+              Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
+              LastKnownName="ISave"
+              LastKnownLocation="Freixo.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="49aeaf34-da4c-4c6c-9360-1c1f53d94129">
+            <interfaceMoniker
+              Id="dad8ffa0-c3f4-47b5-bf1e-f55fca517ebf"
+              LastKnownName="IPrint"
+              LastKnownLocation="Freixo.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="3b72d263-7379-4cbe-b1fc-5291e2e20ebc"
+            name="_name"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="1e68af0a-def4-415b-8995-1f2f87042443"
+                LastKnownName="const string"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="45614c87-b63a-4490-bc00-89652198eea6"
+            name="_availableRAM"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="29901603-9b89-4cdd-8190-e705a7dead88"
+                LastKnownName="double"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="b4e4e27c-7fbb-4624-8a88-2e08316291f2"
+            name="_availableDiskSpace"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="29901603-9b89-4cdd-8190-e705a7dead88"
+                LastKnownName="double"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="87437cd6-2c18-4c88-b2cb-62c5bafb96a9"
+            name="_availableSoftware"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="4b85ea4c-0774-47c9-bc21-027a610170a3"
+                LastKnownName="SoftwareSet"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="3e724ae0-33a8-4d49-879e-ce4161a59044"
+            name="_maxJobs"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="96fc15e0-7ff2-4ccd-b771-1ca6421b413d"
+                LastKnownName="const uint"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="d4a013d2-fd3f-425f-b095-b48bc2def179"
+            name="_totalRAM"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="afcea967-78aa-463b-a1de-2466ff222ff9"
+                LastKnownName="const double"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="036cade3-5d40-473e-8403-c2f927f96970"
+            name="_totalDiskSpace"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="afcea967-78aa-463b-a1de-2466ff222ff9"
+                LastKnownName="const double"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="5c75afe3-485e-47fb-b349-1f1da0203ac0"
+            name="_currentJobs"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="553816d4-32d0-4e94-a4f3-3407820b3895"
+                LastKnownName="map&lt;uint, Job*&gt;"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="446f8c83-5dd3-4161-a4ac-440f618ccc97"
+            name="_lastJobId"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0e469a49-eab3-4096-8831-a7dcbfbc7eaf"
+                LastKnownName="static uint"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="4574a02e-5ae6-4459-917f-1c9c2567dc86"
+            name="Machine"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="4f64025e-33cd-4d35-ad7e-37140d55b6c3"
+                  name="const string&amp; machineName"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ca557539-8342-4ee3-9f70-dce6c7570a2e"
+                  name="uint maxJobs"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ced8c983-5bb0-4674-b892-5bd0d37e4e0d"
+                  name="double totalRAM"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="100f555a-517c-44a8-887c-5e959663367c"
+                  name="double totalDiskSpace"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="8c6c071f-6248-42e9-9711-ff6707c1a021"
+            name="GetMachineName"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="2a2895ea-0b5f-4d3e-9dfb-3e4a6304c73d"
+            name="GetMaxJobs"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="cfcaadfa-7ac8-4633-8ecf-d5a49ead796c"
+            name="GetAvailableRAM"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="3b5fe312-28e8-4138-b9f1-decefd33ec33"
+            name="GetAvailableDiskSpace"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="a9c81da3-7a9d-4f28-9c97-64fbeaaa5420"
+            name="GetTotalRAM"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="cff422be-68b3-4a26-b945-968f5f905843"
+            name="GetTotalDiskSpace"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="7a2d878d-4f2a-4bf2-9dae-f52d342d7b42"
+            name="AddRequiredSoftware"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5292a444-7dfa-4e1f-8445-558e563332b9"
+                  name="const Software&amp; sw"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="5d7bc3ae-28a8-4533-937d-d80013e90605"
+            name="IsRequiredSoftware"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a290c0a6-d9e6-4a90-b951-3fbad14ec42a"
+                  name="const Software&amp; sw"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="e409f592-2c86-472d-8ca7-80edc0c7db24"
+            name="SoftwareMeetsRequirements"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ce46fa34-5844-4689-8bab-0df551a122c7"
+                  name="const Software&amp; sw"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="0a77cca2-b290-4ee2-8158-4ccea26ff204"
+            name="AddJob"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="cc441bed-186e-4392-bdc0-6935c7519ff7"
+                  name="Job* job"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="a4f31e52-7422-4a4a-9e14-c84fb3e3929e"
+            name="RemoveJob"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3a177fb8-b6ec-4e59-af20-0a02f298cb29"
+                  name="uint id"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="05ebfebc-eb91-4ada-8fd0-8d4f6419e07b"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d2b77a0c-c8a6-4f94-bb6d-268b30cda9c7"
+                  name="uint32 diff"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="eeb23f70-47d0-416f-9eb0-cf4fee4873b0"
+            name="Save"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a60818f2-0027-4c0a-b772-65a951e6784a"
+                  name="ByteBuffer&amp; bb"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="72ab0086-37de-4222-b14d-d96b2917816a"
+            name="Print"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f570773e-d97e-47e7-9e93-d54a9352d320"
+                  name="ostream&amp; os"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="ad315868-38a3-42c6-8dd7-42b16d1d11c2"
+        name="Software"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="ed4d5af8-77eb-4703-96c7-bbf66247f043">
+            <interfaceMoniker
+              Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
+              LastKnownName="ISave"
+              LastKnownLocation="Freixo.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="27f64f26-6a58-4482-8fca-ce624bad67f5"
+            name="Name"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="2eb53f15-adca-4c6a-9ebf-ab0100a04f39"
+                LastKnownName="string"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="d3b582df-ed1e-43da-8d7d-81102bc1f45f"
+            name="Version"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="c7ff555a-069b-4904-b13b-a7fdc1ae161d"
+                LastKnownName="VersionData"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="e2770ef8-888c-43ba-9a58-c4286ea67745"
+            name="Dependencies"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="c1fe513f-a3b7-4313-bea8-12cd8856a01d"
+                LastKnownName="vector&lt;Software&gt;"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="053556b6-0bab-4b25-80d1-d715e80b450d"
+            name="Software"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0f04839b-a3ad-4215-9a36-65f3b3d7e089"
+                  name="const string&amp; name"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="36697b87-69bb-4809-8c0e-4d69420783d5"
+                  name="int major"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0e80361c-5f55-49c3-ac1d-4d1bcda81522"
+                  name="int minor"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ac0529ca-4a77-4032-b365-59d0ab0b28da"
+                  name="int revision"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="80cf73e5-6057-4013-8be6-8851f3c46755"
+            name="operator=="
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ff282a56-1e1d-4ce6-b42c-a9e6408e708e"
+                  name="const Software&amp; other"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="5cf0ba55-3ead-4556-af69-58cb5986fe8b"
+            name="operator!="
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="52005e44-b67b-4a23-af28-10029e54f8d1"
+                  name="const Software&amp; other"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="18b358cb-c18b-4a53-bfc9-4cd8d603f233"
+            name="Save"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="6bd910ff-f411-4d4f-a2f8-fa3e55fdad75"
+                  name="ByteBuffer&amp; bb"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="2ba8c492-7a6b-4e47-a5ea-a78cacb1d8ef"
+            name="Load"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="dd908937-f9af-4f3c-aba5-b15878df953f"
+                  name="ByteBuffer&amp; bb"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="39e957d9-f0ba-496c-8332-f9d1fa13dab0"
+        name="User"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="4ce28d70-a723-4080-aac5-06e4c8e9bfe9">
+            <interfaceMoniker
+              Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
+              LastKnownName="ISave"
+              LastKnownLocation="Freixo.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="72034cbb-e9dd-4a1c-a301-c4d6a059b19c">
+            <interfaceMoniker
+              Id="dad8ffa0-c3f4-47b5-bf1e-f55fca517ebf"
+              LastKnownName="IPrint"
+              LastKnownLocation="Freixo.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="9b5f29b7-2a7a-407d-9eaf-66247892a0e0"
+            name="_jobs"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="652bd2f4-5e75-4542-a67e-b212fd09ceca"
+                LastKnownName="vector&lt;Job*&gt;"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="8fc26a19-f35b-4b5b-9747-9e89d873aa49"
+            name="_name"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="2eb53f15-adca-4c6a-9ebf-ab0100a04f39"
+                LastKnownName="string"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="79c95324-ee19-4fc5-9092-f1e687387815"
+            name="GetName"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="03980894-d212-4c27-b0ec-6769cc02048b"
+            name="User"
+            visibility="Package"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="4fa9a4db-7104-4a6b-aad9-35b0a33f8f12"
+            name="User"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a4b99e43-49b5-49f9-8836-07719233cfaf"
+                  name="const string&amp; name"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="013599c3-5d4f-42bd-b09f-6347427c54f1"
+            name="Save"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a47b6df2-149a-4025-96a1-24c28275e6eb"
+                  name="ByteBuffer&amp; bb"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="92503761-5459-40f7-b1d1-24b2788844c0"
+            name="CanCreateJob"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="069c29ab-717a-465f-9d7e-dd4e41b41ece"
+                  name="const Job* job"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="b04f89fa-943e-4dc2-a674-500115f841b9"
+            name="CreatedJob"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0c10b769-df67-46b4-a599-8c28371c155c"
+                  name="const Job* job"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="cce61c75-2e28-48cd-82eb-cc49939718e4"
+            name="Print"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ee8308d0-4adf-4c26-9fc0-511887156f96"
+                  name="std::ostream&amp; os"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="0b1ee467-2501-41a9-87eb-9fdc26439fd6"
+            name="Load"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7d3e3721-3cfa-4093-be7d-f4ed67257d30"
+                  name="ByteBuffer&amp; bb"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="0e469a49-eab3-4096-8831-a7dcbfbc7eaf"
+        name="static uint" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="b3788826-63bb-4de6-bc55-d4b856b85e89"
+        name="map&lt;uint, User*&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="d3d6a169-72c2-4350-a3ab-e8f143d620dc"
+        name="map&lt;uint, Machine*&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="1e68af0a-def4-415b-8995-1f2f87042443"
+        name="const string" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="29901603-9b89-4cdd-8190-e705a7dead88"
+        name="double" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="4b85ea4c-0774-47c9-bc21-027a610170a3"
+        name="SoftwareSet" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="553816d4-32d0-4e94-a4f3-3407820b3895"
+        name="map&lt;uint, Job*&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="ef4f4803-dc14-450e-a907-4242340ab5a3"
+        name="Class1"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="e24a8535-ef2f-4486-b1c3-fb5d5e2b95e3">
+            <classMoniker
+              Id="ad315868-38a3-42c6-8dd7-42b16d1d11c2"
+              LastKnownName="Software"
+              LastKnownLocation="Freixo.uml" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="c7ff555a-069b-4904-b13b-a7fdc1ae161d"
+        name="VersionData" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="c1fe513f-a3b7-4313-bea8-12cd8856a01d"
+        name="vector&lt;Software&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="487ef34f-54d0-4d76-8c51-c91bf4513030"
+        name="SaveUserType"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="1c0df410-87ea-49eb-b27f-e6b825e5468b"
+            name="SAVE_USER_TYPE_ACADEMIC" />
+          <enumerationLiteral
+            Id="bad3d068-1da7-4cc8-b658-bef2c0ca5b95"
+            name="SAVE_USER_TYPE_ENTERPRISE" />
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="652bd2f4-5e75-4542-a67e-b212fd09ceca"
+        name="vector&lt;Job*&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="16d48d3d-46c6-42b1-a558-8c6572b7a2c3"
+        name="AcademicUser"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="7268b1da-eb96-46ce-880c-3fb905396c3f"
+            isSubstitutable="false">
+            <classMoniker
+              Id="39e957d9-f0ba-496c-8332-f9d1fa13dab0"
+              LastKnownName="User"
+              LastKnownLocation="Freixo.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="828ad4b9-1ebe-44c4-92a7-48be02f50b8f"
+            name="_jobCount"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="90071b89-7a91-40c2-8527-4bf8cf9b9f6d"
+                LastKnownName="uint"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="730e1dcb-3950-4203-b090-f5722c8112c1"
+            name="AcademicUser"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0beb97d3-e469-4ee9-a46d-3fd9ba8bb91a"
+                  name="const string&amp; name"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="17df95a4-8d73-4d6b-851d-f76805f1a5ba"
+                  name="uint jobCount"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="786b9830-038b-4a02-ad7d-23a3b8480ac1"
+            name="GetJobCount"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="2531da6f-ef97-4f3b-bc8e-d2cbde332f38"
+            name="AcademicUser"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f72d33b7-e66b-4c78-8ccf-4a284c41e65c"
+                  name="const string&amp; name"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="24fdec87-1a88-48d7-a42f-35da7c40d62b"
+                  name="uint jobCount"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="0b6b97d4-828d-41e7-ab9e-1aaba4b56895"
+            name="Save"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="eb473033-8d37-4677-87dc-7e571cbec64f"
+                  name="ByteBuffer&amp; bb"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="c4fdda93-adfd-49a8-927d-740db7eefdac"
+            name="CreatedJob"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="92552a59-22ba-4995-ba7e-a58962258ca5"
+                  name="const Job* job"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="cd90ee62-dcb8-4897-824b-50c32764400a"
+            name="CanCreateJob"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a426d850-aba8-4b1c-b97e-e14ea1d7a2f6"
+                  name="const Job* job"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="9a0bc543-b83b-4f0c-8fb9-3acee8619833"
+            name="Print"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="373a47c5-6ff7-4450-9032-86434313adec"
+                  name="ostream&amp; os"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="23f2af80-c36e-4778-ab91-659a575df072"
+        name="EnterpriseUser"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="e1110adf-ab29-45e1-a27c-59d4744ac3f3"
+            isSubstitutable="false">
+            <classMoniker
+              Id="39e957d9-f0ba-496c-8332-f9d1fa13dab0"
+              LastKnownName="User"
+              LastKnownLocation="Freixo.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="40291013-532a-4388-b7eb-fb6a6deaa903"
+            name="_budget"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="29901603-9b89-4cdd-8190-e705a7dead88"
+                LastKnownName="double"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="d1ca56b9-9c3e-457d-97ed-1231ac4f51b8"
+            name="EnterpriseUser"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5f1853bb-2c27-4b50-8e52-dbee064be75e"
+                  name="const string&amp; name"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f15f075f-bcb1-497b-99df-f69cdf11e526"
+                  name="double budget"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="dc5518d3-efe5-4f48-8788-3d5c095c14be"
+            name="GetBudget"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="fbd0bd82-933c-483c-8dc3-554a34da8d72"
+            name="Save"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="fa2ea16e-3e51-4691-a4d6-a2cfe22567b9"
+                  name="ByteBuffer&amp; bb"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="b6037731-9096-4cb7-b1b3-f8fd85f05df2"
+            name="CreatedJob"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="1ee22336-3437-4cd9-a951-a71b730998cb"
+                  name="const Job* job"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="4f46b547-d5a2-404a-8b83-8adc854b114b"
+            name="CanCreateJob"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ebd72d22-c6f0-4278-8df8-69a07aad4dac"
+                  name="const Job* job"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="754314b4-d215-4223-825c-9af0d9588d8e"
+            name="Print"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a0ad9ffa-b428-47b5-91ac-86e49f0af373"
+                  name="ostream&amp; os"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="07fa670a-2271-46ef-99d2-34cd16b6ff61"
+        name="InvalidValue"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="db67d072-3baa-43bb-8b38-2a693b572147"
+            name="InvalidValue"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="91e039dc-e332-4c7a-88e0-d6f747531248"
+                  name="const char* val"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="a7a33520-65d9-45ab-ba06-98997adc6394"
+        name="EOFCharacterValue"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="40665265-fab9-452a-809e-dabe8071a720"
+            name="EOFCharacterValue"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="54db3406-9df9-44b1-973f-34fef4ed21b0"
+        name="IUpdate"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="d87c63e6-fb51-4644-ada7-84771e33fffc"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ff97dee6-4cc5-4369-9e98-ef274d027045"
+                  name="uint32 diff"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="58638c7e-dd2a-4c52-be03-8639e1db3148"
+        name="Runnable"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="c16b7cf4-bca1-4d67-be26-cfcb24bfe5e3"
+            name="_stop"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="e76212ba-62df-44dc-a74e-66d84301ca44"
+                LastKnownName="atomic&lt;bool&gt;"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="b954ccbf-ce26-4b35-a943-c328927d7428"
+            name="Runnable"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="b75b651c-31da-40ef-9483-aa4fceb9ef4c"
+            name="Runnable"
+            visibility="Package"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="0ae8c333-aaf8-4d81-bb66-8d0b55644724"
+            name="Stop"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="16dd8640-33cc-4843-9c6d-f80d71dff7ce"
+            name="Start"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="9b1cf44f-59b3-4c06-a1ac-ac60276ca067"
+            name="Run"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="e76212ba-62df-44dc-a74e-66d84301ca44"
+        name="atomic&lt;bool&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="f2f38f6e-c7ec-43d5-b01b-79ab92a5acc4"
+        name="Loader"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="ebed2ff7-4384-4fb2-b5d7-a4e32418291b"
+            name="_fileName"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="2eb53f15-adca-4c6a-9ebf-ab0100a04f39"
+                LastKnownName="string"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="0d910e6f-b356-43c1-ab65-d71d7d98f19d"
+            name="Loader"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d2fc95c5-fc3f-4439-92f6-025832bd1a7d"
+                  name="const string&amp; fileName"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f63e8cfe-8227-4715-9139-c7b07a2fe6d5"
+            name="Load"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="b880cb21-0a3d-4fab-87e2-d9274790d013"
+        name="Loadable"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="b1d37dce-10c3-447b-afff-250e08b55169"
+        name="Runnable"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="d858fa4e-8574-4cfb-b3bd-168eb4254f77"
+            name="_stop"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="e76212ba-62df-44dc-a74e-66d84301ca44"
+                LastKnownName="atomic&lt;bool&gt;"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="c02fecfc-8763-4aef-ba15-c5727c3d2795"
+            name="_thread"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="ca6db659-08a0-41b0-95eb-d876c32f7e3a"
+                LastKnownName="thread"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="a8d3bdb7-2284-4c12-9637-a3c7eef02116"
+            name="Runnable"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="a47fabd6-74e4-4dfb-9877-ad6eaa89913c"
+            name="~ Runnable"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="2e97cc8e-be47-444d-aa75-4d24041e640a"
+            name="Stop"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="68e4c3f0-cb07-4b3b-8df3-f0ba41fe6a33"
+            name="Start"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="6606fa42-f35c-4234-9be9-e13d5d65d1f9"
+            name="Run"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="ca6db659-08a0-41b0-95eb-d876c32f7e3a"
+        name="thread" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="7789f4e4-7365-4d34-aaa3-10376b017f38"
+        name="uint64" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="060e1402-1ccc-464d-b84d-8d4e4643bb69"
+        name="IPrint"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="75ae0af8-2239-47cb-bc07-3c7f2c7dbc9b"
+            name="Print"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f8bc314f-9270-4b95-8d4c-7ca9264eb5ae"
+                  name="ostream&amp; os"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="0195a126-32e1-4f46-a797-dc81c9fde55d"
+        name="IMenu"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="876d2f19-574b-4a0d-ab61-df7678b99793"
+        name="Menu"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="c1638ec1-b086-4180-bc2d-ba3624579cc7">
+            <interfaceMoniker
+              Id="f3eb253d-25b5-4d30-9724-f0094475965b"
+              LastKnownName="IMenu"
+              LastKnownLocation="Freixo.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization
+            Id="599a2e60-f4c9-44c7-b197-a1ea95bcee02"
+            isSubstitutable="false">
+            <classMoniker
+              Id="0195a126-32e1-4f46-a797-dc81c9fde55d"
+              LastKnownName="IMenu"
+              LastKnownLocation="Freixo.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="807cd006-d76e-4a09-a796-de49e01da294"
+            name="_subMenus"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="f2435c9c-708e-4fa0-bce4-1db4eeb6ef7c"
+                LastKnownName="vector&lt;pair&lt;char, IMenu*&gt;&gt;"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="de1aea28-97f9-448f-bd02-9fff21c76ae2"
+            name="IMenu"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="19848010-6f9c-49c5-9fe9-a2cc9b2657b8"
+                  name="const string&amp; label"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="dc9a781a-e649-4167-94b5-da0d48967f8b"
+                  name="Menu* parent"
+                  direction="In"
+                  isUnique="false">
+                  <defaultValue>
+                    <literalString
+                      Id="9c66455d-46c4-40c0-8daa-c8ab6cb205be"
+                      value="NULL" />
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="a291b711-0427-4b25-96dc-e65c5fb9fc6c"
+            name="IMenu"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="93d9aed5-8b24-4b67-a3bc-e3f8b98dadb7"
+            name="const string&amp; GetLabel() const"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="38180c79-5951-4b87-b288-bb4646ff3430"
+            name="uint32 Print() const"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="999ae84f-95b1-48a4-945e-f6e8ce7be663"
+            name="Menu* GetParent() const"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="02fc80c6-2f4e-43a2-af68-32c4320409e4"
+            name="void SetParent"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="408c2934-d141-46d3-a5f4-131653f8875f"
+                  name="Menu* val"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f51ea38d-8d31-49d9-afd0-3e146e9f3aaf"
+            name="Menu"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="9bbc7375-419d-48d2-a70d-4912e89ac2a9"
+                  name="const string&amp; label"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f56a379b-c206-4bf8-ae94-1becbea21250"
+                  name="Menu* parent"
+                  direction="In"
+                  isUnique="false">
+                  <defaultValue>
+                    <literalString
+                      Id="05ef534d-d648-46c1-888b-bf4ff751b395"
+                      name="DefaultValue"
+                      value="NULL" />
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="b3f7ac8e-67f5-4bb4-a732-c57d3a9316c4"
+            name="Menu"
+            visibility="Package"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="3b614ec4-980f-4671-9225-dfe6d4856a5f"
+            name="IMenu* AddMenu"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="85b4059f-2337-4f8d-a614-168c3d5b9d82"
+                  name="char indexer"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="fcc40182-bb1a-4f7d-89ab-41043e413035"
+                  name="const string&amp; label"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="82fd87f3-ec03-4a6c-9e85-19a4b514d2af"
+            name="IMenu* AddMenuItem"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a58d9352-7328-4981-a842-aed50be40676"
+                  name="char indexer"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="48537491-169a-47cb-9123-49566b451191"
+                  name="const string&amp; label"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5ae28b95-6634-403f-9207-f7df5340abbb"
+                  name="uint32 val"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="7035797e-5ce8-4db9-909c-94cf1be640b0"
+            name="IMenu* operator[]"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ea3ad906-a615-4f9a-b8b4-041eb2e20699"
+                  name="char indexer"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="2cd9e460-d126-46a2-8173-89c35816f534"
+            name="IMenu* operator[](char indexer) const"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="90915b80-7955-4fae-a117-b6a7372e9b43"
+            name="IMenu* GetLastSubMenu"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="bb795c35-979c-450b-82cc-708620d54e39"
+        name="Menu::Item"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="9c924c17-c8f0-4a4f-96a4-794ae7d0a8ae">
+            <interfaceMoniker
+              Id="f3eb253d-25b5-4d30-9724-f0094475965b"
+              LastKnownName="IMenu"
+              LastKnownLocation="Freixo.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization
+            Id="b61aac85-362c-4f14-9c3e-c5726f19c4c8"
+            isSubstitutable="false">
+            <classMoniker
+              Id="0195a126-32e1-4f46-a797-dc81c9fde55d"
+              LastKnownName="IMenu"
+              LastKnownLocation="Freixo.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="fed681e3-a041-4805-a0a4-97a1fa2d8b17"
+            name="_value"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="df3cc953-5a8a-4d6f-a60e-91bff9dc49ca"
+                LastKnownName="uint32"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="d7a92e68-f141-403b-a119-d3afe0c79797"
+            name="IMenu"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f2b97f96-b908-4076-8a38-6aa3a67a3258"
+                  name="const string&amp; label"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="869f7527-d36c-401f-984a-89bf9ecfe87a"
+                  name="Menu* parent"
+                  direction="In"
+                  isUnique="false">
+                  <defaultValue>
+                    <literalString
+                      Id="db42efef-12af-45c4-85be-8c366280103e"
+                      value="NULL" />
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="ec891190-6308-4419-9434-593a30fa62b4"
+            name="IMenu"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="daf73905-685a-4579-a753-dd4698230628"
+            name="const string&amp; GetLabel() const"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="aa144eec-6779-4f46-a8fc-0b1ebc298516"
+            name="uint32 Print() const"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="68004be6-e5e3-47b4-b7ed-60ca9c6d5b9f"
+            name="Menu* GetParent() const"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="5a7d7607-5d9a-4474-921e-5f7117ce86fe"
+            name="void SetParent"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0b644754-4504-43f1-9305-3e88de4e3c14"
+                  name="Menu* val"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="d12526f6-4ac4-4fe5-bcd5-d77ebad07091"
+            name="Item"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5e2ebf9a-b5df-4503-b6ca-12b8d0084a3b"
+                  name="const string&amp; label"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="93f6ebe4-6321-4c34-abb3-06a9578dd3a1"
+                  name="uint32 val"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d8f74e08-bd7c-43ef-9e10-99077bdaf023"
+                  name="Menu* parent"
+                  direction="In"
+                  isUnique="false">
+                  <defaultValue>
+                    <literalString
+                      Id="bfba2ea7-e95c-472d-8d4c-38e8e19cc6e4"
+                      name="DefaultValue"
+                      value="NULL" />
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="a8839294-91b9-44b1-8bfb-1afeb388d358"
+        name="Saver"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="b648e3d4-8ca6-45ad-8499-d0ba6c2cbdb4"
+        name="Logger"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="273e43e6-bd59-486f-b283-ea6df5703a66"
+        name="Writer"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="c99af4e6-5192-41a7-96dc-3367c4f714bd"
+            name="void Write"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="edcc7e94-8695-46a3-a8ee-a995520e3999"
+                  name="const string&amp; val"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="d6a2dc42-7410-43fa-8f69-ef8d56157d16"
+        name="ConsoleWritePolicy"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="a4c67cfe-706e-4948-bce5-df2745161baf"
+            isSubstitutable="false">
+            <classMoniker
+              Id="273e43e6-bd59-486f-b283-ea6df5703a66"
+              LastKnownName="Writer"
+              LastKnownLocation="Freixo.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="11ee9621-f7fe-48a0-bd65-4458975f651d"
+            name="void Write"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3e061407-0a2e-46ce-9687-17d51d67d16d"
+                  name="const string&amp; val"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="eda1f903-a2ef-4f35-ab83-3475ebdde65b"
+        name="FileWritePolicy"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="589ab28d-7fc9-4403-a21b-51617220dff1"
+            isSubstitutable="false">
+            <classMoniker
+              Id="273e43e6-bd59-486f-b283-ea6df5703a66"
+              LastKnownName="Writer"
+              LastKnownLocation="Freixo.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="b862aa55-a0f0-4e78-8df1-751a15cad6c6"
+            name="_file"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="9497a81c-e4cc-4498-984d-c3b3f324367c"
+                LastKnownName="ofstream"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="9a75c543-2c64-4b13-b005-c5d59ffd7d84"
+            name="void Write"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="357cf3bf-6051-4d2c-9daa-831a631e3790"
+                  name="const string&amp; val"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="635b245f-3d5a-47ee-afee-332718cf05fe"
+            name="FileWritePolicy"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="902c0846-2994-4e21-8511-78906bcf02f7"
+            name="FileWritePolicy"
+            visibility="Package"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="6dc7c71b-b084-4447-807a-c7faaa9f93b0"
+        name="ActionCanceled"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="e0901a49-16ac-4f75-84ef-b5fc062d6268"
+        name="ByteBufferException"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="df4eaf68-8e2a-4813-b4b3-1c6452e98afe"
+        name="MachineInExecution"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="f3cc3a5e-785c-44f0-b008-7a5fe31b67ca"
+        name="ParentNULL"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="b4b9a0ae-228e-4d51-ac84-b6d91ab942a8"
+        name="Interface1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="06286794-99ea-4787-a1d8-e5b51819b59a"
+        name="IUpdate"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedOperations>
+          <operation
+            Id="3002b98c-c86d-4fd3-a6d9-24a652c7b52e"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="19b38d12-7c09-40fd-b881-6f9ed394a076"
+                  name="uint32 diff"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
+        name="ISave"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedOperations>
+          <operation
+            Id="a09bf901-765e-4f8e-b1dc-091898fc117f"
+            name="Save"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="160eefcd-0b05-4b6b-995c-aa96f43c47e6"
+                  name="ByteBuffer&amp; bb"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="dad8ffa0-c3f4-47b5-bf1e-f55fca517ebf"
+        name="IPrint"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedOperations>
+          <operation
+            Id="2c469f02-4c5f-48d2-bfae-e5d27aef7cf1"
+            name="Print"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b42ce79f-f10f-431e-b680-40906af863c0"
+                  name="ostream&amp; os"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="f3eb253d-25b5-4d30-9724-f0094475965b"
+        name="IMenu"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedAttributes>
+          <property
+            Id="77b746f1-7602-41ff-83a3-7614792ba442"
+            name="_parent"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="e89e93e7-b432-4e42-a3b7-416effc991fd"
+                LastKnownName="Menu*"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="c8de2f6e-216b-48a9-9e2d-258d76c2f9ff"
+            name="_label"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="2eb53f15-adca-4c6a-9ebf-ab0100a04f39"
+                LastKnownName="string"
+                LastKnownLocation="Freixo.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributes>
+        <ownedOperations>
+          <operation
+            Id="8025fd73-2abf-4030-a4db-867fce86db15"
+            name="IMenu"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="dc941a8a-e2ab-40a9-a95a-3b68617efe2e"
+                  name="const string&amp; label"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="46df9a8c-9eaf-4346-9b5f-5a9d3484f4cc"
+                  name="Menu* parent"
+                  direction="In"
+                  isUnique="false">
+                  <defaultValue>
+                    <literalString
+                      Id="12bf7856-47cc-4db9-8c87-8dc529889d6e"
+                      name="DefaultValue"
+                      value="NULL" />
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="a6360611-089d-48dc-b84b-3bf3e87869e1"
+            name="IMenu"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="ca10dc47-194f-4f65-8955-1c5cb4cccfe5"
+            name="const string&amp; GetLabel() const"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="02aeb8f0-d506-4948-81ea-c22e577ec716"
+            name="uint32 Print() const"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="78a8fe4d-bcdf-4e53-8f8d-9c13a56116a8"
+            name="Menu* GetParent() const"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="a1690615-ecd5-4568-bf4b-adcc228005c8"
+            name="void SetParent"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b231d8f8-ecb7-40f9-92ea-50d76aa34c78"
+                  name="Menu* val"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="e89e93e7-b432-4e42-a3b7-416effc991fd"
+        name="Menu*" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="f2435c9c-708e-4fa0-bce4-1db4eeb6ef7c"
+        name="vector&lt;pair&lt;char, IMenu*&gt;&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="9497a81c-e4cc-4498-984d-c3b3f324367c"
+        name="ofstream" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>
