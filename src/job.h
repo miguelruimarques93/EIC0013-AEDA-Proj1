@@ -25,7 +25,6 @@ public:
     uint8 GetPriority() const { return _priority; }
     double GetRequiredRAM() const { return _requiredRAM; }
     double GetRequiredDiskSpace() const { return _requiredDiskSpace; }
-    const SoftwareSet& GetRequiredSoftware() const { return _requiredSoftware; }
     uint GetTotalExecutionTime() const { return _totalExecutionTime; }
     uint GetElapsedTime() const { return _elapsedTime; }
 
@@ -44,6 +43,7 @@ public:
 
     void AddRequiredSoftware(const Software& sw) { _requiredSoftware.insert(sw); }
     bool IsRequiredSoftware(const Software& sw) const { return _requiredSoftware.find(sw) != _requiredSoftware.end(); }
+    const SoftwareSet& GetRequiredSoftware() const { return _requiredSoftware; }
 
 private:
     const double _requiredRAM;

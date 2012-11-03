@@ -211,12 +211,6 @@ bool GridManager::AddJobByUser(User* user, Job* job)
     return true;
 }
 
-template<class T>
-std::vector<T*> GridManager::ApplyPredicate(std::function<bool(T*)> predicate) const
-{
-    return std::vector<T*>();
-}
-
 template<>
 std::vector<Job*> GridManager::ApplyPredicate<Job>(std::function<bool(Job*)> predicate) const
 {
@@ -292,5 +286,6 @@ uint GridManager::AddMachine(Machine* machine)
 
 uint GridManager::GetNumberOfJobs() const
 {
-    return std::accumulate(_machines.begin(), _machines.end(), 0, [](uint sum, std::pair<uint,Machine*> mach) { return sum + mach.second->GetNumberOfJobs(); });
+    return std::accumulate(_machines.begin(), _machines.end(), 0,
+        [](uint sum, std::pair<uint, Machine*> mach) { return sum + mach.second->GetNumberOfJobs(); });
 }

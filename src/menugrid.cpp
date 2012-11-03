@@ -11,26 +11,30 @@
 
 #include <iostream>
 #include <typeinfo>
+#include <functional>
+
+static std::function<bool(std::string)> _namePredicate = [](std::string val) 
+{ 
+    if (val.size() <= 0) 
+    {
+        std::cout << "Name cannot be empty." << std::endl << "Please try again." << std::endl;
+        return false;
+    }
+    else if (val.size() > 25)
+    {
+        std::cout << "Name cannot have more than 25 characters." << std::endl << "Please try again." << std::endl;
+        return false;
+    }
+
+    return true;
+};
 
 void NewAcademicUser(GridManager* gm)
 {
     std::string name;
     try
     {
-        name = ReadValue<std::string>("Name: ",[](std::string val) 
-        { 
-            if (val.size() <= 0) 
-            {
-                std::cout << "Name cannot be empty." << std::endl << "Please try again." << std::endl;
-                return false;
-            }
-            else if (val.size() > 25)
-            {
-                std::cout << "Name cannot have more than 25 characters." << std::endl << "Please try again." << std::endl;
-                return false;
-            }
-            return true;
-        });
+        name = ReadValue<std::string>("Name: ", _namePredicate);
     }
     catch (EOFCharacterValue)
     {
@@ -52,22 +56,9 @@ void NewEnterpriseUser(GridManager* gm)
     double budget;
     try
     {
-        name = ReadValue<std::string>("Name: ",[](std::string val) 
-        { 
-            if (val.size() <= 0) 
-            {
-                std::cout << "Name cannot be empty." << std::endl << "Please try again." << std::endl;
-                return false;
-            }
-            else if (val.size() > 25)
-            {
-                std::cout << "Name cannot have more than 25 characters." << std::endl << "Please try again." << std::endl;
-                return false;
-            }
-            return true;
-        });
+        name = ReadValue<std::string>("Name: ", _namePredicate);
 
-        budget = ReadValue<double>("Budget: ",[](double val) 
+        budget = ReadValue<double>("Budget: ", [](double val) 
         { 
             if (val < 0) 
             {
@@ -105,7 +96,7 @@ void RemoveUser(GridManager* gm)
 
     try
     {
-        id = ReadValue<uint>("Id: ",[gm](uint val) 
+        id = ReadValue<uint>("Id: ", [gm](uint val) 
         { 
             if (!gm->GetUser(val)) 
             {
@@ -139,21 +130,8 @@ void NewMachine(GridManager* gm)
 
     try
     {
-        name = ReadValue<std::string>("Name: ",[](std::string val) 
-        { 
-            if (val.size() <= 0) 
-            {
-                std::cout << "Name cannot be empty." << std::endl << "Please try again." << std::endl;
-                return false;
-            }
-            else if (val.size() > 25)
-            {
-                std::cout << "Name cannot have more than 25 characters." << std::endl << "Please try again." << std::endl;
-                return false;
-            }
-            return true;
-        });
-        maxJobs = ReadValue<uint>("Max number of jobs: ",[](uint val)
+        name = ReadValue<std::string>("Name: ", _namePredicate);
+        maxJobs = ReadValue<uint>("Max number of jobs: ", [](uint val)
         {
             if (val > 9999)
             {
@@ -162,7 +140,8 @@ void NewMachine(GridManager* gm)
             }
             return true;
         });
-        totalRAM = ReadValue<double>("Amount of RAM: ",[](double val) 
+
+        totalRAM = ReadValue<double>("Amount of RAM: ", [](double val) 
         { 
             if (val < 0) 
             {
@@ -176,7 +155,8 @@ void NewMachine(GridManager* gm)
             }
             return true;
         });
-        totalDiskSpace = ReadValue<double>("Amount of disk space: ",[](double val) 
+
+        totalDiskSpace = ReadValue<double>("Amount of disk space: ", [](double val) 
         { 
             if (val < 0) 
             {
@@ -243,7 +223,7 @@ void RemoveMachine(GridManager* gm)
 
     try
     {
-        id = ReadValue<uint>("Id: ",[gm](uint val) 
+        id = ReadValue<uint>("Id: ", [gm](uint val) 
         { 
             if (!gm->GetMachine(val)) 
             {
@@ -285,7 +265,7 @@ void NewJob(GridManager* gm)
 
     try
     {
-        userId = ReadValue<uint>("User Id: ",[gm](uint val) 
+        userId = ReadValue<uint>("User Id: ", [gm](uint val) 
         { 
             if (!gm->GetUser(val)) 
             {
@@ -294,21 +274,10 @@ void NewJob(GridManager* gm)
             }
             return true;
         });
-        name = ReadValue<std::string>("Name: ",[](std::string val) 
-        { 
-            if (val.size() <= 0) 
-            {
-                std::cout << "Name cannot be empty." << std::endl << "Please try again." << std::endl;
-                return false;
-            }
-            else if (val.size() > 25)
-            {
-                std::cout << "Name cannot have more than 25 characters." << std::endl << "Please try again." << std::endl;
-                return false;
-            }
-            return true;
-        });
-        priority = static_cast<uint8>(ReadValue<uint16>("Priority (0-100%): ",[](uint16 val)
+
+        name = ReadValue<std::string>("Name: ", _namePredicate);
+
+        priority = static_cast<uint8>(ReadValue<uint16>("Priority (0-100%): ", [](uint16 val)
         {
             if (val < 0 || val > 100)
             {
@@ -317,7 +286,8 @@ void NewJob(GridManager* gm)
             }
             return true;
         }));
-        requiredRAM = ReadValue<double>("Required RAM usage (MB): ",[](double val) 
+
+        requiredRAM = ReadValue<double>("Required RAM usage (MB): ", [](double val) 
         { 
             if (val < 0) 
             {
@@ -331,7 +301,8 @@ void NewJob(GridManager* gm)
             }
             return true;
         });
-        requiredDiskSpace = ReadValue<double>("Required disk space usage (MB): ",[](double val) 
+
+        requiredDiskSpace = ReadValue<double>("Required disk space usage (MB): ", [](double val) 
         { 
             if (val < 0) 
             {
@@ -345,7 +316,8 @@ void NewJob(GridManager* gm)
             }
             return true;
         });
-        executionTime = ReadValue<uint>("Estimated execution time (s): ",[](uint val)
+
+        executionTime = ReadValue<uint>("Estimated execution time (s): ", [](uint val)
         {
             if (val > 99999)
             {
@@ -427,7 +399,7 @@ void SearchUsers(GridManager* gm)
         }
     case ByName:
         {
-            std::string name = ReadValue<std::string>("Name: ",[](std::string val) 
+            std::string name = ReadValue<std::string>("Name: ", [](std::string val) 
             { 
                 if (val.size() <= 0) 
                 {
@@ -506,7 +478,7 @@ void SearchMachines(GridManager* gm)
             }
         case ByName:
             {
-                std::string name = ReadValue<std::string>("Name: ",[](std::string val) 
+                std::string name = ReadValue<std::string>("Name: ", [](std::string val) 
                 { 
                     if (val.size() <= 0) 
                     {
@@ -677,8 +649,6 @@ void SearchJobs(GridManager* gm)
 
     uint option = searchMenu->Print();
 
-
-
     try
     {
         switch (option)
@@ -689,7 +659,7 @@ void SearchJobs(GridManager* gm)
             }
         case ByName:
             {
-                std::string name = ReadValue<std::string>("Name: ",[](std::string val) 
+                std::string name = ReadValue<std::string>("Name: ", [](std::string val) 
                 { 
                     if (val.size() <= 0) 
                     {
@@ -883,7 +853,7 @@ void ChangeUserInfo(GridManager* gm)
 
     try
     {
-        user = gm->GetUser(ReadValue<uint>("Id: ",[gm](uint val) 
+        user = gm->GetUser(ReadValue<uint>("Id: ", [gm](uint val) 
         { 
             if (!gm->GetUser(val)) 
             {
@@ -916,7 +886,7 @@ void ChangeUserInfo(GridManager* gm)
 
             case 1:
                 {
-                    std::string val = ReadValue<std::string>("New name: ",[](std::string val) 
+                    std::string val = ReadValue<std::string>("New name: ", [](std::string val) 
                     { 
                         if (val.size() <= 0) 
                         {
@@ -940,7 +910,7 @@ void ChangeUserInfo(GridManager* gm)
                 {
                     if (typeid(user) == typeid(EnterpriseUser*))
                     {
-                        double val = ReadValue<double>("New budget: ",[](double val) 
+                        double val = ReadValue<double>("New budget: ", [](double val) 
                         { 
                             if (val < 0) 
                             {
@@ -981,7 +951,7 @@ void ChangeMachineInfo(GridManager* gm)
 
     try
     {
-        machine = gm->GetMachine(ReadValue<uint>("Id: ",[gm](uint val) 
+        machine = gm->GetMachine(ReadValue<uint>("Id: ", [gm](uint val) 
         { 
             if (!gm->GetMachine(val)) 
             {
@@ -1013,7 +983,7 @@ void ChangeMachineInfo(GridManager* gm)
 
             case 1: // Change Machine Name
                 {
-                    std::string val = ReadValue<std::string>("New name: ",[](std::string val) 
+                    std::string val = ReadValue<std::string>("New name: ", [](std::string val) 
                     { 
                         if (val.size() <= 0) 
                         {
@@ -1035,7 +1005,7 @@ void ChangeMachineInfo(GridManager* gm)
 
             case 2: // Change Machine Ram
                 {
-                    double ram = ReadValue<double>("New RAM: ",[](double val) 
+                    double ram = ReadValue<double>("New RAM: ", [](double val) 
                     { 
                         if (val < 0) 
                         {
@@ -1067,7 +1037,7 @@ void ChangeMachineInfo(GridManager* gm)
 
             case 3: // Change Machine Disk Space
                 {
-                    double diskSpace = ReadValue<double>("New Disk Space: ",[](double val) 
+                    double diskSpace = ReadValue<double>("New Disk Space: ", [](double val) 
                     { 
                         if (val < 0) 
                         {
@@ -1099,7 +1069,7 @@ void ChangeMachineInfo(GridManager* gm)
 
             case 4: // Change Machine Max Jobs
                 {
-                    uint maxJobs = ReadValue<uint>("New Max Jobs: ",[](uint val)
+                    uint maxJobs = ReadValue<uint>("New Max Jobs: ", [](uint val)
                     {
                         if (val > 9999)
                         {

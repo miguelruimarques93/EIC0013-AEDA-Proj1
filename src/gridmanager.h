@@ -118,8 +118,8 @@ public:
     static GridManager* Load(ByteBuffer& bb);
 
     /**
-    *   @brief Adds the given job to the user with the given ID.
-    *   @param userId Id of the user that created the job.
+    *   @brief Adds the given job by the user with the given Id.
+    *   @param userId Id of the user that wants to create the job.
     *   @param job to be added.
     *   @return A boolean value that indicates whether the insertion was successful or not.
     */
@@ -143,6 +143,7 @@ public:
     *   @brief Applies the given predicate to the containers of the instance of the class based in the type and returns a vector with the values that meet the requirements.
     *   @param  predicate to evaluate the data.
     *   @return A vector with the result of the search.
+    *   @remark Only defined for T = Job, User or Machine
     */
     template<class T>
     std::vector<T*> ApplyPredicate(std::function<bool(T*)> predicate) const;
