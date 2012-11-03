@@ -290,10 +290,10 @@ uint GridManager::GetNumberOfJobs() const
         [](uint sum, std::pair<uint, Machine*> mach) { return sum + mach.second->GetNumberOfJobs(); });
 }
 
-bool GridManager::RemoveMachineJob(Machine* machine, uint jobID)
+bool GridManager::RemoveMachineJob(Machine* machine, uint jobId)
 {
     if (!machine)
         return false;
 
-    return machine->RemoveJob(jobID);
+    return machine->RemoveJob(jobId);
 }

@@ -232,9 +232,9 @@ bool Machine::RemoveAllJobs()
     return true;
 }
 
-Job* Machine::GetJob( uint ID )
+Job* Machine::GetJob(uint id)
 {
-    auto elem = _currentJobs.find(ID);
+    auto elem = _currentJobs.find(id);
 
     if (elem == _currentJobs.end())
         return NULL;

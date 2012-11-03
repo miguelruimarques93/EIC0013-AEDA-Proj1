@@ -61,7 +61,7 @@ public:
     bool IsAvailableSoftware(const Software& sw) const { return _availableSoftware.find(sw) != _availableSoftware.end(); }
 
     bool AddJob(Job* job);
-    Job* GetJob(uint ID);
+    Job* GetJob(uint id);
     bool RemoveJob(uint id);
     bool RemoveAllJobs();
     uint GetNumberOfJobs() const { return _currentJobs.size(); }

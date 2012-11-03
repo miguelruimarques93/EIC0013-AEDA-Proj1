@@ -59,13 +59,13 @@ void Job::Update(uint32 diff)
     }
 }
 
-void Job::PrintHeader(std::ostream& os /*= std::cout*/, bool ID /*= false*/)
+void Job::PrintHeader(std::ostream& os /*= std::cout*/, bool withId /*= false*/)
 {
-    os << (ID ? "---------" : "--") << std::string(_maxNameLength, '-')
+    os << (withId ? "---------" : "--") << std::string(_maxNameLength, '-')
                                             << "-----------------------------------------------------------" 
-                                            << (!ID ? "-------" : "" ) << "\n"
-       << (ID ? "|  Id  | " : "| ") << std::setw(_maxNameLength) << "Name" << " | RAM (MB) | Disk (MB) | Priority (%) |   Time (s)    |\n"
-       << (ID ? "---------" : "--") << std::string(_maxNameLength, '-') << "-----------------------------------------------------------" << (!ID ? "-------" : "" ) << "\n";
+                                            << (withId ? "" : "-------" ) << "\n"
+       << (withId ? "|  Id  | " : "| ") << std::setw(_maxNameLength) << "Name" << " | RAM (MB) | Disk (MB) | Priority (%) |   Time (s)    |\n"
+       << (withId ? "---------" : "--") << std::string(_maxNameLength, '-') << "-----------------------------------------------------------" << (withId ? "" : "-------" ) << "\n";
 }
 
 void Job::Print(std::ostream& os /*=std::cout*/) const

@@ -136,11 +136,10 @@ public:
     /**
     *   @brief Removes the given job from the given machine.
     *   @param machine pointer to the machine that contains the job.
-    *   @param job pointer to the job to be removed.
+    *   @param jobId id of the job to be removed.
     *   @return A boolean value that indicates whether the removal was successful or not.
     */
-    bool RemoveMachineJob(Machine* machine, uint jobID);
-
+    bool RemoveMachineJob(Machine* machine, uint jobId);
 
     /**
     *   @brief Returns the number of existing jobs.

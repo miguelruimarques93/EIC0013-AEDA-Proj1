@@ -30,20 +30,20 @@ class IUpdate
 public:
     /**
     *   @brief Updates the class.
-    *   @param diff time that has passed since last update.
+    *   @param diff time, in milliseconds, that has passed since last update.
     */
     virtual void Update(uint32 diff) = 0;
 };
 
 //! IPrint Interface
 /*!
-    The IPrint Interface represents a Printable class.
+    The IPrint Interface represents a printable class.
 */
 class IPrint
 {
 public:
     /**
-    *   @brief Prints the class.
+    *   @brief Representation of the class in a row form.
     *   @param os stream to print to.
     */
     virtual void Print(std::ostream& os = std::cout) const = 0;
