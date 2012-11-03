@@ -58,7 +58,7 @@ void NewEnterpriseUser(GridManager* gm)
     {
         name = ReadValue<std::string>("Name: ", _namePredicate);
 
-        budget = ReadValue<double>("Budget: ", [](double val)
+        budget = ReadValue<double>("Budget (€): ", [](double val)
         {
             if (val < 0)
             {
@@ -67,7 +67,7 @@ void NewEnterpriseUser(GridManager* gm)
             }
             else if (val > 99999)
             {
-                std::cout << "Budget cannot be greater than 99999 €." << std::endl << "Please try again." << std::endl;
+                std::cout << "Budget cannot be greater than 99999€." << std::endl << "Please try again." << std::endl;
                 return false;
             }
             return true;
@@ -141,7 +141,7 @@ void NewMachine(GridManager* gm)
             return true;
         });
 
-        totalRAM = ReadValue<double>("Amount of RAM: ", [](double val)
+        totalRAM = ReadValue<double>("Amount of RAM (MB): ", [](double val)
         {
             if (val < 0)
             {
@@ -156,7 +156,7 @@ void NewMachine(GridManager* gm)
             return true;
         });
 
-        totalDiskSpace = ReadValue<double>("Amount of disk space: ", [](double val)
+        totalDiskSpace = ReadValue<double>("Amount of disk space (MB): ", [](double val)
         {
             if (val < 0)
             {
@@ -365,7 +365,7 @@ void NewJob(GridManager* gm)
     if (gm->AddJobByUser(userId, job))
         std::cout << "Job added successfully." << std::endl;
     else
-        std::cout << "Could not create job because there are no available machines that meet the needed requirements for this job right now." << std::endl; // why not?
+        std::cout << "Could not create job because there are no available machines that meet the needed requirements for this job right now." << std::endl;
 
     PauseConsole();
     ClearConsole();
@@ -471,7 +471,7 @@ void SearchMachines(GridManager* gm)
             case ByRAM:
             {
                 char comp = ReadValue<char>("Comparison ( > or < or = ): ");
-                double value = ReadValue<double>("Value: ");
+                double value = ReadValue<double>("Value (MB): ");
 
                 std::function<bool(Machine*)> func;
 
@@ -505,7 +505,7 @@ void SearchMachines(GridManager* gm)
             case ByDisk:
             {
                 char comp = ReadValue<char>("Comparison ( > or < or = ): ");
-                double value = ReadValue<double>("Value: ");
+                double value = ReadValue<double>("Value (MB): ");
 
                 std::function<bool(Machine*)> func;
 
@@ -608,7 +608,7 @@ void SearchJobs(GridManager* gm)
         ByRAM = 2,
         ByDisk = 3,
         ByPriority = 4,
-        ByElapseTime =5,
+        ByElapsedTime = 5,
         All = 6
     };
 
@@ -639,7 +639,7 @@ void SearchJobs(GridManager* gm)
             case ByRAM:
             {
                 char comp = ReadValue<char>("Comparison ( > or < or = ): ");
-                double value = ReadValue<double>("Value: ");
+                double value = ReadValue<double>("Value (MB): ");
 
                 std::function<bool(Job*)> func;
 
@@ -673,7 +673,7 @@ void SearchJobs(GridManager* gm)
             case ByDisk:
             {
                 char comp = ReadValue<char>("Comparison ( > or < or = ): ");
-                double value = ReadValue<double>("Value: ");
+                double value = ReadValue<double>("Value (MB): ");
 
                 std::function<bool(Job*)> func;
 
@@ -707,7 +707,7 @@ void SearchJobs(GridManager* gm)
             case ByPriority:
             {
                 char comp = ReadValue<char>("Comparison ( > or < or = ): ");
-                uint8 value = ReadValue<uint8>("Value: ");
+                uint8 value = ReadValue<uint8>("Value (%): ");
 
                 std::function<bool(Job*)> func;
 
@@ -738,10 +738,10 @@ void SearchJobs(GridManager* gm)
                 vec = gm->ApplyPredicate(func);
                 break;
             }
-            case ByElapseTime:
+            case ByElapsedTime:
             {
                 char comp = ReadValue<char>("Comparison ( > or < or = ): ");
-                uint value = ReadValue<uint>("Value: ");
+                uint value = ReadValue<uint>("Value (s): ");
 
                 std::function<bool(Job*)> func;
 
@@ -851,7 +851,7 @@ void ChangeUserInfo(GridManager* gm)
                 {
                     if (typeid(user) == typeid(EnterpriseUser*))
                     {
-                        double val = ReadValue<double>("New budget: ", [](double val)
+                        double val = ReadValue<double>("New budget (€): ", [](double val)
                         {
                             if (val < 0)
                             {
@@ -860,7 +860,7 @@ void ChangeUserInfo(GridManager* gm)
                             }
                             else if (val > 99999)
                             {
-                                std::cout << "Budget cannot be greater than 99999 €." << std::endl << "Please try again." << std::endl;
+                                std::cout << "Budget cannot be greater than 99999€." << std::endl << "Please try again." << std::endl;
                                 return false;
                             }
                             return true;
@@ -931,7 +931,7 @@ void ChangeMachineInfo(GridManager* gm)
                 }
                 case 2: // Change Machine Ram
                 {
-                    double ram = ReadValue<double>("New RAM: ", [](double val)
+                    double ram = ReadValue<double>("New RAM (MB): ", [](double val)
                     {
                         if (val < 0)
                         {
@@ -964,7 +964,7 @@ void ChangeMachineInfo(GridManager* gm)
                 }
                 case 3: // Change Machine Disk Space
                 {
-                    double diskSpace = ReadValue<double>("New Disk Space: ", [](double val)
+                    double diskSpace = ReadValue<double>("New Disk Space (MB): ", [](double val)
                     {
                         if (val < 0)
                         {
