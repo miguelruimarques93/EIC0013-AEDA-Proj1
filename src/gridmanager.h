@@ -77,7 +77,7 @@ public:
     *   @return A pointer to the User, NULL if id doesn't corresponds to any user.
     */
     User* GetUser(uint id) const;
-    
+
     /**
     *   @brief Returns the number of existing users.
     *   @return Number of existing users.

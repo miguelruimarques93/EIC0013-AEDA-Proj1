@@ -12,7 +12,7 @@
 
 #define MENU_SAVE_FILE "mainMenu.txt"
 
-int main(int argc, char* argv[])
+int main(int, char**)
 {
     std::unique_ptr<Menu> menu(Loader<Menu>(MENU_SAVE_FILE).Load());
 

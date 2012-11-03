@@ -57,6 +57,7 @@ public:
     void SetId(uint id) { _id = id; }
 
     void AddAvailableSoftware(const Software& sw) { _availableSoftware.insert(sw); }
+    void RemoveAvailableSoftware(const Software& sw) { _availableSoftware.erase(sw); }
     bool IsAvailableSoftware(const Software& sw) const { return _availableSoftware.find(sw) != _availableSoftware.end(); }
 
     bool AddJob(Job* job);
