@@ -7,41 +7,48 @@
 #include <stdexcept>
 #include "utils.h"
 
-typedef uint8 Byte;
+typedef uint8 Byte; ///> Alias for uint8 [0-256, 8 bits, 1 byte]
 
+/// Exception thrown when something bad happens in the ByteBuffer
 class ByteBufferException : public std::exception {};
 
+//! ByteBuffer Class
+/*!
+    ByteBuffer is a container of bytes.
+    It allows to represent multiple types (ints, strings, floats) in
+     a binary format (great for any form of communication (files, network, etc.)
+*/
 class ByteBuffer
 {
 public:
-    ByteBuffer(uint32 capacity);
-    ByteBuffer(const ByteBuffer& other);
+    ByteBuffer(uint32 capacity); ///> Constructor. capacity is a raw guess for the initial size of the buffer
+    ByteBuffer(const ByteBuffer& other); ///> Copy constructor
 
-    const Byte* Data() const;
+    const Byte* Data() const; ///> Underlying Byte array
 
-    void Clear();
+    void Clear(); ///> Empties the buffer
 
-    Byte operator[](uint32 pos) const;
-    template <typename T> T Read(uint32 position) const;
+    Byte operator[](uint32 pos) const; ///> Indexer
+    template <typename T> T Read(uint32 position) const; ///> Read a value of type T at a given position
 
-    uint32 GetReadPos() const;
-    void SetReadPos(uint32 readPos);
+    uint32 GetReadPos() const; ///> Returns the current read position
+    void SetReadPos(uint32 readPos); ///> Updates the current read position
 
-    uint32 GetWritePos() const;
-    void SetWritePos(uint32 writePos);
+    uint32 GetWritePos() const; ///> Returns the current write position
+    void SetWritePos(uint32 writePos); ///> Updates the current write position
 
-    void FinishRead();
+    void FinishRead(); ///> Advances read position to end of buffer, ignoring all its content
 
-    template <typename T> void ReadSkip();
-    void ReadSkip(uint32 size);
+    template <typename T> void ReadSkip(); ///> Advances read position by sizeof(T), ignoring those Bytes
+    void ReadSkip(uint32 size); ///> Advances read position by the given size (in Bytes), ignoring those Bytes
 
-    uint32 Size() const;
-    bool IsEmpty() const;
+    uint32 Size() const; ///> Returns the size of the buffer
+    bool IsEmpty() const; ///> True if buffer is currently empty
 
-    void Resize(uint32 newSize);
-    void Reserve(uint32 size);
+    void Resize(uint32 newSize); ///> Resizes the underlying buffer to a new size (adding (nulls) or removing content)
+    void Reserve(uint32 size); ///> Reserves space for the underlying buffer (see std::vector<T>::reserve)
 
-    void Print(std::ostream& stream) const;
+    void Print(std::ostream& stream) const; ///> Prints the buffer content in an user friendly way (both ascii and hex)
 
     void WriteBool(bool value);
     void WriteUInt8(uint8 value);
@@ -54,9 +61,9 @@ public:
     void WriteInt64(int64 value);
     void WriteFloat(float value);
     void WriteDouble(double value);
-    void WriteString(const std::string& value);
+    void WriteString(const std::string& value); ///> Writes a variable length size (4 bytes max) then the string
     void WriteString(const char* value) { WriteString(std::string(value)); }
-    void WriteCString(const char* value);
+    void WriteCString(const char* value); ///> Writes a null terminated string
     void WriteCString(const std::string& value) { WriteCString(value.c_str()); }
     void WriteBuffer(const ByteBuffer& other);
     void WriteBuffer(const char* src, uint32 count) { Append(src, count); }
@@ -72,8 +79,8 @@ public:
     int64  ReadInt64();
     float  ReadFloat();
     double ReadDouble();
-    std::string ReadString();
-    std::string ReadCString();
+    std::string ReadString(); ///> Reads a string prefixed with a variable length size (4 bytes max)
+    std::string ReadCString(); ///> Reads a string until the null terminator is found
 
     ByteBuffer& operator <<(bool value) { WriteBool(value); return *this; }
     ByteBuffer& operator <<(uint8 value) { WriteUInt8(value); return *this; }
@@ -103,13 +110,13 @@ public:
     ByteBuffer& operator >>(double& value) { value = ReadDouble(); return *this; }
     ByteBuffer& operator >>(std::string& value) { value = ReadString(); return *this; }
 
-    operator const char*() { return (const char*)Data(); }
-    operator const std::string() { return std::string(_buffer.begin(), _buffer.end()); }
+    operator const char*() { return (const char*)Data(); } ///> Implicit conversion to char*
+    operator const std::string() { return std::string(_buffer.begin(), _buffer.end()); } ///> Implicit conversion to std::string
 
 protected:
-    std::vector<Byte> _buffer;
-    uint32 _readPos;
-    uint32 _writePos;
+    std::vector<Byte> _buffer; ///> Underlying buffer of Bytes
+    uint32 _readPos; ///> Current read position
+    uint32 _writePos; ///> Current write position
 
     // Use stream operators to read and write
     template <typename T> T Read();
@@ -122,8 +129,8 @@ protected:
     void Put(uint32 pos, const Byte* src, uint32 count);
 
 private:
-    void Append7BitEncodedInt(uint32 value);
-    uint32 Read7BitEncodedInt();
+    void Append7BitEncodedInt(uint32 value); ///> Variable length value
+    uint32 Read7BitEncodedInt(); ///> Variable length value
 };
 
 template <typename T>
