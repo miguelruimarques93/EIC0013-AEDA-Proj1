@@ -24,7 +24,8 @@ trabalho quando esse tempo tiver passado, tempo esse que é medido em segundos e
 Para o gestor foi implementada uma estrutura de dados em que todas as classes são derivadas de
 interfaces (classes puras) que definem algumas funcionalidades básicas do gestor. São elas: 
 - IPrint    - Imprimir para uma stream os dados de um objeto;
-- ISave     - Guardar num ficheiro binário os dados de um objeto;
+- ISave     - Guardar num ficheiro binário os dados de um objeto.
+
 Para o simulador foram implementadas duas interfaces:
 - IUpdate   - Atualizar os dados de um objeto com base numa diferença temporal;
 - Runnable  - Objeto que pode executar algum trabalho num thread separado.
