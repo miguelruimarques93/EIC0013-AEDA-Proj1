@@ -174,8 +174,8 @@ bool GridManager::AddJob(Job* job)
 
     // sort of load balancing, better machines get assigned jobs first
     machineList.sort([](Machine* m1, Machine* m2) {
-        double score1 = ((m1->GetMaxJobs() - m1->GetCurrentJobs()) + m1->GetAvailableDiskSpace() + m1->GetAvailableRAM());
-        double score2 = ((m2->GetMaxJobs() - m2->GetCurrentJobs()) + m2->GetAvailableDiskSpace() + m2->GetAvailableRAM());
+        double score1 = ((m1->GetMaxJobs() - m1->GetNumberOfJobs()) + m1->GetAvailableDiskSpace() + m1->GetAvailableRAM());
+        double score2 = ((m2->GetMaxJobs() - m2->GetNumberOfJobs()) + m2->GetAvailableDiskSpace() + m2->GetAvailableRAM());
 
         return score1 > score2;
     });

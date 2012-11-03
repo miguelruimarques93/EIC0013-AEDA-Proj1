@@ -569,12 +569,12 @@ void SearchMachines(GridManager* gm)
                 {
                     case '>':
                     {
-                        func = [value](Machine* machine) { return machine->GetCurrentJobs() > value; };
+                        func = [value](Machine* machine) { return machine->GetNumberOfJobs() > value; };
                         break;
                     }
                     case '<':
                     {
-                        func = [value](Machine* machine) { return machine->GetCurrentJobs() < value; };
+                        func = [value](Machine* machine) { return machine->GetNumberOfJobs() < value; };
                         break;
                     }
                     default:
@@ -584,7 +584,7 @@ void SearchMachines(GridManager* gm)
                     }
                     case '=':
                     {
-                        func = [value](Machine* machine) { return machine->GetCurrentJobs() == value; };
+                        func = [value](Machine* machine) { return machine->GetNumberOfJobs() == value; };
                         break;
                     }
                 }

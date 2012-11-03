@@ -159,7 +159,7 @@ void Machine::Update(uint diff)
     _mutex.unlock();
 }
 
-uint Machine::GetCurrentJobs() const
+uint Machine::GetNumberOfJobs() const
 {
     _mutex.lock();
     uint size = _currentJobs.size();
