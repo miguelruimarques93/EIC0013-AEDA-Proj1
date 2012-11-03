@@ -43,18 +43,21 @@ bool Machine::AddJob(Job* job)
     if (_currentJobs.size() >= _maxJobs)
     {
         _mutex.unlock();
+        sLog(Console)->Log("Machine::AddJob: Could not add job %s to machine %s because there are no available jobs", job->GetName().c_str(), this->GetName().c_str());
         return false;
     }
 
     if (job->GetRequiredRAM() > GetAvailableRAM())
     {
         _mutex.unlock();
+        sLog(Console)->Log("Machine::AddJob: Could not add job %s to machine %s because there is no RAM available", job->GetName().c_str(), this->GetName().c_str());
         return false;
     }
 
     if (job->GetRequiredDiskSpace() > GetAvailableDiskSpace())
     {
         _mutex.unlock();
+        sLog(Console)->Log("Machine::AddJob: Could not add job %s to machine %s because there is no disk space available", job->GetName().c_str(), this->GetName().c_str());
         return false;
     }
 
@@ -64,6 +67,7 @@ bool Machine::AddJob(Job* job)
         if (!SoftwareMeetsRequirements(*it))
         {
             _mutex.unlock();
+            sLog(Console)->Log("Machine::AddJob: Could not add job %s to machine %s because software %s %s is not available", job->GetName().c_str(), this->GetName().c_str(), (*it).GetName().c_str(), (*it).GetVersion().ToString().c_str());
             return false;
         }
     }

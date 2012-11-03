@@ -62,7 +62,10 @@ bool GridManager::RemoveUser(const User* user)
     if (!user) return NULL;
     auto it = std::find_if(_users.begin(), _users.end(), [user] (std::pair<uint,User*> usr) { return usr.second == user; });
     if (it == _users.end())
+    {
+        sLog(Console)->Log("GridManager::RemoveUser(User*): Could not find user %s in GridManager", user->GetName().c_str());
         return false;
+    }
 
     delete it->second;
     _users.erase(it);
@@ -74,7 +77,10 @@ bool GridManager::RemoveUser(uint id)
 {
     auto it = _users.find(id);
     if (it == _users.end())
+    {
+        sLog(Console)->Log("GridManager::RemoveUser(uint): Could not find user with id %u in GridManager", id);
         return false;
+    }
 
     delete it->second;
     _users.erase(it);
@@ -86,7 +92,10 @@ bool GridManager::RemoveMachine(const Machine* machine)
 {
     auto it = std::find_if(_machines.begin(), _machines.end(), [machine] (std::pair<uint,Machine*> mach) { return mach.second == machine; });
     if (it == _machines.end())
+    {
+        sLog(Console)->Log("GridManager::RemoveMachine(Machine*): Could not find machine %s in GridManager", machine->GetName().c_str());
         return false;
+    }
 
     delete it->second;
     _machines.erase(it);
@@ -98,7 +107,10 @@ bool GridManager::RemoveMachine(uint id)
 {
     auto it = _machines.find(id);
     if (it == _machines.end())
+    {
+        sLog(Console)->Log("GridManager::RemoveMachine(uint): Could not find machine with id %u in GridManager", id);
         return false;
+    }
 
     delete it->second;
     _machines.erase(it);
@@ -110,7 +122,10 @@ User* GridManager::GetUser(uint id) const
 {
     auto it = _users.find(id);
     if (it == _users.end())
+    {
+        sLog(Console)->Log("GridManager::GetUser: Could not find user with id %u in GridManager", id);
         return NULL;
+    }
 
     return it->second;
 
@@ -120,7 +135,10 @@ Machine* GridManager::GetMachine(uint id) const
 {
     auto it = _machines.find(id);
     if (it == _machines.end())
+    {
+        sLog(Console)->Log("GridManager::GetUser: Could not find machine with id %u in GridManager", id);
         return NULL;
+    }
 
     return it->second;
 }
@@ -164,7 +182,10 @@ void GridManager::Run()
 bool GridManager::AddJob(Job* job)
 {
     if (!job)
+    {
+        sLog(Console)->Log("GridManager::AddJob: Tried to added a Job with null pointer");
         return false;
+    }
 
     std::list<Machine*> machineList; // TODO: Every time a job is added this sorted list is being rebuilt; change that
 
@@ -195,10 +216,16 @@ bool GridManager::AddJob(Job* job)
 bool GridManager::AddJobByUser(User* user, Job* job)
 {
     if (!user)
+    {
+        sLog(Console)->Log("GridManager::AddJobByUser: Tried to added a Job with user null pointer");
         return false;
+    }
 
     if (!job)
+    {
+        sLog(Console)->Log("GridManager::AddJobByUser: Tried to added a Job with job null pointer");
         return false;
+    }
 
     if (!user->CanCreateJob(job))
         throw std::runtime_error("Can't create Job because User doesn't have enough budget.");
@@ -293,7 +320,10 @@ uint GridManager::GetNumberOfJobs() const
 bool GridManager::RemoveMachineJob(Machine* machine, uint jobId)
 {
     if (!machine)
+    {
+        sLog(Console)->Log("GridManager::RemoveMachineJob: Tried to remove machine with machine null pointer");
         return false;
+    }
 
     return machine->RemoveJob(jobId);
 }

@@ -1,4 +1,5 @@
 #include "file.h"
+#include "log.h"
 #include <cstdio>
 #include <memory>
 
@@ -12,7 +13,10 @@ namespace File
 
         FILE* file = fopen(fileName, "rb");
         if (!file)
+        {
+            sLog(Console)->Log("File::Load: Could not open file %s (fopen)", fileName);
             return false;
+        }
 
         // Get file size
         fseek(file, 0, SEEK_END);
@@ -20,18 +24,22 @@ namespace File
         rewind(file);
 
         if (!size)
+        {
+            sLog(Console)->Log("File::Load: Could not open file %s (size is 0)", fileName);
             return false;
+        }
 
         buffer = new char[size];
         if (!buffer)
         {
-            delete[] buffer;
+            sLog(Console)->Log("File::Load: Failed to allocate buffer for file %s (size %u)", fileName, size);
             return false;
         }
 
         size_t result = fread(buffer, sizeof(char), size, file);
         if (result != size)
         {
+            sLog(Console)->Log("File::Load: Could not read the same number of bytes (size != result) for file %s (size %u, result %u)", fileName, size, result);
             delete[] buffer;
             return false;
         }
@@ -47,11 +55,17 @@ namespace File
 
         FILE* file = fopen(fileName, "wb");
         if (!file)
+        {
+            sLog(Console)->Log("File::Save: Could not open file %s (fopen)", fileName);
             return false;
+        }
 
         size_t result = fwrite(buffer, sizeof(char), size, file);
         if (result != size)
+        {
+            sLog(Console)->Log("File::Save: Could not write the same number of bytes (size != result) for file %s (size %u, result %u)", fileName, size, result);
             return false;
+        }
 
         fclose(file);
         return true;
