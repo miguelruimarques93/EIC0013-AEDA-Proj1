@@ -7,18 +7,28 @@
 #include <sstream>
 #include <functional>
 
+/// Exception thrown when an invalid value is read from the console
 class InvalidValue : public std::runtime_error
 {
 public:
     InvalidValue(const char* val) : std::runtime_error(val) { }
 };
 
+/// Exception thrown when Ctrl+Z (Windows) or Ctrl+D (Linux) is pressed in the console
 class EOFCharacterValue : public InvalidValue
 {
 public:
     EOFCharacterValue() : InvalidValue("") { }
 };
 
+/**
+*   @brief Reads a value of the given type T from the console
+*   @param prompt Message to display before requiring a value to be entered in the console
+*   @param validator A function that accepts that read value as argument and
+*                     it must return true for the value to be considered valid
+*   @example @code
+*   int value = ReadValue<int>("Age: ", [](int val) { return val > 0 && val < 150; } @endcode
+*/
 template <typename T>
 T ReadValue(const std::string& prompt, std::function<bool(T)> validator)
 {
@@ -62,6 +72,7 @@ T ReadValue(const std::string& prompt, std::function<bool(T)> validator)
     return val;
 }
 
+/// See ReadValue<T>(const std::string&, std::function<bool(T)>)
 template <typename T>
 T ReadValue(const std::string& prompt)
 {
