@@ -9,7 +9,7 @@
 #include <numeric>
 #include <iomanip>
 
-uint Machine::_lastJobId = 0;
+uint Machine::_lastJobId = 1;
 uint Machine::_maxNameLength = 0;
 Menu* Machine::_menu = Loader<Menu>("machineMenu.txt").Load();
 

@@ -99,7 +99,14 @@ void RemoveUser(GridManager* gm)
     {
         id = ReadValue<uint>("Id: ", [gm](uint val)
         {
-            if (!gm->GetUser(val))
+            if (val == 0)
+            {
+                User::PrintHeader(std::cout);
+                for (auto m: gm->ApplyPredicate<User>([](User*) { return true; }))
+                    m->Print(std::cout);
+                return false;
+            }
+            else if (!gm->GetUser(val))
             {
                 std::cout << "Id """ << val << """ is not currently in use."<< std::endl << "Please try again." << std::endl;
                 return false;
@@ -226,7 +233,14 @@ void RemoveMachine(GridManager* gm)
     {
         id = ReadValue<uint>("Id: ", [gm](uint val)
         {
-            if (!gm->GetMachine(val))
+            if (val == 0)
+            {
+                Machine::PrintHeader(std::cout);
+                for (auto m: gm->ApplyPredicate<Machine>([](Machine*) { return true; }))
+                    m->Print(std::cout);
+                return false;
+            }
+            else if (!gm->GetMachine(val))
             {
                 std::cout << "Id """ << val << """ is not currently in use."<< std::endl << "Please try again." << std::endl;
                 return false;
@@ -268,7 +282,14 @@ void NewJob(GridManager* gm)
     {
         userId = ReadValue<uint>("User Id: ", [gm](uint val)
         {
-            if (!gm->GetUser(val))
+            if (val == 0)
+            {
+                User::PrintHeader(std::cout);
+                for (auto m: gm->ApplyPredicate<User>([](User*) { return true; }))
+                    m->Print(std::cout);
+                return false;
+            }
+            else if (!gm->GetUser(val))
             {
                 std::cout << "Id """ << val << """ is not currently in use."<< std::endl << "Please try again." << std::endl;
                 return false;
@@ -812,7 +833,14 @@ void ChangeUserInfo(GridManager* gm)
     {
         user = gm->GetUser(ReadValue<uint>("Id: ", [gm](uint val)
         {
-            if (!gm->GetUser(val))
+            if (val == 0)
+            {
+                User::PrintHeader(std::cout);
+                for (auto m: gm->ApplyPredicate<User>([](User*) { return true; }))
+                    m->Print(std::cout);
+                return false;
+            }
+            else if (!gm->GetUser(val))
             {
                 std::cout << "Id """ << val << """ is not currently in use."<< std::endl << "Please try again." << std::endl;
                 return false;
@@ -895,7 +923,14 @@ void ChangeMachineInfo(GridManager* gm)
     {
         machine = gm->GetMachine(ReadValue<uint>("Id: ", [gm](uint val)
         {
-            if (!gm->GetMachine(val))
+            if (val == 0)
+            {
+                Machine::PrintHeader(std::cout);
+                for (auto m: gm->ApplyPredicate<Machine>([](Machine*) { return true; }))
+                    m->Print(std::cout);
+                return false;
+            }
+            else if (!gm->GetMachine(val))
             {
                 std::cout << "Id """ << val << """ is not currently in use."<< std::endl << "Please try again." << std::endl;
                 return false;
@@ -1089,7 +1124,7 @@ void ChangeMachineInfo(GridManager* gm)
                         for (auto elem : machine->GetJobs())
                         {
                             std::cout << "| " << std::setfill('0') << std::setw(4) << std::right << elem.first << " ";
-                            elem.second->PrintWithID(std::cout);
+                            elem.second->PrintWithId(std::cout);
                         }
                     }
 
@@ -1098,9 +1133,19 @@ void ChangeMachineInfo(GridManager* gm)
                 }
                 case 9: // Remove Job From Machine
                 {
-                    uint JobID = ReadValue<uint>("Id: ", [machine](uint val)
+                    uint JobId = ReadValue<uint>("Id: ", [machine](uint val)
                     {
-                        if (!machine->GetJob(val))
+                        if (val == 0)
+                        {
+                            Job::PrintHeader(std::cout, true);
+                            for (auto elem : machine->GetJobs())
+                            {
+                                std::cout << "| " << std::setfill('0') << std::setw(4) << std::right << elem.first << " ";
+                                elem.second->PrintWithId(std::cout);
+                            }
+                            return false;
+                        }
+                        else if (!machine->GetJob(val))
                         {
                             std::cout << "Id """ << val << """ is not currently in use."<< std::endl << "Please try again." << std::endl;
                             return false;
@@ -1108,7 +1153,7 @@ void ChangeMachineInfo(GridManager* gm)
                         return true;
                     });
 
-                    if (machine->RemoveJob(JobID))
+                    if (machine->RemoveJob(JobId))
                         std::cout << "Job removed with success." << std::endl;
                     else
                         std::cout << "Error removing job." << std::endl;
@@ -1134,7 +1179,17 @@ void ChangeMachineInfo(GridManager* gm)
                 {
                     Job* job = machine->GetJob(ReadValue<uint>("Id: ", [machine](uint val)
                     {
-                        if (!machine->GetJob(val))
+                        if (val == 0)
+                        {
+                            Job::PrintHeader(std::cout, true);
+                            for (auto elem : machine->GetJobs())
+                            {
+                                std::cout << "| " << std::setfill('0') << std::setw(4) << std::right << elem.first << " ";
+                                elem.second->PrintWithId(std::cout);
+                            }
+                            return false;
+                        }
+                        else if (!machine->GetJob(val))
                         {
                             std::cout << "Id """ << val << """ is not currently in use."<< std::endl << "Please try again." << std::endl;
                             return false;

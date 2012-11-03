@@ -6,7 +6,7 @@ Manage Machine
 --* M#004#Change Machine Max Jobs
 --* L#008#List Machine Jobs
 --* R#009#Remove Job From Machine
---* C#010#Cancel All Jobs
+--* C#010#Cancel All Machine Jobs
 --* J#011#List Job Required Software
 - S#Manage Available Software
 --* L#007#List Available Software

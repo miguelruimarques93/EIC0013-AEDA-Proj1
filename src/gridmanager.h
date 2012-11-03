@@ -170,9 +170,9 @@ private:
     */
     bool AddJob(Job* job);
 
-    //! Last User ID added
+    //! Last User Id added
     static uint _lastUserId;
-    //! Last Machine ID added
+    //! Last Machine Id added
     static uint _lastMachineId;
 
     //! Time of the last update
