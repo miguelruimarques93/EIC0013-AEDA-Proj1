@@ -68,8 +68,8 @@ public:
     uint GetNumberOfJobs() const { return _currentJobs.size(); }
 
     bool Save(ByteBuffer& bb) const override;
-
     static Machine* Load(ByteBuffer& bb);
+
     static Menu* GetMenu() { return _menu; }
 
     const std::map<uint, Job*>& GetJobs() const { return _currentJobs; }
