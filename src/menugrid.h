@@ -9,7 +9,7 @@ class GridManager;
 class ActionCanceled : public std::exception
 {
 public:
-    ActionCanceled(const char * msg) : exception(msg) { }
+    ActionCanceled(const char* msg) : exception(msg) { }
 };
 
 void NewAcademicUser(GridManager* gm); ///> Menu handling of creation of an AcademicUser
