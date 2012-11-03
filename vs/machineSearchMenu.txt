@@ -1,4 +1,4 @@
-Search Machine
+Search Machine (CTRL-Z to cancel)
 -* 1#001#By Name
 -* 2#002#By Avaiable RAM
 -* 3#003#By Available Disk Space

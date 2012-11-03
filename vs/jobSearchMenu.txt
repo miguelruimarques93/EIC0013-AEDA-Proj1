@@ -1,4 +1,4 @@
-Search Job
+Search Job (CTRL-Z to cancel)
 -* 1#001#By Name
 -* 2#002#By Required RAM
 -* 3#003#By Required Disk Space

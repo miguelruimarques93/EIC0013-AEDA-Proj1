@@ -35,7 +35,7 @@ void NewAcademicUser(GridManager* gm)
     std::string name;
     try
     {
-        name = ReadValue<std::string>("Name: ", _namePredicate);
+        name = ReadValue<std::string>("Name (max 25 characters): ", _namePredicate);
     }
     catch (EOFCharacterValue)
     {
@@ -57,9 +57,9 @@ void NewEnterpriseUser(GridManager* gm)
     double budget;
     try
     {
-        name = ReadValue<std::string>("Name: ", _namePredicate);
+        name = ReadValue<std::string>("Name (max 25 characters): ", _namePredicate);
 
-        budget = ReadValue<double>("Budget (€): ", [](double val)
+        budget = ReadValue<double>("Budget [0-99999](€): ", [](double val)
         {
             if (val < 0)
             {
@@ -97,7 +97,7 @@ void RemoveUser(GridManager* gm)
 
     try
     {
-        id = ReadValue<uint>("Id: ", [gm](uint val)
+        id = ReadValue<uint>("Id (0 - Show list): ", [gm](uint val)
         {
             if (val == 0)
             {
@@ -138,8 +138,8 @@ void NewMachine(GridManager* gm)
 
     try
     {
-        name = ReadValue<std::string>("Name: ", _namePredicate);
-        maxJobs = ReadValue<uint>("Max number of jobs: ", [](uint val)
+        name = ReadValue<std::string>("Name (max 25 characters): ", _namePredicate);
+        maxJobs = ReadValue<uint>("Max number of jobs [0-9999]: ", [](uint val)
         {
             if (val > 9999)
             {
@@ -149,7 +149,7 @@ void NewMachine(GridManager* gm)
             return true;
         });
 
-        totalRAM = ReadValue<double>("Amount of RAM (MB): ", [](double val)
+        totalRAM = ReadValue<double>("Amount of RAM [0-99999](MB): ", [](double val)
         {
             if (val < 0)
             {
@@ -164,7 +164,7 @@ void NewMachine(GridManager* gm)
             return true;
         });
 
-        totalDiskSpace = ReadValue<double>("Amount of disk space (MB): ", [](double val)
+        totalDiskSpace = ReadValue<double>("Amount of disk space [0-99999](MB): ", [](double val)
         {
             if (val < 0)
             {
@@ -179,8 +179,8 @@ void NewMachine(GridManager* gm)
             return true;
         });
 
-        std::cout << "Available software (-1 to end list): " << std::endl;
-
+        std::cout << "Available software (-1 to end list):  " << std::endl;
+        std::cout << "Format: \"name major.minor.revision\""  << std::endl;
         for (int i = 1; i <= 100; ++i)
         {
             char temp[3];
@@ -231,7 +231,7 @@ void RemoveMachine(GridManager* gm)
 
     try
     {
-        id = ReadValue<uint>("Id: ", [gm](uint val)
+        id = ReadValue<uint>("Id (0 - Show list): ", [gm](uint val)
         {
             if (val == 0)
             {
@@ -280,7 +280,7 @@ void NewJob(GridManager* gm)
 
     try
     {
-        userId = ReadValue<uint>("User Id: ", [gm](uint val)
+        userId = ReadValue<uint>("User Id (0 - Show list): ", [gm](uint val)
         {
             if (val == 0)
             {
@@ -297,9 +297,9 @@ void NewJob(GridManager* gm)
             return true;
         });
 
-        name = ReadValue<std::string>("Name: ", _namePredicate);
+        name = ReadValue<std::string>("Name (max 25 characters): ", _namePredicate);
 
-        priority = static_cast<uint8>(ReadValue<uint16>("Priority (0-100%): ", [](uint16 val)
+        priority = static_cast<uint8>(ReadValue<uint16>("Priority [0-100](%): ", [](uint16 val)
         {
             if (val < 0 || val > 100)
             {
@@ -309,7 +309,7 @@ void NewJob(GridManager* gm)
             return true;
         }));
 
-        requiredRAM = ReadValue<double>("Required RAM usage (MB): ", [](double val)
+        requiredRAM = ReadValue<double>("Required RAM usage [0-99999](MB): ", [](double val)
         {
             if (val < 0)
             {
@@ -324,7 +324,7 @@ void NewJob(GridManager* gm)
             return true;
         });
 
-        requiredDiskSpace = ReadValue<double>("Required disk space usage (MB): ", [](double val)
+        requiredDiskSpace = ReadValue<double>("Required disk space usage [0-99999](MB): ", [](double val)
         {
             if (val < 0)
             {
@@ -339,7 +339,7 @@ void NewJob(GridManager* gm)
             return true;
         });
 
-        executionTime = ReadValue<uint>("Estimated execution time (s): ", [](uint val)
+        executionTime = ReadValue<uint>("Estimated execution time [0-99999](s): ", [](uint val)
         {
             if (val > 99999)
             {
@@ -348,7 +348,7 @@ void NewJob(GridManager* gm)
             }
             return true;
         });
-        std::cout << "Required software (-1 to end list): " << std::endl;
+        std::cout << "Required software (-1 to end list):  " << std::endl;
 
         // duplicated code with NewMachine()
         for (int i = 1; i <= 100; ++i)
@@ -420,7 +420,7 @@ void SearchUsers(GridManager* gm)
         }
         case ByName:
         {
-            std::string name = ReadValue<std::string>("Name: ", _namePredicate);
+            std::string name = ReadValue<std::string>("Exact Name (max 25 characters): ", _namePredicate);
 
             vec = gm->ApplyPredicate<User>([name](User* user) { return user->GetName() == name; });
             break;
@@ -485,7 +485,7 @@ void SearchMachines(GridManager* gm)
             }
             case ByName:
             {
-                std::string name = ReadValue<std::string>("Name: ", _namePredicate);
+                std::string name = ReadValue<std::string>("Exact Name (max 25 characters): ", _namePredicate);
 
                 vec = gm->ApplyPredicate<Machine>([name](Machine* machine) { return machine->GetName() == name; });
                 break;
@@ -493,7 +493,7 @@ void SearchMachines(GridManager* gm)
             case ByRAM:
             {
                 char comp = ReadValue<char>("Comparison ( > or < or = ): ");
-                double value = ReadValue<double>("Value (MB): ");
+                double value = ReadValue<double>("Value [0-99999](MB): ");
 
                 std::function<bool(Machine*)> func;
 
@@ -527,7 +527,7 @@ void SearchMachines(GridManager* gm)
             case ByDisk:
             {
                 char comp = ReadValue<char>("Comparison ( > or < or = ): ");
-                double value = ReadValue<double>("Value (MB): ");
+                double value = ReadValue<double>("Value [0-99999](MB): ");
 
                 std::function<bool(Machine*)> func;
 
@@ -561,7 +561,7 @@ void SearchMachines(GridManager* gm)
             case ByNumberJobs:
             {
                 char comp = ReadValue<char>("Comparison ( > or < or = ): ");
-                uint value = ReadValue<uint>("Value: ");
+                uint value = ReadValue<uint>("Value [0-9999]: ");
 
                 std::function<bool(Machine*)> func;
 
@@ -653,7 +653,7 @@ void SearchJobs(GridManager* gm)
             }
             case ByName:
             {
-                std::string name = ReadValue<std::string>("Name: ", _namePredicate);
+                std::string name = ReadValue<std::string>("Exact Name (max 25 characters): ", _namePredicate);
 
                 vec = gm->ApplyPredicate<Job>([name](Job* job) { return job->GetName() == name; });
                 break;
@@ -661,7 +661,7 @@ void SearchJobs(GridManager* gm)
             case ByRAM:
             {
                 char comp = ReadValue<char>("Comparison ( > or < or = ): ");
-                double value = ReadValue<double>("Value (MB): ");
+                double value = ReadValue<double>("Value [0-99999](MB): ");
 
                 std::function<bool(Job*)> func;
 
@@ -695,7 +695,7 @@ void SearchJobs(GridManager* gm)
             case ByDisk:
             {
                 char comp = ReadValue<char>("Comparison ( > or < or = ): ");
-                double value = ReadValue<double>("Value (MB): ");
+                double value = ReadValue<double>("Value [0-99999](MB): ");
 
                 std::function<bool(Job*)> func;
 
@@ -729,7 +729,7 @@ void SearchJobs(GridManager* gm)
             case ByPriority:
             {
                 char comp = ReadValue<char>("Comparison ( > or < or = ): ");
-                uint8 value = ReadValue<uint8>("Value (%): ");
+                uint8 value = ReadValue<uint8>("Value [0-100](%): ");
 
                 std::function<bool(Job*)> func;
 
@@ -763,7 +763,7 @@ void SearchJobs(GridManager* gm)
             case ByElapsedTime:
             {
                 char comp = ReadValue<char>("Comparison ( > or < or = ): ");
-                uint value = ReadValue<uint>("Value (s): ");
+                uint value = ReadValue<uint>("Value [0-99999](s): ");
 
                 std::function<bool(Job*)> func;
 
@@ -831,7 +831,7 @@ void ChangeUserInfo(GridManager* gm)
 
     try
     {
-        user = gm->GetUser(ReadValue<uint>("Id: ", [gm](uint val)
+        user = gm->GetUser(ReadValue<uint>("Id (0 - Show list): ", [gm](uint val)
         {
             if (val == 0)
             {
@@ -853,12 +853,15 @@ void ChangeUserInfo(GridManager* gm)
         throw ActionCanceled("Change User Information");
     }
 
+    ClearConsole();
+
     bool success = false;
 
     try
     {
         do
         {
+            std::cout << "User - Id: " << user->GetId() << " Name: " << user->GetName() << std::endl;
             uint32 option = User::GetMenu()->Print();
 
             switch (option)
@@ -869,7 +872,7 @@ void ChangeUserInfo(GridManager* gm)
                 }
                 case 1:
                 {
-                    std::string val = ReadValue<std::string>("New name: ", _namePredicate);
+                    std::string val = ReadValue<std::string>("New name (max 25 characters): ", _namePredicate);
 
                     user->SetName(val);
                     std::cout << "User name changed with success." << std::endl;
@@ -880,7 +883,7 @@ void ChangeUserInfo(GridManager* gm)
                 {
                     if (typeid(user) == typeid(EnterpriseUser*))
                     {
-                        double val = ReadValue<double>("New budget (€): ", [](double val)
+                        double val = ReadValue<double>("New budget [0-99999](€): ", [](double val)
                         {
                             if (val < 0)
                             {
@@ -921,7 +924,7 @@ void ChangeMachineInfo(GridManager* gm)
 
     try
     {
-        machine = gm->GetMachine(ReadValue<uint>("Id: ", [gm](uint val)
+        machine = gm->GetMachine(ReadValue<uint>("Id (0 - Show list): ", [gm](uint val)
         {
             if (val == 0)
             {
@@ -943,12 +946,15 @@ void ChangeMachineInfo(GridManager* gm)
         throw ActionCanceled("Change Machine Information");
     }
 
+    ClearConsole();
+
     bool success = false;
 
     try
     {
         do
         {
+            std::cout << "Machine - Id: " << machine->GetId() << " Name: " << machine->GetName() << std::endl;
             uint32 option = Machine::GetMenu()->Print();
 
             switch (option)
@@ -959,7 +965,7 @@ void ChangeMachineInfo(GridManager* gm)
                 }
                 case 1: // Change Machine Name
                 {
-                    std::string val = ReadValue<std::string>("New name: ", _namePredicate);
+                    std::string val = ReadValue<std::string>("New name (max 25 characters): ", _namePredicate);
                     machine->SetName(val);
                     std::cout << "Machine name changed with success." << std::endl;
                     success = true;
@@ -967,7 +973,7 @@ void ChangeMachineInfo(GridManager* gm)
                 }
                 case 2: // Change Machine Ram
                 {
-                    double ram = ReadValue<double>("New RAM (MB): ", [](double val)
+                    double ram = ReadValue<double>("New RAM [0-99999](MB): ", [](double val)
                     {
                         if (val < 0)
                         {
@@ -1000,7 +1006,7 @@ void ChangeMachineInfo(GridManager* gm)
                 }
                 case 3: // Change Machine Disk Space
                 {
-                    double diskSpace = ReadValue<double>("New Disk Space (MB): ", [](double val)
+                    double diskSpace = ReadValue<double>("New Disk Space [0-99999](MB): ", [](double val)
                     {
                         if (val < 0)
                         {
@@ -1031,7 +1037,7 @@ void ChangeMachineInfo(GridManager* gm)
                 }
                 case 4: // Change Machine Max Jobs
                 {
-                    uint maxJobs = ReadValue<uint>("New Max Jobs: ", [](uint val)
+                    uint maxJobs = ReadValue<uint>("New Max Jobs [0-9999]: ", [](uint val)
                     {
                         if (val > 9999)
                         {
@@ -1063,7 +1069,7 @@ void ChangeMachineInfo(GridManager* gm)
 
                     while (!successSW)
                     {
-                        auto sw = Software::ReadFromString(ReadValue<std::string>("Software: "));
+                        auto sw = Software::ReadFromString(ReadValue<std::string>("Software [name major.minor.revision]: "));
 
                         if (std::get<0>(sw))
                         {
@@ -1085,7 +1091,7 @@ void ChangeMachineInfo(GridManager* gm)
 
                     while (!successSW)
                     {
-                        auto sw = Software::ReadFromString(ReadValue<std::string>("Software: "));
+                        auto sw = Software::ReadFromString(ReadValue<std::string>("Software [name major.minor.revision]: "));
 
                         if (std::get<0>(sw))
                         {
@@ -1133,7 +1139,7 @@ void ChangeMachineInfo(GridManager* gm)
                 }
                 case 9: // Remove Job From Machine
                 {
-                    uint JobId = ReadValue<uint>("Id: ", [machine](uint val)
+                    uint JobId = ReadValue<uint>("Id (0 - Show list): ", [machine](uint val)
                     {
                         if (val == 0)
                         {
@@ -1177,7 +1183,7 @@ void ChangeMachineInfo(GridManager* gm)
                 }
                 case 11: // List Job Required Software
                 {
-                    Job* job = machine->GetJob(ReadValue<uint>("Id: ", [machine](uint val)
+                    Job* job = machine->GetJob(ReadValue<uint>("Id (0 - Show list): ", [machine](uint val)
                     {
                         if (val == 0)
                         {

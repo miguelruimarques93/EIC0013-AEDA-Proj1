@@ -1,4 +1,4 @@
-Main Menu
+Main Menu (CTRL-Z to exit)
 - U#Manage Users
 -- A#Add User
 ---* A#002#Add Academic User
