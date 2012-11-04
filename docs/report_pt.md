@@ -82,5 +82,7 @@ Não houve grandes dificuldades no planeamento nem na implementação do trabalh
 Distribuição do trabalho pelos elementos do grupo
 -------------------------------------------------
 
-...
-
+O trabalho foi dividido por todos os elementos do grupo.
+Todos os elementos ajudaram na implementação das classes e da aplicação.
+Todos contribuiram com ideias para o projeto e para a implementação da interface do programa.
+Tentamos dividir o trabalho equitativamente por todos os elementos do grupo e pensamos que o resultado final foi bastante positivo. 
