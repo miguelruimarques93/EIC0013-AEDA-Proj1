@@ -21,9 +21,9 @@ Solução Implementada
 --------------------
 
 O grupo de trabalho optou por implementar não só um gestor como também um simulador.
-Estando tudo integrado na mesma aplicação à medida que se vão adicionando mais trabalhos, máquinas e/ou utilizadores o gestor vai atualizando os trabalhos, isto é, tendo em conta o tempo especificado aquando da criação de um novo trabalho o simulador irá apagar esse trabalho quando esse tempo tiver passado, tempo esse que é medido em segundos e em tempo real.
+Estando tudo integrado na mesma aplicação à medida que se vão adicionando mais trabalhos (**Job**), máquinas (**Machines**) e utilizadores (**User**) o gestor (**GridManager**) vai atualizando os trabalhos, isto é, tendo em conta o tempo especificado aquando da criação de um novo trabalho o simulador irá apagar esse trabalho quando esse tempo tiver passado, tempo esse que é medido em segundos e em tempo real.
 
-Para o gestor foi implementada uma estrutura de dados em que todas as classes são derivadas de interfaces (classes puras) que definem algumas funcionalidades básicas do gestor. São elas: 
+Para o gestor foi implementada uma estrutura de dados em que todas as classes são derivadas de interfaces (classes puras) que definem algumas funcionalidades básicas. São elas: 
 - **IPrint** - Imprimir para uma stream os dados de um objeto;
 - **ISave** - Guardar num ficheiro binário os dados de um objeto.
 
@@ -31,17 +31,10 @@ Para o simulador foram implementadas duas interfaces:
 - **IUpdate** - Atualizar os dados de um objeto com base numa diferença temporal;
 - **Runnable** - Objeto que pode executar algum trabalho num *thread* separado.
 
-O grupo teve implementou um logger com recurso a um singlenton e um policy based design para manter o utilizador atualizado acerca do sistema, bem como para fazer debuging de algumas features implementadas.
-Para gravar os dados da sessão optou-se pela utilização de ficheiros binários, visto que são mais compactos e menos propensos a erros de leitura, e para a sua leitura e escrita implementou-se uma classe (ByteBuffer) que lê e escreve para um determinado ficheiro diversos tipos de dados.
-A interface do utilizador, toda ela feita através da consola, foi maioritariamente feita com recurso a uma feature implementada através de menus (classes IMenu, Menu e Menu::Item) lidos de ficheiros de texto e que após o utilizador selecionar um Menu::Item retornam um valor inteiro que permite gerir a sua opção.
-No decurso do desenvolvimento deste trabalho recorremos a features do c++11, nomeadamente:
-- Lambda functions and expressions (funções anónimas);
-- Type inference;
-- Explicit overrides;
-- Regular Expressions;
-- Thread implementation of the c++ standard library;
-- Tuples;
-- Ranged-based for loops
+O grupo implementou um *logger* para manter o utilizador atualizado acerca do sistema, bem como para fazer *debugging* de algumas funcionalidades implementadas.
+Para gravar os dados da sessão optou-se pela utilização de ficheiros binários, visto que são mais compactos e menos propensos a erros de leitura, e para a sua leitura e escrita implementou-se uma classe (*ByteBuffer*) que lê e escreve, para um determinado ficheiro, diversos tipos de dados.
+A interface do utilizador, toda ela feita através da consola, foi maioritariamente feita com recurso a menus (classes *IMenu*, *Menu* e *Menu::Item*) lidos de ficheiros de texto e que após o utilizador selecionar um Menu::Item retornam um valor inteiro que permite tratar a sua opção.
+No decurso do desenvolvimento deste trabalho recorremos a funcionalidades do C++11, nomeadamente *lambdas*, *std::regex*, *std::thread*, *std::tuple* e outras, que permitem manter o código conciso e compacto.
 
 
 Diagrama de classes (UML)
