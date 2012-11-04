@@ -31,6 +31,18 @@ Para o simulador foram implementadas duas interfaces:
 - **IUpdate** - Atualizar os dados de um objeto com base numa diferença temporal;
 - **Runnable** - Objeto que pode executar algum trabalho num *thread* separado.
 
+O grupo teve implementou um logger com recurso a um singlenton e um policy based design para manter o utilizador atualizado acerca do sistema, bem como para fazer debuging de algumas features implementadas.
+Para gravar os dados da sessão optou-se pela utilização de ficheiros binários, visto que são mais compactos e menos propensos a erros de leitura, e para a sua leitura e escrita implementou-se uma classe (ByteBuffer) que lê e escreve para um determinado ficheiro diversos tipos de dados.
+A interface do utilizador, toda ela feita através da consola, foi maioritariamente feita com recurso a uma feature implementada através de menus (classes IMenu, Menu e Menu::Item) lidos de ficheiros de texto e que após o utilizador selecionar um Menu::Item retornam um valor inteiro que permite gerir a sua opção.
+No decurso do desenvolvimento deste trabalho recorremos a features do c++11, nomeadamente:
+- Lambda functions and expressions (funções anónimas);
+- Type inference;
+- Explicit overrides;
+- Regular Expressions;
+- Thread implementation of the c++ standard library;
+- Tuples;
+- Ranged-based for loops
+
 
 Diagrama de classes (UML)
 -------------------------
