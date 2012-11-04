@@ -11,7 +11,7 @@
 /// Base class for Writers
 struct Writer
 {
-    virtual void Write(const std::string& val) = 0; ///> Writes a message to the logger
+    virtual void Write(const std::string& val) = 0; ///< Writes a message to the logger
 };
 
 /// Writer for console
@@ -71,9 +71,9 @@ public:
     }
 
 private:
-    static Logger* _instance; ///> There's only one instance of this class
-    std::mutex _mutex; ///> Mutex to make the class safe to multiple threads
-    WritePolicy _writer; ///> A writer (console, file, etc.)
+    static Logger* _instance; ///< There's only one instance of this class
+    std::mutex _mutex; ///< Mutex to make the class safe to multiple threads
+    WritePolicy _writer; ///< A writer (console, file, etc.)
 };
 
 template <class WritePolicy>

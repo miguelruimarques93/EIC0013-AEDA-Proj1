@@ -26,8 +26,7 @@ public:
 *   @param prompt Message to display before requiring a value to be entered in the console
 *   @param validator A function that accepts that read value as argument and
 *                     it must return true for the value to be considered valid
-*   @example @code
-*   int value = ReadValue<int>("Age: ", [](int val) { return val > 0 && val < 150; } @endcode
+*   int value = ReadValue<int>("Age: ", [](int val) { return val > 0 && val < 150; }
 */
 template <typename T>
 T ReadValue(const std::string& prompt, std::function<bool(T)> validator)
