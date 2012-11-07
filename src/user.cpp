@@ -60,7 +60,7 @@ void EnterpriseUser::CreatedJob(const Job* job)
 
 bool EnterpriseUser::CanCreateJob(const Job* job)
 {
-    return job && job->GetPrice() > _budget;
+    return job && job->GetPrice() <= _budget;
 }
 
 User* User::Load(ByteBuffer& bb)
