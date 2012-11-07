@@ -881,7 +881,7 @@ void ChangeUserInfo(GridManager* gm)
                 }
                 case 2:
                 {
-                    if (typeid(user) == typeid(EnterpriseUser*))
+                    if (typeid(*user) == typeid(EnterpriseUser))
                     {
                         double val = ReadValue<double>("New budget [0-99999](€): ", [](double val)
                         {
