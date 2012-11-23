@@ -14,7 +14,9 @@
     <ClInclude Include="..\src\bytebuffer.h" />
     <ClInclude Include="..\src\consolereader.h" />
     <ClInclude Include="..\src\file.h" />
+    <ClInclude Include="..\src\grid.h" />
     <ClInclude Include="..\src\gridmanager.h" />
+    <ClInclude Include="..\src\gridnetwork.h" />
     <ClInclude Include="..\src\interfaces.h" />
     <ClInclude Include="..\src\job.h" />
     <ClInclude Include="..\src\loader.h" />
@@ -30,7 +32,9 @@
   <ItemGroup>
     <ClCompile Include="..\src\bytebuffer.cpp" />
     <ClCompile Include="..\src\file.cpp" />
+    <ClCompile Include="..\src\grid.cpp" />
     <ClCompile Include="..\src\gridmanager.cpp" />
+    <ClCompile Include="..\src\gridnetwork.cpp" />
     <ClCompile Include="..\src\job.cpp" />
     <ClCompile Include="..\src\machine.cpp" />
     <ClCompile Include="..\src\main.cpp" />

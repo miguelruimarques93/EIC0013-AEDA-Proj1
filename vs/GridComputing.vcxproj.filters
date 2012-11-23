@@ -60,6 +60,12 @@
     <ClInclude Include="..\src\menugrid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\grid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gridnetwork.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -93,6 +99,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\software.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gridnetwork.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\grid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

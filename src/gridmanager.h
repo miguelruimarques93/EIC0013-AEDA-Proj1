@@ -7,6 +7,7 @@
 
 #include <map>
 #include <vector>
+#include <functional>
 
 class Job;
 class Machine;
@@ -149,12 +150,31 @@ public:
 
     /**
     *   @brief Applies the given predicate to the containers of the instance of the class based in the type and returns a vector with the values that meet the requirements.
-    *   @param  predicate to evaluate the data.
+    *   @param  predicate to evaluate the data: unary function that returns a bool and accepts a T* as argument.
     *   @return A vector with the result of the search.
     *   @remark Only defined for T = Job, User or Machine
     */
     template<class T>
     std::vector<T*> ApplyPredicate(std::function<bool(T*)> predicate) const;
+
+    /**
+    *   @brief Uses ApplyPredicate with the given predicate and then selects a certain element of each object in the vector returned by ApplyPredicate.
+    *   @param selector to retrieve an element from the data: unary function that returns R and accepts a T* as argument.
+    *   @param predicate to evaluate the data: unary function that returns a bool and accepts a T* as argument. Default value applies no restrictions.
+    *   @return A vector with the result of the search.
+    *   @remark Only defined for T = Job, User or Machine
+    */
+    template<class T, class R>
+    std::vector<R> ApplySelector(std::function<R(T*)> selector, std::function<bool(T*)> predicate) const;
+
+    /**
+    *   @brief Selects a certain element of each object in the vector of T*.
+    *   @param selector to retrieve an element from the data: unary function that returns R and accepts a T* as argument.
+    *   @return A vector with the result of the search.
+    *   @remark Only defined for T = Job, User or Machine
+    */
+    template<class T, class R>
+    std::vector<R> ApplySelector(std::function<R(T*)> selector) const;
 
 private:
 
@@ -191,5 +211,26 @@ private: // no copying
     //! Assignment operator. Private to avoid copies of a GridManager instance.
     GridManager& operator =(GridManager const&);
 };
+
+template<class T, class R>
+std::vector<R> GridManager::ApplySelector(std::function<R(T*)> selector) const
+{
+    return ApplySelector<T, R>(selector, [](T*) { return true; });
+}
+
+template<class T, class R>
+std::vector<R> GridManager::ApplySelector(std::function<R(T*)> selector, std::function<bool(T*)> predicate) const
+{
+    // get all machines, jobs, etc. that match the predicate
+    std::vector<T*> ts = ApplyPredicate<T>(predicate);
+
+    // apply our selector to the initial vector to create a new one
+    std::vector<R> result;
+    result.reserve(ts.size()); // max size of the resulting vector
+
+    std::transform(ts.begin(), ts.end(), result.begin(), selector);
+
+    return result;
+}
 
 #endif // GRIDMANAGER_H_
