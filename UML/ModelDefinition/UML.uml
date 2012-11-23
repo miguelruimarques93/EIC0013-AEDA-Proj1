@@ -37,29 +37,6 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
-        <suppliersInternal>
-          <interfaceRealization
-            Id="171081bc-6f94-454a-945f-cb1103a95f2f">
-            <interfaceMoniker
-              Id="06286794-99ea-4787-a1d8-e5b51819b59a"
-              LastKnownName="IUpdate"
-              LastKnownLocation="UML.uml" />
-          </interfaceRealization>
-          <interfaceRealization
-            Id="7a72fdd1-3293-41d5-a5ef-27dcf60392e2">
-            <interfaceMoniker
-              Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
-              LastKnownName="ISave"
-              LastKnownLocation="UML.uml" />
-          </interfaceRealization>
-          <interfaceRealization
-            Id="03209a66-9209-491a-b09a-f9e76aad2270">
-            <interfaceMoniker
-              Id="dad8ffa0-c3f4-47b5-bf1e-f55fca517ebf"
-              LastKnownName="IPrint"
-              LastKnownLocation="UML.uml" />
-          </interfaceRealization>
-        </suppliersInternal>
         <ownedAttributesInternal>
           <property
             Id="d6591637-a6ef-4550-bf5e-03adb5b9ba02"
@@ -1555,6 +1532,30 @@
                       LastKnownName="const SoftwareSet&amp;"
                       LastKnownLocation="UML.uml" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="1f167406-9392-461e-885c-7c1130e032bb"
+            name="Print"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b3554208-578e-45e6-a6b4-aed4bdef716e"
+                  name="ostream&amp; os"
+                  direction="In"
+                  isUnique="false">
+                  <defaultValue>
+                    <literalString
+                      Id="008c405b-e5eb-4f02-8061-7eb7b13a36f6"
+                      value="cout" />
+                  </defaultValue>
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -3309,36 +3310,12 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
-        <suppliersInternal>
-          <interfaceRealization
-            Id="02ee0ae3-7771-42da-bfe4-3125fbe74d19">
-            <interfaceMoniker
-              Id="06286794-99ea-4787-a1d8-e5b51819b59a"
-              LastKnownName="IUpdate"
-              LastKnownLocation="UML.uml" />
-          </interfaceRealization>
-          <interfaceRealization
-            Id="4a4a878d-664d-4ae2-9916-77d53ff03b12">
-            <interfaceMoniker
-              Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
-              LastKnownName="ISave"
-              LastKnownLocation="UML.uml" />
-          </interfaceRealization>
-        </suppliersInternal>
         <generalsInternal>
           <generalization
             Id="a5872eb2-91f8-496b-b7db-d7b88b848c52"
             isSubstitutable="false">
             <classMoniker
               Id="58638c7e-dd2a-4c52-be03-8639e1db3148"
-              LastKnownName="Runnable"
-              LastKnownLocation="UML.uml" />
-          </generalization>
-          <generalization
-            Id="a9e2d975-1241-420b-a06c-1e7d8b7cad48"
-            isSubstitutable="false">
-            <classMoniker
-              Id="b1d37dce-10c3-447b-afff-250e08b55169"
               LastKnownName="Runnable"
               LastKnownLocation="UML.uml" />
           </generalization>
@@ -4032,24 +4009,17 @@
         isActiveClass="false">
         <suppliersInternal>
           <interfaceRealization
-            Id="2a6fb8ab-e07a-403b-a4f9-23cd86e5fb2f">
-            <interfaceMoniker
-              Id="06286794-99ea-4787-a1d8-e5b51819b59a"
-              LastKnownName="IUpdate"
-              LastKnownLocation="UML.uml" />
-          </interfaceRealization>
-          <interfaceRealization
-            Id="39b7af48-bba4-43b8-b1dc-69b1b35e8753">
-            <interfaceMoniker
-              Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
-              LastKnownName="ISave"
-              LastKnownLocation="UML.uml" />
-          </interfaceRealization>
-          <interfaceRealization
-            Id="49aeaf34-da4c-4c6c-9360-1c1f53d94129">
+            Id="7246d705-613c-43a6-81a2-4e6109472033">
             <interfaceMoniker
               Id="dad8ffa0-c3f4-47b5-bf1e-f55fca517ebf"
               LastKnownName="IPrint"
+              LastKnownLocation="UML.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="a9f51231-99bd-4234-ad6a-643486c98467">
+            <interfaceMoniker
+              Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
+              LastKnownName="ISave"
               LastKnownLocation="UML.uml" />
           </interfaceRealization>
         </suppliersInternal>
@@ -4999,22 +4969,6 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
-        <suppliersInternal>
-          <interfaceRealization
-            Id="ed4d5af8-77eb-4703-96c7-bbf66247f043">
-            <interfaceMoniker
-              Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
-              LastKnownName="ISave"
-              LastKnownLocation="UML.uml" />
-          </interfaceRealization>
-          <interfaceRealization
-            Id="62d48836-89f4-47bd-b7a7-8c229c3a6813">
-            <interfaceMoniker
-              Id="dad8ffa0-c3f4-47b5-bf1e-f55fca517ebf"
-              LastKnownName="IPrint"
-              LastKnownLocation="UML.uml" />
-          </interfaceRealization>
-        </suppliersInternal>
         <ownedAttributesInternal>
           <property
             Id="eed2c060-2b4a-4566-b3df-bf84b73e5086"
@@ -5337,22 +5291,6 @@
         isAbstract="true"
         isLeaf="false"
         isActiveClass="false">
-        <suppliersInternal>
-          <interfaceRealization
-            Id="4ce28d70-a723-4080-aac5-06e4c8e9bfe9">
-            <interfaceMoniker
-              Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
-              LastKnownName="ISave"
-              LastKnownLocation="UML.uml" />
-          </interfaceRealization>
-          <interfaceRealization
-            Id="72034cbb-e9dd-4a1c-a301-c4d6a059b19c">
-            <interfaceMoniker
-              Id="dad8ffa0-c3f4-47b5-bf1e-f55fca517ebf"
-              LastKnownName="IPrint"
-              LastKnownLocation="UML.uml" />
-          </interfaceRealization>
-        </suppliersInternal>
         <ownedAttributesInternal>
           <property
             Id="8fc26a19-f35b-4b5b-9747-9e89d873aa49"
@@ -5524,23 +5462,23 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="333c0b31-864a-4127-bdb7-8043e451945a"
-                  name="const Job* job"
-                  direction="In"
-                  isUnique="false" />
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
                   Id="47b9c673-5015-4bf1-91ce-d906ad063419"
                   direction="Return"
                   isUnique="false">
                   <type_NamedElement>
                     <undefinedTypeMoniker
-                      Id="718f1437-93c1-4a14-a7fa-b38dadfd2274"
-                      LastKnownName="biik"
+                      Id="4ac36e08-f7fe-4e60-9518-71e2153067b4"
+                      LastKnownName="bool"
                       LastKnownLocation="UML.uml" />
                   </type_NamedElement>
                 </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a6d6ab11-6c69-4d4b-a588-ef6f3787c343"
+                  name="const Job* job"
+                  direction="In"
+                  isUnique="false" />
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
@@ -5710,6 +5648,30 @@
                   name="uint val"
                   direction="In"
                   isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f42c1869-e5b7-4b4f-baaf-efe7f173e2fc"
+            name="Print"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="2af3b3c3-8c63-4a61-9510-6a40d2db9f89"
+                  name="ostream&amp; os"
+                  direction="In"
+                  isUnique="false">
+                  <defaultValue>
+                    <literalString
+                      Id="6b7d6293-ce3f-4516-9342-9f7e41a696f8"
+                      value="cout" />
+                  </defaultValue>
+                </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
@@ -6232,7 +6194,7 @@
         isActiveClass="false">
         <generalsInternal>
           <generalization
-            Id="e5d98429-5626-4275-bf73-2138c8f7c328"
+            Id="b2c14a42-582f-4afa-b29d-a22c20ab5100"
             isSubstitutable="false">
             <classMoniker
               Id="07fa670a-2271-46ef-99d2-34cd16b6ff61"
@@ -7209,7 +7171,7 @@
         <ownedOperationsInternal>
           <operation
             Id="c99af4e6-5192-41a7-96dc-3367c4f714bd"
-            name="void Write"
+            name="Write"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -7218,7 +7180,7 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="edcc7e94-8695-46a3-a8ee-a995520e3999"
+                  Id="325f4b20-9616-4fdb-b34b-e80da66b4bcd"
                   name="const string&amp; val"
                   direction="In"
                   isUnique="false" />
@@ -7248,7 +7210,7 @@
         <ownedOperationsInternal>
           <operation
             Id="11ee9621-f7fe-48a0-bd65-4458975f651d"
-            name="void Write"
+            name="Write"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
