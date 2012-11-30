@@ -34,12 +34,13 @@ double Grid::HighestMachineRAM() const
 
     std::sort(rams.begin(), rams.end());
 
-    return rams.back() / 1000.0; // in GB
+    return rams.back() / 1024.0; // in GB
 }
 
 double Grid::TotalDiskSpace() const
 {
     std::vector<double> diskSpaces = _gm->ApplySelector<Machine, double>([](Machine* m) { return m->GetTotalDiskSpace(); });
 
-    return std::accumulate(diskSpaces.begin(), diskSpaces.end(), 0.0);
+    return std::accumulate(diskSpaces.begin(), diskSpaces.end(), 0.0) / 1024.0;
+}
 }
