@@ -4,14 +4,14 @@
 #include "utils.h"
 #include "interfaces.h"
 #include "runnable.h"
+#include "machine.h"
 
 #include <map>
 #include <vector>
 #include <functional>
-
-class Job;
-class Machine;
-class User;
+#include <set>
+#include "job.h"
+#include "user.h"
 
 //! Hard coded save file.
 #define GRID_SAVE_FILE "gridComputing.grid"
@@ -24,6 +24,9 @@ class User;
 class GridManager : public ISave, public IUpdate, public Runnable
 {
 public:
+    typedef std::set<User*, IdLess<User>> UserSet;
+    typedef std::set<Machine*, IdLess<Machine>> MachineSet;
+    typedef std::set<PriorityMachine*, IdLess<PriorityMachine>> PriorityMachineSet;
     //! Constructor
     GridManager() : _realPrevTime(0), _realCurrTime(0) { Start(); }
 
@@ -43,6 +46,13 @@ public:
     *   @return The ID of the added machine.
     */
     uint AddMachine(Machine* machine);
+
+    /**
+    *   @brief Add a Priority Machine.
+    *   @param  machine a pointer to the priority machine to be added.
+    *   @return The ID of the added machine.
+    */
+    uint AddPriorityMachine(PriorityMachine* pMachine);
 
     /**
     *   @brief Removes the given user.
@@ -155,7 +165,7 @@ public:
     *   @remark Only defined for T = Job, User or Machine
     */
     template<class T>
-    std::vector<T*> ApplyPredicate(std::function<bool(T*)> predicate) const;
+    std::vector<const T*> ApplyPredicate(std::function<bool(const T*)> predicate) const;
 
     /**
     *   @brief Uses ApplyPredicate with the given predicate and then selects a certain element of each object in the vector returned by ApplyPredicate.
@@ -165,7 +175,7 @@ public:
     *   @remark Only defined for T = Job, User or Machine
     */
     template<class T, class R>
-    std::vector<R> ApplySelector(std::function<R(T*)> selector, std::function<bool(T*)> predicate) const;
+    std::vector<R> ApplySelector(std::function<R(const T*)> selector, std::function<bool(const T*)> predicate) const;
 
     /**
     *   @brief Selects a certain element of each object in the vector of T*.
@@ -174,7 +184,7 @@ public:
     *   @remark Only defined for T = Job, User or Machine
     */
     template<class T, class R>
-    std::vector<R> ApplySelector(std::function<R(T*)> selector) const;
+    std::vector<R> ApplySelector(std::function<R(const T*)> selector) const;
 
 private:
 
@@ -200,10 +210,15 @@ private:
     //! Time of the current update
     uint64 _realCurrTime;
 
+    
     //! Container that saves users
-    std::map<uint, User*> _users;
+    UserSet _users;
+    /*std::map<uint, User*> _users;*/
     //! Container that saves machines
-    std::map<uint, Machine*> _machines;
+    MachineSet _machines;
+    /*std::map<uint, Machine*> _machines;*/
+    //! Container that saves priority machines
+    PriorityMachineSet _priorityMachines;
 
 private: // no copying
     //! Copy constructor. Private to avoid copies of a GridManager instance.
@@ -213,16 +228,16 @@ private: // no copying
 };
 
 template<class T, class R>
-std::vector<R> GridManager::ApplySelector(std::function<R(T*)> selector) const
+std::vector<R> GridManager::ApplySelector(std::function<R(const T*)> selector) const
 {
-    return ApplySelector<T, R>(selector, [](T*) { return true; });
+    return ApplySelector<T, R>(selector, [](const T*) { return true; });
 }
 
 template<class T, class R>
-std::vector<R> GridManager::ApplySelector(std::function<R(T*)> selector, std::function<bool(T*)> predicate) const
+std::vector<R> GridManager::ApplySelector(std::function<R(const T*)> selector, std::function<bool(const T*)> predicate) const
 {
     // get all machines, jobs, etc. that match the predicate
-    std::vector<T*> ts = ApplyPredicate<T>(predicate);
+    std::vector<const T*> ts = ApplyPredicate<T>(predicate);
 
     // apply our selector to the initial vector to create a new one
     std::vector<R> result;

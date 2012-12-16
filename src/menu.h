@@ -44,7 +44,7 @@ protected:
 class Menu : public IMenu
 {
 public:
-    Menu(const std::string& label, Menu* parent = NULL) : IMenu(label, parent) { } ///< Constructor
+    Menu(const std::string& label, Menu* parent = nullptr) : IMenu(label, parent) { } ///< Constructor
     ~Menu() { for (auto elem: _subMenus) delete elem.second; } ///< Destructor
 
     uint32 Print() const override;

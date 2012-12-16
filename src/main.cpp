@@ -16,7 +16,7 @@ int main(int, char**)
 {
     std::unique_ptr<Menu> menu(Loader<Menu>(MENU_SAVE_FILE).Load());
 
-    if (!menu.get())
+    if (!menu)
     {
         std::cerr << MENU_SAVE_FILE << " could not be loaded." << std::endl;
         return EXIT_FAILURE;
@@ -36,7 +36,7 @@ int main(int, char**)
         File::Remove(GRID_SAVE_FILE);
     }
 
-    if (!gm.get()) // no previous saves
+    if (!gm) // no previous saves
         gm = std::unique_ptr<GridManager>(new GridManager());
 
     bool executing = true;

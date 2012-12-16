@@ -23,7 +23,7 @@ bool GridNetwork::Save(ByteBuffer& bb) const
 {
     bb.WriteUInt32(_bst.size());
 
-    for (std::pair<std::string, Grid*> pair : _bst)
+    for (auto pair : _bst)
     {
         bb.WriteString(pair.first);
         pair.second->Save(bb);

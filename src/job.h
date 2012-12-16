@@ -11,21 +11,40 @@
 #include "interfaces.h"
 #include "software.h"
 
-class Machine;
 class User;
+
+template <class Idable>
+struct IdLess
+{
+    bool operator()(Idable* const & lhs, Idable* const & rhs) const
+    {
+        return lhs->GetId() < rhs->GetId();
+    }
+};
 
 typedef std::unordered_set<Software, Software::Hash> SoftwareSet;
 
 //! Job Class
 /*!
-    Represents a Job that is executed in a Machine
+Represents a Job that is executed in a Machine
 */
 class Job : public ISave, public IUpdate, public IPrint
 {
 public:
+    struct PriorityLess 
+    {
+        bool operator()(Job* const & lhs, Job* const & rhs) const
+        {
+            return lhs->_priority * 37 + lhs->_id * 97 > rhs->_priority * 37 + rhs->_id * 97;
+        }
+    };
+    /// "Search" Constructor
+    Job(uint id) : _id(id), _name(""), _priority(0), _requiredRAM(0), _requiredDiskSpace(0), _totalExecutionTime(0) { }
     /// Constructor
     Job(const std::string& name, uint8 priority, double requiredRAM, double requiredDiskSpace, uint executionTime);
 
+    uint GetId() const { return _id;}
+    void SetId(uint val) { _id = val; }
     const std::string& GetName() const { return _name; } ///< Returns the name of the Job
     uint8 GetPriority() const { return _priority; } ///< Returns the priority of the Job
     double GetRequiredRAM() const { return _requiredRAM; } ///< Returns the required amount of RAM (MB)
@@ -62,12 +81,15 @@ private:
     const uint8 _priority; ///< Priority
 
     const std::string _name; ///< Name of the job
+    uint _id;
 
     static uint _maxNameLength; ///< Length of the biggest name
 
 private: // no copying
     Job(const Job&);
-    Job& operator =(Job const&);
+    Job& operator=(Job const&);
 };
+
+
 
 #endif // JOB_H_

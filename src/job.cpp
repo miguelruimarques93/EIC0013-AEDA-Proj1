@@ -6,7 +6,7 @@ uint Job::_maxNameLength = 0;
 
 Job::Job(const std::string& name, uint8 priority, double requiredRAM, double requiredDiskSpace, uint executionTime) :
     _name(name), _priority(priority), _requiredRAM(requiredRAM), _requiredDiskSpace(requiredDiskSpace),
-    _totalExecutionTime(executionTime), _elapsedTime(0), _ms(0)
+    _totalExecutionTime(executionTime), _elapsedTime(0), _ms(0), _id(0)
 {
     if (_name.length() > _maxNameLength)
         _maxNameLength = _name.length();
@@ -14,6 +14,7 @@ Job::Job(const std::string& name, uint8 priority, double requiredRAM, double req
 
 bool Job::Save(ByteBuffer& bb) const
 {
+    bb.WriteUInt32(_id);
     bb.WriteString(_name);
     bb.WriteUInt8(_priority);
     bb.WriteDouble(_requiredRAM);
@@ -30,6 +31,7 @@ bool Job::Save(ByteBuffer& bb) const
 
 Job* Job::Load(ByteBuffer& bb)
 {
+    uint id = bb.ReadUInt32();
     std::string name = bb.ReadString();
     uint8 priority = bb.ReadUInt8();
     double requiredRAM = bb.ReadDouble();
@@ -38,6 +40,7 @@ Job* Job::Load(ByteBuffer& bb)
     uint32 elapsedTime = bb.ReadUInt32();
 
     Job* j = new Job(name, priority, requiredRAM, requiredDiskSpace, totalExecutionTime);
+    j->SetId(id);
     j->_elapsedTime = elapsedTime;
 
     uint32 softwareCount = bb.ReadUInt32();
@@ -62,19 +65,19 @@ void Job::Update(uint32 diff)
 void Job::PrintHeader(std::ostream& os /*= std::cout*/, bool withId /*= false*/)
 {
     os << (withId ? "---------" : "--") << std::string(_maxNameLength, '-')
-                                            << "--------------------------------------------------------\n"
-       << (withId ? "|  Id  | " : "| ") << std::setw(_maxNameLength) << "Name" << " | RAM (MB) | Disk (MB) | Priority (%) |   Time (s)    |\n"
-       << (withId ? "---------" : "--") << std::string(_maxNameLength, '-') << "--------------------------------------------------------\n";
+        << "--------------------------------------------------------\n"
+        << (withId ? "|  Id  | " : "| ") << std::setw(_maxNameLength) << "Name" << " | RAM (MB) | Disk (MB) | Priority (%) |   Time (s)    |\n"
+        << (withId ? "---------" : "--") << std::string(_maxNameLength, '-') << "--------------------------------------------------------\n";
 }
 
 void Job::Print(std::ostream& os /*=std::cout*/) const
 {
     os << "| "  << std::left << std::setfill(' ') << std::setw(_maxNameLength) << _name
-       << " | " << std::right << std::setw(8) << _requiredRAM
-       << " | " << std::setw(9) << _requiredDiskSpace
-       << " | " << std::setw(12) << static_cast<uint16>(_priority)
-       << " | " << std::setw(5) << std::left << _elapsedTime << " / " << std::setw(5) << std::right << _totalExecutionTime << " |\n"
-       << "--" << std::string(_maxNameLength, '-') << "--------------------------------------------------------\n";
+        << " | " << std::right << std::setw(8) << _requiredRAM
+        << " | " << std::setw(9) << _requiredDiskSpace
+        << " | " << std::setw(12) << static_cast<uint16>(_priority)
+        << " | " << std::setw(5) << std::left << _elapsedTime << " / " << std::setw(5) << std::right << _totalExecutionTime << " |\n"
+        << "--" << std::string(_maxNameLength, '-') << "--------------------------------------------------------\n";
 }
 
 void Job::PrintWithId( std::ostream& os /*= std::cout*/ ) const

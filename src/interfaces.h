@@ -3,8 +3,7 @@
 
 #include "utils.h"
 #include <iostream>
-
-class ByteBuffer;
+#include "bytebuffer.h"
 
 //! ISave Interface
 /*!

@@ -7,8 +7,7 @@
 #include <stdexcept>
 #include "bytebuffer.h"
 #include "interfaces.h"
-
-class Grid;
+#include "grid.h"
 
 //! ExistingGrid Exception
 /*!

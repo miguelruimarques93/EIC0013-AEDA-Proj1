@@ -102,7 +102,7 @@ void RemoveUser(GridManager* gm)
             if (val == 0)
             {
                 User::PrintHeader(std::cout);
-                for (auto m: gm->ApplyPredicate<User>([](User*) { return true; }))
+                for (auto m: gm->ApplyPredicate<User>([](const User*) { return true; }))
                     m->Print(std::cout);
                 return false;
             }
@@ -236,7 +236,7 @@ void RemoveMachine(GridManager* gm)
             if (val == 0)
             {
                 Machine::PrintHeader(std::cout);
-                for (auto m: gm->ApplyPredicate<Machine>([](Machine*) { return true; }))
+                for (auto m: gm->ApplyPredicate<Machine>([](const Machine*) { return true; }))
                     m->Print(std::cout);
                 return false;
             }
@@ -285,7 +285,7 @@ void NewJob(GridManager* gm)
             if (val == 0)
             {
                 User::PrintHeader(std::cout);
-                for (auto m: gm->ApplyPredicate<User>([](User*) { return true; }))
+                for (auto m: gm->ApplyPredicate<User>([](const User*) { return true; }))
                     m->Print(std::cout);
                 return false;
             }
@@ -410,7 +410,7 @@ void SearchUsers(GridManager* gm)
 
     uint option = searchMenu->Print();
 
-    std::vector<User*> vec;
+    std::vector<const User*> vec;
 
     switch (option)
     {
@@ -422,22 +422,22 @@ void SearchUsers(GridManager* gm)
         {
             std::string name = ReadValue<std::string>("Exact Name (max 25 characters): ", _namePredicate);
 
-            vec = gm->ApplyPredicate<User>([name](User* user) { return user->GetName() == name; });
+            vec = gm->ApplyPredicate<User>([name](const User* user) { return user->GetName() == name; });
             break;
         }
         case AllAcademic:
         {
-            vec = gm->ApplyPredicate<User>([](User* user) { return typeid(*user) == typeid(AcademicUser); });
+            vec = gm->ApplyPredicate<User>([](const User* user) { return typeid(*user) == typeid(AcademicUser); });
             break;
         }
         case AllEnterprise:
         {
-            vec = gm->ApplyPredicate<User>([](User* user) { return typeid(*user) == typeid(EnterpriseUser); });
+            vec = gm->ApplyPredicate<User>([](const User* user) { return typeid(*user) == typeid(EnterpriseUser); });
             break;
         }
         case All:
         {
-            vec = gm->ApplyPredicate<User>([](User*) { return true; });
+            vec = gm->ApplyPredicate<User>([](const User*) { return true; });
             break;
         }
     }
@@ -447,7 +447,7 @@ void SearchUsers(GridManager* gm)
     else
     {
         User::PrintHeader();
-        for (User* user : vec)
+        for (const User* user : vec)
             user->Print();
     }
 
@@ -473,7 +473,7 @@ void SearchMachines(GridManager* gm)
 
     uint option = searchMenu->Print();
 
-    std::vector<Machine*> vec;
+    std::vector<const Machine*> vec;
 
     try
     {
@@ -487,7 +487,7 @@ void SearchMachines(GridManager* gm)
             {
                 std::string name = ReadValue<std::string>("Exact Name (max 25 characters): ", _namePredicate);
 
-                vec = gm->ApplyPredicate<Machine>([name](Machine* machine) { return machine->GetName() == name; });
+                vec = gm->ApplyPredicate<Machine>([name](const Machine* machine) { return machine->GetName() == name; });
                 break;
             }
             case ByRAM:
@@ -495,18 +495,18 @@ void SearchMachines(GridManager* gm)
                 char comp = ReadValue<char>("Comparison ( > or < or = ): ");
                 double value = ReadValue<double>("Value [0-99999](MB): ");
 
-                std::function<bool(Machine*)> func;
+                std::function<bool(const Machine*)> func;
 
                 switch (comp)
                 {
                     case '>':
                     {
-                        func = [value](Machine* machine) { return machine->GetAvailableRAM() > value; };
+                        func = [value](const Machine* machine) { return machine->GetAvailableRAM() > value; };
                         break;
                     }
                     case '<':
                     {
-                        func = [value](Machine* machine) { return machine->GetAvailableRAM() < value; };
+                        func = [value](const Machine* machine) { return machine->GetAvailableRAM() < value; };
                         break;
                     }
                     default:
@@ -516,7 +516,7 @@ void SearchMachines(GridManager* gm)
                     }
                     case '=':
                     {
-                        func = [value](Machine* machine) { return machine->GetAvailableRAM() == value; };
+                        func = [value](const Machine* machine) { return machine->GetAvailableRAM() == value; };
                         break;
                     }
                 }
@@ -529,18 +529,18 @@ void SearchMachines(GridManager* gm)
                 char comp = ReadValue<char>("Comparison ( > or < or = ): ");
                 double value = ReadValue<double>("Value [0-99999](MB): ");
 
-                std::function<bool(Machine*)> func;
+                std::function<bool(const Machine*)> func;
 
                 switch (comp)
                 {
                     case '>':
                     {
-                        func = [value](Machine* machine) { return machine->GetAvailableDiskSpace() > value; };
+                        func = [value](const Machine* machine) { return machine->GetAvailableDiskSpace() > value; };
                         break;
                     }
                     case '<':
                     {
-                        func = [value](Machine* machine) { return machine->GetAvailableDiskSpace() < value; };
+                        func = [value](const Machine* machine) { return machine->GetAvailableDiskSpace() < value; };
                         break;
                     }
                     default:
@@ -550,7 +550,7 @@ void SearchMachines(GridManager* gm)
                     }
                     case '=':
                     {
-                        func = [value](Machine* machine) { return machine->GetAvailableDiskSpace() == value; };
+                        func = [value](const Machine* machine) { return machine->GetAvailableDiskSpace() == value; };
                         break;
                     }
                 }
@@ -563,18 +563,18 @@ void SearchMachines(GridManager* gm)
                 char comp = ReadValue<char>("Comparison ( > or < or = ): ");
                 uint value = ReadValue<uint>("Value [0-9999]: ");
 
-                std::function<bool(Machine*)> func;
+                std::function<bool(const Machine*)> func;
 
                 switch (comp)
                 {
                     case '>':
                     {
-                        func = [value](Machine* machine) { return machine->GetNumberOfJobs() > value; };
+                        func = [value](const Machine* machine) { return machine->GetNumberOfCurrentJobs() > value; };
                         break;
                     }
                     case '<':
                     {
-                        func = [value](Machine* machine) { return machine->GetNumberOfJobs() < value; };
+                        func = [value](const Machine* machine) { return machine->GetNumberOfCurrentJobs() < value; };
                         break;
                     }
                     default:
@@ -584,7 +584,7 @@ void SearchMachines(GridManager* gm)
                     }
                     case '=':
                     {
-                        func = [value](Machine* machine) { return machine->GetNumberOfJobs() == value; };
+                        func = [value](const Machine* machine) { return machine->GetNumberOfCurrentJobs() == value; };
                         break;
                     }
                 }
@@ -599,7 +599,7 @@ void SearchMachines(GridManager* gm)
             }
             case All:
             {
-                vec = gm->ApplyPredicate<Machine>([](Machine*) { return true; });
+                vec = gm->ApplyPredicate<Machine>([](const Machine*) { return true; });
                 break;
             }
         }
@@ -614,7 +614,7 @@ void SearchMachines(GridManager* gm)
     else
     {
         Machine::PrintHeader(std::cout);
-        for (Machine* machine : vec)
+        for (const Machine* machine : vec)
             machine->Print(std::cout);
     }
 
@@ -637,7 +637,7 @@ void SearchJobs(GridManager* gm)
     if (gm->GetNumberOfJobs() == 0)
         throw std::runtime_error("There are no jobs executing.");
 
-    std::vector<Job*> vec;
+    std::vector<const Job*> vec;
 
     static Menu* searchMenu = Loader<Menu>("jobSearchMenu.txt").Load();
 
@@ -655,7 +655,7 @@ void SearchJobs(GridManager* gm)
             {
                 std::string name = ReadValue<std::string>("Exact Name (max 25 characters): ", _namePredicate);
 
-                vec = gm->ApplyPredicate<Job>([name](Job* job) { return job->GetName() == name; });
+                vec = gm->ApplyPredicate<Job>([name](const Job* job) { return job->GetName() == name; });
                 break;
             }
             case ByRAM:
@@ -663,18 +663,18 @@ void SearchJobs(GridManager* gm)
                 char comp = ReadValue<char>("Comparison ( > or < or = ): ");
                 double value = ReadValue<double>("Value [0-99999](MB): ");
 
-                std::function<bool(Job*)> func;
+                std::function<bool(const Job*)> func;
 
                 switch (comp)
                 {
                     case '>':
                     {
-                        func = [value](Job* job) { return job->GetRequiredRAM() > value; };
+                        func = [value](const Job* job) { return job->GetRequiredRAM() > value; };
                         break;
                     }
                     case '<':
                     {
-                        func = [value](Job* job) { return job->GetRequiredRAM() < value; };
+                        func = [value](const Job* job) { return job->GetRequiredRAM() < value; };
                         break;
                     }
                     default:
@@ -684,7 +684,7 @@ void SearchJobs(GridManager* gm)
                     }
                     case '=':
                     {
-                        func = [value](Job* job) { return job->GetRequiredRAM() == value; };
+                        func = [value](const Job* job) { return job->GetRequiredRAM() == value; };
                         break;
                     }
                 }
@@ -697,18 +697,18 @@ void SearchJobs(GridManager* gm)
                 char comp = ReadValue<char>("Comparison ( > or < or = ): ");
                 double value = ReadValue<double>("Value [0-99999](MB): ");
 
-                std::function<bool(Job*)> func;
+                std::function<bool(const Job*)> func;
 
                 switch (comp)
                 {
                     case '>':
                     {
-                        func = [value](Job* job) { return job->GetRequiredDiskSpace() > value; };
+                        func = [value](const Job* job) { return job->GetRequiredDiskSpace() > value; };
                         break;
                     }
                     case '<':
                     {
-                        func = [value](Job* job) { return job->GetRequiredDiskSpace() < value; };
+                        func = [value](const Job* job) { return job->GetRequiredDiskSpace() < value; };
                         break;
                     }
                     default:
@@ -718,7 +718,7 @@ void SearchJobs(GridManager* gm)
                     }
                     case '=':
                     {
-                        func = [value](Job* job) { return job->GetRequiredDiskSpace() == value; };
+                        func = [value](const Job* job) { return job->GetRequiredDiskSpace() == value; };
                         break;
                     }
                 }
@@ -731,18 +731,18 @@ void SearchJobs(GridManager* gm)
                 char comp = ReadValue<char>("Comparison ( > or < or = ): ");
                 uint8 value = ReadValue<uint8>("Value [0-100](%): ");
 
-                std::function<bool(Job*)> func;
+                std::function<bool(const Job*)> func;
 
                 switch (comp)
                 {
                     case '>':
                     {
-                        func = [value](Job* job) { return job->GetPriority() > value; };
+                        func = [value](const Job* job) { return job->GetPriority() > value; };
                         break;
                     }
                     case '<':
                     {
-                        func = [value](Job* job) { return job->GetPriority() < value; };
+                        func = [value](const Job* job) { return job->GetPriority() < value; };
                         break;
                     }
                     default:
@@ -752,7 +752,7 @@ void SearchJobs(GridManager* gm)
                     }
                     case '=':
                     {
-                        func = [value](Job* job) { return job->GetPriority() == value; };
+                        func = [value](const Job* job) { return job->GetPriority() == value; };
                         break;
                     }
                 }
@@ -765,18 +765,18 @@ void SearchJobs(GridManager* gm)
                 char comp = ReadValue<char>("Comparison ( > or < or = ): ");
                 uint value = ReadValue<uint>("Value [0-99999](s): ");
 
-                std::function<bool(Job*)> func;
+                std::function<bool(const Job*)> func;
 
                 switch (comp)
                 {
                     case '>':
                     {
-                        func = [value](Job* job) { return job->GetElapsedTime() > value; };
+                        func = [value](const Job* job) { return job->GetElapsedTime() > value; };
                         break;
                     }
                     case '<':
                     {
-                        func = [value](Job* job) { return job->GetElapsedTime() < value; };
+                        func = [value](const Job* job) { return job->GetElapsedTime() < value; };
                         break;
                     }
                     default:
@@ -786,7 +786,7 @@ void SearchJobs(GridManager* gm)
                     }
                     case '=':
                     {
-                        func = [value](Job* job) { return job->GetElapsedTime() == value; };
+                        func = [value](const Job* job) { return job->GetElapsedTime() == value; };
                         break;
                     }
                 }
@@ -796,7 +796,7 @@ void SearchJobs(GridManager* gm)
             }
             case All:
             {
-                vec = gm->ApplyPredicate<Job>([](Job*) { return true; });
+                vec = gm->ApplyPredicate<Job>([](const Job*) { return true; });
                 break;
             }
         }
@@ -815,7 +815,7 @@ void SearchJobs(GridManager* gm)
     else
     {
         Job::PrintHeader(std::cout);
-        for (Job* job : vec)
+        for (const Job* job : vec)
             job->Print(std::cout);
     }
 
@@ -836,7 +836,7 @@ void ChangeUserInfo(GridManager* gm)
             if (val == 0)
             {
                 User::PrintHeader(std::cout);
-                for (auto m: gm->ApplyPredicate<User>([](User*) { return true; }))
+                for (auto m: gm->ApplyPredicate<User>([](const User*) { return true; }))
                     m->Print(std::cout);
                 return false;
             }
@@ -929,7 +929,7 @@ void ChangeMachineInfo(GridManager* gm)
             if (val == 0)
             {
                 Machine::PrintHeader(std::cout);
-                for (auto m: gm->ApplyPredicate<Machine>([](Machine*) { return true; }))
+                for (auto m: gm->ApplyPredicate<Machine>([](const Machine*) { return true; }))
                     m->Print(std::cout);
                 return false;
             }
@@ -994,7 +994,8 @@ void ChangeMachineInfo(GridManager* gm)
                     }
                     catch (MachineInExecution& err)
                     {
-                        std::cout << "Unable to modify RAM in machine " << err.GetMachine()->GetName() << " (id:" << err.GetMachine()->GetId() << ") because it is executing." << std::endl;
+                        Machine* m = gm->GetMachine(err.GetMachineId());
+                        std::cout << "Unable to modify RAM in machine " << m->GetName() << " (id:" << m->GetId() << ") because it is executing." << std::endl;
                         PauseConsole();
                         ClearConsole();
                         return;
@@ -1026,7 +1027,8 @@ void ChangeMachineInfo(GridManager* gm)
                     }
                     catch (MachineInExecution& err)
                     {
-                        std::cout << "Unable to modify disk space in machine " << err.GetMachine()->GetName() << " (id:" << err.GetMachine()->GetId() << ") because it is executing." << std::endl;
+                        Machine* m = gm->GetMachine(err.GetMachineId());
+                        std::cout << "Unable to modify disk space in machine " << m->GetName() << " (id:" << m->GetId() << ") because it is executing." << std::endl;
                         PauseConsole();
                         ClearConsole();
                         return;
@@ -1053,7 +1055,8 @@ void ChangeMachineInfo(GridManager* gm)
                     }
                     catch (MachineInExecution& err)
                     {
-                        std::cout << "Unable to modify max jobs in machine " << err.GetMachine()->GetName() << " (id:" << err.GetMachine()->GetId() << ") because it is executing." << std::endl;
+                        Machine* m = gm->GetMachine(err.GetMachineId());
+                        std::cout << "Unable to modify max jobs in machine " << m->GetName() << " (id:" << m->GetId() << ") because it is executing." << std::endl;
                         PauseConsole();
                         ClearConsole();
                         return;
@@ -1122,15 +1125,15 @@ void ChangeMachineInfo(GridManager* gm)
                 }
                 case 8: // List Machine Jobs
                 {
-                    if (machine->GetNumberOfJobs() == 0)
+                    if (machine->GetNumberOfCurrentJobs() == 0)
                         std::cout << "No jobs on this machine." << std::endl;
                     else
                     {
                         Job::PrintHeader(std::cout, true);
                         for (auto elem : machine->GetJobs())
                         {
-                            std::cout << "| " << std::setfill('0') << std::setw(4) << std::right << elem.first << " ";
-                            elem.second->PrintWithId(std::cout);
+                            std::cout << "| " << std::setfill('0') << std::setw(4) << std::right << elem << " ";
+                            elem->PrintWithId(std::cout);
                         }
                     }
 
@@ -1146,8 +1149,8 @@ void ChangeMachineInfo(GridManager* gm)
                             Job::PrintHeader(std::cout, true);
                             for (auto elem : machine->GetJobs())
                             {
-                                std::cout << "| " << std::setfill('0') << std::setw(4) << std::right << elem.first << " ";
-                                elem.second->PrintWithId(std::cout);
+                                std::cout << "| " << std::setfill('0') << std::setw(4) << std::right << elem << " ";
+                                elem->PrintWithId(std::cout);
                             }
                             return false;
                         }
@@ -1169,29 +1172,23 @@ void ChangeMachineInfo(GridManager* gm)
                 }
                 case 10: // Cancel All Jobs
                 {
-                    if (machine->RemoveAllJobs())
-                    {
-                        std::cout << "Jobs removed with success." << std::endl;
-                    }
-                    else
-                    {
-                        std::cout << "Error removing jobs." << std::endl;
-                    }
+                    machine->RemoveAllJobs();
+                    std::cout << "Jobs removed with success." << std::endl;
 
                     success = true;
                     break;
                 }
                 case 11: // List Job Required Software
                 {
-                    Job* job = machine->GetJob(ReadValue<uint>("Id (0 - Show list): ", [machine](uint val)
+                    const Job* job = machine->GetJob(ReadValue<uint>("Id (0 - Show list): ", [machine](uint val)
                     {
                         if (val == 0)
                         {
                             Job::PrintHeader(std::cout, true);
                             for (auto elem : machine->GetJobs())
                             {
-                                std::cout << "| " << std::setfill('0') << std::setw(4) << std::right << elem.first << " ";
-                                elem.second->PrintWithId(std::cout);
+                                std::cout << "| " << std::setfill('0') << std::setw(4) << std::right << elem << " ";
+                                elem->PrintWithId(std::cout);
                             }
                             return false;
                         }

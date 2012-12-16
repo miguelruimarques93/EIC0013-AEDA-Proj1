@@ -3,6 +3,7 @@
 #include <cassert>
 #include <iostream>
 #include <string>
+#include <limits>
 
 uint64 GetCurrentTime()
 {
@@ -28,4 +29,9 @@ void PauseConsole(const std::string& message/* = "Press enter to continue..."*/)
 {
     std::cout << message << std::endl;
     std::cin.get();
+
+    std::cin.clear();
+
+    if (std::cin.rdbuf()->in_avail() != 0)
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }

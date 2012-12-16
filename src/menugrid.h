@@ -3,7 +3,7 @@
 
 #include <stdexcept>
 
-class GridManager;
+#include "gridmanager.h"
 
 /// Exception thrown when a menu action was canceled
 class ActionCanceled : public std::exception

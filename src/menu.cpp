@@ -9,13 +9,7 @@
 
 IMenu::IMenu(const std::string& label, Menu* parent /*= NULL*/) : _parent(parent), _label(label)
 {
-    for (std::string::iterator it = std::find(_label.begin(), _label.end(), '\r');
-         it != _label.end();
-         it = std::find(_label.begin(), _label.end(), '\r'))
-    {
-        _label.erase(it);
-        it = find(_label.begin(), _label.end(), '\r');
-    }
+    _label.erase(std::remove(_label.begin(), _label.end(), '\r'), _label.end());
 }
 
 uint32 Menu::Print() const
@@ -23,10 +17,10 @@ uint32 Menu::Print() const
     Menu* parent = this->GetParent();
     std::cout << _label << ":" << std::endl;
 
-    for (auto sm : _subMenus)
+    for (const auto& sm : _subMenus)
         std::cout << std::left << std::setw(parent != NULL ? 6 : 1) << sm.first << " - " << sm.second->GetLabel() << std::endl;
 
-    if (parent != NULL)
+    if (parent != nullptr)
         std::cout << "CTRL-Z - Back" << std::endl;
 
     char option;
@@ -74,7 +68,7 @@ inline IMenu* Menu::operator[](char indexer)
 inline IMenu* Menu::operator[](char indexer) const
 {
     auto it = std::find_if(_subMenus.begin(), _subMenus.end(), [indexer](std::pair<char, IMenu*> elem){ return elem.first == indexer; });
-    return (it == _subMenus.end() ? NULL : it->second);
+    return (it == _subMenus.end() ? nullptr : it->second);
 }
 
 Menu* Menu::Load(ByteBuffer& bb)

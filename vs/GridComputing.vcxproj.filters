@@ -66,15 +66,12 @@
     <ClInclude Include="..\src\gridnetwork.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\HashTable.h">
+    <ClInclude Include="..\src\hashtable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\machine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\gridmanager.cpp">
@@ -110,7 +107,10 @@
     <ClCompile Include="..\src\grid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\HashTable.cpp">
+    <ClCompile Include="..\src\machine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hashtable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

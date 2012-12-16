@@ -27,7 +27,7 @@ bool Grid::Save(ByteBuffer& bb) const
 
 double Grid::HighestMachineRAM() const
 {
-    std::vector<double> rams = _gm->ApplySelector<Machine, double>([](Machine* m) { return m->GetTotalRAM(); });
+    std::vector<double> rams = _gm->ApplySelector<Machine, double>([](const Machine* m) { return m->GetTotalRAM(); });
 
     if (rams.empty())
         return 0.0;
@@ -39,8 +39,7 @@ double Grid::HighestMachineRAM() const
 
 double Grid::TotalDiskSpace() const
 {
-    std::vector<double> diskSpaces = _gm->ApplySelector<Machine, double>([](Machine* m) { return m->GetTotalDiskSpace(); });
+    std::vector<double> diskSpaces = _gm->ApplySelector<Machine, double>([](const Machine* m) { return m->GetTotalDiskSpace(); });
 
     return std::accumulate(diskSpaces.begin(), diskSpaces.end(), 0.0) / 1024.0;
-}
 }

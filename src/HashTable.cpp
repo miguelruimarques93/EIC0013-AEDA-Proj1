@@ -1,4 +1,4 @@
-#include "HashTable.h"
+#include "hashtable.h"
 
 bool HashTable::Empty()
 {

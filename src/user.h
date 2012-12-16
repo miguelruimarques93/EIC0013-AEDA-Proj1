@@ -6,10 +6,9 @@
 
 #include "utils.h"
 #include "interfaces.h"
-
-class Job;
-class ByteBuffer;
-class Menu;
+#include "job.h"
+#include "bytebuffer.h"
+#include "menu.h"
 
 /// Enum used in load and save actions to distinguish academic and enterprise Users
 enum SaveUserType
@@ -45,6 +44,7 @@ public:
     static Menu* GetMenu() { return _menu; } ///< Returns the menu for the User class
 
 protected:
+    User(uint id) : _id(id) { }
     User(const std::string& name); ///< Constructor used by subclasses
 
     static Menu* _menu; ///< Menu associated with the User class
@@ -62,6 +62,7 @@ private:
 class AcademicUser : public User
 {
 public:
+    AcademicUser(uint id) : User(id) {}
     AcademicUser(const std::string& name) : User( name), _jobCount(0) {}
     AcademicUser(const std::string& name, uint jobCount) : User(name), _jobCount(jobCount) {}
 
