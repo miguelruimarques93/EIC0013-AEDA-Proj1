@@ -161,7 +161,7 @@ public:
     *   @brief Applies the given predicate to the containers of the instance of the class based in the type and returns a vector with the values that meet the requirements.
     *   @param  predicate to evaluate the data: unary function that returns a bool and accepts a T* as argument.
     *   @return A vector with the result of the search.
-    *   @remark Only defined for T = Job, User or Machine
+    *   @remark Only defined for T = Job, User, IdleUser or Machine
     */
     template<class T>
     std::vector<const T*> ApplyPredicate(std::function<bool(const T*)> predicate) const;
@@ -171,7 +171,7 @@ public:
     *   @param selector to retrieve an element from the data: unary function that returns R and accepts a T* as argument.
     *   @param predicate to evaluate the data: unary function that returns a bool and accepts a T* as argument. Default value applies no restrictions.
     *   @return A vector with the result of the search.
-    *   @remark Only defined for T = Job, User or Machine
+    *   @remark Only defined for T = Job, User, IdleUser or Machine
     */
     template<class T, class R>
     std::vector<R> ApplySelector(std::function<R(const T*)> selector, std::function<bool(const T*)> predicate) const;
@@ -180,12 +180,14 @@ public:
     *   @brief Selects a certain element of each object in the vector of T*.
     *   @param selector to retrieve an element from the data: unary function that returns R and accepts a T* as argument.
     *   @return A vector with the result of the search.
-    *   @remark Only defined for T = Job, User or Machine
+    *   @remark Only defined for T = Job, User, IdleUser or Machine
     */
     template<class T, class R>
     std::vector<R> ApplySelector(std::function<R(const T*)> selector) const;
 
     static Menu* GetMenu() { return _menu; } ///< Returns the menu for the GridManager class
+
+    const IdleUserContainer& GetIdleUsers() const { return _idleUsers; }
 
 private:
     /**

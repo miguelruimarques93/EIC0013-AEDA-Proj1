@@ -6,6 +6,7 @@ Manage GridManager (CTRL-Z to cancel)
 --* C#011#Change User Information
 --* R#004#Remove User
 --* L#008#Search Users
+-* I#013#Search Removed Users
 - M#Manage Machines
 --* A#005#Add Machine
 --* C#012#Change Machine Information

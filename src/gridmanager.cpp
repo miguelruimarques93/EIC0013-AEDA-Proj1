@@ -291,6 +291,18 @@ std::vector<const User*> GridManager::ApplyPredicate<User>(std::function<bool(co
 }
 
 template<>
+std::vector<const IdleUser*> GridManager::ApplyPredicate<IdleUser>(std::function<bool(const IdleUser*)> predicate) const
+{
+    std::vector<const IdleUser*> result;
+
+    for (auto iu : _idleUsers.GetContainer())
+        if (predicate(iu.second))
+            result.push_back(iu.second);
+
+    return result;
+}
+
+template<>
 std::vector<const Machine*> GridManager::ApplyPredicate<Machine>(std::function<bool(const Machine*)> predicate) const
 {
     std::vector<const Machine*> result;

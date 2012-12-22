@@ -257,6 +257,69 @@ void SearchGrids(GridNetwork* gn)
     ClearConsole();
 }
 
+void SearchRemovedUsers(GridManager* gm)
+{
+    enum UserSearchOption
+    {
+        None = 0,
+        ByName = 1,
+        AllAcademic = 2,
+        AllEnterprise = 3,
+        All = 4
+    };
+
+    if (gm->GetIdleUsers().GetContainer().empty())
+        throw std::runtime_error("There are no idle users in the GridManager.");
+
+    static Menu* searchMenu = Loader<Menu>("idleUserSearchMenu.txt").Load();
+
+    uint option = searchMenu->Print();
+
+    std::vector<const IdleUser*> vec;
+
+    switch (option)
+    {
+        case None:
+        {
+            throw ActionCanceled("Search IdleUsers");
+        }
+        case ByName:
+        {
+            std::string name = ReadValue<std::string>("Exact Name (max 25 characters): ", _namePredicate);
+
+            vec = gm->ApplyPredicate<IdleUser>([name](const IdleUser* user) { return user->GetName() == name; });
+            break;
+        }
+        case AllAcademic:
+        {
+            vec = gm->ApplyPredicate<IdleUser>([](const IdleUser* user) { return user->GetUserType() == USER_TYPE_ACADEMIC; });
+            break;
+        }
+        case AllEnterprise:
+        {
+            vec = gm->ApplyPredicate<IdleUser>([](const IdleUser* user) { return user->GetUserType() == USER_TYPE_ENTERPRISE; });
+            break;
+        }
+        case All:
+        {
+            vec = gm->ApplyPredicate<IdleUser>([](const IdleUser*) { return true; });
+            break;
+        }
+    }
+
+    if (vec.empty())
+        std::cout << "No results." << std::endl;
+    else
+    {
+        IdleUser::PrintHeader();
+        for (auto user : vec)
+            user->Print();
+    }
+
+    PauseConsole();
+    ClearConsole();
+}
+
 
 void NewAcademicUser(GridManager* gm)
 {
@@ -1098,7 +1161,7 @@ void ChangeUserInfo(GridManager* gm)
                 {
                     throw EOFCharacterValue();
                 }
-                case 1:
+                case 1: // Change User Name
                 {
                     std::string val = ReadValue<std::string>("New name (max 25 characters): ", _namePredicate);
 
@@ -1107,7 +1170,7 @@ void ChangeUserInfo(GridManager* gm)
                     success = true;
                     break;
                 }
-                case 2:
+                case 2: // Change Enterprise User Budget
                 {
                     if (typeid(*user) == typeid(EnterpriseUser))
                     {
@@ -1510,7 +1573,8 @@ void ChangeGridManagerInfo(GridNetwork* gn)
                 SearchMachines,                                // 9
                 SearchJobs,                                    //10
                 ChangeUserInfo,                                //11
-                ChangeMachineInfo                              //12
+                ChangeMachineInfo,                             //12
+                SearchRemovedUsers                             //13
             };
 
             uint32 option = GridManager::GetMenu()->Print();
