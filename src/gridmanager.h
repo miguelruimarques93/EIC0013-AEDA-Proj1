@@ -198,7 +198,7 @@ private:
     //! Last Machine Id added
     static uint _lastMachineId;
 
-    
+
     //! Container that saves users
     UserSet _users;
     /*std::map<uint, User*> _users;*/

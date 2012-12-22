@@ -304,7 +304,7 @@ uint GridManager::AddUser(User* user)
     }
 
     _users.insert(user);
-    
+
     return user->GetId();
 }
 
@@ -320,7 +320,7 @@ uint GridManager::AddMachine(Machine* machine)
     }
 
     _machines.insert(machine);
-    
+
     return machine->GetId();
 }
 

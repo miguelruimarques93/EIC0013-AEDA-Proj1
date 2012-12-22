@@ -23,7 +23,7 @@ std::tuple<bool, Software> Software::ReadFromString(const std::string& name)
     return std::make_tuple(true, Software(result[1], std::atoi(result[2].str().c_str()), std::atoi(result[3].str().c_str()), std::atoi(result[4].str().c_str())));
 }
 
-bool Software::Save(ByteBuffer& bb) const 
+bool Software::Save(ByteBuffer& bb) const
 {
     bb.WriteString(_name);
     bb.WriteUInt32(_version.Major);
@@ -50,7 +50,7 @@ void Software::PrintHeader(std::ostream& os /*= std::cout*/)
        << "--" << std::string(_maxNameLength, '-')    << "-----------------------------------\n";
 }
 
-void Software::Print(std::ostream& os /*= std::cout*/) const 
+void Software::Print(std::ostream& os /*= std::cout*/) const
 {
     os << "| " << std::setw(_maxNameLength) << std::left << _name << " | "
        << std::right << std::setw(8) << _version.Major << " | "

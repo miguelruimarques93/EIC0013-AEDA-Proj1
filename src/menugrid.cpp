@@ -48,7 +48,7 @@ void NewGrid(GridNetwork* gn)
             }
             catch (UnknownGrid&) // grid doesn't already exist, name is valid
             {
-            	return true;
+                return true;
             }
 
             std::cout << "A Grid with the same name already exists." << std::endl << "Please try again." << std::endl;

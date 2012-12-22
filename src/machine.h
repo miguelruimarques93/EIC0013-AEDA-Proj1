@@ -87,9 +87,9 @@ public:
     const Job* GetJob(uint id) const;
     bool RemoveJob(uint id);
     void RemoveAllJobs(); ///< Removes all Jobs from this Machine
-    uint GetNumberOfCurrentJobs() const { return _currentJobs.size(); } ///< Returns the number of Jobs being executed 
+    uint GetNumberOfCurrentJobs() const { return _currentJobs.size(); } ///< Returns the number of Jobs being executed
     static uint GetNumberOfWaitingJobs() { return _waitingJobs.size(); }
-    
+
     bool Save(ByteBuffer& bb) const override; ///< Saves the Machine data to a ByteBuffer
     void Update(uint diff) override; ///< Updates executing Jobs timers and removes expired ones
     void Print(std::ostream& os = std::cout) const override; ///< Prints current machine information
@@ -210,7 +210,7 @@ template <class Container>
 bool IMachine<Container>::AddJob(Job* job)
 {
     _mutex.lock();
-    
+
     if (_currentJobs.size() >= _maxJobs)
     {
         _mutex.unlock();
@@ -289,7 +289,7 @@ template <class Container>
 void IMachine<Container>::RemoveAllJobs()
 {
     _mutex.lock();
-    
+
     for(Container temp(_currentJobs); !temp.empty(); temp.pop())
         if (temp.top())
             temp.top()->Finish();

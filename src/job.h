@@ -31,7 +31,7 @@ Represents a Job that is executed in a Machine
 class Job : public ISave, public IUpdate, public IPrint
 {
 public:
-    struct PriorityLess 
+    struct PriorityLess
     {
         bool operator()(Job* const & lhs, Job* const & rhs) const
         {

@@ -74,9 +74,11 @@ void Grid::Update(uint32 diff)
     _gm->Update(diff);
 }
 
-void Grid::Print(std::ostream& os /*= std::cout*/) const 
+void Grid::Print(std::ostream& os /*= std::cout*/) const
 {
     os << "| " << std::setw(_maxNameLength) << _name << " | " << std::setw(_maxTopicLength) << _topic << " |\n";
+
+    // TODO: Fix aligment and add HighestMachineRAM, TotalDiskSpace, GetAvailableMachineCount
 }
 
 void Grid::PrintHeader(std::ostream& os /*= std::cout*/)
