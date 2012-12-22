@@ -8,10 +8,16 @@ Manage GridManager (CTRL-Z to cancel)
 --* L#008#Search Users
 -* I#013#Search Removed Users
 - M#Manage Machines
---* A#005#Add Machine
---* C#012#Change Machine Information
---* R#006#Remove Machine
---* L#009#Search Machines
+-- M#Manage Machines
+---* A#005#Add Machine
+---* C#012#Change Machine Information
+---* R#006#Remove Machine
+---* L#009#Search Machines
+-- P#Manage Priority Machines
+---* A#014#Add Priority Machine
+---* C#015#Change Priority Machine Information
+---* R#016#Remove Priority Machine
+---* L#017#Search Priority Machines
 - J#Manage Jobs
 --* C#007#Create New Job
 --* L#010#Search Jobs

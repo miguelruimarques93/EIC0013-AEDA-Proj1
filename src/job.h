@@ -13,6 +13,10 @@
 
 class User;
 
+//! IdLess struct
+/*!
+Function Object that compares two objects by id
+*/
 template <class Idable>
 struct IdLess
 {
@@ -31,13 +35,19 @@ Represents a Job that is executed in a Machine
 class Job : public ISave, public IUpdate, public IPrint
 {
 public:
+    //! Job::PriorityLess struct
+    /*!
+    Function Object that compares two Job* by priority and id
+    */
     struct PriorityLess
     {
         bool operator()(Job* const & lhs, Job* const & rhs) const
         {
-            return lhs->_priority * 37 + lhs->_id * 97 > rhs->_priority * 37 + rhs->_id * 97;
+            return (lhs->_priority > rhs->_priority) ||                              // Organize Jobs by priority
+                   ((lhs->_priority == rhs->_priority) && (lhs->_id < rhs->_id));    // If priorities are equal organize by id
         }
     };
+
     /// "Search" Constructor
     Job(uint id) : _id(id), _name(""), _priority(0), _requiredRAM(0), _requiredDiskSpace(0), _totalExecutionTime(0) { }
     /// Constructor

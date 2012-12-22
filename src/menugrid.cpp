@@ -512,6 +512,101 @@ void NewMachine(GridManager* gm)
     ClearConsole();
 }
 
+
+void NewPriorityMachine(GridManager* gm)
+{
+    std::string name;
+    uint maxJobs;
+    double totalRAM;
+    double totalDiskSpace;
+    std::vector<Software> software;
+
+    try
+    {
+        name = ReadValue<std::string>("Name (max 25 characters): ", _namePredicate);
+        maxJobs = ReadValue<uint>("Max number of jobs [0-9999]: ", [](uint val)
+        {
+            if (val > 9999)
+            {
+                std::cout << "Max number of Jobs cannot be greater than 9999." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        });
+
+        totalRAM = ReadValue<double>("Amount of RAM [0-99999](MB): ", [](double val)
+        {
+            if (val < 0)
+            {
+                std::cout << "Amount of RAM cannot be negative." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            else if (val > 99999)
+            {
+                std::cout << "Amount of RAM cannot be greater than 99999 MB." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        });
+
+        totalDiskSpace = ReadValue<double>("Amount of disk space [0-99999](MB): ", [](double val)
+        {
+            if (val < 0)
+            {
+                std::cout << "Amount of disk space cannot be negative." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            else if (val > 99999)
+            {
+                std::cout << "Amount of disk space cannot be greater than 99999 MB." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        });
+
+        std::cout << "Available software (-1 to end list):  " << std::endl;
+        std::cout << "Format: \"name major.minor.revision\""  << std::endl;
+        for (int i = 1; i <= 100; ++i)
+        {
+            char temp[3];
+            sprintf_s(temp, "%i", i);
+
+            std::string prompt = "\t" + std::string(temp) + " - ";
+
+            const std::string input = ReadValue<std::string>(prompt);
+
+            if (input == "-1")
+                break;
+
+            std::tuple<bool, Software> sw = Software::ReadFromString(input);
+
+            if (std::get<0>(sw))
+                software.push_back(std::get<1>(sw));
+            else
+            {
+                std::cout << "Software needs to be in the format \"name major.minor.revision\". Try again." << std::endl;
+                --i;
+            }
+        }
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("New Machine");
+    }
+
+    PriorityMachine* pMachine = new PriorityMachine(name, maxJobs, totalRAM, totalDiskSpace);
+
+    std::for_each(software.begin(), software.end(), [&pMachine](const Software& sw) { pMachine->AddAvailableSoftware(sw); });
+
+    uint id = gm->AddPriorityMachine(pMachine);
+
+    std::cout << "Priority Machine created, assigned id " << id << "." << std::endl;
+
+    PauseConsole();
+    ClearConsole();
+}
+
+
 void RemoveMachine(GridManager* gm)
 {
     uint id;
@@ -547,6 +642,46 @@ void RemoveMachine(GridManager* gm)
         std::cout << "Machine with id " << id << " was removed." << std::endl;
     else
         std::cout << "Could not remove machine with id " << id << "." << std::endl;
+
+    PauseConsole();
+    ClearConsole();
+}
+
+void RemovePriorityMachine( GridManager* gm )
+{
+    uint id;
+
+    if (gm->GetNumberOfPriorityMachines() == 0)
+        throw std::runtime_error("There are no priority machines in the GridManager.");
+
+    try
+    {
+        id = ReadValue<uint>("Id (0 - Show list): ", [gm](uint val)
+        {
+            if (val == 0)
+            {
+                PriorityMachine::PrintHeader(std::cout);
+                for (auto pm: gm->ApplyPredicate<PriorityMachine>([](const PriorityMachine*) { return true; }))
+                    pm->Print(std::cout);
+                return false;
+            }
+            else if (!gm->GetMachine(val))
+            {
+                std::cout << "Id """ << val << """ is not currently in use."<< std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        });
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("Remove Priority Machine");
+    }
+
+    if (gm->RemovePriorityMachine(id))
+        std::cout << "Priority Machine with id " << id << " was removed." << std::endl;
+    else
+        std::cout << "Could not remove priority machine with id " << id << "." << std::endl;
 
     PauseConsole();
     ClearConsole();
@@ -911,6 +1046,174 @@ void SearchMachines(GridManager* gm)
     PauseConsole();
     ClearConsole();
 }
+
+void SearchPriorityMachines(GridManager* gm)
+{
+    enum MachineSearchOption
+    {
+        ByName = 1,
+        ByRAM = 2,
+        ByDisk = 3,
+        ByNumberJobs = 4,
+        All = 5
+    };
+
+    if (gm->GetNumberOfPriorityMachines() == 0)
+        throw std::runtime_error("There are no machines in the GridManager.");
+
+    static Menu* searchMenu = Loader<Menu>("machineSearchMenu.txt").Load();
+
+    uint option = searchMenu->Print();
+
+    std::vector<const PriorityMachine*> vec;
+
+    try
+    {
+        switch (option)
+        {
+        case 0:
+            {
+                throw ActionCanceled("Search Priority Machines");
+            }
+        case ByName:
+            {
+                std::string name = ReadValue<std::string>("Exact Name (max 25 characters): ", _namePredicate);
+
+                vec = gm->ApplyPredicate<PriorityMachine>([name](const PriorityMachine* machine) { return machine->GetName() == name; });
+                break;
+            }
+        case ByRAM:
+            {
+                char comp = ReadValue<char>("Comparison ( > or < or = ): ");
+                double value = ReadValue<double>("Value [0-99999](MB): ");
+
+                std::function<bool(const PriorityMachine*)> func;
+
+                switch (comp)
+                {
+                case '>':
+                    {
+                        func = [value](const PriorityMachine* machine) { return machine->GetAvailableRAM() > value; };
+                        break;
+                    }
+                case '<':
+                    {
+                        func = [value](const PriorityMachine* machine) { return machine->GetAvailableRAM() < value; };
+                        break;
+                    }
+                default:
+                    {
+                        std::cout << "Invalid comparison, using equality." << std::endl;
+                        // no break intended
+                    }
+                case '=':
+                    {
+                        func = [value](const PriorityMachine* machine) { return machine->GetAvailableRAM() == value; };
+                        break;
+                    }
+                }
+
+                vec = gm->ApplyPredicate(func);
+                break;
+            }
+        case ByDisk:
+            {
+                char comp = ReadValue<char>("Comparison ( > or < or = ): ");
+                double value = ReadValue<double>("Value [0-99999](MB): ");
+
+                std::function<bool(const PriorityMachine*)> func;
+
+                switch (comp)
+                {
+                case '>':
+                    {
+                        func = [value](const PriorityMachine* machine) { return machine->GetAvailableDiskSpace() > value; };
+                        break;
+                    }
+                case '<':
+                    {
+                        func = [value](const PriorityMachine* machine) { return machine->GetAvailableDiskSpace() < value; };
+                        break;
+                    }
+                default:
+                    {
+                        std::cout << "Invalid comparison, using equality." << std::endl;
+                        // no break intended
+                    }
+                case '=':
+                    {
+                        func = [value](const PriorityMachine* machine) { return machine->GetAvailableDiskSpace() == value; };
+                        break;
+                    }
+                }
+
+                vec = gm->ApplyPredicate(func);
+                break;
+            }
+        case ByNumberJobs:
+            {
+                char comp = ReadValue<char>("Comparison ( > or < or = ): ");
+                uint value = ReadValue<uint>("Value [0-9999]: ");
+
+                std::function<bool(const PriorityMachine*)> func;
+
+                switch (comp)
+                {
+                case '>':
+                    {
+                        func = [value](const PriorityMachine* machine) { return machine->GetNumberOfCurrentJobs() > value; };
+                        break;
+                    }
+                case '<':
+                    {
+                        func = [value](const PriorityMachine* machine) { return machine->GetNumberOfCurrentJobs() < value; };
+                        break;
+                    }
+                default:
+                    {
+                        std::cout << "Invalid comparison, using equality." << std::endl;
+                        // no break intended
+                    }
+                case '=':
+                    {
+                        func = [value](const PriorityMachine* machine) { return machine->GetNumberOfCurrentJobs() == value; };
+                        break;
+                    }
+                }
+
+                vec = gm->ApplyPredicate(func);
+                break;
+            }
+        default:
+            {
+                std::cout << "You need to provide an option between 1 and 5, showing all machines." << std::endl;
+                // no break intended
+            }
+        case All:
+            {
+                vec = gm->ApplyPredicate<PriorityMachine>([](const PriorityMachine*) { return true; });
+                break;
+            }
+        }
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("Search Priority Machines");
+    }
+
+    if (vec.size() == 0)
+        std::cout << "No results." << std::endl;
+    else
+    {
+        Machine::PrintHeader(std::cout);
+        for (const PriorityMachine* machine : vec)
+            machine->Print(std::cout);
+    }
+
+    PauseConsole();
+    ClearConsole();
+}
+
 
 void SearchJobs(GridManager* gm)
 {
@@ -1515,6 +1818,314 @@ void ChangeMachineInfo(GridManager* gm)
     ClearConsole();
 }
 
+void ChangePriorityMachineInfo(GridManager* gm)
+{
+    std::cout << "Change Priority Machine Information" << std::endl;
+
+    PriorityMachine* pMachine;
+
+    try
+    {
+        pMachine = gm->GetPriorityMachine(ReadValue<uint>("Id (0 - Show list): ", [gm](uint val)
+        {
+            if (val == 0)
+            {
+                PriorityMachine::PrintHeader(std::cout);
+                for (auto m: gm->ApplyPredicate<PriorityMachine>([](const PriorityMachine*) { return true; }))
+                    m->Print(std::cout);
+                return false;
+            }
+            else if (!gm->GetPriorityMachine(val))
+            {
+                std::cout << "Id """ << val << """ is not currently in use."<< std::endl << "Please try again." << std::endl;
+                return false;
+            }
+            return true;
+        }));
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("Change Priority Machine Information");
+    }
+
+    ClearConsole();
+
+    bool success = false;
+
+    try
+    {
+        do
+        {
+            std::cout << "Priority Machine - Id: " << pMachine->GetId() << " Name: " << pMachine->GetName() << std::endl;
+            uint32 option = PriorityMachine::GetMenu()->Print();
+
+            switch (option)
+            {
+            case 0:
+                {
+                    throw EOFCharacterValue();
+                }
+            case 1: // Change Machine Name
+                {
+                    std::string val = ReadValue<std::string>("New name (max 25 characters): ", _namePredicate);
+                    pMachine->SetName(val);
+                    std::cout << "Priority Machine name changed with success." << std::endl;
+                    success = true;
+                    break;
+                }
+            case 2: // Change Machine Ram
+                {
+                    double ram = ReadValue<double>("New RAM [0-99999](MB): ", [](double val)
+                    {
+                        if (val < 0)
+                        {
+                            std::cout << "Amount of RAM cannot be negative." << std::endl << "Please try again." << std::endl;
+                            return false;
+                        }
+                        else if (val > 99999)
+                        {
+                            std::cout << "Amount of RAM cannot be greater than 99999 MB." << std::endl << "Please try again." << std::endl;
+                            return false;
+                        }
+                        return true;
+                    });
+
+                    try
+                    {
+                        pMachine->SetTotalRAM(ram);
+                    }
+                    catch (MachineInExecution& err)
+                    {
+                        PriorityMachine* pm = gm->GetPriorityMachine(err.GetMachineId());
+                        std::cout << "Unable to modify RAM in priority machine " << pm->GetName() << " (id:" << pm->GetId() << ") because it is executing." << std::endl;
+                        PauseConsole();
+                        ClearConsole();
+                        return;
+                    }
+
+                    std::cout << "Priority Machine RAM changed with success." << std::endl;
+                    success = true;
+                    break;
+                }
+            case 3: // Change Machine Disk Space
+                {
+                    double diskSpace = ReadValue<double>("New Disk Space [0-99999](MB): ", [](double val)
+                    {
+                        if (val < 0)
+                        {
+                            std::cout << "Amount of disk space cannot be negative." << std::endl << "Please try again." << std::endl;
+                            return false;
+                        }
+                        else if (val > 99999)
+                        {
+                            std::cout << "Amount of disk space cannot be greater than 99999 MB." << std::endl << "Please try again." << std::endl;
+                            return false;
+                        }
+                        return true;
+                    });
+                    try
+                    {
+                        pMachine->SetTotalDiskSpace(diskSpace);
+                    }
+                    catch (MachineInExecution& err)
+                    {
+                        PriorityMachine* pm = gm->GetPriorityMachine(err.GetMachineId());
+                        std::cout << "Unable to modify disk space in priority machine " << pm->GetName() << " (id:" << pm->GetId() << ") because it is executing." << std::endl;
+                        PauseConsole();
+                        ClearConsole();
+                        return;
+                    }
+                    std::cout << "Priority Machine disk space changed with success." << std::endl;
+                    success = true;
+                    break;
+                }
+            case 4: // Change Machine Max Jobs
+                {
+                    uint maxJobs = ReadValue<uint>("New Max Jobs [0-9999]: ", [](uint val)
+                    {
+                        if (val > 9999)
+                        {
+                            std::cout << "Max number of Jobs cannot be greater than 9999." << std::endl << "Please try again." << std::endl;
+                            return false;
+                        }
+                        return true;
+                    });
+
+                    try
+                    {
+                        pMachine->SetMaxJobs(maxJobs);
+                    }
+                    catch (MachineInExecution& err)
+                    {
+                        PriorityMachine* pm = gm->GetPriorityMachine(err.GetMachineId());
+                        std::cout << "Unable to modify max jobs in priority machine " << pm->GetName() << " (id:" << pm->GetId() << ") because it is executing." << std::endl;
+                        PauseConsole();
+                        ClearConsole();
+                        return;
+                    }
+
+                    std::cout << "Priority Machine max number of jobs changed with success." << std::endl;
+                    success = true;
+                    break;
+                }
+            case 5: // Add Software
+                {
+                    bool successSW = false;
+
+                    while (!successSW)
+                    {
+                        auto sw = Software::ReadFromString(ReadValue<std::string>("Software [name major.minor.revision]: "));
+
+                        if (std::get<0>(sw))
+                        {
+                            pMachine->AddAvailableSoftware(std::get<1>(sw));
+                            successSW = true;
+                        }
+                        else
+                            std::cout << "You need to provide a valid software in the format \"name major.minor.revision\". Try again." << std::endl;
+
+                    }
+
+                    std::cout << "Priority Machine software added with success." << std::endl;
+                    success = true;
+                    break;
+                }
+            case 6: // Remove Software
+                {
+                    bool successSW = false;
+
+                    while (!successSW)
+                    {
+                        auto sw = Software::ReadFromString(ReadValue<std::string>("Software [name major.minor.revision]: "));
+
+                        if (std::get<0>(sw))
+                        {
+                            pMachine->RemoveAvailableSoftware(std::get<1>(sw));
+                            successSW = true;
+                        }
+                        else
+                            std::cout << "You need to provide a valid software in the format \"name major.minor.revision\". Try again." << std::endl;
+                    }
+
+                    std::cout << "Priority Machine software removed with success." << std::endl;
+                    success = true;
+                    break;
+                }
+            case 7: // List Available Software
+                {
+                    if (pMachine->GetAvailableSoftware().size() == 0)
+                        std::cout << "This priority machine doesn't have any software installed." << std::endl;
+                    else
+                    {
+                        Software::PrintHeader(std::cout);
+                        for (auto sw : pMachine->GetAvailableSoftware())
+                            sw.Print(std::cout);
+                    }
+
+                    success = true;
+                    break;
+                }
+            case 8: // List Machine Jobs
+                {
+                    if (pMachine->GetNumberOfCurrentJobs() == 0)
+                        std::cout << "No jobs on this machine." << std::endl;
+                    else
+                    {
+                        Job::PrintHeader(std::cout, true);
+                        for (auto elem : pMachine->GetJobs())
+                        {
+                            std::cout << "| " << std::setfill('0') << std::setw(4) << std::right << elem << " ";
+                            elem->PrintWithId(std::cout);
+                        }
+                    }
+
+                    success = true;
+                    break;
+                }
+            case 9: // Remove Job From Machine
+                {
+                    uint JobId = ReadValue<uint>("Id (0 - Show list): ", [pMachine](uint val)
+                    {
+                        if (val == 0)
+                        {
+                            Job::PrintHeader(std::cout, true);
+                            for (auto elem : pMachine->GetJobs())
+                            {
+                                std::cout << "| " << std::setfill('0') << std::setw(4) << std::right << elem << " ";
+                                elem->PrintWithId(std::cout);
+                            }
+                            return false;
+                        }
+                        else if (!pMachine->GetJob(val))
+                        {
+                            std::cout << "Id """ << val << """ is not currently in use."<< std::endl << "Please try again." << std::endl;
+                            return false;
+                        }
+                        return true;
+                    });
+
+                    if (pMachine->RemoveJob(JobId))
+                        std::cout << "Job removed with success." << std::endl;
+                    else
+                        std::cout << "Error removing job." << std::endl;
+
+                    success = true;
+                    break;
+                }
+            case 10: // Cancel All Jobs
+                {
+                    pMachine->RemoveAllJobs();
+                    std::cout << "Jobs removed with success." << std::endl;
+
+                    success = true;
+                    break;
+                }
+            case 11: // List Job Required Software
+                {
+                    const Job* job = pMachine->GetJob(ReadValue<uint>("Id (0 - Show list): ", [pMachine](uint val)
+                    {
+                        if (val == 0)
+                        {
+                            Job::PrintHeader(std::cout, true);
+                            for (auto elem : pMachine->GetJobs())
+                            {
+                                std::cout << "| " << std::setfill('0') << std::setw(4) << std::right << elem << " ";
+                                elem->PrintWithId(std::cout);
+                            }
+                            return false;
+                        }
+                        else if (!pMachine->GetJob(val))
+                        {
+                            std::cout << "Id """ << val << """ is not currently in use."<< std::endl << "Please try again." << std::endl;
+                            return false;
+                        }
+                        return true;
+                    }));
+
+                    if (job->GetRequiredSoftware().size() == 0)
+                        std::cout << "This job doesn't require any software to execute." << std::endl;
+                    else
+                    {
+                        Software::PrintHeader(std::cout);
+                        for (auto sw : job->GetRequiredSoftware())
+                            sw.Print(std::cout);
+                    }
+
+                    success = true;
+                    break;
+                }
+            }
+        } while (!success);
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("Change Priority Machine Information");
+    }
+
+    PauseConsole();
+    ClearConsole();
+}
+
 void ChangeGridManagerInfo(GridNetwork* gn)
 {
     std::cout << "Change GridManager Information" << std::endl;
@@ -1574,7 +2185,11 @@ void ChangeGridManagerInfo(GridNetwork* gn)
                 SearchJobs,                                    //10
                 ChangeUserInfo,                                //11
                 ChangeMachineInfo,                             //12
-                SearchRemovedUsers                             //13
+                SearchRemovedUsers,                            //13
+                NewPriorityMachine,                            //14
+                ChangePriorityMachineInfo,                     //15
+                RemovePriorityMachine,                         //16
+                SearchPriorityMachines                         //17
             };
 
             try

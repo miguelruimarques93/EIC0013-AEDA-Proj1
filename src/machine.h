@@ -22,23 +22,33 @@
 #include "log.h"
 
 typedef std::unordered_set<Software, Software::Hash> SoftwareSet;
-
+//! _Machine Class
+/*!
+Interface for the IMachine Generic class. This ensures us that no matter the Container used by a Machine all Jobs will have sequential ids.
+*/
 class _Machine
 {
 public:
     static uint GetLastJobId() { return _lastJobId; }
     static void SetLastJobId(uint val) { _lastJobId = val; }
+
 protected:
     _Machine() { }
     static uint _lastJobId; ///< The Id of the last job used
 };
 
+//!Vector of const Job*
 typedef std::vector<const Job*> JobVector;
 
+//! Generic IMachine class
+/*!
+This class is templated on the Container so we can have different containers for the Job* of our Machines. It is derivated of the _Machine class so the ids of the jobs are sequetential and unique in all aplication.
+*/
 template <class Container>
 class IMachine : public ISave, public IUpdate, public IPrint, public _Machine
 {
 public:
+    /// "Search Constructor"
     IMachine(uint id) : _id(id) { }
 
     typedef std::set<Job*, IdLess<Job>> JobSet;
@@ -82,13 +92,12 @@ public:
     void RemoveAvailableSoftware(const Software& sw) { _availableSoftware.erase(sw); } ///< Deletes a Software from the list of available Software
     const SoftwareSet& GetAvailableSoftware() const { return _availableSoftware; } ///< Returns the SoftwareSet of this Machine
 
-    JobVector GetJobs() const;
+    JobVector GetJobs() const; ///< Returns a Vector of constant Jobs
     bool AddJob(Job* job); ///< Adds a Job to this Machine. Fails if Job requirements are not supported by this Machine
     const Job* GetJob(uint id) const;
     bool RemoveJob(uint id);
     void RemoveAllJobs(); ///< Removes all Jobs from this Machine
     uint GetNumberOfCurrentJobs() const { return _currentJobs.size(); } ///< Returns the number of Jobs being executed
-    static uint GetNumberOfWaitingJobs() { return _waitingJobs.size(); }
 
     bool Save(ByteBuffer& bb) const override; ///< Saves the Machine data to a ByteBuffer
     void Update(uint diff) override; ///< Updates executing Jobs timers and removes expired ones
@@ -298,7 +307,7 @@ void IMachine<Container>::RemoveAllJobs()
 }
 
 template <class Container>
-bool IMachine<Container>::Save(ByteBuffer& bb) const
+inline bool IMachine<Container>::Save(ByteBuffer& bb) const
 {
     bb.WriteUInt32(_id);
     bb.WriteString(_name);
@@ -318,7 +327,7 @@ bool IMachine<Container>::Save(ByteBuffer& bb) const
 }
 
 template <class Container>
-void IMachine<Container>::Update(uint diff)
+inline void IMachine<Container>::Update(uint diff)
 {
     _mutex.lock();
     Container temp;
@@ -348,7 +357,7 @@ void IMachine<Container>::Update(uint diff)
 }
 
 template <class Container>
-void IMachine<Container>::Print(std::ostream& os = std::cout) const
+inline void IMachine<Container>::Print(std::ostream& os = std::cout) const
 {
     os << "| " << std::setfill('0') << std::setw(4) << std::right << _id << " | "
         << std::setfill(' ') << std::setw(_maxNameLength) << std::left << _name

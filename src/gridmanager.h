@@ -75,11 +75,25 @@ public:
     bool RemoveMachine(const Machine* machine);
 
     /**
-    *   @brief Removes the given machine with the given ID.
+    *   @brief Removes the machine with the given ID.
     *   @param  id of the machine to be removed.
     *   @return A boolean value that indicates whether the removal was successful or not.
     */
     bool RemoveMachine(uint id);
+
+    /**
+    *   @brief Removes the given priority machine.
+    *   @param  machine a pointer to the priority machine to be removed.
+    *   @return A boolean value that indicates whether the removal was successful or not.
+    */
+    bool RemovePriorityMachine(const PriorityMachine* machine);
+
+    /**
+    *   @brief Removes the priority machine with the given ID.
+    *   @param  id of the priority machine to be removed.
+    *   @return A boolean value that indicates whether the removal was successful or not.
+    */
+    bool RemovePriorityMachine(uint id);
 
     /**
     *   @brief Returns the user with the given ID.
@@ -102,10 +116,23 @@ public:
     Machine* GetMachine(uint id) const;
 
     /**
+    *   @brief Returns the priority machine with the given ID.
+    *   @param  id of the priority machine.
+    *   @return A pointer to the Priority Machine, NULL if id doesn't corresponds to any Machine.
+    */
+    PriorityMachine* GetPriorityMachine(uint id) const;
+
+    /**
     *   @brief Returns the number of existing machines.
     *   @return Number of existing machines.
     */
     uint GetNumberOfMachines() const { return _machines.size(); }
+
+    /**
+    *   @brief Returns the number of existing priority machines.
+    *   @return Number of existing priority machines.
+    */
+    uint GetNumberOfPriorityMachines() const { return _priorityMachines.size(); }
 
     /**
     *   @brief Saves the information of the instance of the class to the given ByteBuffer.
@@ -204,12 +231,13 @@ private:
 
     //! Container that saves users
     UserSet _users;
-    /*std::map<uint, User*> _users;*/
     //! Container that saves machines
     MachineSet _machines;
-    /*std::map<uint, Machine*> _machines;*/
     //! Container that saves priority machines
     PriorityMachineSet _priorityMachines;
+    //! Container that stores waiting jobs
+    std::queue<Job*> _waitingJobs;
+
 
     static Menu* _menu; ///< Menu associated with the GridManager class
 

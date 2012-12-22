@@ -140,6 +140,37 @@ bool GridManager::RemoveMachine(uint id)
     return true;
 }
 
+bool GridManager::RemovePriorityMachine(const PriorityMachine* machine)
+{
+    auto it = std::find_if(_priorityMachines.begin(), _priorityMachines.end(), [machine] (PriorityMachine* mach) { return mach == machine; });
+    if (it == _priorityMachines.end())
+    {
+        sLog(Console)->Log("GridManager::RemovePriorityMachine(PriorityMachine*): Could not find priority machine %s in GridManager", machine->GetName().c_str());
+        return false;
+    }
+
+    delete *it;
+    _priorityMachines.erase(it);
+
+    return true;
+}
+
+bool GridManager::RemovePriorityMachine(uint id)
+{
+    PriorityMachine m(id);
+    auto it = _priorityMachines.find(&m);
+    if (it == _priorityMachines.end())
+    {
+        sLog(Console)->Log("GridManager::RemovePriorityMachine(uint): Could not find priority machine with id %u in GridManager", id);
+        return false;
+    }
+
+    delete *it;
+    _priorityMachines.erase(it);
+
+    return true;
+}
+
 User* GridManager::GetUser(uint id) const
 {
     AcademicUser usr(id);
@@ -160,7 +191,20 @@ Machine* GridManager::GetMachine(uint id) const
     auto it = _machines.find(&m);
     if (it == _machines.end())
     {
-        sLog(Console)->Log("GridManager::GetUser: Could not find machine with id %u in GridManager", id);
+        sLog(Console)->Log("GridManager::GetMachine: Could not find machine with id %u in GridManager", id);
+        return NULL;
+    }
+
+    return *it;
+}
+
+PriorityMachine* GridManager::GetPriorityMachine( uint id ) const
+{
+    PriorityMachine m(id);
+    auto it = _priorityMachines.find(&m);
+    if (it == _priorityMachines.end())
+    {
+        sLog(Console)->Log("GridManager::GetPriorityMachine: Could not find priority machine with id %u in GridManager", id);
         return NULL;
     }
 
@@ -171,6 +215,66 @@ void GridManager::Update(uint32 diff)
 {
     for (auto machine : _machines)
         machine->Update(diff);
+
+    for (auto pMachine : _priorityMachines)
+        pMachine->Update(diff);
+
+    if (!_waitingJobs.empty())
+    {
+        Job* job = _waitingJobs.front();
+        if (job->GetPriority() == 0)
+        {
+            std::vector<Machine*> machineVector; // TODO: Every time a job is added this sorted vector is being rebuilt; change that
+            machineVector.reserve(_machines.size());
+
+            // put machines in the map into a vector so we can sort them
+            std::transform(_machines.begin(), _machines.end(), std::back_inserter(machineVector),
+                [](MachineSet::value_type val) { return val; });
+
+            // sort of load balancing, better machines get assigned jobs first
+            std::sort(machineVector.begin(), machineVector.end(), [](Machine* m1, Machine* m2) {
+                double score1 = ((m1->GetMaxJobs() - m1->GetNumberOfCurrentJobs()) + m1->GetAvailableDiskSpace() + m1->GetAvailableRAM());
+                double score2 = ((m2->GetMaxJobs() - m2->GetNumberOfCurrentJobs()) + m2->GetAvailableDiskSpace() + m2->GetAvailableRAM());
+
+                return score1 > score2;
+            });
+
+            for (auto& mach : machineVector)
+            {
+                if (mach->AddJob(job))
+                {
+                    sLog(Console)->Log("Job %s added to machine %s", job->GetName().c_str(), mach->GetName().c_str());
+                    _waitingJobs.pop();
+                }
+            }
+        }
+        else
+        {
+            std::vector<PriorityMachine*> machineVector; // TODO: Every time a job is added this sorted vector is being rebuilt; change that
+            machineVector.reserve(_priorityMachines.size());
+
+            // put machines in the map into a vector so we can sort them
+            std::transform(_priorityMachines.begin(), _priorityMachines.end(), std::back_inserter(machineVector),
+                [](PriorityMachineSet::value_type val) { return val; });
+
+            // sort of load balancing, better machines get assigned jobs first
+            std::sort(machineVector.begin(), machineVector.end(), [](PriorityMachine* m1, PriorityMachine* m2) {
+                double score1 = ((m1->GetMaxJobs() - m1->GetNumberOfCurrentJobs()) + m1->GetAvailableDiskSpace() + m1->GetAvailableRAM());
+                double score2 = ((m2->GetMaxJobs() - m2->GetNumberOfCurrentJobs()) + m2->GetAvailableDiskSpace() + m2->GetAvailableRAM());
+
+                return score1 > score2;
+            });
+
+            for (auto& mach : machineVector)
+            {
+                if (mach->AddJob(job))
+                {
+                    sLog(Console)->Log("Job %s added to machine %s", job->GetName().c_str(), mach->GetName().c_str());
+                    _waitingJobs.pop();
+                }
+            }
+        }
+    }
 
     _idleUsers.Update(diff);
 }
@@ -183,61 +287,9 @@ bool GridManager::AddJob(Job* job)
         return false;
     }
 
-    if (job->GetPriority() == 0)
-    {
-        std::vector<Machine*> machineVector; // TODO: Every time a job is added this sorted vector is being rebuilt; change that
-        machineVector.reserve(_machines.size());
+    _waitingJobs.push(job);
 
-        // put machines in the map into a vector so we can sort them
-        std::transform(_machines.begin(), _machines.end(), std::back_inserter(machineVector),
-            [](MachineSet::value_type val) { return val; });
-
-        // sort of load balancing, better machines get assigned jobs first
-        std::sort(machineVector.begin(), machineVector.end(), [](Machine* m1, Machine* m2) {
-            double score1 = ((m1->GetMaxJobs() - m1->GetNumberOfCurrentJobs()) + m1->GetAvailableDiskSpace() + m1->GetAvailableRAM());
-            double score2 = ((m2->GetMaxJobs() - m2->GetNumberOfCurrentJobs()) + m2->GetAvailableDiskSpace() + m2->GetAvailableRAM());
-
-            return score1 > score2;
-        });
-
-        for (auto& mach : machineVector)
-        {
-            if (mach->AddJob(job))
-            {
-                sLog(Console)->Log("Job %s added to machine %s", job->GetName().c_str(), mach->GetName().c_str());
-                return true;
-            }
-        }
-    }
-    else
-    {
-        std::vector<PriorityMachine*> machineVector; // TODO: Every time a job is added this sorted vector is being rebuilt; change that
-        machineVector.reserve(_priorityMachines.size());
-
-        // put machines in the map into a vector so we can sort them
-        std::transform(_priorityMachines.begin(), _priorityMachines.end(), std::back_inserter(machineVector),
-            [](PriorityMachineSet::value_type val) { return val; });
-
-        // sort of load balancing, better machines get assigned jobs first
-        std::sort(machineVector.begin(), machineVector.end(), [](PriorityMachine* m1, PriorityMachine* m2) {
-            double score1 = ((m1->GetMaxJobs() - m1->GetNumberOfCurrentJobs()) + m1->GetAvailableDiskSpace() + m1->GetAvailableRAM());
-            double score2 = ((m2->GetMaxJobs() - m2->GetNumberOfCurrentJobs()) + m2->GetAvailableDiskSpace() + m2->GetAvailableRAM());
-
-            return score1 > score2;
-        });
-
-        for (auto& mach : machineVector)
-        {
-            if (mach->AddJob(job))
-            {
-                sLog(Console)->Log("Job %s added to machine %s", job->GetName().c_str(), mach->GetName().c_str());
-                return true;
-            }
-        }
-    }
-
-    return false;
-
+    return true;
 }
 
 bool GridManager::AddJobByUser(User* user, Job* job)
@@ -275,6 +327,11 @@ std::vector<const Job*> GridManager::ApplyPredicate<Job>(std::function<bool(cons
             if (predicate(job))
                 result.push_back(job);
 
+    for (auto pmachine : _priorityMachines)
+        for (auto job : pmachine->GetJobs())
+            if (predicate(job))
+                result.push_back(job);
+
     return result;
 }
 
@@ -308,6 +365,18 @@ std::vector<const Machine*> GridManager::ApplyPredicate<Machine>(std::function<b
     std::vector<const Machine*> result;
 
     for (auto machine : _machines)
+        if (predicate(machine))
+            result.push_back(machine);
+
+    return result;
+}
+
+template<>
+std::vector<const PriorityMachine*> GridManager::ApplyPredicate<PriorityMachine>(std::function<bool(const PriorityMachine*)> predicate) const
+{
+    std::vector<const PriorityMachine*> result;
+
+    for (auto machine : _priorityMachines)
         if (predicate(machine))
             result.push_back(machine);
 

@@ -81,13 +81,13 @@ T ReadValue(const std::string& prompt)
 template<>
 inline std::string ReadValue<std::string>(const std::string& prompt, std::function<bool(std::string)> validator)
 {
-    std::cout << prompt;
-
     std::string input;
     bool success = false;
 
     while (!success)
     {
+        std::cout << prompt;
+
         std::getline(std::cin, input);
 
         if (std::cin.fail())
