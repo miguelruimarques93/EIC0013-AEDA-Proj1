@@ -233,7 +233,7 @@ std::vector<R> GridManager::ApplySelector(std::function<R(const T*)> selector, s
     std::vector<R> result;
     result.reserve(ts.size()); // max size of the resulting vector
 
-    std::transform(ts.begin(), ts.end(), result.begin(), selector);
+    std::transform(ts.begin(), ts.end(), std::back_inserter(result), selector);
 
     return result;
 }

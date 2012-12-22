@@ -16,7 +16,7 @@ private:
     std::string _topic; ///< Subject.
 
     /// Constructor of Grid, takes a name, subject and existing GridManager as arguments.
-    Grid(const std::string& name, const std::string& topic, GridManager* gm) : _name(name), _topic(topic), _gm(gm) { }
+    Grid(const std::string& name, const std::string& topic, GridManager* gm);
 
     static uint _maxNameLength; ///< The length of the biggest name, used in Print methods
     static uint _maxTopicLength; ///< The length of the biggest topic, used in Print methods

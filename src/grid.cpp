@@ -18,6 +18,15 @@ Grid::Grid(const std::string& name, const std::string& topic) : _name(name), _to
         _maxTopicLength = _topic.length();
 }
 
+Grid::Grid(const std::string& name, const std::string& topic, GridManager* gm) : _name(name), _topic(topic), _gm(gm)
+{
+    if (_name.length() > _maxNameLength)
+        _maxNameLength = _name.length();
+
+    if (_topic.length() > _maxTopicLength)
+        _maxTopicLength = _topic.length();
+}
+
 Grid::~Grid()
 {
     delete _gm;
@@ -61,7 +70,7 @@ double Grid::TotalDiskSpace() const
 {
     std::vector<double> diskSpaces = _gm->ApplySelector<Machine, double>([](const Machine* m) { return m->GetTotalDiskSpace(); });
 
-    return std::accumulate(diskSpaces.begin(), diskSpaces.end(), 0.0) / 1024.0;
+    return std::accumulate(diskSpaces.begin(), diskSpaces.end(), 0.0) / 1024.0; // in GB
 }
 
 uint Grid::GetAvailableMachineCount() const
@@ -76,14 +85,13 @@ void Grid::Update(uint32 diff)
 
 void Grid::Print(std::ostream& os /*= std::cout*/) const
 {
-    os << "| " << std::setw(_maxNameLength) << _name << " | " << std::setw(_maxTopicLength) << _topic << " |\n";
-
-    // TODO: Fix aligment and add HighestMachineRAM, TotalDiskSpace, GetAvailableMachineCount
+    os << "| " << std::setw(_maxNameLength) << _name << " | " << std::setw(_maxTopicLength) << _topic << " | " << std::setw(16) << HighestMachineRAM() << " | " << std::setw(15) << TotalDiskSpace() << " | " << std::setw(10) << GetAvailableMachineCount() << " |\n"
+       << "--" << std::string(_maxNameLength, '-')    << "---" << std::string(_maxTopicLength, '-')     << "----------------------------------------------------\n";
 }
 
 void Grid::PrintHeader(std::ostream& os /*= std::cout*/)
 {
-    os << "--" << std::string(_maxNameLength, '-')    << "---" << std::string(_maxTopicLength, '-')     << "---\n"
-       << "| " << std::setw(_maxNameLength) << "Name" << " | " << std::setw(_maxTopicLength) << "Topic" << "  |\n"
-       << "--" << std::string(_maxNameLength, '-')    << "---" << std::string(_maxTopicLength, '-')     << "---\n";
+    os << "--" << std::string(_maxNameLength, '-')    << "---" << std::string(_maxTopicLength, '-')     << "----------------------------------------------------\n"
+       << "| " << std::setw(_maxNameLength) << "Name" << " | " << std::setw(_maxTopicLength) << "Topic" << " | Highest RAM (GB) | Disk space (GB) | # Machines |\n"
+       << "--" << std::string(_maxNameLength, '-')    << "---" << std::string(_maxTopicLength, '-')     << "----------------------------------------------------\n";
 }
