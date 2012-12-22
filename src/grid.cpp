@@ -4,8 +4,8 @@
 #include <algorithm>
 #include <numeric>
 
-uint Grid::_maxNameLength = 0;
-uint Grid::_maxTopicLength = 0;
+uint Grid::_maxNameLength = 4; // std::string("Name").size();
+uint Grid::_maxTopicLength = 5; // std::string("Topic").size();
 
 Grid::Grid(const std::string& name, const std::string& topic) : _name(name), _topic(topic)
 {
@@ -86,7 +86,7 @@ void Grid::Update(uint32 diff)
 void Grid::Print(std::ostream& os /*= std::cout*/) const
 {
     os << "| " << std::setw(_maxNameLength) << _name << " | " << std::setw(_maxTopicLength) << _topic << " | " << std::setw(16) << HighestMachineRAM() << " | " << std::setw(15) << TotalDiskSpace() << " | " << std::setw(10) << GetAvailableMachineCount() << " |\n"
-       << "--" << std::string(_maxNameLength, '-')    << "---" << std::string(_maxTopicLength, '-')     << "----------------------------------------------------\n";
+       << "--" << std::string(_maxNameLength, '-')   << "---" << std::string(_maxTopicLength, '-')    << "----------------------------------------------------\n";
 }
 
 void Grid::PrintHeader(std::ostream& os /*= std::cout*/)

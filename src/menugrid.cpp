@@ -1577,9 +1577,17 @@ void ChangeGridManagerInfo(GridNetwork* gn)
                 SearchRemovedUsers                             //13
             };
 
-            uint32 option = GridManager::GetMenu()->Print();
-            functions[option == 0 ? 0 : option - 1](gm);
-
+            try
+            {
+                uint32 option = GridManager::GetMenu()->Print();
+                functions[option == 0 ? 0 : option - 1](gm);
+            }
+            catch (std::runtime_error& e)
+            {
+                std::cerr << e.what() << std::endl;
+                PauseConsole();
+                ClearConsole();
+            }
         } while (!success);
     }
     catch (EOFCharacterValue)
