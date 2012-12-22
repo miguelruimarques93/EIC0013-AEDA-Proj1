@@ -1,6 +1,7 @@
 var class_user =
 [
     [ "~User", "class_user.html#a7d1cf7c22ba031caec015ec427419513", null ],
+    [ "User", "class_user.html#a3b62e957ad8130225b56d4e402bc6cbf", null ],
     [ "User", "class_user.html#afbc07c955fc99bb87687116dffe83091", null ],
     [ "CanCreateJob", "class_user.html#a3e51c7766399d4c38dace101633151ae", null ],
     [ "CreatedJob", "class_user.html#a35490d83a76a38c080183b51266c305c", null ],

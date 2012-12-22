@@ -1,5 +1,6 @@
 var class_academic_user =
 [
+    [ "AcademicUser", "class_academic_user.html#ac269eec8962f3ecdbbe91248f4c1ffb8", null ],
     [ "AcademicUser", "class_academic_user.html#ac2d612f286d45a85759b82dcb922f73d", null ],
     [ "AcademicUser", "class_academic_user.html#ae3a2219116895c71e69327a056a98f76", null ],
     [ "CanCreateJob", "class_academic_user.html#ab28ffb121cee3c0e8b553444c0c9f733", null ],

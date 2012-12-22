@@ -102,6 +102,7 @@ $(document).ready(function(){initNavTree('class_grid_manager.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
@@ -125,10 +126,22 @@ Inheritance diagram for GridManager:</div>
   <map id="GridManager_map" name="GridManager_map">
 <area href="class_i_save.html" title="ISave Interface." alt="ISave" shape="rect" coords="0,0,87,24"/>
 <area href="class_i_update.html" title="IUpdate Interface." alt="IUpdate" shape="rect" coords="97,0,184,24"/>
-<area href="class_runnable.html" title="Runnable abstract Class." alt="Runnable" shape="rect" coords="194,0,281,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:af4bd4477077d0c8aec4182a84d85329a"><td class="memItemLeft" align="right" valign="top">typedef std::set&lt; <a class="el" href="class_user.html">User</a> <br class="typebreak"/>
+*, <a class="el" href="struct_id_less.html">IdLess</a>&lt; <a class="el" href="class_user.html">User</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#af4bd4477077d0c8aec4182a84d85329a">UserSet</a></td></tr>
+<tr class="separator:af4bd4477077d0c8aec4182a84d85329a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa98bb468f3047bf38c2602a52cf78e17"><td class="memItemLeft" align="right" valign="top">typedef std::set&lt; <a class="el" href="machine_8h.html#ac9360956ae20f1e1e06e5d32876e482d">Machine</a> <br class="typebreak"/>
+*, <a class="el" href="struct_id_less.html">IdLess</a>&lt; <a class="el" href="machine_8h.html#ac9360956ae20f1e1e06e5d32876e482d">Machine</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#aa98bb468f3047bf38c2602a52cf78e17">MachineSet</a></td></tr>
+<tr class="separator:aa98bb468f3047bf38c2602a52cf78e17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95239f9dba0bc0ab66557e5f6a86a4c4"><td class="memItemLeft" align="right" valign="top">typedef std::set<br class="typebreak"/>
+&lt; <a class="el" href="machine_8h.html#ac821468cdc82bca5d95ed419c8d97363">PriorityMachine</a> *, <a class="el" href="struct_id_less.html">IdLess</a><br class="typebreak"/>
+&lt; <a class="el" href="machine_8h.html#ac821468cdc82bca5d95ed419c8d97363">PriorityMachine</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a95239f9dba0bc0ab66557e5f6a86a4c4">PriorityMachineSet</a></td></tr>
+<tr class="separator:a95239f9dba0bc0ab66557e5f6a86a4c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac4eb5378ae84d7396e81f8a06468d4c9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#ac4eb5378ae84d7396e81f8a06468d4c9">GridManager</a> ()</td></tr>
@@ -140,33 +153,48 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0b1e207dd101b958e22855a699122d39"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a0b1e207dd101b958e22855a699122d39">AddUser</a> (<a class="el" href="class_user.html">User</a> *user)</td></tr>
 <tr class="memdesc:a0b1e207dd101b958e22855a699122d39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a <a class="el" href="class_user.html" title="User abstract Class.">User</a>.  <a href="#a0b1e207dd101b958e22855a699122d39"></a><br/></td></tr>
 <tr class="separator:a0b1e207dd101b958e22855a699122d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22a5ab277f3019b05a3d5ab11d26e56b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a22a5ab277f3019b05a3d5ab11d26e56b">AddMachine</a> (<a class="el" href="class_machine.html">Machine</a> *machine)</td></tr>
-<tr class="memdesc:a22a5ab277f3019b05a3d5ab11d26e56b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a <a class="el" href="class_machine.html" title="Machine Class.">Machine</a>.  <a href="#a22a5ab277f3019b05a3d5ab11d26e56b"></a><br/></td></tr>
+<tr class="memitem:a22a5ab277f3019b05a3d5ab11d26e56b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a22a5ab277f3019b05a3d5ab11d26e56b">AddMachine</a> (<a class="el" href="machine_8h.html#ac9360956ae20f1e1e06e5d32876e482d">Machine</a> *machine)</td></tr>
+<tr class="memdesc:a22a5ab277f3019b05a3d5ab11d26e56b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a Machine.  <a href="#a22a5ab277f3019b05a3d5ab11d26e56b"></a><br/></td></tr>
 <tr class="separator:a22a5ab277f3019b05a3d5ab11d26e56b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c5dc55280c78dd5247bde66c40fd970"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a0c5dc55280c78dd5247bde66c40fd970">AddPriorityMachine</a> (<a class="el" href="machine_8h.html#ac821468cdc82bca5d95ed419c8d97363">PriorityMachine</a> *pMachine)</td></tr>
+<tr class="memdesc:a0c5dc55280c78dd5247bde66c40fd970"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a Priority Machine.  <a href="#a0c5dc55280c78dd5247bde66c40fd970"></a><br/></td></tr>
+<tr class="separator:a0c5dc55280c78dd5247bde66c40fd970"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90aeb5e93cd35e0cd26f1834162fb8ea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a90aeb5e93cd35e0cd26f1834162fb8ea">RemoveUser</a> (const <a class="el" href="class_user.html">User</a> *user)</td></tr>
 <tr class="memdesc:a90aeb5e93cd35e0cd26f1834162fb8ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the given user.  <a href="#a90aeb5e93cd35e0cd26f1834162fb8ea"></a><br/></td></tr>
 <tr class="separator:a90aeb5e93cd35e0cd26f1834162fb8ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c156daca0cfeee1c5196a6b74bd46c0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a8c156daca0cfeee1c5196a6b74bd46c0">RemoveUser</a> (<a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a> id)</td></tr>
 <tr class="memdesc:a8c156daca0cfeee1c5196a6b74bd46c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the user with the given ID.  <a href="#a8c156daca0cfeee1c5196a6b74bd46c0"></a><br/></td></tr>
 <tr class="separator:a8c156daca0cfeee1c5196a6b74bd46c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e589e0215518bed36ac7829287bae41"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a8e589e0215518bed36ac7829287bae41">RemoveMachine</a> (const <a class="el" href="class_machine.html">Machine</a> *machine)</td></tr>
+<tr class="memitem:a8e589e0215518bed36ac7829287bae41"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a8e589e0215518bed36ac7829287bae41">RemoveMachine</a> (const <a class="el" href="machine_8h.html#ac9360956ae20f1e1e06e5d32876e482d">Machine</a> *machine)</td></tr>
 <tr class="memdesc:a8e589e0215518bed36ac7829287bae41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the given machine.  <a href="#a8e589e0215518bed36ac7829287bae41"></a><br/></td></tr>
 <tr class="separator:a8e589e0215518bed36ac7829287bae41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a265cbd9e7dcbba5330b3b7655d2a9dba"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a265cbd9e7dcbba5330b3b7655d2a9dba">RemoveMachine</a> (<a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a> id)</td></tr>
-<tr class="memdesc:a265cbd9e7dcbba5330b3b7655d2a9dba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the given machine with the given ID.  <a href="#a265cbd9e7dcbba5330b3b7655d2a9dba"></a><br/></td></tr>
+<tr class="memdesc:a265cbd9e7dcbba5330b3b7655d2a9dba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the machine with the given ID.  <a href="#a265cbd9e7dcbba5330b3b7655d2a9dba"></a><br/></td></tr>
 <tr class="separator:a265cbd9e7dcbba5330b3b7655d2a9dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8a76619f110d364547921eb7defedf7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#ab8a76619f110d364547921eb7defedf7">RemovePriorityMachine</a> (const <a class="el" href="machine_8h.html#ac821468cdc82bca5d95ed419c8d97363">PriorityMachine</a> *machine)</td></tr>
+<tr class="memdesc:ab8a76619f110d364547921eb7defedf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the given priority machine.  <a href="#ab8a76619f110d364547921eb7defedf7"></a><br/></td></tr>
+<tr class="separator:ab8a76619f110d364547921eb7defedf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e4ccc776007135373eeaaca145c84d3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a5e4ccc776007135373eeaaca145c84d3">RemovePriorityMachine</a> (<a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a> id)</td></tr>
+<tr class="memdesc:a5e4ccc776007135373eeaaca145c84d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the priority machine with the given ID.  <a href="#a5e4ccc776007135373eeaaca145c84d3"></a><br/></td></tr>
+<tr class="separator:a5e4ccc776007135373eeaaca145c84d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b8eeb3d9b59548358ca02d1204af1c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_user.html">User</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a4b8eeb3d9b59548358ca02d1204af1c9">GetUser</a> (<a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a> id) const </td></tr>
 <tr class="memdesc:a4b8eeb3d9b59548358ca02d1204af1c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the user with the given ID.  <a href="#a4b8eeb3d9b59548358ca02d1204af1c9"></a><br/></td></tr>
 <tr class="separator:a4b8eeb3d9b59548358ca02d1204af1c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7d6b3ed0e670361e5b8d237d76c8c6c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#aa7d6b3ed0e670361e5b8d237d76c8c6c">GetNumberOfUsers</a> () const </td></tr>
 <tr class="memdesc:aa7d6b3ed0e670361e5b8d237d76c8c6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of existing users.  <a href="#aa7d6b3ed0e670361e5b8d237d76c8c6c"></a><br/></td></tr>
 <tr class="separator:aa7d6b3ed0e670361e5b8d237d76c8c6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadb35e16d49182975fcdfa8c06e2ecf9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_machine.html">Machine</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#aadb35e16d49182975fcdfa8c06e2ecf9">GetMachine</a> (<a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a> id) const </td></tr>
+<tr class="memitem:aadb35e16d49182975fcdfa8c06e2ecf9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="machine_8h.html#ac9360956ae20f1e1e06e5d32876e482d">Machine</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#aadb35e16d49182975fcdfa8c06e2ecf9">GetMachine</a> (<a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a> id) const </td></tr>
 <tr class="memdesc:aadb35e16d49182975fcdfa8c06e2ecf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the machine with the given ID.  <a href="#aadb35e16d49182975fcdfa8c06e2ecf9"></a><br/></td></tr>
 <tr class="separator:aadb35e16d49182975fcdfa8c06e2ecf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a664f14e50c5eb6e4e185f86655c805ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="machine_8h.html#ac821468cdc82bca5d95ed419c8d97363">PriorityMachine</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a664f14e50c5eb6e4e185f86655c805ed">GetPriorityMachine</a> (<a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a> id) const </td></tr>
+<tr class="memdesc:a664f14e50c5eb6e4e185f86655c805ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the priority machine with the given ID.  <a href="#a664f14e50c5eb6e4e185f86655c805ed"></a><br/></td></tr>
+<tr class="separator:a664f14e50c5eb6e4e185f86655c805ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6fd3d0384f9a6eaedf068ee5307384a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a6fd3d0384f9a6eaedf068ee5307384a9">GetNumberOfMachines</a> () const </td></tr>
 <tr class="memdesc:a6fd3d0384f9a6eaedf068ee5307384a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of existing machines.  <a href="#a6fd3d0384f9a6eaedf068ee5307384a9"></a><br/></td></tr>
 <tr class="separator:a6fd3d0384f9a6eaedf068ee5307384a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaed36996396b6712b608f69f7a32aa1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#aaed36996396b6712b608f69f7a32aa1c">GetNumberOfPriorityMachines</a> () const </td></tr>
+<tr class="memdesc:aaed36996396b6712b608f69f7a32aa1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of existing priority machines.  <a href="#aaed36996396b6712b608f69f7a32aa1c"></a><br/></td></tr>
+<tr class="separator:aaed36996396b6712b608f69f7a32aa1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80d29b20703224e78e3bbbc547ad193e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a80d29b20703224e78e3bbbc547ad193e">Save</a> (<a class="el" href="class_byte_buffer.html">ByteBuffer</a> &amp;bb) const override</td></tr>
 <tr class="memdesc:a80d29b20703224e78e3bbbc547ad193e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the information of the instance of the class to the given <a class="el" href="class_byte_buffer.html" title="ByteBuffer Class.">ByteBuffer</a>.  <a href="#a80d29b20703224e78e3bbbc547ad193e"></a><br/></td></tr>
 <tr class="separator:a80d29b20703224e78e3bbbc547ad193e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,50 +207,54 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1185b9fdab146987f159f4216dfc5bfa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a1185b9fdab146987f159f4216dfc5bfa">AddJobByUser</a> (<a class="el" href="class_user.html">User</a> *user, <a class="el" href="class_job.html">Job</a> *job)</td></tr>
 <tr class="memdesc:a1185b9fdab146987f159f4216dfc5bfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the given job to the given user.  <a href="#a1185b9fdab146987f159f4216dfc5bfa"></a><br/></td></tr>
 <tr class="separator:a1185b9fdab146987f159f4216dfc5bfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a865894feab3fcfa7ddc6f7c8ccfbc15e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a865894feab3fcfa7ddc6f7c8ccfbc15e">RemoveMachineJob</a> (<a class="el" href="class_machine.html">Machine</a> *machine, <a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a> jobId)</td></tr>
+<tr class="memitem:a865894feab3fcfa7ddc6f7c8ccfbc15e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a865894feab3fcfa7ddc6f7c8ccfbc15e">RemoveMachineJob</a> (<a class="el" href="machine_8h.html#ac9360956ae20f1e1e06e5d32876e482d">Machine</a> *machine, <a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a> jobId)</td></tr>
 <tr class="memdesc:a865894feab3fcfa7ddc6f7c8ccfbc15e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the given job from the given machine.  <a href="#a865894feab3fcfa7ddc6f7c8ccfbc15e"></a><br/></td></tr>
 <tr class="separator:a865894feab3fcfa7ddc6f7c8ccfbc15e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7127d2eff9ce760995f92e10d57e65ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a7127d2eff9ce760995f92e10d57e65ad">GetNumberOfJobs</a> () const </td></tr>
 <tr class="memdesc:a7127d2eff9ce760995f92e10d57e65ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of existing jobs.  <a href="#a7127d2eff9ce760995f92e10d57e65ad"></a><br/></td></tr>
 <tr class="separator:a7127d2eff9ce760995f92e10d57e65ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ed7b7050b3cedcc7eef2c5985dcf9ad"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
-<tr class="memitem:a2ed7b7050b3cedcc7eef2c5985dcf9ad"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T * &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a2ed7b7050b3cedcc7eef2c5985dcf9ad">ApplyPredicate</a> (std::function&lt; bool(T *)&gt; predicate) const </td></tr>
-<tr class="memdesc:a2ed7b7050b3cedcc7eef2c5985dcf9ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies the given predicate to the containers of the instance of the class based in the type and returns a vector with the values that meet the requirements.  <a href="#a2ed7b7050b3cedcc7eef2c5985dcf9ad"></a><br/></td></tr>
-<tr class="separator:a2ed7b7050b3cedcc7eef2c5985dcf9ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a864568157563b415e9003a2b50e44f9d"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
-<tr class="memitem:a864568157563b415e9003a2b50e44f9d"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_job.html">Job</a> * &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a864568157563b415e9003a2b50e44f9d">ApplyPredicate</a> (std::function&lt; bool(<a class="el" href="class_job.html">Job</a> *)&gt; predicate) const </td></tr>
-<tr class="separator:a864568157563b415e9003a2b50e44f9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0f5b9feab67e5e25e456db3c7fbabb5"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
-<tr class="memitem:ac0f5b9feab67e5e25e456db3c7fbabb5"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_user.html">User</a> * &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#ac0f5b9feab67e5e25e456db3c7fbabb5">ApplyPredicate</a> (std::function&lt; bool(<a class="el" href="class_user.html">User</a> *)&gt; predicate) const </td></tr>
-<tr class="separator:ac0f5b9feab67e5e25e456db3c7fbabb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9740afff1c10d57eeac32578280b240b"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
-<tr class="memitem:a9740afff1c10d57eeac32578280b240b"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_machine.html">Machine</a> * &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a9740afff1c10d57eeac32578280b240b">ApplyPredicate</a> (std::function&lt; bool(<a class="el" href="class_machine.html">Machine</a> *)&gt; predicate) const </td></tr>
-<tr class="separator:a9740afff1c10d57eeac32578280b240b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_runnable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_runnable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_runnable.html">Runnable</a></td></tr>
-<tr class="memitem:a19af0a2e2b8f986c51196b9c4b2340fb inherit pub_methods_class_runnable"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_runnable.html#a19af0a2e2b8f986c51196b9c4b2340fb">Runnable</a> ()</td></tr>
-<tr class="memdesc:a19af0a2e2b8f986c51196b9c4b2340fb inherit pub_methods_class_runnable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a19af0a2e2b8f986c51196b9c4b2340fb"></a><br/></td></tr>
-<tr class="separator:a19af0a2e2b8f986c51196b9c4b2340fb inherit pub_methods_class_runnable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ef4d0d1cd47bef9ba9add84219bfffc inherit pub_methods_class_runnable"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_runnable.html#a3ef4d0d1cd47bef9ba9add84219bfffc">~Runnable</a> ()</td></tr>
-<tr class="memdesc:a3ef4d0d1cd47bef9ba9add84219bfffc inherit pub_methods_class_runnable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. Stops thread.  <a href="#a3ef4d0d1cd47bef9ba9add84219bfffc"></a><br/></td></tr>
-<tr class="separator:a3ef4d0d1cd47bef9ba9add84219bfffc inherit pub_methods_class_runnable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7cf308c37bc2676685f0f89a58a185b inherit pub_methods_class_runnable"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_runnable.html#ad7cf308c37bc2676685f0f89a58a185b">Stop</a> ()</td></tr>
-<tr class="memdesc:ad7cf308c37bc2676685f0f89a58a185b inherit pub_methods_class_runnable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops thread.  <a href="#ad7cf308c37bc2676685f0f89a58a185b"></a><br/></td></tr>
-<tr class="separator:ad7cf308c37bc2676685f0f89a58a185b inherit pub_methods_class_runnable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4eb01567fe5338eb25f2176e913f237b inherit pub_methods_class_runnable"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_runnable.html#a4eb01567fe5338eb25f2176e913f237b">Start</a> ()</td></tr>
-<tr class="memdesc:a4eb01567fe5338eb25f2176e913f237b inherit pub_methods_class_runnable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts thread.  <a href="#a4eb01567fe5338eb25f2176e913f237b"></a><br/></td></tr>
-<tr class="separator:a4eb01567fe5338eb25f2176e913f237b inherit pub_methods_class_runnable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a484c31629cede32e40ae5da4c6e9d81e"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a484c31629cede32e40ae5da4c6e9d81e"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; const T * &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a484c31629cede32e40ae5da4c6e9d81e">ApplyPredicate</a> (std::function&lt; bool(const T *)&gt; predicate) const </td></tr>
+<tr class="memdesc:a484c31629cede32e40ae5da4c6e9d81e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies the given predicate to the containers of the instance of the class based in the type and returns a vector with the values that meet the requirements.  <a href="#a484c31629cede32e40ae5da4c6e9d81e"></a><br/></td></tr>
+<tr class="separator:a484c31629cede32e40ae5da4c6e9d81e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a452d1895a8f2c314af97513cebbb1d50"><td class="memTemplParams" colspan="2">template&lt;class T , class R &gt; </td></tr>
+<tr class="memitem:a452d1895a8f2c314af97513cebbb1d50"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; R &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a452d1895a8f2c314af97513cebbb1d50">ApplySelector</a> (std::function&lt; R(const T *)&gt; selector, std::function&lt; bool(const T *)&gt; predicate) const </td></tr>
+<tr class="memdesc:a452d1895a8f2c314af97513cebbb1d50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uses ApplyPredicate with the given predicate and then selects a certain element of each object in the vector returned by ApplyPredicate.  <a href="#a452d1895a8f2c314af97513cebbb1d50"></a><br/></td></tr>
+<tr class="separator:a452d1895a8f2c314af97513cebbb1d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1adc003218481a453c1dec0784f72325"><td class="memTemplParams" colspan="2">template&lt;class T , class R &gt; </td></tr>
+<tr class="memitem:a1adc003218481a453c1dec0784f72325"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; R &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a1adc003218481a453c1dec0784f72325">ApplySelector</a> (std::function&lt; R(const T *)&gt; selector) const </td></tr>
+<tr class="memdesc:a1adc003218481a453c1dec0784f72325"><td class="mdescLeft">&#160;</td><td class="mdescRight">Selects a certain element of each object in the vector of T*.  <a href="#a1adc003218481a453c1dec0784f72325"></a><br/></td></tr>
+<tr class="separator:a1adc003218481a453c1dec0784f72325"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12c560d9ec2c235fe881c0ef79ade81e"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_idle_user_container.html">IdleUserContainer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a12c560d9ec2c235fe881c0ef79ade81e">GetIdleUsers</a> () const </td></tr>
+<tr class="separator:a12c560d9ec2c235fe881c0ef79ade81e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11f82bafbfd55e1ccc9a9a064c142151"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:a11f82bafbfd55e1ccc9a9a064c142151"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; const <a class="el" href="class_job.html">Job</a> * &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a11f82bafbfd55e1ccc9a9a064c142151">ApplyPredicate</a> (std::function&lt; bool(const <a class="el" href="class_job.html">Job</a> *)&gt; predicate) const </td></tr>
+<tr class="separator:a11f82bafbfd55e1ccc9a9a064c142151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23af8cf4347989d8aabe9aaf487542a4"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:a23af8cf4347989d8aabe9aaf487542a4"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; const <a class="el" href="class_user.html">User</a> * &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a23af8cf4347989d8aabe9aaf487542a4">ApplyPredicate</a> (std::function&lt; bool(const <a class="el" href="class_user.html">User</a> *)&gt; predicate) const </td></tr>
+<tr class="separator:a23af8cf4347989d8aabe9aaf487542a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae88c4f3a150917787d75b1a6c5e9508c"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:ae88c4f3a150917787d75b1a6c5e9508c"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; const <a class="el" href="class_idle_user.html">IdleUser</a> * &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#ae88c4f3a150917787d75b1a6c5e9508c">ApplyPredicate</a> (std::function&lt; bool(const <a class="el" href="class_idle_user.html">IdleUser</a> *)&gt; predicate) const </td></tr>
+<tr class="separator:ae88c4f3a150917787d75b1a6c5e9508c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a071c9c5d8702168c578778ea09fa43ad"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:a071c9c5d8702168c578778ea09fa43ad"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; const <a class="el" href="machine_8h.html#ac9360956ae20f1e1e06e5d32876e482d">Machine</a> * &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a071c9c5d8702168c578778ea09fa43ad">ApplyPredicate</a> (std::function&lt; bool(const <a class="el" href="machine_8h.html#ac9360956ae20f1e1e06e5d32876e482d">Machine</a> *)&gt; predicate) const </td></tr>
+<tr class="separator:a071c9c5d8702168c578778ea09fa43ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebbfabfae302065402168e4b05e237d1"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:aebbfabfae302065402168e4b05e237d1"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; const <br class="typebreak"/>
+<a class="el" href="machine_8h.html#ac821468cdc82bca5d95ed419c8d97363">PriorityMachine</a> * &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#aebbfabfae302065402168e4b05e237d1">ApplyPredicate</a> (std::function&lt; bool(const <a class="el" href="machine_8h.html#ac821468cdc82bca5d95ed419c8d97363">PriorityMachine</a> *)&gt; predicate) const </td></tr>
+<tr class="separator:aebbfabfae302065402168e4b05e237d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a9a88acbfbaa84e11be217b019e7b468a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_grid_manager.html">GridManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a9a88acbfbaa84e11be217b019e7b468a">Load</a> (<a class="el" href="class_byte_buffer.html">ByteBuffer</a> &amp;bb)</td></tr>
 <tr class="memdesc:a9a88acbfbaa84e11be217b019e7b468a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to a <a class="el" href="class_grid_manager.html" title="GridManager Class.">GridManager</a> loaded from the given <a class="el" href="class_byte_buffer.html" title="ByteBuffer Class.">ByteBuffer</a>.  <a href="#a9a88acbfbaa84e11be217b019e7b468a"></a><br/></td></tr>
 <tr class="separator:a9a88acbfbaa84e11be217b019e7b468a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd1396256a5edca786c6b2653dfe52c5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_menu.html">Menu</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#afd1396256a5edca786c6b2653dfe52c5">GetMenu</a> ()</td></tr>
+<tr class="memdesc:afd1396256a5edca786c6b2653dfe52c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the menu for the <a class="el" href="class_grid_manager.html" title="GridManager Class.">GridManager</a> class.  <a href="#afd1396256a5edca786c6b2653dfe52c5"></a><br/></td></tr>
+<tr class="separator:afd1396256a5edca786c6b2653dfe52c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a3be990c97cdeabf6d6f24c4c83b99423"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a3be990c97cdeabf6d6f24c4c83b99423">Run</a> ()</td></tr>
-<tr class="memdesc:a3be990c97cdeabf6d6f24c4c83b99423"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls update functions of all the elements of the class, that can be updated, two times per second. It saves the instance every 5 seconds.  <a href="#a3be990c97cdeabf6d6f24c4c83b99423"></a><br/></td></tr>
-<tr class="separator:a3be990c97cdeabf6d6f24c4c83b99423"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed8e232de297bf89fe6aa9e8d7a162bb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#aed8e232de297bf89fe6aa9e8d7a162bb">AddJob</a> (<a class="el" href="class_job.html">Job</a> *job)</td></tr>
 <tr class="memdesc:aed8e232de297bf89fe6aa9e8d7a162bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches for a available machine and adds the given job to it.  <a href="#aed8e232de297bf89fe6aa9e8d7a162bb"></a><br/></td></tr>
 <tr class="separator:aed8e232de297bf89fe6aa9e8d7a162bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -235,18 +267,21 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a46bb9566071b67d78bae7fa62aac2b88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a46bb9566071b67d78bae7fa62aac2b88">_realPrevTime</a></td></tr>
-<tr class="memdesc:a46bb9566071b67d78bae7fa62aac2b88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time of the last update.  <a href="#a46bb9566071b67d78bae7fa62aac2b88"></a><br/></td></tr>
-<tr class="separator:a46bb9566071b67d78bae7fa62aac2b88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab29b67d9ceb1b5058637f1cd524c0ce5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#ab29b67d9ceb1b5058637f1cd524c0ce5">_realCurrTime</a></td></tr>
-<tr class="memdesc:ab29b67d9ceb1b5058637f1cd524c0ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time of the current update.  <a href="#ab29b67d9ceb1b5058637f1cd524c0ce5"></a><br/></td></tr>
-<tr class="separator:ab29b67d9ceb1b5058637f1cd524c0ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6592d87f7db8fd585a62b55919a7887f"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a>, <a class="el" href="class_user.html">User</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a6592d87f7db8fd585a62b55919a7887f">_users</a></td></tr>
-<tr class="memdesc:a6592d87f7db8fd585a62b55919a7887f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container that saves users.  <a href="#a6592d87f7db8fd585a62b55919a7887f"></a><br/></td></tr>
-<tr class="separator:a6592d87f7db8fd585a62b55919a7887f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9097d822822dcf78833cf0cd75977121"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a>, <a class="el" href="class_machine.html">Machine</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a9097d822822dcf78833cf0cd75977121">_machines</a></td></tr>
-<tr class="memdesc:a9097d822822dcf78833cf0cd75977121"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container that saves machines.  <a href="#a9097d822822dcf78833cf0cd75977121"></a><br/></td></tr>
-<tr class="separator:a9097d822822dcf78833cf0cd75977121"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2d2195ac4cc2d08f7c2963fc49bb893"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_grid_manager.html#af4bd4477077d0c8aec4182a84d85329a">UserSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#ae2d2195ac4cc2d08f7c2963fc49bb893">_users</a></td></tr>
+<tr class="memdesc:ae2d2195ac4cc2d08f7c2963fc49bb893"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container that saves users.  <a href="#ae2d2195ac4cc2d08f7c2963fc49bb893"></a><br/></td></tr>
+<tr class="separator:ae2d2195ac4cc2d08f7c2963fc49bb893"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3799d9c1a0df8f43cc23dabd86d5701b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_grid_manager.html#aa98bb468f3047bf38c2602a52cf78e17">MachineSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a3799d9c1a0df8f43cc23dabd86d5701b">_machines</a></td></tr>
+<tr class="memdesc:a3799d9c1a0df8f43cc23dabd86d5701b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container that saves machines.  <a href="#a3799d9c1a0df8f43cc23dabd86d5701b"></a><br/></td></tr>
+<tr class="separator:a3799d9c1a0df8f43cc23dabd86d5701b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ec104678d8229a1357340c4ef49db43"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_grid_manager.html#a95239f9dba0bc0ab66557e5f6a86a4c4">PriorityMachineSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a7ec104678d8229a1357340c4ef49db43">_priorityMachines</a></td></tr>
+<tr class="memdesc:a7ec104678d8229a1357340c4ef49db43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container that saves priority machines.  <a href="#a7ec104678d8229a1357340c4ef49db43"></a><br/></td></tr>
+<tr class="separator:a7ec104678d8229a1357340c4ef49db43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a838e787e597e84155b86c90ed85286b3"><td class="memItemLeft" align="right" valign="top">std::queue&lt; <a class="el" href="class_job.html">Job</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a838e787e597e84155b86c90ed85286b3">_waitingJobs</a></td></tr>
+<tr class="memdesc:a838e787e597e84155b86c90ed85286b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container that stores waiting jobs.  <a href="#a838e787e597e84155b86c90ed85286b3"></a><br/></td></tr>
+<tr class="separator:a838e787e597e84155b86c90ed85286b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a875fb344c4543cf2a73f9517916b289e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_idle_user_container.html">IdleUserContainer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a875fb344c4543cf2a73f9517916b289e">_idleUsers</a></td></tr>
+<tr class="memdesc:a875fb344c4543cf2a73f9517916b289e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container used to store users that are removed.  <a href="#a875fb344c4543cf2a73f9517916b289e"></a><br/></td></tr>
+<tr class="separator:a875fb344c4543cf2a73f9517916b289e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
@@ -254,20 +289,53 @@ Static Private Attributes</h2></td></tr>
 <tr class="memdesc:adff3432499ae45897f06fa2095a6155b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last <a class="el" href="class_user.html" title="User abstract Class.">User</a> Id added.  <a href="#adff3432499ae45897f06fa2095a6155b"></a><br/></td></tr>
 <tr class="separator:adff3432499ae45897f06fa2095a6155b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d6259e90c8af857c16f018aa6338ccd"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#a2d6259e90c8af857c16f018aa6338ccd">_lastMachineId</a> = 0</td></tr>
-<tr class="memdesc:a2d6259e90c8af857c16f018aa6338ccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last <a class="el" href="class_machine.html" title="Machine Class.">Machine</a> Id added.  <a href="#a2d6259e90c8af857c16f018aa6338ccd"></a><br/></td></tr>
+<tr class="memdesc:a2d6259e90c8af857c16f018aa6338ccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last Machine Id added.  <a href="#a2d6259e90c8af857c16f018aa6338ccd"></a><br/></td></tr>
 <tr class="separator:a2d6259e90c8af857c16f018aa6338ccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pro_attribs_class_runnable"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_runnable')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_runnable.html">Runnable</a></td></tr>
-<tr class="memitem:aba20fad1205f6ecd9c4e40c616d4e764 inherit pro_attribs_class_runnable"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_runnable.html#aba20fad1205f6ecd9c4e40c616d4e764">_stop</a></td></tr>
-<tr class="memdesc:aba20fad1205f6ecd9c4e40c616d4e764 inherit pro_attribs_class_runnable"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if the thread should be stopped.  <a href="#aba20fad1205f6ecd9c4e40c616d4e764"></a><br/></td></tr>
-<tr class="separator:aba20fad1205f6ecd9c4e40c616d4e764 inherit pro_attribs_class_runnable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab50d60538a5fde3a4718afdb878474fd"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_menu.html">Menu</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grid_manager.html#ab50d60538a5fde3a4718afdb878474fd">_menu</a> = <a class="el" href="class_loader.html">Loader</a>&lt;<a class="el" href="class_menu.html">Menu</a>&gt;(&quot;gridManagerMenu.txt&quot;).Load()</td></tr>
+<tr class="memdesc:ab50d60538a5fde3a4718afdb878474fd"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_menu.html" title="Menu Class.">Menu</a> associated with the <a class="el" href="class_grid_manager.html" title="GridManager Class.">GridManager</a> class.  <a href="#ab50d60538a5fde3a4718afdb878474fd"></a><br/></td></tr>
+<tr class="separator:ab50d60538a5fde3a4718afdb878474fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="class_grid_manager.html" title="GridManager Class.">GridManager</a> Class. </p>
 <p>The <a class="el" href="class_grid_manager.html" title="GridManager Class.">GridManager</a> class has information about users and machines. It enables the user of this class to Add, Remove and Get and Search Users and Machines, and has an interface to add Jobs to a <a class="el" href="class_user.html" title="User abstract Class.">User</a>. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="aa98bb468f3047bf38c2602a52cf78e17"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::set&lt;<a class="el" href="machine_8h.html#ac9360956ae20f1e1e06e5d32876e482d">Machine</a>*, <a class="el" href="struct_id_less.html">IdLess</a>&lt;<a class="el" href="machine_8h.html#ac9360956ae20f1e1e06e5d32876e482d">Machine</a>&gt; &gt; <a class="el" href="class_grid_manager.html#aa98bb468f3047bf38c2602a52cf78e17">GridManager::MachineSet</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a95239f9dba0bc0ab66557e5f6a86a4c4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::set&lt;<a class="el" href="machine_8h.html#ac821468cdc82bca5d95ed419c8d97363">PriorityMachine</a>*, <a class="el" href="struct_id_less.html">IdLess</a>&lt;<a class="el" href="machine_8h.html#ac821468cdc82bca5d95ed419c8d97363">PriorityMachine</a>&gt; &gt; <a class="el" href="class_grid_manager.html#a95239f9dba0bc0ab66557e5f6a86a4c4">GridManager::PriorityMachineSet</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af4bd4477077d0c8aec4182a84d85329a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::set&lt;<a class="el" href="class_user.html">User</a>*, <a class="el" href="struct_id_less.html">IdLess</a>&lt;<a class="el" href="class_user.html">User</a>&gt; &gt; <a class="el" href="class_grid_manager.html#af4bd4477077d0c8aec4182a84d85329a">GridManager::UserSet</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ac4eb5378ae84d7396e81f8a06468d4c9"></a>
 <div class="memitem">
 <div class="memproto">
@@ -441,17 +509,42 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a> GridManager::AddMachine </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_machine.html">Machine</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="machine_8h.html#ac9360956ae20f1e1e06e5d32876e482d">Machine</a> *&#160;</td>
           <td class="paramname"><em>machine</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Add a <a class="el" href="class_machine.html" title="Machine Class.">Machine</a>. </p>
+<p>Add a Machine. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">machine</td><td>a pointer to the machine to be added. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The ID of the added machine. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0c5dc55280c78dd5247bde66c40fd970"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="utils_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> GridManager::AddPriorityMachine </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="machine_8h.html#ac821468cdc82bca5d95ed419c8d97363">PriorityMachine</a> *&#160;</td>
+          <td class="paramname"><em>pMachine</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add a Priority Machine. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">machine</td><td>a pointer to the priority machine to be added. </td></tr>
   </table>
   </dd>
 </dl>
@@ -484,16 +577,16 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2ed7b7050b3cedcc7eef2c5985dcf9ad"></a>
+<a class="anchor" id="a484c31629cede32e40ae5da4c6e9d81e"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;T*&gt; GridManager::ApplyPredicate </td>
+          <td class="memname">std::vector&lt;const T*&gt; GridManager::ApplyPredicate </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; bool(T *)&gt;&#160;</td>
+          <td class="paramtype">std::function&lt; bool(const T *)&gt;&#160;</td>
           <td class="paramname"><em>predicate</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -503,25 +596,25 @@ template&lt;class T &gt; </div>
 <p>Applies the given predicate to the containers of the instance of the class based in the type and returns a vector with the values that meet the requirements. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">predicate</td><td>to evaluate the data. </td></tr>
+    <tr><td class="paramname">predicate</td><td>to evaluate the data: unary function that returns a bool and accepts a T* as argument. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A vector with the result of the search. </dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>Only defined for T = <a class="el" href="class_job.html" title="Job Class.">Job</a>, <a class="el" href="class_user.html" title="User abstract Class.">User</a> or <a class="el" href="class_machine.html" title="Machine Class.">Machine</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Only defined for T = <a class="el" href="class_job.html" title="Job Class.">Job</a>, <a class="el" href="class_user.html" title="User abstract Class.">User</a>, <a class="el" href="class_idle_user.html" title="IdleUser Class.">IdleUser</a> or Machine </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a864568157563b415e9003a2b50e44f9d"></a>
+<a class="anchor" id="a11f82bafbfd55e1ccc9a9a064c142151"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="class_job.html">Job</a>*&gt; GridManager::ApplyPredicate </td>
+          <td class="memname">std::vector&lt;const <a class="el" href="class_job.html">Job</a>*&gt; GridManager::ApplyPredicate </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; bool(<a class="el" href="class_job.html">Job</a> *)&gt;&#160;</td>
+          <td class="paramtype">std::function&lt; bool(const <a class="el" href="class_job.html">Job</a> *)&gt;&#160;</td>
           <td class="paramname"><em>predicate</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -530,16 +623,16 @@ template&lt;&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ac0f5b9feab67e5e25e456db3c7fbabb5"></a>
+<a class="anchor" id="a23af8cf4347989d8aabe9aaf487542a4"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="class_user.html">User</a>*&gt; GridManager::ApplyPredicate </td>
+          <td class="memname">std::vector&lt;const <a class="el" href="class_user.html">User</a>*&gt; GridManager::ApplyPredicate </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; bool(<a class="el" href="class_user.html">User</a> *)&gt;&#160;</td>
+          <td class="paramtype">std::function&lt; bool(const <a class="el" href="class_user.html">User</a> *)&gt;&#160;</td>
           <td class="paramname"><em>predicate</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -548,17 +641,135 @@ template&lt;&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a9740afff1c10d57eeac32578280b240b"></a>
+<a class="anchor" id="ae88c4f3a150917787d75b1a6c5e9508c"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="class_machine.html">Machine</a>*&gt; GridManager::ApplyPredicate </td>
+          <td class="memname">std::vector&lt;const <a class="el" href="class_idle_user.html">IdleUser</a>*&gt; GridManager::ApplyPredicate </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; bool(<a class="el" href="class_machine.html">Machine</a> *)&gt;&#160;</td>
+          <td class="paramtype">std::function&lt; bool(const <a class="el" href="class_idle_user.html">IdleUser</a> *)&gt;&#160;</td>
           <td class="paramname"><em>predicate</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a071c9c5d8702168c578778ea09fa43ad"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;const <a class="el" href="machine_8h.html#ac9360956ae20f1e1e06e5d32876e482d">Machine</a>*&gt; GridManager::ApplyPredicate </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; bool(const <a class="el" href="machine_8h.html#ac9360956ae20f1e1e06e5d32876e482d">Machine</a> *)&gt;&#160;</td>
+          <td class="paramname"><em>predicate</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aebbfabfae302065402168e4b05e237d1"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;const <a class="el" href="machine_8h.html#ac821468cdc82bca5d95ed419c8d97363">PriorityMachine</a>*&gt; GridManager::ApplyPredicate </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; bool(const <a class="el" href="machine_8h.html#ac821468cdc82bca5d95ed419c8d97363">PriorityMachine</a> *)&gt;&#160;</td>
+          <td class="paramname"><em>predicate</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a452d1895a8f2c314af97513cebbb1d50"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class R &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; R &gt; GridManager::ApplySelector </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; R(const T *)&gt;&#160;</td>
+          <td class="paramname"><em>selector</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; bool(const T *)&gt;&#160;</td>
+          <td class="paramname"><em>predicate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Uses ApplyPredicate with the given predicate and then selects a certain element of each object in the vector returned by ApplyPredicate. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">selector</td><td>to retrieve an element from the data: unary function that returns R and accepts a T* as argument. </td></tr>
+    <tr><td class="paramname">predicate</td><td>to evaluate the data: unary function that returns a bool and accepts a T* as argument. Default value applies no restrictions. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector with the result of the search. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Only defined for T = <a class="el" href="class_job.html" title="Job Class.">Job</a>, <a class="el" href="class_user.html" title="User abstract Class.">User</a>, <a class="el" href="class_idle_user.html" title="IdleUser Class.">IdleUser</a> or Machine </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1adc003218481a453c1dec0784f72325"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class R &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; R &gt; GridManager::ApplySelector </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; R(const T *)&gt;&#160;</td>
+          <td class="paramname"><em>selector</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Selects a certain element of each object in the vector of T*. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">selector</td><td>to retrieve an element from the data: unary function that returns R and accepts a T* as argument. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector with the result of the search. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Only defined for T = <a class="el" href="class_job.html" title="Job Class.">Job</a>, <a class="el" href="class_user.html" title="User abstract Class.">User</a>, <a class="el" href="class_idle_user.html" title="IdleUser Class.">IdleUser</a> or Machine </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a12c560d9ec2c235fe881c0ef79ade81e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_idle_user_container.html">IdleUserContainer</a>&amp; GridManager::GetIdleUsers </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -571,7 +782,7 @@ template&lt;&gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_machine.html">Machine</a> * GridManager::GetMachine </td>
+          <td class="memname"><a class="el" href="machine_8h.html#ac9360956ae20f1e1e06e5d32876e482d">Machine</a> * GridManager::GetMachine </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a>&#160;</td>
           <td class="paramname"><em>id</em></td><td>)</td>
@@ -587,7 +798,32 @@ template&lt;&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the <a class="el" href="class_machine.html" title="Machine Class.">Machine</a>, NULL if id doesn't corresponds to any <a class="el" href="class_machine.html" title="Machine Class.">Machine</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the Machine, NULL if id doesn't corresponds to any Machine. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="afd1396256a5edca786c6b2653dfe52c5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_menu.html">Menu</a>* GridManager::GetMenu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the menu for the <a class="el" href="class_grid_manager.html" title="GridManager Class.">GridManager</a> class. </p>
 
 </div>
 </div>
@@ -627,6 +863,24 @@ template&lt;&gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="aaed36996396b6712b608f69f7a32aa1c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a> GridManager::GetNumberOfPriorityMachines </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the number of existing priority machines. </p>
+<dl class="section return"><dt>Returns</dt><dd>Number of existing priority machines. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="aa7d6b3ed0e670361e5b8d237d76c8c6c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -642,6 +896,31 @@ template&lt;&gt; </div>
 
 <p>Returns the number of existing users. </p>
 <dl class="section return"><dt>Returns</dt><dd>Number of existing users. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a664f14e50c5eb6e4e185f86655c805ed"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="machine_8h.html#ac821468cdc82bca5d95ed419c8d97363">PriorityMachine</a> * GridManager::GetPriorityMachine </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the priority machine with the given ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>of the priority machine. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the Priority Machine, NULL if id doesn't corresponds to any Machine. </dd></dl>
 
 </div>
 </div>
@@ -736,7 +1015,7 @@ template&lt;&gt; </div>
         <tr>
           <td class="memname">bool GridManager::RemoveMachine </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_machine.html">Machine</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="machine_8h.html#ac9360956ae20f1e1e06e5d32876e482d">Machine</a> *&#160;</td>
           <td class="paramname"><em>machine</em></td><td>)</td>
           <td></td>
         </tr>
@@ -768,7 +1047,7 @@ template&lt;&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Removes the given machine with the given ID. </p>
+<p>Removes the machine with the given ID. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>of the machine to be removed. </td></tr>
@@ -786,7 +1065,7 @@ template&lt;&gt; </div>
         <tr>
           <td class="memname">bool GridManager::RemoveMachineJob </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_machine.html">Machine</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="machine_8h.html#ac9360956ae20f1e1e06e5d32876e482d">Machine</a> *&#160;</td>
           <td class="paramname"><em>machine</em>, </td>
         </tr>
         <tr>
@@ -808,6 +1087,56 @@ template&lt;&gt; </div>
   <table class="params">
     <tr><td class="paramname">machine</td><td>pointer to the machine that contains the job. </td></tr>
     <tr><td class="paramname">jobId</td><td>id of the job to be removed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A boolean value that indicates whether the removal was successful or not. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ab8a76619f110d364547921eb7defedf7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GridManager::RemovePriorityMachine </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="machine_8h.html#ac821468cdc82bca5d95ed419c8d97363">PriorityMachine</a> *&#160;</td>
+          <td class="paramname"><em>machine</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Removes the given priority machine. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">machine</td><td>a pointer to the priority machine to be removed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A boolean value that indicates whether the removal was successful or not. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a5e4ccc776007135373eeaaca145c84d3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GridManager::RemovePriorityMachine </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Removes the priority machine with the given ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>of the priority machine to be removed. </td></tr>
   </table>
   </dd>
 </dl>
@@ -862,33 +1191,6 @@ template&lt;&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A boolean value that indicates whether the removal was successful or not. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a3be990c97cdeabf6d6f24c4c83b99423"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void GridManager::Run </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Calls update functions of all the elements of the class, that can be updated, two times per second. It saves the instance every 5 seconds. </p>
-
-<p>Implements <a class="el" href="class_runnable.html#a6d5fbd0e55c22d7c40dafa9d23de3ca4">Runnable</a>.</p>
 
 </div>
 </div>
@@ -962,6 +1264,28 @@ template&lt;&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a875fb344c4543cf2a73f9517916b289e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_idle_user_container.html">IdleUserContainer</a> GridManager::_idleUsers</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Container used to store users that are removed. </p>
+
+</div>
+</div>
 <a class="anchor" id="a2d6259e90c8af857c16f018aa6338ccd"></a>
 <div class="memitem">
 <div class="memproto">
@@ -980,7 +1304,7 @@ template&lt;&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Last <a class="el" href="class_machine.html" title="Machine Class.">Machine</a> Id added. </p>
+<p>Last Machine Id added. </p>
 
 </div>
 </div>
@@ -1006,7 +1330,7 @@ template&lt;&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a9097d822822dcf78833cf0cd75977121"></a>
+<a class="anchor" id="a3799d9c1a0df8f43cc23dabd86d5701b"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -1014,7 +1338,7 @@ template&lt;&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt;<a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a>, <a class="el" href="class_machine.html">Machine</a>*&gt; GridManager::_machines</td>
+          <td class="memname"><a class="el" href="class_grid_manager.html#aa98bb468f3047bf38c2602a52cf78e17">MachineSet</a> GridManager::_machines</td>
         </tr>
       </table>
   </td>
@@ -1028,7 +1352,7 @@ template&lt;&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ab29b67d9ceb1b5058637f1cd524c0ce5"></a>
+<a class="anchor" id="ab50d60538a5fde3a4718afdb878474fd"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -1036,7 +1360,29 @@ template&lt;&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="utils_8h.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> GridManager::_realCurrTime</td>
+          <td class="memname"><a class="el" href="class_menu.html">Menu</a> * GridManager::_menu = <a class="el" href="class_loader.html">Loader</a>&lt;<a class="el" href="class_menu.html">Menu</a>&gt;(&quot;gridManagerMenu.txt&quot;).Load()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_menu.html" title="Menu Class.">Menu</a> associated with the <a class="el" href="class_grid_manager.html" title="GridManager Class.">GridManager</a> class. </p>
+
+</div>
+</div>
+<a class="anchor" id="a7ec104678d8229a1357340c4ef49db43"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_grid_manager.html#a95239f9dba0bc0ab66557e5f6a86a4c4">PriorityMachineSet</a> GridManager::_priorityMachines</td>
         </tr>
       </table>
   </td>
@@ -1046,11 +1392,11 @@ template&lt;&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Time of the current update. </p>
+<p>Container that saves priority machines. </p>
 
 </div>
 </div>
-<a class="anchor" id="a46bb9566071b67d78bae7fa62aac2b88"></a>
+<a class="anchor" id="ae2d2195ac4cc2d08f7c2963fc49bb893"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -1058,29 +1404,7 @@ template&lt;&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="utils_8h.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> GridManager::_realPrevTime</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Time of the last update. </p>
-
-</div>
-</div>
-<a class="anchor" id="a6592d87f7db8fd585a62b55919a7887f"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::map&lt;<a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a>, <a class="el" href="class_user.html">User</a>*&gt; GridManager::_users</td>
+          <td class="memname"><a class="el" href="class_grid_manager.html#af4bd4477077d0c8aec4182a84d85329a">UserSet</a> GridManager::_users</td>
         </tr>
       </table>
   </td>
@@ -1094,6 +1418,28 @@ template&lt;&gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a838e787e597e84155b86c90ed85286b3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::queue&lt;<a class="el" href="class_job.html">Job</a>*&gt; GridManager::_waitingJobs</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Container that stores waiting jobs. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="gridmanager_8h_source.html">gridmanager.h</a></li>
 <li><a class="el" href="gridmanager_8cpp.html">gridmanager.cpp</a></li>
@@ -1104,7 +1450,7 @@ template&lt;&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_grid_manager.html">GridManager</a></li>
-    <li class="footer">Generated on Sun Nov 4 2012 14:43:16 for GridComputing by
+    <li class="footer">Generated on Sat Dec 22 2012 23:04:14 for GridComputing by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 </li>
   </ul>

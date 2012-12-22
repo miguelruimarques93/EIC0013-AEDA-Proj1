@@ -108,22 +108,37 @@ $(document).ready(function(){initNavTree('machine_8h.html','');});
 <div class="contents">
 <div class="textblock"><code>#include &lt;unordered_set&gt;</code><br/>
 <code>#include &lt;string&gt;</code><br/>
+<code>#include &lt;queue&gt;</code><br/>
 <code>#include &lt;map&gt;</code><br/>
+<code>#include &lt;set&gt;</code><br/>
+<code>#include &lt;stack&gt;</code><br/>
+<code>#include &lt;vector&gt;</code><br/>
 <code>#include &lt;mutex&gt;</code><br/>
 <code>#include &lt;iostream&gt;</code><br/>
+<code>#include &lt;stdexcept&gt;</code><br/>
+<code>#include &lt;iomanip&gt;</code><br/>
+<code>#include &lt;numeric&gt;</code><br/>
 <code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="interfaces_8h_source.html">interfaces.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="software_8h_source.html">software.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="menu_8h_source.html">menu.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="job_8h_source.html">job.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="log_8h_source.html">log.h</a>&quot;</code><br/>
 </div>
 <p><a href="machine_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_machine_in_execution.html">MachineInExecution</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exception thrown when some action tried to change a <a class="el" href="class_machine.html" title="Machine Class.">Machine</a> while it is being used.  <a href="class_machine_in_execution.html#details">More...</a><br/></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class___machine.html">_Machine</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class___machine.html" title="_Machine Class">_Machine</a> Class  <a href="class___machine.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_machine.html">Machine</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_machine.html" title="Machine Class.">Machine</a> Class.  <a href="class_machine.html#details">More...</a><br/></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_machine.html">IMachine&lt; Container &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic <a class="el" href="class_i_machine.html" title="Generic IMachine class.">IMachine</a> class.  <a href="class_i_machine.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_machine_in_execution.html">MachineInExecution</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exception thrown when some action tried to change a Machine while it is being used.  <a href="class_machine_in_execution.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_queue.html">Queue&lt; T &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -131,8 +146,56 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ab54d8b7bb6976ea9ef48a89a97220850"><td class="memItemLeft" align="right" valign="top">typedef std::unordered_set<br class="typebreak"/>
 &lt; <a class="el" href="class_software.html">Software</a>, <a class="el" href="struct_software_1_1_hash.html">Software::Hash</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="machine_8h.html#ab54d8b7bb6976ea9ef48a89a97220850">SoftwareSet</a></td></tr>
 <tr class="separator:ab54d8b7bb6976ea9ef48a89a97220850"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9535ef6e3a8b7eeebec8349fcd87ea29"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; const <a class="el" href="class_job.html">Job</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="machine_8h.html#a9535ef6e3a8b7eeebec8349fcd87ea29">JobVector</a></td></tr>
+<tr class="memdesc:a9535ef6e3a8b7eeebec8349fcd87ea29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector of const Job*.  <a href="#a9535ef6e3a8b7eeebec8349fcd87ea29"></a><br/></td></tr>
+<tr class="separator:a9535ef6e3a8b7eeebec8349fcd87ea29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac821468cdc82bca5d95ed419c8d97363"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_i_machine.html">IMachine</a><br class="typebreak"/>
+&lt; std::priority_queue&lt; <a class="el" href="class_job.html">Job</a> <br class="typebreak"/>
+*, std::vector&lt; <a class="el" href="class_job.html">Job</a> * &gt;<br class="typebreak"/>
+, <a class="el" href="struct_job_1_1_priority_less.html">Job::PriorityLess</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="machine_8h.html#ac821468cdc82bca5d95ed419c8d97363">PriorityMachine</a></td></tr>
+<tr class="separator:ac821468cdc82bca5d95ed419c8d97363"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9360956ae20f1e1e06e5d32876e482d"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_i_machine.html">IMachine</a>&lt; <a class="el" href="class_queue.html">Queue</a>&lt; <a class="el" href="class_job.html">Job</a> * &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="machine_8h.html#ac9360956ae20f1e1e06e5d32876e482d">Machine</a></td></tr>
+<tr class="separator:ac9360956ae20f1e1e06e5d32876e482d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
+<a class="anchor" id="a9535ef6e3a8b7eeebec8349fcd87ea29"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;const <a class="el" href="class_job.html">Job</a>*&gt; <a class="el" href="machine_8h.html#a9535ef6e3a8b7eeebec8349fcd87ea29">JobVector</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vector of const Job*. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac9360956ae20f1e1e06e5d32876e482d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="class_i_machine.html">IMachine</a>&lt;<a class="el" href="class_queue.html">Queue</a>&lt;<a class="el" href="class_job.html">Job</a>*&gt; &gt; <a class="el" href="machine_8h.html#ac9360956ae20f1e1e06e5d32876e482d">Machine</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac821468cdc82bca5d95ed419c8d97363"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="class_i_machine.html">IMachine</a>&lt;std::priority_queue&lt;<a class="el" href="class_job.html">Job</a>*,std::vector&lt;<a class="el" href="class_job.html">Job</a>*&gt;,<a class="el" href="struct_job_1_1_priority_less.html">Job::PriorityLess</a>&gt; &gt; <a class="el" href="machine_8h.html#ac821468cdc82bca5d95ed419c8d97363">PriorityMachine</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="ab54d8b7bb6976ea9ef48a89a97220850"></a>
 <div class="memitem">
 <div class="memproto">
@@ -150,8 +213,8 @@ Typedefs</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_275089585c7fc1b5fd5d7d42c69cb1da.html">D:</a></li><li class="navelem"><a class="el" href="dir_1dec1f0ac2ce9695918d34c3f04f31df.html">EIC0013-AEDA-Proj1</a></li><li class="navelem"><a class="el" href="dir_c62483f0f9ba5fbbdda3a7665f130024.html">src</a></li><li class="navelem"><a class="el" href="machine_8h.html">machine.h</a></li>
-    <li class="footer">Generated on Sun Nov 4 2012 14:43:16 for GridComputing by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="machine_8h.html">machine.h</a></li>
+    <li class="footer">Generated on Sat Dec 22 2012 23:04:14 for GridComputing by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 </li>
   </ul>

@@ -7,5 +7,6 @@ var searchData=
   ['filewritepolicy',['FileWritePolicy',['../struct_file_write_policy.html',1,'FileWritePolicy'],['../struct_file_write_policy.html#a090f6d489ecc607764675dc7275eca91',1,'FileWritePolicy::FileWritePolicy()']]],
   ['finish',['Finish',['../class_job.html#ad631c9e58efb94bd5cc7d67399a6e35a',1,'Job']]],
   ['finished',['Finished',['../class_job.html#a337fac11a698268a94ef5259e0aae709',1,'Job']]],
-  ['finishread',['FinishRead',['../class_byte_buffer.html#a0ced0b1d5cb4530944d1ba465ac3d031',1,'ByteBuffer']]]
+  ['finishread',['FinishRead',['../class_byte_buffer.html#a0ced0b1d5cb4530944d1ba465ac3d031',1,'ByteBuffer']]],
+  ['fromuser',['FromUser',['../class_idle_user.html#a8a8fd61ce2c082cef02b5a6bfa911c59',1,'IdleUser']]]
 ];

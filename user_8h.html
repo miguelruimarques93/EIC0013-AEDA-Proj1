@@ -101,7 +101,8 @@ $(document).ready(function(){initNavTree('user_8h.html','');});
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">user.h File Reference</div>  </div>
 </div><!--header-->
@@ -110,6 +111,9 @@ $(document).ready(function(){initNavTree('user_8h.html','');});
 <code>#include &lt;vector&gt;</code><br/>
 <code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="interfaces_8h_source.html">interfaces.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="job_8h_source.html">job.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="bytebuffer_8h_source.html">bytebuffer.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="menu_8h_source.html">menu.h</a>&quot;</code><br/>
 </div>
 <p><a href="user_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -127,32 +131,58 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ad5de81796c7801007281e59cd4345806"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user_8h.html#ad5de81796c7801007281e59cd4345806">SaveUserType</a> { <a class="el" href="user_8h.html#ad5de81796c7801007281e59cd4345806a69b027e6a83caf0a0642e0edd0bbbbae">SAVE_USER_TYPE_ACADEMIC</a>, 
-<a class="el" href="user_8h.html#ad5de81796c7801007281e59cd4345806a99f7c47d893ab2f91ca1255309b4f88b">SAVE_USER_TYPE_ENTERPRISE</a>
+<tr class="memitem:a196c5ae3c192f069339f2966656f6fe9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user_8h.html#a196c5ae3c192f069339f2966656f6fe9">UserType</a> { <a class="el" href="user_8h.html#a196c5ae3c192f069339f2966656f6fe9a82a26095f4340e3722841f944c1ecdc9">USER_TYPE_ACADEMIC</a>, 
+<a class="el" href="user_8h.html#a196c5ae3c192f069339f2966656f6fe9a1278b04ed532c2634b58d78c6d82cef7">USER_TYPE_ENTERPRISE</a>
  }</td></tr>
-<tr class="memdesc:ad5de81796c7801007281e59cd4345806"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum used in load and save actions to distinguish academic and enterprise Users.  <a href="user_8h.html#ad5de81796c7801007281e59cd4345806">More...</a><br/></td></tr>
-<tr class="separator:ad5de81796c7801007281e59cd4345806"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:a196c5ae3c192f069339f2966656f6fe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum (used in load and save actions) to distinguish academic and enterprise Users.  <a href="user_8h.html#a196c5ae3c192f069339f2966656f6fe9">More...</a><br/></td></tr>
+<tr class="separator:a196c5ae3c192f069339f2966656f6fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a07300f273fc2fad331503ae743ba2df6"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user_8h.html#a07300f273fc2fad331503ae743ba2df6">UserTypeStr</a> [] = { &quot;Academic&quot;, &quot;Enterprise&quot; }</td></tr>
+<tr class="separator:a07300f273fc2fad331503ae743ba2df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
-<a class="anchor" id="ad5de81796c7801007281e59cd4345806"></a>
+<a class="anchor" id="a196c5ae3c192f069339f2966656f6fe9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="user_8h.html#ad5de81796c7801007281e59cd4345806">SaveUserType</a></td>
+          <td class="memname">enum <a class="el" href="user_8h.html#a196c5ae3c192f069339f2966656f6fe9">UserType</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Enum used in load and save actions to distinguish academic and enterprise Users. </p>
+<p>Enum (used in load and save actions) to distinguish academic and enterprise Users. </p>
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
-<tr><td valign="top"><em><a class="anchor" id="ad5de81796c7801007281e59cd4345806a69b027e6a83caf0a0642e0edd0bbbbae"></a>SAVE_USER_TYPE_ACADEMIC</em>&nbsp;</td><td>
+<tr><td valign="top"><em><a class="anchor" id="a196c5ae3c192f069339f2966656f6fe9a82a26095f4340e3722841f944c1ecdc9"></a>USER_TYPE_ACADEMIC</em>&nbsp;</td><td>
 </td></tr>
-<tr><td valign="top"><em><a class="anchor" id="ad5de81796c7801007281e59cd4345806a99f7c47d893ab2f91ca1255309b4f88b"></a>SAVE_USER_TYPE_ENTERPRISE</em>&nbsp;</td><td>
+<tr><td valign="top"><em><a class="anchor" id="a196c5ae3c192f069339f2966656f6fe9a1278b04ed532c2634b58d78c6d82cef7"></a>USER_TYPE_ENTERPRISE</em>&nbsp;</td><td>
 </td></tr>
 </table>
 </dd>
 </dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="a07300f273fc2fad331503ae743ba2df6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* UserTypeStr[] = { &quot;Academic&quot;, &quot;Enterprise&quot; }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -161,8 +191,8 @@ Enumerations</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_275089585c7fc1b5fd5d7d42c69cb1da.html">D:</a></li><li class="navelem"><a class="el" href="dir_1dec1f0ac2ce9695918d34c3f04f31df.html">EIC0013-AEDA-Proj1</a></li><li class="navelem"><a class="el" href="dir_c62483f0f9ba5fbbdda3a7665f130024.html">src</a></li><li class="navelem"><a class="el" href="user_8h.html">user.h</a></li>
-    <li class="footer">Generated on Sun Nov 4 2012 14:43:16 for GridComputing by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="user_8h.html">user.h</a></li>
+    <li class="footer">Generated on Sat Dec 22 2012 23:04:14 for GridComputing by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 </li>
   </ul>

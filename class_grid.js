@@ -1,0 +1,26 @@
+var class_grid =
+[
+    [ "Grid", "class_grid.html#a89da52dc2b7ae867fc89b185b3afbf61", null ],
+    [ "Grid", "class_grid.html#a7302c53e5dae016f656a6f03858f35bd", null ],
+    [ "~Grid", "class_grid.html#a3661d0a7f998caaaf8627d7a67072116", null ],
+    [ "Grid", "class_grid.html#abf5217baf113f5792c10a143f6ec2113", null ],
+    [ "ChangeName", "class_grid.html#a39ef5d70b148d2c45158e349ac95c7e7", null ],
+    [ "ChangeTopic", "class_grid.html#acb9158f645c84776c8c56545fefdea8e", null ],
+    [ "GetAvailableMachineCount", "class_grid.html#a43288a7578838ee6cdfd9a9b7e285367", null ],
+    [ "GetGridManager", "class_grid.html#aaa30741f3837dc62cf9183f1ea8d4f81", null ],
+    [ "GetName", "class_grid.html#a8158b69db89baf421db0323b3aba213c", null ],
+    [ "GetTopic", "class_grid.html#a8cb5b24171f1f10aa34fdd5645423617", null ],
+    [ "HighestMachineRAM", "class_grid.html#a70a7286c288cf7d5a20577417c60775b", null ],
+    [ "Load", "class_grid.html#ab67e47ef62f418cd09082218bcdb676d", null ],
+    [ "operator=", "class_grid.html#a23aa614b7a38bc12beac80729216d21c", null ],
+    [ "Print", "class_grid.html#a5fd35c8883f792a4f8dffd8588b0857f", null ],
+    [ "PrintHeader", "class_grid.html#a36611fc591a4c0e85224b73f51773206", null ],
+    [ "Save", "class_grid.html#a98b7e552c51472245843d6f7f5401184", null ],
+    [ "TotalDiskSpace", "class_grid.html#a28e1e3c6729eb0e49ee369c77d92ffcd", null ],
+    [ "Update", "class_grid.html#abcb774cdc86f6d65fe6eb2f931d21313", null ],
+    [ "_gm", "class_grid.html#aa5d0e86396c929393ecd7ecfc92ac843", null ],
+    [ "_maxNameLength", "class_grid.html#a51656ba02f8ff41a3a208596bb0cb5b3", null ],
+    [ "_maxTopicLength", "class_grid.html#a4c16c6cda28919267f60f36c1eebc352", null ],
+    [ "_name", "class_grid.html#ac70c290fbf94027f98210977d6f87a77", null ],
+    [ "_topic", "class_grid.html#a04c61dc8a3344a8947ac99a9f71a92d3", null ]
+];

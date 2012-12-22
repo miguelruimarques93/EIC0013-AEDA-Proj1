@@ -1,15 +1,26 @@
 var menugrid_8cpp =
 [
+    [ "ChangeGridManagerInfo", "menugrid_8cpp.html#abd79686979e6c89586bad747ceea7ef1", null ],
+    [ "ChangeGridName", "menugrid_8cpp.html#a5405f0773e1bbea47dbbbe5b47ec6856", null ],
+    [ "ChangeGridTopic", "menugrid_8cpp.html#a6aad628500fa472807e7658f6469ef94", null ],
     [ "ChangeMachineInfo", "menugrid_8cpp.html#ac887efde94098e650bffc3effb68b111", null ],
+    [ "ChangePriorityMachineInfo", "menugrid_8cpp.html#a20e605be4326c6ff7fe937e324c7ab77", null ],
     [ "ChangeUserInfo", "menugrid_8cpp.html#afbe6c26051693bd56b1864849a2e9ed1", null ],
     [ "NewAcademicUser", "menugrid_8cpp.html#acd00856d66ecc159cb8a047c8f3cccb7", null ],
     [ "NewEnterpriseUser", "menugrid_8cpp.html#a1110f58fc1a3e88ed1b8f6515dd6a100", null ],
+    [ "NewGrid", "menugrid_8cpp.html#a9a23ac117c35d7bd3778b14bab335831", null ],
     [ "NewJob", "menugrid_8cpp.html#a32fd9183964fe0db7ff741270c5d9bbc", null ],
     [ "NewMachine", "menugrid_8cpp.html#a01417abada8e47ca7763adc39217428d", null ],
+    [ "NewPriorityMachine", "menugrid_8cpp.html#abc425f0a3b19e8fb5bdacdd22df5905b", null ],
+    [ "RemoveGrid", "menugrid_8cpp.html#a9458e88c45ad82a2900876afc6a62295", null ],
     [ "RemoveMachine", "menugrid_8cpp.html#aad105dc66f73b93ded709ba8e11f0bd3", null ],
+    [ "RemovePriorityMachine", "menugrid_8cpp.html#aa81bf826cad025d3fdb19449bd25084f", null ],
     [ "RemoveUser", "menugrid_8cpp.html#af53c24a8f8e6980a03fe4cac0d76a91d", null ],
+    [ "SearchGrids", "menugrid_8cpp.html#a36b8c5f839134b49685b885fdf0d23fd", null ],
     [ "SearchJobs", "menugrid_8cpp.html#a7c4ac7addb7ed83fd7094518d9ed24cc", null ],
     [ "SearchMachines", "menugrid_8cpp.html#a4bb9f5a352466ecebd555e42b2e11016", null ],
+    [ "SearchPriorityMachines", "menugrid_8cpp.html#af86ed419c88b3cd084133d8d2aabd6e0", null ],
+    [ "SearchRemovedUsers", "menugrid_8cpp.html#a4801d9aa52f119d3a241703d0011677e", null ],
     [ "SearchUsers", "menugrid_8cpp.html#a2bf7321d30e7d8d5bad27226852a609c", null ],
     [ "_namePredicate", "menugrid_8cpp.html#ac30b22b1b8b68f5d763ee4cd1c25780e", null ]
 ];

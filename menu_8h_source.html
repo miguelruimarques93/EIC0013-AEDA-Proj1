@@ -142,7 +142,7 @@ $(document).ready(function(){initNavTree('menu_8h_source.html','');});
 <div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="class_menu.html">   44</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_menu.html" title="Menu Class.">Menu</a> : <span class="keyword">public</span> <a class="code" href="class_i_menu.html" title="IMenu abstract Class.">IMenu</a></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="class_menu.html#abcd523835390c3cd6a2c5c978144e0e9">   47</a></span>&#160;    <a class="code" href="class_menu.html#abcd523835390c3cd6a2c5c978144e0e9" title="Constructor.">Menu</a>(<span class="keyword">const</span> std::string&amp; label, <a class="code" href="class_menu.html" title="Menu Class.">Menu</a>* parent = NULL) : <a class="code" href="class_i_menu.html" title="IMenu abstract Class.">IMenu</a>(label, parent) { } </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="class_menu.html#aa769670330ffa916133ffa4517110db9">   47</a></span>&#160;    <a class="code" href="class_menu.html#aa769670330ffa916133ffa4517110db9" title="Constructor.">Menu</a>(<span class="keyword">const</span> std::string&amp; label, <a class="code" href="class_menu.html" title="Menu Class.">Menu</a>* parent = <span class="keyword">nullptr</span>) : <a class="code" href="class_i_menu.html" title="IMenu abstract Class.">IMenu</a>(label, parent) { } </div>
 <div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="class_menu.html#a831387f51358cfb88cd018e1777bc980">   48</a></span>&#160;    <a class="code" href="class_menu.html#a831387f51358cfb88cd018e1777bc980" title="Destructor.">~Menu</a>() { <span class="keywordflow">for</span> (<span class="keyword">auto</span> elem: <a class="code" href="class_menu.html#a8d77f7f36923152b31bb955f88ef00d5" title="A vector of submenus.">_subMenus</a>) <span class="keyword">delete</span> elem.second; } </div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="utils_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2" title="Unsigned 32 bits int.">uint32</a> <a class="code" href="class_menu.html#a859bc2ab727a83c906b978da98ee63cf" title="Prints the menu label and returns the Menu or Menu::Item chosen by the user of the menu...">Print</a>() <span class="keyword">const override</span>;</div>
@@ -175,8 +175,8 @@ $(document).ready(function(){initNavTree('menu_8h_source.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_275089585c7fc1b5fd5d7d42c69cb1da.html">D:</a></li><li class="navelem"><a class="el" href="dir_1dec1f0ac2ce9695918d34c3f04f31df.html">EIC0013-AEDA-Proj1</a></li><li class="navelem"><a class="el" href="dir_c62483f0f9ba5fbbdda3a7665f130024.html">src</a></li><li class="navelem"><a class="el" href="menu_8h.html">menu.h</a></li>
-    <li class="footer">Generated on Sun Nov 4 2012 14:43:15 for GridComputing by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="menu_8h.html">menu.h</a></li>
+    <li class="footer">Generated on Sat Dec 22 2012 23:04:14 for GridComputing by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 </li>
   </ul>

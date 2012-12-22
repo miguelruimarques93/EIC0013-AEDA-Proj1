@@ -1,6 +1,13 @@
 var searchData=
 [
+  ['idless',['IdLess',['../struct_id_less.html',1,'']]],
+  ['idleuser',['IdleUser',['../class_idle_user.html',1,'IdleUser'],['../class_idle_user.html#a7b92add6e26b8bc7290303427ea2328f',1,'IdleUser::IdleUser()']]],
+  ['idleuser_2ecpp',['idleuser.cpp',['../idleuser_8cpp.html',1,'']]],
+  ['idleuser_2eh',['idleuser.h',['../idleuser_8h.html',1,'']]],
+  ['idleusercontainer',['IdleUserContainer',['../class_idle_user_container.html',1,'']]],
+  ['imachine',['IMachine',['../class_i_machine.html',1,'IMachine&lt; Container &gt;'],['../class_i_machine.html#a966a8f40c6681819767e982717e53af3',1,'IMachine::IMachine(uint id)'],['../class_i_machine.html#af7fa34509f2cb7627e5f970a6315f3f8',1,'IMachine::IMachine(const std::string &amp;machineName, uint maxJobs, double totalRAM, double totalDiskSpace)'],['../class_i_machine.html#a958d94ba4de834aac27917924366ce3e',1,'IMachine::IMachine(const IMachine &amp;)']]],
   ['imenu',['IMenu',['../class_i_menu.html',1,'IMenu'],['../class_i_menu.html#a57d74b9188afafc446b1dfd8b693560f',1,'IMenu::IMenu()']]],
+  ['insertuser',['InsertUser',['../class_idle_user_container.html#a91fb6d5cb897698d5758afcfbe70e644',1,'IdleUserContainer']]],
   ['instance',['Instance',['../class_logger.html#af62678e87fea84919719281f06484342',1,'Logger']]],
   ['int16',['int16',['../utils_8h.html#aa0d0fdc87fd135ef2bedb030901cdb9c',1,'utils.h']]],
   ['int32',['int32',['../utils_8h.html#ab7903878916593daecbeb95b98115ab0',1,'utils.h']]],

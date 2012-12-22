@@ -176,13 +176,13 @@ $(document).ready(function(){initNavTree('consolereader_8h_source.html','');});
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">template</span>&lt;&gt;</div>
 <div class="line"><a name="l00082"></a><span class="lineno"><a class="code" href="consolereader_8h.html#ab585158d007a4ca46ece0b1fb1008c81">   82</a></span>&#160;<span class="keyword">inline</span> std::string ReadValue&lt;std::string&gt;(<span class="keyword">const</span> std::string&amp; prompt, std::function&lt;bool(std::string)&gt; validator)</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;{</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    std::cout &lt;&lt; prompt;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    std::string input;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">bool</span> success = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">while</span> (!success)</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    std::string input;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">bool</span> success = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">while</span> (!success)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        std::cout &lt;&lt; prompt;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        std::getline(std::cin, input);</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">if</span> (std::cin.fail())</div>
@@ -213,8 +213,8 @@ $(document).ready(function(){initNavTree('consolereader_8h_source.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_275089585c7fc1b5fd5d7d42c69cb1da.html">D:</a></li><li class="navelem"><a class="el" href="dir_1dec1f0ac2ce9695918d34c3f04f31df.html">EIC0013-AEDA-Proj1</a></li><li class="navelem"><a class="el" href="dir_c62483f0f9ba5fbbdda3a7665f130024.html">src</a></li><li class="navelem"><a class="el" href="consolereader_8h.html">consolereader.h</a></li>
-    <li class="footer">Generated on Sun Nov 4 2012 14:43:15 for GridComputing by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="consolereader_8h.html">consolereader.h</a></li>
+    <li class="footer">Generated on Sat Dec 22 2012 23:04:13 for GridComputing by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 </li>
   </ul>

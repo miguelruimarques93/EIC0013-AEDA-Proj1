@@ -6,8 +6,18 @@ var files =
     [ "consolereader.h", "consolereader_8h.html", "consolereader_8h" ],
     [ "file.cpp", "file_8cpp.html", "file_8cpp" ],
     [ "file.h", "file_8h.html", "file_8h" ],
+    [ "grid.cpp", "grid_8cpp.html", null ],
+    [ "grid.h", "grid_8h.html", [
+      [ "Grid", "class_grid.html", "class_grid" ]
+    ] ],
     [ "gridmanager.cpp", "gridmanager_8cpp.html", null ],
-    [ "gridmanager.h", "gridmanager_8h.html", "gridmanager_8h" ],
+    [ "gridmanager.h", "gridmanager_8h.html", [
+      [ "GridManager", "class_grid_manager.html", "class_grid_manager" ]
+    ] ],
+    [ "gridnetwork.cpp", "gridnetwork_8cpp.html", null ],
+    [ "gridnetwork.h", "gridnetwork_8h.html", "gridnetwork_8h" ],
+    [ "idleuser.cpp", "idleuser_8cpp.html", null ],
+    [ "idleuser.h", "idleuser_8h.html", "idleuser_8h" ],
     [ "interfaces.h", "interfaces_8h.html", [
       [ "ISave", "class_i_save.html", "class_i_save" ],
       [ "IUpdate", "class_i_update.html", "class_i_update" ],
