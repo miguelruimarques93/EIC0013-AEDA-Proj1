@@ -6,6 +6,8 @@
 #include "job.h"
 #include "menu.h"
 #include "gridmanager.h"
+#include "gridnetwork.h"
+#include "grid.h"
 #include "loader.h"
 #include "software.h"
 
@@ -14,7 +16,7 @@
 #include <functional>
 #include <iomanip>
 
-static std::function<bool(std::string)> _namePredicate = [](std::string val)
+static std::function<bool(std::string)> _namePredicate = [](const std::string& val)
 {
     if (val.size() <= 0)
     {
@@ -29,6 +31,232 @@ static std::function<bool(std::string)> _namePredicate = [](std::string val)
 
     return true;
 };
+
+void NewGrid(GridNetwork* gn)
+{
+    std::string name, topic;
+    try
+    {
+        name = ReadValue<std::string>("Name (max 25 characters): ", [gn](const std::string& name)
+        {
+            if (!_namePredicate(name))
+                return false;
+
+            try
+            {
+                gn->GetGrid(name);
+            }
+            catch (UnknownGrid&) // grid doesn't already exist, name is valid
+            {
+            	return true;
+            }
+
+            std::cout << "A Grid with the same name already exists." << std::endl << "Please try again." << std::endl;
+            return false;
+        });
+        topic = ReadValue<std::string>("Topic (max 25 characters): ", _namePredicate);
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("New Grid");
+    }
+
+    gn->NewGrid(name, topic);
+
+    PauseConsole();
+    ClearConsole();
+}
+
+void ChangeGridName(GridNetwork* gn)
+{
+    std::string name, newName;
+
+    try
+    {
+        name = ReadValue<std::string>("Old name (max 25 characters): ", [gn](const std::string& name)
+        {
+            if (!_namePredicate(name))
+                return false;
+
+            try
+            {
+                gn->GetGrid(name);
+            }
+            catch (UnknownGrid&) // grid doesn't exist, name is invalid
+            {
+                std::cout << "A Grid with that name could not be found." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+
+            return true;
+        });
+
+        newName = ReadValue<std::string>("New name (max 25 characters): ", [gn](const std::string& name)
+        {
+            if (!_namePredicate(name))
+                return false;
+
+            try
+            {
+                gn->GetGrid(name);
+            }
+            catch (UnknownGrid&) // grid doesn't already exist, name is valid
+            {
+                return true;
+            }
+
+            std::cout << "A Grid with the same name already exists." << std::endl << "Please try again." << std::endl;
+            return false;
+        });
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("New Grid");
+    }
+
+    gn->ChangeGridName(name, newName);
+
+    PauseConsole();
+    ClearConsole();
+}
+
+void ChangeGridTopic(GridNetwork* gn)
+{
+    std::string name, newTopic;
+
+    try
+    {
+        name = ReadValue<std::string>("Name (max 25 characters): ", [gn](const std::string& name)
+        {
+            if (!_namePredicate(name))
+                return false;
+
+            try
+            {
+                gn->GetGrid(name);
+            }
+            catch (UnknownGrid&) // grid doesn't exist, name is invalid
+            {
+                std::cout << "A Grid with that name could not be found." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+
+            return true;
+        });
+
+        newTopic = ReadValue<std::string>("New topic (max 25 characters): ", _namePredicate);
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("New Grid");
+    }
+
+    gn->ChangeGridTopic(name, newTopic);
+
+    PauseConsole();
+    ClearConsole();
+}
+
+void RemoveGrid(GridNetwork* gn)
+{
+    std::string name;
+
+    try
+    {
+        name = ReadValue<std::string>("Name (max 25 characters): ", [gn](const std::string& name)
+        {
+            if (!_namePredicate(name))
+                return false;
+
+            try
+            {
+                gn->GetGrid(name);
+            }
+            catch (UnknownGrid&) // grid doesn't exist, name is invalid
+            {
+                std::cout << "A Grid with that name could not be found." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+
+            return true;
+        });
+
+        char sure = ReadValue<char>("Are you sure you want to remove " + name + " and all related resources? [Y/N] ");
+
+        if (sure != 'Y' && sure != 'y')
+        {
+            std::cout << "Action canceled." << std::endl;
+            return;
+        }
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("New Grid");
+    }
+
+    gn->RemoveGrid(name);
+
+    PauseConsole();
+    ClearConsole();
+}
+
+void SearchGrids(GridNetwork* gn)
+{
+    enum GridSearchOption
+    {
+        None = 0,
+        ByName = 1,
+        ByTopic = 2,
+        All = 3
+    };
+
+    if (gn->GetContainer().size() == 0)
+        throw std::runtime_error("There are no Grids in the GridNetwork.");
+
+    static Menu* searchMenu = Loader<Menu>("gridSearchMenu.txt").Load();
+
+    uint option = searchMenu->Print();
+
+    std::vector<const Grid*> vec;
+
+    switch (option)
+    {
+        case None:
+        {
+            throw ActionCanceled("Search Grids");
+        }
+        case ByName:
+        {
+            std::string name = ReadValue<std::string>("Exact Name (max 25 characters): ", _namePredicate);
+            vec = gn->ApplyPredicate([name](const Grid* grid) { return grid->GetName() == name; });
+            break;
+        }
+        case ByTopic:
+        {
+            std::string topic = ReadValue<std::string>("Exact Topic (max 25 characters): ", _namePredicate);
+            vec = gn->ApplyPredicate([topic](const Grid* grid) { return grid->GetTopic() == topic; });
+            break;
+        }
+        case All:
+        {
+            vec = gn->ApplyPredicate([](const Grid*) { return true; });
+            break;
+        }
+    }
+
+    if (vec.size() == 0)
+        std::cout << "No results." << std::endl;
+    else
+    {
+        Grid::PrintHeader();
+        for (auto g : gn->GetContainer())
+            g.second->Print();
+    }
+
+    PauseConsole();
+    ClearConsole();
+}
+
 
 void NewAcademicUser(GridManager* gm)
 {
@@ -203,7 +431,6 @@ void NewMachine(GridManager* gm)
                 --i;
             }
         }
-
     }
     catch (EOFCharacterValue)
     {
@@ -626,6 +853,7 @@ void SearchJobs(GridManager* gm)
 {
     enum JobSearchOption
     {
+        None = 0,
         ByName = 1,
         ByRAM = 2,
         ByDisk = 3,
@@ -647,7 +875,7 @@ void SearchJobs(GridManager* gm)
     {
         switch (option)
         {
-            case 0:
+            case None:
             {
                 throw ActionCanceled("Search Machines");
             }
@@ -814,9 +1042,9 @@ void SearchJobs(GridManager* gm)
         std::cout << "No results." << std::endl;
     else
     {
-        Job::PrintHeader(std::cout);
+        Job::PrintHeader();
         for (const Job* job : vec)
-            job->Print(std::cout);
+            job->Print();
     }
 
     PauseConsole();
@@ -1222,4 +1450,76 @@ void ChangeMachineInfo(GridManager* gm)
 
     PauseConsole();
     ClearConsole();
+}
+
+void ChangeGridManagerInfo(GridNetwork* gn)
+{
+    std::cout << "Change GridManager Information" << std::endl;
+
+    GridManager* gm;
+
+    try
+    {
+        gm = gn->GetGrid(ReadValue<std::string>("Name (max 25 characters, 0 - Show list): ", [gn](const std::string& name)
+        {
+            if (name == "0")
+            {
+                Grid::PrintHeader();
+
+                for (auto g : gn->GetContainer())
+                    g.second->Print();
+                return false;
+            }
+
+            try
+            {
+                gn->GetGrid(name);
+            }
+            catch (const UnknownGrid&)
+            {
+                std::cout << "A Grid with that name could not be found." << std::endl << "Please try again." << std::endl;
+                return false;
+            }
+
+            return true;
+        }))->GetGridManager();
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("Change GridManager Information");
+    }
+
+    ClearConsole();
+
+    bool success = false;
+
+    try
+    {
+        do
+        {
+            static std::function<void(GridManager*)> functions[] =
+            {
+                [&success](GridManager*) { success = true; },  // 1 - exit
+                NewAcademicUser,                               // 2
+                NewEnterpriseUser,                             // 3
+                RemoveUser,                                    // 4
+                NewMachine,                                    // 5
+                RemoveMachine,                                 // 6
+                NewJob,                                        // 7
+                SearchUsers,                                   // 8
+                SearchMachines,                                // 9
+                SearchJobs,                                    //10
+                ChangeUserInfo,                                //11
+                ChangeMachineInfo                              //12
+            };
+
+            uint32 option = GridManager::GetMenu()->Print();
+            functions[option == 0 ? 0 : option - 1](gm);
+
+        } while (!success);
+    }
+    catch (EOFCharacterValue)
+    {
+        throw ActionCanceled("Change GridManager Information");
+    }
 }

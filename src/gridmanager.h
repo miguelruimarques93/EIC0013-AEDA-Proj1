@@ -3,7 +3,6 @@
 
 #include "utils.h"
 #include "interfaces.h"
-#include "runnable.h"
 #include "machine.h"
 
 #include <map>
@@ -12,23 +11,21 @@
 #include <set>
 #include "job.h"
 #include "user.h"
-
-//! Hard coded save file.
-#define GRID_SAVE_FILE "gridComputing.grid"
+class Menu;
 
 //! GridManager Class
 /*!
     The GridManager class has information about users and machines.
     It enables the user of this class to Add, Remove and Get and Search Users and Machines, and has an interface to add Jobs to a User.
 */
-class GridManager : public ISave, public IUpdate, public Runnable
+class GridManager : public ISave, public IUpdate
 {
 public:
     typedef std::set<User*, IdLess<User>> UserSet;
     typedef std::set<Machine*, IdLess<Machine>> MachineSet;
     typedef std::set<PriorityMachine*, IdLess<PriorityMachine>> PriorityMachineSet;
     //! Constructor
-    GridManager() : _realPrevTime(0), _realCurrTime(0) { Start(); }
+    GridManager() {}
 
     //! Destructor
     ~GridManager();
@@ -186,13 +183,9 @@ public:
     template<class T, class R>
     std::vector<R> ApplySelector(std::function<R(const T*)> selector) const;
 
+    static Menu* GetMenu() { return _menu; } ///< Returns the menu for the GridManager class
+
 private:
-
-    /**
-    *   @brief Calls update functions of all the elements of the class, that can be updated, two times per second. It saves the instance every 5 seconds.
-    */
-    void Run();
-
     /**
     *   @brief Searches for a available machine and adds the given job to it.
     *   @param job to be added.
@@ -205,11 +198,6 @@ private:
     //! Last Machine Id added
     static uint _lastMachineId;
 
-    //! Time of the last update
-    uint64 _realPrevTime;
-    //! Time of the current update
-    uint64 _realCurrTime;
-
     
     //! Container that saves users
     UserSet _users;
@@ -219,6 +207,8 @@ private:
     /*std::map<uint, Machine*> _machines;*/
     //! Container that saves priority machines
     PriorityMachineSet _priorityMachines;
+
+    static Menu* _menu; ///< Menu associated with the GridManager class
 
 private: // no copying
     //! Copy constructor. Private to avoid copies of a GridManager instance.

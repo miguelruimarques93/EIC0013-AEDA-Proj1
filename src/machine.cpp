@@ -1,3 +1,3 @@
 #include "machine.h"
 
-uint  _Machine::_lastJobId = 1;
+uint _Machine::_lastJobId = 1;

@@ -1,4 +1,3 @@
-#include "gridmanager.h"
 #include "loader.h"
 #include "bytebuffer.h"
 #include "file.h"
@@ -7,6 +6,8 @@
 #include "menu.h"
 #include "menugrid.h"
 #include "consolereader.h"
+
+#include "gridnetwork.h"
 
 #include <memory>
 
@@ -22,11 +23,11 @@ int main(int, char**)
         return EXIT_FAILURE;
     }
 
-    std::unique_ptr<GridManager> gm;
+    std::unique_ptr<GridNetwork> gn;
 
     try
     {
-        gm = std::unique_ptr<GridManager>(Loader<GridManager>(GRID_SAVE_FILE).Load());
+        gn = std::unique_ptr<GridNetwork>(Loader<GridNetwork>(GRID_SAVE_FILE).Load());
     }
     catch (std::exception)
     {
@@ -36,25 +37,20 @@ int main(int, char**)
         File::Remove(GRID_SAVE_FILE);
     }
 
-    if (!gm) // no previous saves
-        gm = std::unique_ptr<GridManager>(new GridManager());
+    if (!gn) // no previous saves
+        gn = std::unique_ptr<GridNetwork>(new GridNetwork());
 
     bool executing = true;
 
-    std::function<void(GridManager*)> functions[] =
+    std::function<void(GridNetwork*)> functions[] =
     {
-        [&executing](GridManager*) { executing = false; },  // 1
-        NewAcademicUser,                                    // 2
-        NewEnterpriseUser,                                  // 3
-        RemoveUser,                                         // 4
-        NewMachine,                                         // 5
-        RemoveMachine,                                      // 6
-        NewJob,                                             // 7
-        SearchUsers,                                        // 8
-        SearchMachines,                                     // 9
-        SearchJobs,                                         //10
-        ChangeUserInfo,                                     //11
-        ChangeMachineInfo                                   //12
+        [&executing](GridNetwork*) { executing = false; },  // 1 - exit
+        NewGrid,                                            // 2
+        ChangeGridName,                                     // 3
+        ChangeGridTopic,                                    // 4
+        RemoveGrid,                                         // 5
+        SearchGrids,                                        // 6
+        ChangeGridManagerInfo,                              // 7
     };
 
     while (executing)
@@ -62,7 +58,7 @@ int main(int, char**)
         try
         {
             uint32 option = menu->Print();
-            functions[option == 0 ? 0 : option - 1](gm.get());
+            functions[option == 0 ? 0 : option - 1](gn.get());
         }
         catch (ActionCanceled& action)
         {
@@ -79,9 +75,8 @@ int main(int, char**)
 
     }
 
-    ByteBuffer bb(100);
-    gm->Save(bb);
-
+    ByteBuffer bb(100); // TODO: use a better guess
+    gn->Save(bb);
     File::Save(GRID_SAVE_FILE, bb, bb.Size());
 
     return EXIT_SUCCESS;

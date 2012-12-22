@@ -4,6 +4,7 @@
 #include "job.h"
 #include "log.h"
 #include "loader.h"
+#include "menu.h"
 
 #include <chrono>
 #include <iostream>
@@ -13,6 +14,7 @@
 
 uint GridManager::_lastUserId = 0;
 uint GridManager::_lastMachineId = 0;
+Menu* GridManager::_menu = Loader<Menu>("gridManagerMenu.txt").Load();
 
 GridManager::~GridManager()
 {
@@ -161,36 +163,6 @@ void GridManager::Update(uint32 diff)
 {
     for (auto machine : _machines)
         machine->Update(diff);
-}
-
-void GridManager::Run()
-{
-    _realCurrTime = GetCurrentTime();
-
-    uint saveDiff = 0;
-
-    while (!_stop)
-    {
-        _realPrevTime = _realCurrTime;
-        _realCurrTime = GetCurrentTime();
-
-        uint32 diff = GetTimeDiff(_realCurrTime, _realPrevTime);
-
-        /*sLog(Console)->Log("Diff: %u", diff);*/
-
-        Update(diff);
-
-        saveDiff += diff;
-        if (saveDiff >= 5000) // save every 5 seconds
-        {
-            saveDiff = 0;
-
-            if (!Saver<GridManager>(GRID_SAVE_FILE).Save(this))
-                sLog(Console)->Log("GridManager save failed in Update()");
-        }
-
-        std::this_thread::sleep_for(std::chrono::milliseconds(500)); // sleep for half a second
-    }
 }
 
 bool GridManager::AddJob(Job* job)

@@ -1,17 +1,8 @@
-=== Job Management in Grid Computing === (CTRL-Z or E to exit)
-- U#Manage Users
--- A#Add User
----* A#002#Add Academic User
----* E#003#Add Enterprise User
---* C#011#Change User Information
---* R#004#Remove User
---* L#008#Search Users
-- M#Manage Machines
---* A#005#Add Machine
---* C#012#Change Machine Information
---* R#006#Remove Machine
---* L#009#Search Machines
-- J#Manage Jobs
---* C#007#Create New Job
---* L#010#Search Jobs
+=== Job Management in Grid Computing - Network === (CTRL-Z or E to exit)
+-* G#002#New Grid
+-* N#003#Change Grid Name
+-* T#004#Change Grid Topic
+-* R#005#Remove Grid
+-* L#006#Search Grids
+-* C#007#Change Grid Manager Info
 -* E#001#Exit

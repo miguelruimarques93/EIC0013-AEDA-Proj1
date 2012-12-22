@@ -1,0 +1,4 @@
+Search Grid (CTRL-Z to cancel)
+-* 1#001#By Name
+-* 2#002#By Topic
+-* 3#003#All Grids

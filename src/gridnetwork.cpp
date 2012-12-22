@@ -1,6 +1,8 @@
 #include "gridnetwork.h"
 #include "grid.h"
 #include "bytebuffer.h"
+#include "loader.h"
+#include "log.h"
 #include <memory>
 #include <algorithm>
 
@@ -26,7 +28,8 @@ bool GridNetwork::Save(ByteBuffer& bb) const
     for (auto pair : _bst)
     {
         bb.WriteString(pair.first);
-        pair.second->Save(bb);
+        if (!pair.second->Save(bb))
+            return false;
     }
 
     return true;
@@ -53,7 +56,7 @@ void GridNetwork::ChangeGridName(const std::string& oldName, const std::string& 
     // change name
     temp->ChangeName(newName);
 
-    // add it back with new name
+    // add it back with new name (name is BST's key)
     _bst[newName] = temp;
 }
 
@@ -93,4 +96,51 @@ GridNetwork::~GridNetwork()
 void GridNetwork::AddGrid(const std::string& name, Grid* grid)
 {
     _bst[name] = grid;
+}
+
+void GridNetwork::Run()
+{
+    _realCurrTime = GetCurrentTime();
+
+    uint saveDiff = 0;
+
+    while (!_stop)
+    {
+        _realPrevTime = _realCurrTime;
+        _realCurrTime = GetCurrentTime();
+
+        uint32 diff = GetTimeDiff(_realCurrTime, _realPrevTime);
+
+        /*sLog(Console)->Log("Diff: %u", diff);*/
+
+        Update(diff);
+
+        saveDiff += diff;
+        if (saveDiff >= 5000) // save every 5 seconds
+        {
+            saveDiff = 0;
+
+            if (!Saver<GridNetwork>(GRID_SAVE_FILE).Save(this))
+                sLog(Console)->Log("GridNetwork save failed in Update()");
+        }
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(500)); // sleep for half a second
+    }
+}
+
+void GridNetwork::Update(uint32 diff)
+{
+    for (auto pair : _bst)
+        pair.second->Update(diff);
+}
+
+std::vector<const Grid*> GridNetwork::ApplyPredicate(std::function<bool(const Grid*)> predicate) const
+{
+    std::vector<const Grid*> result;
+
+    for (auto g : _bst)
+        if (predicate(g.second))
+            result.push_back(g.second);
+
+    return result;
 }

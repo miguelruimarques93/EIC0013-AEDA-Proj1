@@ -23,11 +23,6 @@
 
 typedef std::unordered_set<Software, Software::Hash> SoftwareSet;
 
-//! Machine Class
-/*!
-    Represents a computer where the Jobs are executed
-*/
-
 class _Machine
 {
 public:
@@ -38,7 +33,6 @@ protected:
     static uint _lastJobId; ///< The Id of the last job used
 };
 
-// typedefs
 typedef std::vector<const Job*> JobVector;
 
 template <class Container>
@@ -50,17 +44,18 @@ public:
     typedef std::set<Job*, IdLess<Job>> JobSet;
 
     /// Constructor
-    IMachine(const std::string& machineName, uint maxJobs, double totalRAM, double totalDiskSpace) : _id(0), _name(machineName), _maxJobs(maxJobs), _totalRAM(totalRAM), _totalDiskSpace(totalDiskSpace)
+    IMachine(const std::string& machineName, uint maxJobs, double totalRAM, double totalDiskSpace) :
+        _id(0), _name(machineName), _maxJobs(maxJobs), _totalRAM(totalRAM), _totalDiskSpace(totalDiskSpace)
     {
         if (_name.length() > _maxNameLength)
             _maxNameLength = _name.length();
     }
 
-    ~IMachine() { } /// Destructor
+    ~IMachine() { } ///< Destructor
 
     // Name function members
     const std::string& GetName() const { return _name; } ///< Returns the name of the Machine
-    void SetName(const std::string& name); ///! Updates the name of the Machine
+    void SetName(const std::string& name); ///< Updates the name of the Machine
 
     // Jobs function members
     uint GetMaxJobs() const { return _maxJobs; } ///< Returns the number limit of Jobs
@@ -102,7 +97,7 @@ public:
     // Static function members
     static void PrintHeader(std::ostream& os = std::cout); ///< Prints table header for machines
     static Menu* GetMenu() { return _menu; } ///< Returns the menu associated with Machine
-    static IMachine<Container>* Load(ByteBuffer& bb); ///< Loads a Machine from the given bytebuffer
+    static IMachine<Container>* Load(ByteBuffer& bb); ///< Loads a Machine from the given ByteBuffer
 
 protected:
     bool SoftwareMeetsRequirements(const Software& sw) const { return _availableSoftware.find(sw) != _availableSoftware.end(); } ///< Returns true if the given Software is available in the Machine
@@ -122,7 +117,7 @@ protected:
 
     mutable std::mutex _mutex; ///< Mutex (multithread safe way to change Jobs)
 
-    static Menu* _menu; ///< Associated menu
+    static Menu* _menu; ///< Menu associated with the Machine class
     static uint _maxNameLength; ///< The length of the biggest Machine name
 
     Container _currentJobs;
@@ -368,8 +363,8 @@ template <class Container>
 void IMachine<Container>::PrintHeader(std::ostream& os = std::cout)
 {
     os << "---------" << std::string(_maxNameLength, '-')    << "------------------------------------------------\n"
-        << "|  Id  | " << std::setw(_maxNameLength) << "Name" << " |   RAM (MB)    |   Disk (MB)   |    Jobs     |\n"
-        << "---------" << std::string(_maxNameLength, '-')    << "------------------------------------------------\n";
+       << "|  Id  | " << std::setw(_maxNameLength) << "Name" << " |   RAM (MB)    |   Disk (MB)   |    Jobs     |\n"
+       << "---------" << std::string(_maxNameLength, '-')    << "------------------------------------------------\n";
 }
 
 template <class Container>
