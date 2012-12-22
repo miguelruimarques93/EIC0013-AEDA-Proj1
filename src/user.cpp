@@ -73,14 +73,14 @@ User* User::Load(ByteBuffer& bb)
 
     switch (type)
     {
-        case SAVE_USER_TYPE_ACADEMIC:
+        case USER_TYPE_ACADEMIC:
         {
             uint32 jobCount = bb.ReadUInt32();
 
             user = new AcademicUser(name, jobCount);
             break;
         }
-        case SAVE_USER_TYPE_ENTERPRISE:
+        case USER_TYPE_ENTERPRISE:
         {
             double budget = bb.ReadDouble();
 
@@ -115,7 +115,7 @@ bool AcademicUser::Save(ByteBuffer& bb) const
     if (!User::Save(bb))
         return false;
 
-    bb.WriteUInt8(SAVE_USER_TYPE_ACADEMIC);
+    bb.WriteUInt8(USER_TYPE_ACADEMIC);
     bb.WriteUInt32(_jobCount);
 
     return true;
@@ -126,7 +126,7 @@ bool EnterpriseUser::Save(ByteBuffer& bb) const
     if (!User::Save(bb))
         return false;
 
-    bb.WriteUInt8(SAVE_USER_TYPE_ENTERPRISE);
+    bb.WriteUInt8(USER_TYPE_ENTERPRISE);
     bb.WriteDouble(_budget);
 
     return true;

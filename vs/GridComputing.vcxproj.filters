@@ -66,7 +66,7 @@
     <ClInclude Include="..\src\gridnetwork.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hashtable.h">
+    <ClInclude Include="..\src\idleuser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -110,7 +110,7 @@
     <ClCompile Include="..\src\machine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\hashtable.cpp">
+    <ClCompile Include="..\src\idleuser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

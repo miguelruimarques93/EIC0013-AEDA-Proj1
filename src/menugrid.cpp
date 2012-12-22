@@ -210,7 +210,7 @@ void SearchGrids(GridNetwork* gn)
         All = 3
     };
 
-    if (gn->GetContainer().size() == 0)
+    if (gn->GetContainer().empty())
         throw std::runtime_error("There are no Grids in the GridNetwork.");
 
     static Menu* searchMenu = Loader<Menu>("gridSearchMenu.txt").Load();
@@ -244,7 +244,7 @@ void SearchGrids(GridNetwork* gn)
         }
     }
 
-    if (vec.size() == 0)
+    if (vec.empty())
         std::cout << "No results." << std::endl;
     else
     {

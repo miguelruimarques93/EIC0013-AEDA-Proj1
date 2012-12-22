@@ -10,11 +10,11 @@
 #include "bytebuffer.h"
 #include "menu.h"
 
-/// Enum used in load and save actions to distinguish academic and enterprise Users
-enum SaveUserType
+/// Enum (used in load and save actions) to distinguish academic and enterprise Users
+enum UserType
 {
-    SAVE_USER_TYPE_ACADEMIC,
-    SAVE_USER_TYPE_ENTERPRISE,
+    USER_TYPE_ACADEMIC,
+    USER_TYPE_ENTERPRISE,
 };
 
 //! User abstract Class
