@@ -7,7 +7,7 @@
 
 uint IdleUser::_maxNameLength = 0;
 
-IdleUser::IdleUser(const std::string& name, uint id, UserType type) : _name(name), _id(id), _type(type)
+IdleUser::IdleUser(const std::string& name, uint id, UserType type) : _name(name), _id(id), _type(type), _elapsedTime(0)
 {
     if (_name.length() > _maxNameLength)
         _maxNameLength = _name.length();
@@ -58,7 +58,7 @@ void IdleUser::Update(uint32 diff)
 void IdleUser::Print(std::ostream& os /*= std::cout*/) const
 {
     os << "| " << std::setfill('0') << std::setw(4) << std::right << _id << " | " << std::setfill(' ') <<
-        std::setw(_maxNameLength) << std::left << _name << std::setw(10) << UserTypeStr[_type] << " | " << std::setw(13) << _elapsedTime << " |\n"
+        std::setw(_maxNameLength) << std::left << _name << " | " << std::setw(10) << UserTypeStr[_type] << " | " << std::setw(13) << _elapsedTime << " |\n"
        << "---------" << std::string(_maxNameLength, '-')    << "-------------------------------\n";
 }
 
