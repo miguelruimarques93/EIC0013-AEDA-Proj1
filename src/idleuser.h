@@ -6,7 +6,11 @@
 
 #include "utils.h"
 #include "interfaces.h"
-#include "user.h"
+
+#define REMOVAL_TIME_SECS 3600
+
+enum UserType;
+class User;
 
 class IdleUser : public IUpdate, public ISave
 {
