@@ -3,12 +3,22 @@
 #include "log.h"
 
 #include <algorithm>
+#include <iomanip>
+
+uint IdleUser::_maxNameLength = 0;
+
+IdleUser::IdleUser(const std::string& name, uint id, UserType type) : _name(name), _id(id), _type(type)
+{
+    if (_name.length() > _maxNameLength)
+        _maxNameLength = _name.length();
+}
 
 bool IdleUser::Save(ByteBuffer& bb) const
 {
     bb.WriteString(_name);
     bb.WriteUInt32(_id);
     bb.WriteUInt8((uint8)_type);
+    bb.WriteUInt32(_elapsedTime);
 
     return true;
 }
@@ -18,8 +28,12 @@ IdleUser* IdleUser::Load(ByteBuffer& bb)
     std::string name = bb.ReadString();
     uint id = bb.ReadUInt32();
     uint8 type = bb.ReadUInt8();
+    uint32 elapsedTime = bb.ReadUInt32();
 
-    return new IdleUser(name, id, (UserType)type);
+    IdleUser* iu = new IdleUser(name, id, (UserType)type);
+    iu->_elapsedTime = elapsedTime;
+
+    return iu;
 }
 
 IdleUser* IdleUser::FromUser(const User* user)
@@ -39,6 +53,20 @@ void IdleUser::Update(uint32 diff)
         _elapsedTime += 1;
         elapsedMS = 0;
     }
+}
+
+void IdleUser::Print(std::ostream& os /*= std::cout*/) const
+{
+    os << "| " << std::setfill('0') << std::setw(4) << std::right << _id << " | " << std::setfill(' ') <<
+        std::setw(_maxNameLength) << std::left << _name << std::setw(10) << UserTypeStr[_type] << " | " << std::setw(13) << _elapsedTime << " |\n"
+       << "---------" << std::string(_maxNameLength, '-')    << "-------------------------------\n";
+}
+
+void IdleUser::PrintHeader(std::ostream& os /*= std::cout*/)
+{
+    os << "---------" << std::string(_maxNameLength, '-')    << "-------------------------------\n"
+       << "|  Id  | " << std::setw(_maxNameLength) << "Name" << " |    Type    | Idle time (s) |\n"
+       << "---------" << std::string(_maxNameLength, '-')    << "-------------------------------\n";
 }
 
 bool IdleUserContainer::Save(ByteBuffer& bb) const

@@ -4,14 +4,16 @@
 #include "utils.h"
 #include "interfaces.h"
 #include "machine.h"
+#include "idleuser.h"
 
 #include <map>
 #include <vector>
 #include <functional>
 #include <set>
-#include "job.h"
-#include "user.h"
+
 class Menu;
+class User;
+class Job;
 
 //! GridManager Class
 /*!
@@ -198,7 +200,6 @@ private:
     //! Last Machine Id added
     static uint _lastMachineId;
 
-
     //! Container that saves users
     UserSet _users;
     /*std::map<uint, User*> _users;*/
@@ -209,6 +210,8 @@ private:
     PriorityMachineSet _priorityMachines;
 
     static Menu* _menu; ///< Menu associated with the GridManager class
+
+    IdleUserContainer _idleUsers; ///< Container used to store users that are removed
 
 private: // no copying
     //! Copy constructor. Private to avoid copies of a GridManager instance.

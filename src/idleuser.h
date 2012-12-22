@@ -12,16 +12,17 @@
 enum UserType;
 class User;
 
-class IdleUser : public IUpdate, public ISave
+class IdleUser : public IUpdate, public ISave, public IPrint
 {
 private:
     std::string _name;
     uint _id;
     UserType _type;
     uint32 _elapsedTime;
+    static uint _maxNameLength;
 
 public:
-    IdleUser(const std::string& name, uint id, UserType type) : _name(name), _id(id), _type(type) {}
+    IdleUser(const std::string& name, uint id, UserType type);
 
     static IdleUser* FromUser(const User* user);
 
@@ -35,6 +36,9 @@ public:
     static IdleUser* Load(ByteBuffer& bb);
 
     virtual void Update(uint32 diff);
+
+    virtual void Print(std::ostream& os = std::cout) const;
+    static void PrintHeader(std::ostream& os = std::cout); ///< Prints table header for IdleUsers
 };
 
 class IdleUserContainer : public IUpdate, public ISave
@@ -43,12 +47,9 @@ private:
     std::unordered_map<uint, IdleUser*> _hashTable;
 
 public:
-    /*
-    bool Empty();
-    void InsertUser(User* user);
-    bool RemoveUser(const std::string& name);
-    bool RemoveUser(const uint& id);
-    */
+    const std::unordered_map<uint, IdleUser*>& GetContainer() const { return _hashTable; }
+
+    void InsertUser(IdleUser* user) { _hashTable[user->GetId()] = user; }
 
     virtual bool Save(ByteBuffer& bb) const;
 

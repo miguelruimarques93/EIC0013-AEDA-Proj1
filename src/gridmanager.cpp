@@ -43,6 +43,8 @@ bool GridManager::Save(ByteBuffer& bb) const
     for (auto pMachine : _priorityMachines)
         pMachine->Save(bb);
 
+    _idleUsers.Save(bb);
+
     return true;
 }
 
@@ -66,6 +68,8 @@ GridManager* GridManager::Load(ByteBuffer& bb)
     for (uint32 i = 0; i < priorityMachinesCount; ++i)
         gm->AddPriorityMachine(PriorityMachine::Load(bb));
 
+    gm->_idleUsers = *IdleUserContainer::Load(bb);
+
     return gm;
 }
 
@@ -78,6 +82,8 @@ bool GridManager::RemoveUser(const User* user)
         sLog(Console)->Log("GridManager::RemoveUser(User*): Could not find user %s in GridManager", user->GetName().c_str());
         return false;
     }
+
+    _idleUsers.InsertUser(IdleUser::FromUser(*it));
 
     delete *it;
     _users.erase(it);
@@ -94,6 +100,8 @@ bool GridManager::RemoveUser(uint id)
         sLog(Console)->Log("GridManager::RemoveUser(uint): Could not find user with id %u in GridManager", id);
         return false;
     }
+
+    _idleUsers.InsertUser(IdleUser::FromUser(*it));
 
     delete *it;
     _users.erase(it);
@@ -163,6 +171,8 @@ void GridManager::Update(uint32 diff)
 {
     for (auto machine : _machines)
         machine->Update(diff);
+
+    _idleUsers.Update(diff);
 }
 
 bool GridManager::AddJob(Job* job)

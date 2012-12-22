@@ -17,6 +17,8 @@ enum UserType
     USER_TYPE_ENTERPRISE,
 };
 
+static char* UserTypeStr[] = { "Academic", "Enterprise" };
+
 //! User abstract Class
 /*!
     User represents a person or a collective of persons that can interact with GridManager by creating Jobs
