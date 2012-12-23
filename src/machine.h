@@ -141,7 +141,7 @@ bool IMachine<Container>::ChangeJobPriority(uint id, uint8 newPriority)
 {
     _mutex.lock();
     Container temp;
-    
+
     bool found = false;
 
     for( ; !_currentJobs.empty() && !found; _currentJobs.pop())

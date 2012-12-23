@@ -8,7 +8,7 @@
 #include "interfaces.h"
 
 /// After this time has passed, the user is removed from the list of removed users
-#define REMOVAL_TIME_SECS 3600 
+#define REMOVAL_TIME_SECS 3600
 
 enum UserType;
 class User;

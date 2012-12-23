@@ -26,6 +26,7 @@ namespace File
         if (!size)
         {
             sLog(Console)->Log("File::Load: Could not open file %s (size is 0)", fileName);
+            fclose(file);
             return false;
         }
 
@@ -33,6 +34,7 @@ namespace File
         if (!buffer)
         {
             sLog(Console)->Log("File::Load: Failed to allocate buffer for file %s (size %u)", fileName, size);
+            fclose(file);
             return false;
         }
 
@@ -41,6 +43,7 @@ namespace File
         {
             sLog(Console)->Log("File::Load: Could not read the same number of bytes (size != result) for file %s (size %u, result %u)", fileName, size, result);
             delete[] buffer;
+            fclose(file);
             return false;
         }
 
@@ -63,6 +66,7 @@ namespace File
         size_t result = fwrite(buffer, sizeof(char), size, file);
         if (result != size)
         {
+            fclose(file);
             sLog(Console)->Log("File::Save: Could not write the same number of bytes (size != result) for file %s (size %u, result %u)", fileName, size, result);
             return false;
         }

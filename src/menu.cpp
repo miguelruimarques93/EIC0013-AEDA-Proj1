@@ -112,7 +112,7 @@ Menu* Menu::Load(ByteBuffer& bb)
                 buffer.ignore(1, '#');
                 std::string label;
                 std::getline(buffer, label, '\n');
-                levelMenu = (Menu*)levelMenu->AddMenu(shortcut, label);
+                levelMenu = static_cast<Menu*>(levelMenu->AddMenu(shortcut, label));
                 level++;
             }
         }

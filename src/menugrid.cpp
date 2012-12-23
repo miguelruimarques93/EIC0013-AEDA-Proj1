@@ -867,7 +867,7 @@ void SearchUsers(GridManager* gm)
         }
     }
 
-    if (vec.size() == 0)
+    if (vec.empty())
         std::cout << "No results." << std::endl;
     else
     {
@@ -884,6 +884,7 @@ void SearchMachines(GridManager* gm)
 {
     enum MachineSearchOption
     {
+        None = 0,
         ByName = 1,
         ByRAM = 2,
         ByDisk = 3,
@@ -904,7 +905,7 @@ void SearchMachines(GridManager* gm)
     {
         switch (option)
         {
-            case 0:
+            case None:
             {
                 throw ActionCanceled("Search Machines");
             }
@@ -1034,7 +1035,7 @@ void SearchMachines(GridManager* gm)
         throw ActionCanceled("Search Machines");
     }
 
-    if (vec.size() == 0)
+    if (vec.empty())
         std::cout << "No results." << std::endl;
     else
     {
@@ -1201,7 +1202,7 @@ void SearchPriorityMachines(GridManager* gm)
         throw ActionCanceled("Search Priority Machines");
     }
 
-    if (vec.size() == 0)
+    if (vec.empty())
         std::cout << "No results." << std::endl;
     else
     {
@@ -1404,7 +1405,7 @@ void SearchJobs(GridManager* gm)
         throw ActionCanceled("Search Jobs");
     }
 
-    if (vec.size() == 0)
+    if (vec.empty())
         std::cout << "No results." << std::endl;
     else
     {
@@ -1491,7 +1492,8 @@ void ChangeUserInfo(GridManager* gm)
                             }
                             return true;
                         });
-                        ((EnterpriseUser*)user)->SetBudget(val);
+
+                        static_cast<EnterpriseUser*>(user)->SetBudget(val);
                         std::cout << "Enterprise user budget changed with success." << std::endl;
                         success = true;
                     }
@@ -1705,7 +1707,7 @@ void ChangeMachineInfo(GridManager* gm)
                 }
                 case 7: // List Available Software
                 {
-                    if (machine->GetAvailableSoftware().size() == 0)
+                    if (machine->GetAvailableSoftware().empty())
                         std::cout << "This machine doesn't have any software installed." << std::endl;
                     else
                     {
