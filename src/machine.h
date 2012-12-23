@@ -97,6 +97,7 @@ public:
     const Job* GetJob(uint id) const;
     bool RemoveJob(uint id);
     void RemoveAllJobs(); ///< Removes all Jobs from this Machine
+    bool ChangeJobPriority(uint id, uint8 newPriority); ///< Changes job with the given id priority
     uint GetNumberOfCurrentJobs() const { return _currentJobs.size(); } ///< Returns the number of Jobs being executed
 
     bool Save(ByteBuffer& bb) const override; ///< Saves the Machine data to a ByteBuffer
@@ -134,6 +135,40 @@ private: // no copying
     IMachine(const IMachine&);
     IMachine& operator =(IMachine const&);
 };
+
+template <class Container>
+bool IMachine<Container>::ChangeJobPriority(uint id, uint8 newPriority)
+{
+    _mutex.lock();
+    Container temp;
+    
+    bool found = false;
+
+    for( ; !_currentJobs.empty() && !found; _currentJobs.pop())
+    {
+        if (_currentJobs.top() && _currentJobs.top()->GetId() == id)
+        {
+            found = true;
+
+            Job* j = _currentJobs.top();
+            _currentJobs.pop();
+            j->SetPriority(newPriority);
+            _currentJobs.push(j);
+        }
+        else
+            temp.push(_currentJobs.top());
+    }
+
+    while (!temp.empty())
+    {
+        _currentJobs.push(temp.top());
+        temp.pop();
+    }
+
+    _mutex.unlock();
+    return found;
+}
+
 
 /// Exception thrown when some action tried to change a Machine while it is being used
 class MachineInExecution : public std::exception

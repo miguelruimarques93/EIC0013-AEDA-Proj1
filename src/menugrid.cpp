@@ -697,7 +697,7 @@ void NewJob(GridManager* gm)
     uint executionTime;
     std::vector<Software> software;
 
-    if (gm->GetNumberOfMachines() == 0)
+    if (gm->GetNumberOfMachines() == 0 && gm->GetNumberOfPriorityMachines() == 0)
         throw std::runtime_error("There are no machines in the GridManager.");
 
     if (gm->GetNumberOfUsers() == 0)
@@ -1820,6 +1820,7 @@ void ChangeMachineInfo(GridManager* gm)
 
 void ChangePriorityMachineInfo(GridManager* gm)
 {
+    static Menu* pMenu = Loader<Menu>("priorityMachineMenu.txt").Load();
     std::cout << "Change Priority Machine Information" << std::endl;
 
     PriorityMachine* pMachine;
@@ -1857,7 +1858,7 @@ void ChangePriorityMachineInfo(GridManager* gm)
         do
         {
             std::cout << "Priority Machine - Id: " << pMachine->GetId() << " Name: " << pMachine->GetName() << std::endl;
-            uint32 option = PriorityMachine::GetMenu()->Print();
+            uint32 option = pMenu->Print();
 
             switch (option)
             {
@@ -2112,6 +2113,42 @@ void ChangePriorityMachineInfo(GridManager* gm)
                     }
 
                     success = true;
+                    break;
+                }
+            case 12:
+                {
+                    const Job* job = pMachine->GetJob(ReadValue<uint>("Id (0 - Show list): ", [pMachine](uint val)
+                    {
+                        if (val == 0)
+                        {
+                            Job::PrintHeader(std::cout, true);
+                            for (auto elem : pMachine->GetJobs())
+                            {
+                                std::cout << "| " << std::setfill('0') << std::setw(4) << std::right << elem << " ";
+                                elem->PrintWithId(std::cout);
+                            }
+                            return false;
+                        }
+                        else if (!pMachine->GetJob(val))
+                        {
+                            std::cout << "Id """ << val << """ is not currently in use."<< std::endl << "Please try again." << std::endl;
+                            return false;
+                        }
+                        return true;
+                    }));
+
+                    uint8 priority = static_cast<uint8>(ReadValue<uint16>("New Priority [0-100](%): ", [](uint16 val)
+                    {
+                        if (val < 1 || val > 100)
+                        {
+                            std::cout << "Priority must be between 1 % and 100 %."<< std::endl << "Please try again." << std::endl;
+                            return false;
+                        }
+                        return true;
+                    }));
+
+                    pMachine->ChangeJobPriority(job->GetId(), priority);
+
                     break;
                 }
             }

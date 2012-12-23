@@ -57,6 +57,7 @@ public:
     void SetId(uint val) { _id = val; }
     const std::string& GetName() const { return _name; } ///< Returns the name of the Job
     uint8 GetPriority() const { return _priority; } ///< Returns the priority of the Job
+    void SetPriority(uint8 val) { _priority = val; } ///< Sets job's priority with val
     double GetRequiredRAM() const { return _requiredRAM; } ///< Returns the required amount of RAM (MB)
     double GetRequiredDiskSpace() const { return _requiredDiskSpace; } ///< Returns the required amount of disk space (MB)
     uint GetTotalExecutionTime() const { return _totalExecutionTime; } ///< Returns the total number of seconds to execute the Job
@@ -64,7 +65,7 @@ public:
 
     double GetPrice() const { return 0.05 * _requiredRAM; } ///< Returns the price of the Job (5 cents per MB of RAM)
 
-    bool Finished() const { return _totalExecutionTime <= _elapsedTime; } ///< Returns true if the Job fnished
+    bool Finished() const { return _totalExecutionTime <= _elapsedTime; } ///< Returns true if the Job finished
     void Finish() { _elapsedTime = _totalExecutionTime; } ///< Forces the Job to abruptly end
 
     bool Save(ByteBuffer& bb) const override; ///< Saves Job data to a ByteBuffer
@@ -88,7 +89,7 @@ private:
     uint _elapsedTime; ///< The number of seconds since the Job was created
     uint _ms; ///< Helper member to count the number of milliseconds since _elapsedTime was changed
     SoftwareSet _requiredSoftware; ///< Set of required software to execute the Job
-    const uint8 _priority; ///< Priority
+    uint8 _priority; ///< Priority
 
     const std::string _name; ///< Name of the job
     uint _id;

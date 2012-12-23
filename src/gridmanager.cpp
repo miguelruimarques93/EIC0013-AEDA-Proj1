@@ -418,7 +418,9 @@ uint GridManager::AddMachine(Machine* machine)
 uint GridManager::GetNumberOfJobs() const
 {
     return std::accumulate(_machines.begin(), _machines.end(), 0,
-        [](uint sum, Machine* mach) { return sum + mach->GetNumberOfCurrentJobs(); });
+        [](uint sum, Machine* mach) { return sum + mach->GetNumberOfCurrentJobs(); }) +
+           std::accumulate(_priorityMachines.begin(), _priorityMachines.end(), 0,
+        [](uint sum, PriorityMachine* pMach) { return sum + pMach->GetNumberOfCurrentJobs(); });
 }
 
 bool GridManager::RemoveMachineJob(Machine* machine, uint jobId)

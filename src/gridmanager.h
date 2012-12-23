@@ -5,6 +5,7 @@
 #include "interfaces.h"
 #include "machine.h"
 #include "idleuser.h"
+#include "menugrid.h"
 
 #include <map>
 #include <vector>
@@ -26,6 +27,7 @@ public:
     typedef std::set<User*, IdLess<User>> UserSet;
     typedef std::set<Machine*, IdLess<Machine>> MachineSet;
     typedef std::set<PriorityMachine*, IdLess<PriorityMachine>> PriorityMachineSet;
+
     //! Constructor
     GridManager() {}
 
