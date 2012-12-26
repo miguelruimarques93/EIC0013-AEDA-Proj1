@@ -8045,6 +8045,1882 @@
         Id="b54715b2-e352-4eb8-b17e-f873703b800b"
         name="const Machine*" />
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="f860e533-2687-4b3c-96d7-ea115bdcba5c"
+        name="Grid"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="d18f1055-6d40-4a29-99ae-a05ec6aaa2ce">
+            <interfaceMoniker
+              Id="06286794-99ea-4787-a1d8-e5b51819b59a"
+              LastKnownName="IUpdate"
+              LastKnownLocation="UML.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="1f5873d5-8eb8-4558-98d4-0254451e47f6">
+            <interfaceMoniker
+              Id="dad8ffa0-c3f4-47b5-bf1e-f55fca517ebf"
+              LastKnownName="IPrint"
+              LastKnownLocation="UML.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="b991b38a-a762-4462-a733-847a19ab28dd">
+            <interfaceMoniker
+              Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
+              LastKnownName="ISave"
+              LastKnownLocation="UML.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="86ed16e5-f880-4d8d-8c12-b1700faf7dec"
+            name="_gm"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="1f97894e-fcf9-4e5c-bb4d-bcb26f8f79dd"
+                LastKnownName="GridManager*"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="3470ccd8-7750-448e-acbc-c8b81a7290dd"
+            name="_name"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="2eb53f15-adca-4c6a-9ebf-ab0100a04f39"
+                LastKnownName="string"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="c129faf6-37d6-4363-8395-87c01b90fb3d"
+            name="_topic"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="2eb53f15-adca-4c6a-9ebf-ab0100a04f39"
+                LastKnownName="string"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="a63d455a-ae43-473a-8fb6-8a8b789319be"
+            name="_maxNameLength"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0e469a49-eab3-4096-8831-a7dcbfbc7eaf"
+                LastKnownName="static uint"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="3f5e55fb-3047-4037-bcb3-45f956ffd174"
+            name="_maxTopicLength"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0e469a49-eab3-4096-8831-a7dcbfbc7eaf"
+                LastKnownName="static uint"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="a9aceb0c-fe0b-4849-aa7d-590ffac81e45"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="97c719f6-fbf1-4b34-aac8-df8a08133276"
+                  name="uint32 diff"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="366fd8ba-5941-43f7-a224-5a0e3379a576"
+            name="Print"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8c222571-4716-4fa2-9b5b-78b1b5efb725"
+                  name="ostream&amp; os"
+                  direction="In"
+                  isUnique="false">
+                  <defaultValue>
+                    <literalString
+                      Id="032f9bbe-1dbc-4b6a-9e1d-15335815b787"
+                      value="cout" />
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="494f280f-0a46-46a5-96b4-1d422302b6ec"
+            name="Save"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8644e8f3-dcc5-480e-a676-60c12d9a3055"
+                  name="ByteBuffer&amp; bb"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f52ce70b-3b79-4eaf-b3ed-a60c03efc4da"
+                  direction="Return">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="4ac36e08-f7fe-4e60-9518-71e2153067b4"
+                      LastKnownName="bool"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="0ea1ce7d-b36a-4c93-a205-d4f0988d9c2f"
+            name="Grid"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="17afcca9-21bb-4ba4-84ab-a4e355545b40"
+                  name="const string&amp; name"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d6109cf5-d557-4071-bae6-107dfe82ddd6"
+                  name="const string&amp; topic"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e96bd1c4-ed62-4b3d-a40a-17e94e1692bd"
+                  name="GridManager* gm"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="a6d142bf-7e4e-4ee5-bf6e-ef7d3480abb9"
+            name="Grid"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="2806f094-1493-455c-b997-e7700ce32c7a"
+                  name="const string&amp; name"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7e177815-3d58-48c3-b240-8bcd99e5937b"
+                  name="const string&amp; topic"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="771786e6-4f75-4c02-b567-749c639abc74"
+            name="~Grid"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="714bd3b5-dfa6-4cb2-a3ed-1cf699fdcd5f"
+            name="GetGridManager"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="724210bc-b30f-457f-9e78-aac72684abb6"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="1f97894e-fcf9-4e5c-bb4d-bcb26f8f79dd"
+                      LastKnownName="GridManager*"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="1dd9ea7f-d5f4-4291-b525-92d0d65dcfb6"
+            name="GetName() const :  const string&amp; "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="928e4b67-ad70-488a-b204-3495dcb6fc87"
+            name="ChangeName"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="9423dac5-2f64-4b7f-96a1-76fe4473c68b"
+                  name="const string&amp; name"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="97fce91e-5951-4c60-9587-7e5327e22a66"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0fb97fd6-36a6-4a56-9e28-c1d23421513f"
+                      LastKnownName="void"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="8a719db2-9834-4259-b93f-d636c214ddff"
+            name="GetTopic() const : const string&amp; "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="6fd7e349-dd24-4a7e-b965-2d19f270018f"
+            name="ChangeTopic"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0dd67fae-8d30-412a-9f12-2671d4966f31"
+                  name="const string&amp; topic"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d65bee8f-6e1c-4749-9aa2-b5f75f68b0bc"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0fb97fd6-36a6-4a56-9e28-c1d23421513f"
+                      LastKnownName="void"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="3d6d1411-1391-43eb-a632-4c47421b2d28"
+            name="GetAvailableMachineCount() const : uint "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="08314117-4f0a-4232-b3ea-3ea41f5e50c8"
+            name="HighestMachineRAM() const : double "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="7158b666-8cc0-4237-85e0-21ea1ff7f988"
+            name="TotalDiskSpace() const : double "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="c26497e7-2db5-44c7-90f6-3bc5e496b69f"
+            name="Load"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e0c6afb9-9afd-4a8c-a1ab-d6ed7eab2bdf"
+                  name="ByteBuffer&amp; bb"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="57585086-17b4-41ba-9522-6cf1e260e7ff"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="e7fbb436-b1c6-42b5-a2c2-a38874cc030e"
+                      LastKnownName="static Grid*"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="a511d863-d666-471a-893d-03aa2f3b52e4"
+            name="Save(ByteBuffer&amp; bb) const override : bool "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="b8c0d081-bca5-404c-aca4-6ccbe48cba53"
+            name="Update(uint32 diff) override : void "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="b1716957-76ca-4012-8a28-b4a4d7a4f920"
+            name="Print(ostream&amp; os = cout) const override : void "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="fe7f61d3-f06e-4adf-9098-88564abcf8cd"
+            name="PrintHeader"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="6399be44-f5e1-4f1f-83c6-2004d24614b8"
+                  name="ostream&amp; os"
+                  direction="In"
+                  isUnique="false">
+                  <defaultValue>
+                    <literalString
+                      Id="e5ddb6d2-cacd-4076-9fcc-38539c2fa31a"
+                      name="DefaultValue"
+                      value="cout" />
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="bd467245-5a34-4b8b-88f8-ed1285d6064e"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="b1650308-fea2-4984-bd55-7eaad738adbf"
+                      LastKnownName="static void"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="208cde79-fee9-469a-b4af-4c4956dfbd5c"
+            name="Grid"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c7ccbb6e-b253-4444-ada1-5d5e740ec363"
+                  name="const Grid&amp;"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="723e65f7-b22e-450f-b0b0-7ae7ff4ec093"
+            name="operator ="
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8943147d-ae30-478e-9c81-d7769c1922e9"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="7496fc47-3f80-4b37-87ae-8420f0870774"
+                      LastKnownName="Grid&amp;"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3361a615-ed02-4657-be4e-5d2d3154aeea"
+                  name="Grid const&amp;"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="0fb97fd6-36a6-4a56-9e28-c1d23421513f"
+        name="void" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="e7fbb436-b1c6-42b5-a2c2-a38874cc030e"
+        name="static Grid*" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="b1650308-fea2-4984-bd55-7eaad738adbf"
+        name="static void" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="7496fc47-3f80-4b37-87ae-8420f0870774"
+        name="Grid&amp;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="9b24878e-ee64-46d1-a76e-0040a1b3892c"
+        name="ExistingGrid"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="89489cd8-7e75-4686-a2ab-84852cfd9c8c"
+            name="_name"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="6601cdbc-1533-4941-aa51-0076eb2f62af"
+            name="ExistingGrid"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b802dcb5-99c4-4f42-9984-312daada0f2b"
+                  name="const string&amp; name"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="ffc60eca-933e-41ea-a923-a989e2f3c1ad"
+            name="GetExistingName() const :  const string&amp; "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="4c08f42b-7aa3-4bf1-8d27-6a1531a3c775"
+        name="UnknownGrid"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="7fd94ee7-5d0a-4feb-9011-eafff7fb733f"
+            name="_name"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="c3298bd7-4c79-4f8e-ac3b-237a85d1d309"
+            name="UnknownGrid"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a34c3eaa-0d83-476b-b1c9-c7f0d32249ff"
+                  name="const string&amp; name"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="25d2a316-9ee4-40c0-8b08-cc6dd4f07e88"
+            name="GetUnknownName() const : const string&amp; "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="df0ad40d-a3b6-41bd-931c-7518e93c3c8a"
+        name="GridNetwork"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="c1a3187a-cce7-4035-a4b2-ee0a97ed4ac8">
+            <interfaceMoniker
+              Id="06286794-99ea-4787-a1d8-e5b51819b59a"
+              LastKnownName="IUpdate"
+              LastKnownLocation="UML.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="91c3176b-f2c4-46a5-bdc1-bbc1912e9449">
+            <interfaceMoniker
+              Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
+              LastKnownName="ISave"
+              LastKnownLocation="UML.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization
+            Id="e2801e31-b83c-4f2d-a3b7-e8bf993ce359"
+            isSubstitutable="false">
+            <classMoniker
+              Id="b1d37dce-10c3-447b-afff-250e08b55169"
+              LastKnownName="Runnable"
+              LastKnownLocation="UML.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="3b0bd493-a655-4fb2-a6b2-497d698293ce"
+            name="_bst"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="eeac1bf6-35ab-4ec2-a7f7-720d62a76740"
+                LastKnownName="map&lt;string, Grid*&gt;"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="4e24e902-28de-412d-bb94-ab47d41f810a"
+            name="_realPrevTime"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="7789f4e4-7365-4d34-aaa3-10376b017f38"
+                LastKnownName="uint64"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="4642e075-6d22-4d75-b6be-361f2e6b4406"
+            name="_realCurrTime"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="7789f4e4-7365-4d34-aaa3-10376b017f38"
+                LastKnownName="uint64"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="749afc28-f6cd-4b6c-8cd5-d3dcd9154490"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7a566355-4bb5-4f04-b51d-1a5d1a61c177"
+                  name="uint32 diff"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="fd9c6a99-9617-41ad-9ce6-74e309922307"
+            name="Save"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="88ecd015-4166-400c-a739-d6c4ce76f7ec"
+                  name="ByteBuffer&amp; bb"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="31988952-a6ce-4742-b329-509da5b71be6"
+                  direction="Return">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="4ac36e08-f7fe-4e60-9518-71e2153067b4"
+                      LastKnownName="bool"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="5e43f816-59a9-4daf-bd30-5acde97c39a8"
+            name="Run"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="6225dc3c-a41a-4b1b-8cd6-07915e3feeac"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0fb97fd6-36a6-4a56-9e28-c1d23421513f"
+                      LastKnownName="void"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="31cb4e50-2b36-428d-a5a8-b9af0885149e"
+            name="AddGrid"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a700bc0a-9735-421e-951f-3a1dd5d04dee"
+                  name="const string&amp; name"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d439cc3f-f248-4a38-95f4-e2b062862f7c"
+                  name="Grid* grid"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="915be774-0d97-4325-b781-ca50e93900a7"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0fb97fd6-36a6-4a56-9e28-c1d23421513f"
+                      LastKnownName="void"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f0f8ab36-d2fa-4f02-8786-aa72747569ea"
+            name="GridNetwork"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="833a8a65-ad98-4478-b406-0a8daef8b925"
+            name="~GridNetwork"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="e614d90d-3f0e-47e9-af91-6ed2b3769a9f"
+            name="NewGrid"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f882d685-46f7-43df-9a76-65b0b9200883"
+                  name="const string&amp; name"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3e1c2ce7-d00e-4179-8943-31daddd2f92a"
+                  name="const string&amp; topic"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="1386ad27-eaaa-4aa2-a1a8-c1082f2f6718"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0fb97fd6-36a6-4a56-9e28-c1d23421513f"
+                      LastKnownName="void"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="2a5cbdac-4645-4e35-9890-c87aa187aab1"
+            name="ChangeGridName"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="63dfaa38-4da9-4fad-9386-b9feaaf35f9e"
+                  name="const string&amp; oldName"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a589da20-5ee1-40c7-b723-ff5f0126df84"
+                  name="const string&amp; newName"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="bbc132ba-d4ae-4367-bf44-2e6269ed0d6f"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0fb97fd6-36a6-4a56-9e28-c1d23421513f"
+                      LastKnownName="void"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="46190966-5a49-4e23-930c-51e5079ec641"
+            name="ChangeGridTopic"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="68cd9d76-8acc-4307-a05c-a3213e77d009"
+                  name="const string&amp; name"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8ab823c0-2304-4cb6-a2ef-e48a9b779933"
+                  name="const string&amp; newTopic"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="417cd6a0-afb2-4ab3-a1b4-7e621998e2f2"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0fb97fd6-36a6-4a56-9e28-c1d23421513f"
+                      LastKnownName="void"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="494476e7-20fb-4d50-940c-47521446887a"
+            name="RemoveGrid"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="01314171-a440-45c2-be68-e02638904fcb"
+                  name="const string&amp; name"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="96a5a68f-840d-4d8c-8323-c60d43d91d2e"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0fb97fd6-36a6-4a56-9e28-c1d23421513f"
+                      LastKnownName="void"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="b38fe37c-5b5f-457f-a5ee-de089302785c"
+            name="GetGrid"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="88dd7e33-d907-4001-8682-91d945c1bd1b"
+                  name="const string&amp; name"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="2df0d710-c6f6-47f9-a830-a44177e9bfe0"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="448bd2a4-7f49-4c8a-97bf-e2deb4d7cb7a"
+                      LastKnownName="Grid*"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="a71f035a-6e62-4fb2-880d-fcbeef0952ab"
+            name="GridNetwork* Load"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="afaf3050-f80a-49ff-a168-84595235880e"
+                  name="ByteBuffer&amp; bb"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="447498de-9b0b-4afe-b23b-e63d3fb51cbb"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="15813ffd-e7a1-4297-ba43-d9612c57c232"
+                      LastKnownName="static"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="64a4152b-cf5d-45ee-a610-fd9b5c77df36"
+            name="Save(ByteBuffer&amp; bb) const override :  bool "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="7e1704d8-cd1e-4693-83a8-c3d9675b1f3d"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="023d68b7-87a5-4790-bcb8-1f7c1f73f96e"
+                  name="uint32 diff"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e383c2ff-84b9-4e57-ba2b-d3a4b839f8e2"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0fb97fd6-36a6-4a56-9e28-c1d23421513f"
+                      LastKnownName="void"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="1bf4ea02-2e1a-4a32-847a-7785c6793a0f"
+            name="GetContainer() const : const map&lt;string, Grid*&gt;&amp; "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="3756657f-d934-44a7-a1ff-6c8e8e23c42f"
+            name="ApplyPredicate(function&lt;bool(const Grid*)&gt; predicate) const : vector&lt;const Grid*&gt; "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="9b0b68dd-a95a-4a40-acea-85f4c759c445"
+            name="GridNetwork"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="547f0bbe-4460-4a6f-a401-42f76eae7081"
+                  name="const GridNetwork &amp;"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="12511055-bb86-4b06-9fe1-e619862807c6"
+            name="operator ="
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="fff07add-0440-48e7-9476-e836e39b2dbc"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="7c8c65b7-ffe6-49a1-8b8f-67674dab4918"
+                      LastKnownName="GridNetwork&amp;"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="4fbb0666-c069-44ef-8690-5652b0c0c8eb"
+                  name="GridNetwork const&amp;"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="eeac1bf6-35ab-4ec2-a7f7-720d62a76740"
+        name="map&lt;string, Grid*&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="448bd2a4-7f49-4c8a-97bf-e2deb4d7cb7a"
+        name="Grid*" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="15813ffd-e7a1-4297-ba43-d9612c57c232"
+        name="static" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="28868b10-941f-42a2-bd3e-a3ac41b32417"
+        name="; GridNetwork&amp;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="7c8c65b7-ffe6-49a1-8b8f-67674dab4918"
+        name="GridNetwork&amp;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="6008bd66-0dee-4e89-bd02-41594bb79b46"
+        name="IdleUser"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="c539bc72-d8c3-4e7e-b8de-f3970304a837">
+            <interfaceMoniker
+              Id="06286794-99ea-4787-a1d8-e5b51819b59a"
+              LastKnownName="IUpdate"
+              LastKnownLocation="UML.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="73625b9e-6643-4354-a031-bdafbfabc774">
+            <interfaceMoniker
+              Id="dad8ffa0-c3f4-47b5-bf1e-f55fca517ebf"
+              LastKnownName="IPrint"
+              LastKnownLocation="UML.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="d51a4829-4515-471d-adc1-0958cbe1fe2e">
+            <interfaceMoniker
+              Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
+              LastKnownName="ISave"
+              LastKnownLocation="UML.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="256d6d62-ebb9-42c2-b7ed-8de0702c9270"
+            name="_name"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="2eb53f15-adca-4c6a-9ebf-ab0100a04f39"
+                LastKnownName="string"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="bd155449-bf32-4765-bb7a-44160fb9d253"
+            name="_id"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="90071b89-7a91-40c2-8527-4bf8cf9b9f6d"
+                LastKnownName="uint"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="e1582781-2041-4586-b297-43edc60bd073"
+            name="_type"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0469dac5-fd5d-4ba9-af9c-fec44d58c828"
+                LastKnownName="UserType"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="c65176f0-5b4b-4cdc-b207-db0db2adf5fc"
+            name="_elapsedTime"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="df3cc953-5a8a-4d6f-a60e-91bff9dc49ca"
+                LastKnownName="uint32"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="021d7e40-9c0a-424a-983d-fd8aaa08f3b1"
+            name="_maxNameLength"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0e469a49-eab3-4096-8831-a7dcbfbc7eaf"
+                LastKnownName="static uint"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="1ab9ad31-583f-40e2-b6b9-f2e7ab3d6053"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="041be0b9-1c4b-462d-84f4-611cebea7294"
+                  name="uint32 diff"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f410005d-fd44-463e-90f5-533b008df0b4"
+            name="Print"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="84536e43-8ff8-44d8-b0f4-e83ce34a545f"
+                  name="ostream&amp; os"
+                  direction="In"
+                  isUnique="false">
+                  <defaultValue>
+                    <literalString
+                      Id="602319ab-8069-4efa-8a15-9632e5076c1a"
+                      value="cout" />
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="2677e5e6-d59d-4112-81bf-997c7f87edbb"
+            name="Save"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a608d8e8-908b-4d65-b79c-54b7c24f3b07"
+                  name="ByteBuffer&amp; bb"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a07c3183-0f3d-47e5-9dea-fe75cc73d70f"
+                  direction="Return">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="4ac36e08-f7fe-4e60-9518-71e2153067b4"
+                      LastKnownName="bool"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="aeee754c-4ff0-4acc-907b-db5678c49b39"
+            name="IdleUser"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b0a6f556-fadb-4d2e-9fb5-f6c86482935f"
+                  name="const string&amp; name"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="bd9255a3-e988-415f-a7c9-7eef239f5792"
+                  name="uint id"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5cce76d8-2947-492a-9763-c4c15e9c84fd"
+                  name="UserType type"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="440895da-0a38-47fa-9290-6a82832eb7be"
+            name="IdleUser* FromUser"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="bcd68cfb-e394-4144-a9cf-5b6854d9fcef"
+                  name="const User* user"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="afc9fbf3-8ae5-4257-9717-1415c7f33f81"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="15813ffd-e7a1-4297-ba43-d9612c57c232"
+                      LastKnownName="static"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="ef8c1896-2f75-479a-b9ce-66560ed2f484"
+            name="GetName() const : const string&amp; "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="0fd9dba4-5bfe-43a2-a941-76338be67032"
+            name="GetId() const : uint "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="ed437e17-ca30-4fb4-bbc5-d2531de32e2c"
+            name="GetUserType() const : UserType "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="fef7ff2b-eff6-4fe4-9630-0fd18fcdceb3"
+            name="GetElapsedTime() const : uint32 "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="c2319241-97b0-42a5-b2eb-0e579d600f41"
+            name="Save(ByteBuffer&amp; bb) const : virtual bool "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="dd66fc62-6120-44fd-af50-34952cd50624"
+            name="IdleUser* Load"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="6054d405-15b6-4ff2-9eb2-7112a8ff87c3"
+                  name="ByteBuffer&amp; bb"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7a27983a-5b05-424f-a4ff-97edf019e64d"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="15813ffd-e7a1-4297-ba43-d9612c57c232"
+                      LastKnownName="static"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="b9cfb05b-2031-4073-b0f3-dc919781a190"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a59ef7a3-dfb6-470b-9007-e7b92fdfaa53"
+                  name="uint32 diff"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b611d305-fa96-4891-bf27-6af8358660a4"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="dad884ba-8dbe-4794-88bb-c532bdc27d48"
+                      LastKnownName="virtual void"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="cfcddc30-de21-4565-9ee8-7d4d1d380b61"
+            name="Print(ostream&amp; os = cout) const : virtual void "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="0a199f65-855a-4b17-854c-cfa354839659"
+            name="PrintHeader"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="2a2471b5-7992-4ad2-bc07-db47ccd8cafa"
+                  name="ostream&amp; os"
+                  direction="In"
+                  isUnique="false">
+                  <defaultValue>
+                    <literalString
+                      Id="25bf9118-dc95-4224-a5d9-b958af1e9ad6"
+                      name="DefaultValue"
+                      value="cout" />
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="6f0c54a0-6197-4047-aa93-452b421b3471"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="b1650308-fea2-4984-bd55-7eaad738adbf"
+                      LastKnownName="static void"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="0469dac5-fd5d-4ba9-af9c-fec44d58c828"
+        name="UserType" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="dad884ba-8dbe-4794-88bb-c532bdc27d48"
+        name="virtual void" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="1e96a1e5-dc59-45cd-9999-0e99f05d0f9c"
+        name="IdleUserContainer"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="4b686200-1421-48df-8661-acae350f8375">
+            <interfaceMoniker
+              Id="06286794-99ea-4787-a1d8-e5b51819b59a"
+              LastKnownName="IUpdate"
+              LastKnownLocation="UML.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="34865af1-6a0b-486f-a00b-f774d4c9c292">
+            <interfaceMoniker
+              Id="187fa4a5-462d-442d-b6d3-384a2988c0f1"
+              LastKnownName="ISave"
+              LastKnownLocation="UML.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="f39b93de-9d3d-4946-b59d-e85ee5b52d12"
+            name="_hashTable"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="d2f63393-c403-4759-95bf-7ad2a4eccb5d"
+                LastKnownName="unordered_map&lt;uint, IdleUser*&gt;"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="7e82a6be-cfcd-48e5-84f0-5622298ef992"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="952b3457-f803-4494-8700-274ccc933bc0"
+                  name="uint32 diff"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="9da9cf9e-b4a8-4ca2-aa68-4990facb3045"
+            name="Save"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="afdeaf1a-c6b1-40c9-a8d8-44eb3624bd73"
+                  name="ByteBuffer&amp; bb"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="aebc526e-2cba-4e6a-92e9-1d2c6423b22c"
+                  direction="Return">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="4ac36e08-f7fe-4e60-9518-71e2153067b4"
+                      LastKnownName="bool"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="84e9907f-1e7e-47ea-847d-da9b44342370"
+            name="GetContainer() const : const unordered_map&lt;uint, IdleUser*&gt;&amp; "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="c8901c1f-2fae-42de-a706-0c07313af74b"
+            name="InsertUser"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="984795a9-8f56-41ce-a4c4-7329f5adf5b7"
+                  name="IdleUser* user"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="55cdbd36-083a-4da6-83d0-90fb5458efe0"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0fb97fd6-36a6-4a56-9e28-c1d23421513f"
+                      LastKnownName="void"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="3f1cb53e-fbf2-4497-a090-100df2e188cd"
+            name="Save(ByteBuffer&amp; bb) const : virtual bool "
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="396bcd2c-5220-4892-81c2-a34923aff69f"
+            name="Load"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8ab42bc5-f6a3-4f0e-a4c5-9a7516f70b59"
+                  name="ByteBuffer&amp; bb"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b3f05dff-b2d9-436e-b30d-06cc1826d3cb"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="ef938c77-0c58-40c4-8468-81635a49c24c"
+                      LastKnownName="static IdleUserContainer*"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="22d40adc-2c4c-45d3-b66a-d65924f15513"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="75581bd0-4720-41ad-a765-f908e29d65f1"
+                  name="uint32 diff"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0b3737d4-f09f-4dfd-965d-95bb8746c82e"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="dad884ba-8dbe-4794-88bb-c532bdc27d48"
+                      LastKnownName="virtual void"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="d2f63393-c403-4759-95bf-7ad2a4eccb5d"
+        name="unordered_map&lt;uint, IdleUser*&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="ef938c77-0c58-40c4-8468-81635a49c24c"
+        name="static IdleUserContainer*" />
+    </packageHasNamedElement>
   </packagedElements>
   <primitiveType
     Id="220a3521-e091-4221-bae9-3ef9018e845c"
