@@ -5,23 +5,32 @@ Gestão de jobs em "Grid Computing"
 - **Hugo Freixo** - 110509086 - ei11086@fe.up.pt
 - **Miguel Marques** - 110509099 - ei11099@fe.up.pt
 
-3 de Novembro de 2012
+31 de Dezembro de 2012
 *Turma 1 - 2MIEIC - FEUP*
 
-O Grid Manager
+O Grid Network
 --------------
 
-O **Grid Manager** é um gestor de uma rede de computação composta por várias máquinas de diferentes
-características e de vários utilizadores que podem ser utilizadores académicos ou utilizadores de empresas.
+O **Grid Network** é um conjunto de redes de computação compostas por várias máquinas de diferentes
+características e de vários utilizadores.
+Cada rede tem um Manager que é o objeto que gere todos os utilizadores, máquinas e trabalhos dessa rede.
+Os utilizadores podem ser utilizadores académicos, que têm um contador de trabalhos executados, ou utilizadores de empresas, que têm um orçamento para trabalhos.
 Estes utilizadores podem criar novos trabalhos ( *jobs* ) que serão executados num determinado tempo
 especificado pelo utilizador que o criou.
+Existem máquinas de dois tipos: máquinas que respeitam a prioridade dos trabalhos ( **Priority Machines** ) e máquinas que não respeitam a prioridade dos trabalhos ( **Machines** ).
+Os utilizadores que sejam eliminados de uma rede de computação são colocados numa tabela na qual permanecem durante um certo tempo.
 
 
 Solução Implementada
 --------------------
 
-O grupo de trabalho optou por implementar não só um gestor como também um simulador.
-Estando tudo integrado na mesma aplicação à medida que se vão adicionando mais trabalhos ( **Job** ), máquinas ( **Machines** ) e utilizadores ( **User** ) o gestor ( **GridManager** ) vai atualizando os trabalhos, isto é, tendo em conta o tempo especificado aquando da criação de um novo trabalho o simulador irá apagar esse trabalho quando esse tempo tiver passado, tempo esse que é medido em segundos e em tempo real.
+O **Grid Network** foi implementado através de uma árvore binária de pesquisa de **Grid** que organiza as grids por nome.
+Cada **Grid** contém, além do nome, um tópico e um gestor.
+
+O gestor, que também funciona como simulador, usa árvores binárias de pesquisa para organizar os seus utilizadores, máquinas e máquina com prioridade, árvores essas que ordenam por um id único em todas as redes.
+Estando tudo integrado na mesma aplicação à medida que se vão adicionando mais trabalhos ( **Job** ), máquinas ( **Machines** ), máquinas com prioridade ( **Priority Machines** ) e utilizadores ( **User** ) o gestor ( **GridManager** ) vai atualizando os trabalhos, isto é, tendo em conta o tempo especificado aquando da criação de um novo trabalho o simulador irá apagar esse trabalho quando esse tempo tiver passado, tempo esse que é medido em segundos e em tempo real. Os utilizadores que forem eliminados de uma rede também serão adicionados a uma tabela de dispersão e seram retirados da tabela após um certo tempo.
+
+O grupo recorreu a templates para a implementação das Máquinas, tendo sida criada um classe que recebe como argumento genérico um contentor onde irão ser armazenos os trabalhos. Foram então definidos dois tipos de Máquinas, **Machines** e **Priority Machines**, usando Fila e Fila de Prioridade, respetivamente. O grupo decidiu que, para filtrar os trabalhos que um utilizador cria, todos os trabalhos cuja prioridade seja diferente de 0 serão adicionados a máquinas com prioridade, sendo os restantes adicionados a máquinas normais.
 
 Para o gestor foi implementada uma estrutura de dados em que todas as classes são derivadas de interfaces (classes puras) que definem algumas funcionalidades básicas. São elas: 
 - **IPrint** - Imprimir para uma stream os dados de um objeto;
@@ -45,13 +54,20 @@ Diagrama de classes (UML)
 
 Casos de Utilização
 --------------------
-
+- Adicionar Grids ao Grid Network
+- Remover Grids do Grid Network
+- Alterar nome das Grids
+- Alterar tópico das Grids
+- Procurar Grids por nome ou por tópico
+- Listar todas as Grids
 - Adicionar utilizadores ao sistema
 - Remover utilizadores do sistema
 - Alterar nome dos utilizadores
 - Alterar orçamento dos utilizadores empresariais
 - Procurar utilizadores no sistema através do nome
 - Listar todos os utilizadores ou apenas utilizadores académicos ou empresariais
+- Procurar utilizadores eliminados do sistema através do nome
+- Listar todos os utilizadores eleminados ou apenas utilizadores académicos ou empresariais
 - Adicionar máquinas ao sistema
 - Remover máquinas do sistema
 - Alterar nome das máquinas
@@ -71,6 +87,7 @@ Casos de Utilização
 - Criar novos trabalhos
 - Procurar trabalhos no sistema através do nome, RAM necessária, espaço do disco necessário, prioridade ou tempo de execução
 - Listar todos os trabalhos do sistema
+- Alterar a prioridade de um trabalho que esteja armazenado num máquina com prioridade
 
 
 Dificuldades
