@@ -213,6 +213,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3b07825151dbcc470e498fba452f416d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_machine.html#a3b07825151dbcc470e498fba452f416d">RemoveAllJobs</a> ()</td></tr>
 <tr class="memdesc:a3b07825151dbcc470e498fba452f416d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all Jobs from this Machine.  <a href="#a3b07825151dbcc470e498fba452f416d"></a><br/></td></tr>
 <tr class="separator:a3b07825151dbcc470e498fba452f416d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d54ecb6eefa0eaa88ce1a8cf56cb4b6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_machine.html#a1d54ecb6eefa0eaa88ce1a8cf56cb4b6">ChangeJobPriority</a> (<a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a> id, <a class="el" href="utils_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a> newPriority)</td></tr>
+<tr class="memdesc:a1d54ecb6eefa0eaa88ce1a8cf56cb4b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes job with the given id priority.  <a href="#a1d54ecb6eefa0eaa88ce1a8cf56cb4b6"></a><br/></td></tr>
+<tr class="separator:a1d54ecb6eefa0eaa88ce1a8cf56cb4b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd22c245cfb7452d8d753b570dc42cf2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_machine.html#acd22c245cfb7452d8d753b570dc42cf2">GetNumberOfCurrentJobs</a> () const </td></tr>
 <tr class="memdesc:acd22c245cfb7452d8d753b570dc42cf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of Jobs being executed.  <a href="#acd22c245cfb7452d8d753b570dc42cf2"></a><br/></td></tr>
 <tr class="separator:acd22c245cfb7452d8d753b570dc42cf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -469,6 +472,36 @@ template&lt;class Container &gt; </div>
 </div><div class="memdoc">
 
 <p>Adds a <a class="el" href="class_job.html" title="Job Class.">Job</a> to this Machine. Fails if <a class="el" href="class_job.html" title="Job Class.">Job</a> requirements are not supported by this Machine. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1d54ecb6eefa0eaa88ce1a8cf56cb4b6"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Container &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_i_machine.html">IMachine</a>&lt; Container &gt;::ChangeJobPriority </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#aca6e6ffd5800af1598c9c8cd4155022b">uint</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a>&#160;</td>
+          <td class="paramname"><em>newPriority</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Changes job with the given id priority. </p>
 
 </div>
 </div>
@@ -1406,7 +1439,7 @@ template&lt;class Container&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_i_machine.html">IMachine</a></li>
-    <li class="footer">Generated on Sat Dec 22 2012 23:04:15 for GridComputing by
+    <li class="footer">Generated on Sun Dec 30 2012 14:13:37 for GridComputing by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 </li>
   </ul>

@@ -7,6 +7,7 @@ var class_i_machine =
     [ "IMachine", "class_i_machine.html#a958d94ba4de834aac27917924366ce3e", null ],
     [ "AddAvailableSoftware", "class_i_machine.html#a407c1cd751dcdac54b34079dbb44faa2", null ],
     [ "AddJob", "class_i_machine.html#a16c9e18c905397c898f1cdb6c7b75300", null ],
+    [ "ChangeJobPriority", "class_i_machine.html#a1d54ecb6eefa0eaa88ce1a8cf56cb4b6", null ],
     [ "GetAvailableDiskSpace", "class_i_machine.html#a155aa57697901f94d6df6946a326ebf6", null ],
     [ "GetAvailableRAM", "class_i_machine.html#a66da5c7567050574ab90fa8a2c5fb963", null ],
     [ "GetAvailableSoftware", "class_i_machine.html#a9fa3edf3f2685e1d72ff2efedbe451d5", null ],

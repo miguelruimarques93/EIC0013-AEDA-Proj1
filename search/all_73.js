@@ -14,6 +14,7 @@ var searchData=
   ['setmaxjobs',['SetMaxJobs',['../class_i_machine.html#a2a85c4f2f35705ac5f6f6d8ac0889be4',1,'IMachine']]],
   ['setname',['SetName',['../class_i_machine.html#a945d347ba86e3df3bc3e5a4e5bbbdc98',1,'IMachine::SetName()'],['../class_user.html#a8fa561aea719df6a07ebe2e8e1a4a8a3',1,'User::SetName()']]],
   ['setparent',['SetParent',['../class_i_menu.html#a069e544a8b1d34a867cd5aa488638ec6',1,'IMenu']]],
+  ['setpriority',['SetPriority',['../class_job.html#a87f5ba9e5063e4a52a794340c67c93e1',1,'Job']]],
   ['setreadpos',['SetReadPos',['../class_byte_buffer.html#ad5f91a0673051aaa95bd8b6ec2cc0109',1,'ByteBuffer']]],
   ['settotaldiskspace',['SetTotalDiskSpace',['../class_i_machine.html#a4463f62dc864481e9cbe9589739a8612',1,'IMachine']]],
   ['settotalram',['SetTotalRAM',['../class_i_machine.html#a53d9a2a51aaea6398505cd9201bcec87',1,'IMachine']]],

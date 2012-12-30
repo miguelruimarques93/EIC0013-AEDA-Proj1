@@ -154,6 +154,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abad133e75b483ecc47e9bc0a29250541"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_job.html#abad133e75b483ecc47e9bc0a29250541">GetPriority</a> () const </td></tr>
 <tr class="memdesc:abad133e75b483ecc47e9bc0a29250541"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the priority of the <a class="el" href="class_job.html" title="Job Class.">Job</a>.  <a href="#abad133e75b483ecc47e9bc0a29250541"></a><br/></td></tr>
 <tr class="separator:abad133e75b483ecc47e9bc0a29250541"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87f5ba9e5063e4a52a794340c67c93e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_job.html#a87f5ba9e5063e4a52a794340c67c93e1">SetPriority</a> (<a class="el" href="utils_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a> val)</td></tr>
+<tr class="memdesc:a87f5ba9e5063e4a52a794340c67c93e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets job's priority with val.  <a href="#a87f5ba9e5063e4a52a794340c67c93e1"></a><br/></td></tr>
+<tr class="separator:a87f5ba9e5063e4a52a794340c67c93e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd461303d72515ee3f686d6602a109c5"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_job.html#acd461303d72515ee3f686d6602a109c5">GetRequiredRAM</a> () const </td></tr>
 <tr class="memdesc:acd461303d72515ee3f686d6602a109c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the required amount of RAM (MB)  <a href="#acd461303d72515ee3f686d6602a109c5"></a><br/></td></tr>
 <tr class="separator:acd461303d72515ee3f686d6602a109c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -170,7 +173,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a405a73da36575eed0563cc0713e054c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the price of the <a class="el" href="class_job.html" title="Job Class.">Job</a> (5 cents per MB of RAM)  <a href="#a405a73da36575eed0563cc0713e054c0"></a><br/></td></tr>
 <tr class="separator:a405a73da36575eed0563cc0713e054c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a337fac11a698268a94ef5259e0aae709"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_job.html#a337fac11a698268a94ef5259e0aae709">Finished</a> () const </td></tr>
-<tr class="memdesc:a337fac11a698268a94ef5259e0aae709"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the <a class="el" href="class_job.html" title="Job Class.">Job</a> fnished.  <a href="#a337fac11a698268a94ef5259e0aae709"></a><br/></td></tr>
+<tr class="memdesc:a337fac11a698268a94ef5259e0aae709"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the <a class="el" href="class_job.html" title="Job Class.">Job</a> finished.  <a href="#a337fac11a698268a94ef5259e0aae709"></a><br/></td></tr>
 <tr class="separator:a337fac11a698268a94ef5259e0aae709"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad631c9e58efb94bd5cc7d67399a6e35a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_job.html#ad631c9e58efb94bd5cc7d67399a6e35a">Finish</a> ()</td></tr>
 <tr class="memdesc:ad631c9e58efb94bd5cc7d67399a6e35a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forces the <a class="el" href="class_job.html" title="Job Class.">Job</a> to abruptly end.  <a href="#ad631c9e58efb94bd5cc7d67399a6e35a"></a><br/></td></tr>
@@ -230,9 +233,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a5fd1c42913140693e60b6ba4c34c8a8a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="job_8h.html#ab54d8b7bb6976ea9ef48a89a97220850">SoftwareSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_job.html#a5fd1c42913140693e60b6ba4c34c8a8a">_requiredSoftware</a></td></tr>
 <tr class="memdesc:a5fd1c42913140693e60b6ba4c34c8a8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set of required software to execute the <a class="el" href="class_job.html" title="Job Class.">Job</a>.  <a href="#a5fd1c42913140693e60b6ba4c34c8a8a"></a><br/></td></tr>
 <tr class="separator:a5fd1c42913140693e60b6ba4c34c8a8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f549ea194690bc56eecff2ed609b45d"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="utils_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_job.html#a2f549ea194690bc56eecff2ed609b45d">_priority</a></td></tr>
-<tr class="memdesc:a2f549ea194690bc56eecff2ed609b45d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Priority.  <a href="#a2f549ea194690bc56eecff2ed609b45d"></a><br/></td></tr>
-<tr class="separator:a2f549ea194690bc56eecff2ed609b45d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa811b42a2885459ea92e7a0b82087573"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_job.html#aa811b42a2885459ea92e7a0b82087573">_priority</a></td></tr>
+<tr class="memdesc:aa811b42a2885459ea92e7a0b82087573"><td class="mdescLeft">&#160;</td><td class="mdescRight">Priority.  <a href="#aa811b42a2885459ea92e7a0b82087573"></a><br/></td></tr>
+<tr class="separator:aa811b42a2885459ea92e7a0b82087573"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c40b9b236fbc9db11fef2f6cbcf321c"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_job.html#a6c40b9b236fbc9db11fef2f6cbcf321c">_name</a></td></tr>
 <tr class="memdesc:a6c40b9b236fbc9db11fef2f6cbcf321c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name of the job.  <a href="#a6c40b9b236fbc9db11fef2f6cbcf321c"></a><br/></td></tr>
 <tr class="separator:a6c40b9b236fbc9db11fef2f6cbcf321c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -385,7 +388,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns true if the <a class="el" href="class_job.html" title="Job Class.">Job</a> fnished. </p>
+<p>Returns true if the <a class="el" href="class_job.html" title="Job Class.">Job</a> finished. </p>
 
 </div>
 </div>
@@ -736,6 +739,24 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a87f5ba9e5063e4a52a794340c67c93e1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Job::SetPriority </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a>&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets job's priority with val. </p>
+
+</div>
+</div>
 <a class="anchor" id="a742e3551e764d494f7e21098b1492e5f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -873,7 +894,7 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2f549ea194690bc56eecff2ed609b45d"></a>
+<a class="anchor" id="aa811b42a2885459ea92e7a0b82087573"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -881,7 +902,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="utils_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a> Job::_priority</td>
+          <td class="memname"><a class="el" href="utils_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a> Job::_priority</td>
         </tr>
       </table>
   </td>
@@ -993,7 +1014,7 @@ Static Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_job.html">Job</a></li>
-    <li class="footer">Generated on Sat Dec 22 2012 23:04:15 for GridComputing by
+    <li class="footer">Generated on Sun Dec 30 2012 14:13:37 for GridComputing by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 </li>
   </ul>

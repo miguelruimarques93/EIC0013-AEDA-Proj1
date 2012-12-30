@@ -32,7 +32,7 @@ var searchData=
   ['_5fname',['_name',['../class_grid.html#ac70c290fbf94027f98210977d6f87a77',1,'Grid::_name()'],['../class_existing_grid.html#ab3b50c79c0d7936aa29eb0f83775189a',1,'ExistingGrid::_name()'],['../class_unknown_grid.html#a2b6bc24c85123cc6893bed57aa5b673a',1,'UnknownGrid::_name()'],['../class_idle_user.html#ab7f8dd9d5fbfe5b6318b04f10de905fa',1,'IdleUser::_name()'],['../class_job.html#a6c40b9b236fbc9db11fef2f6cbcf321c',1,'Job::_name()'],['../class_i_machine.html#af6399c91b80fd2692e07e2671e6db34d',1,'IMachine::_name()'],['../class_software.html#a1b9611aa49b83a331166a01f0fb27d16',1,'Software::_name()'],['../class_user.html#a3c0fa0714d7bea218be318cf0472a3c8',1,'User::_name()']]],
   ['_5fnamepredicate',['_namePredicate',['../menugrid_8cpp.html#ac30b22b1b8b68f5d763ee4cd1c25780e',1,'menugrid.cpp']]],
   ['_5fparent',['_parent',['../class_i_menu.html#a3f1c4c2e6ad5f4895f7846915e2ed4f8',1,'IMenu']]],
-  ['_5fpriority',['_priority',['../class_job.html#a2f549ea194690bc56eecff2ed609b45d',1,'Job']]],
+  ['_5fpriority',['_priority',['../class_job.html#aa811b42a2885459ea92e7a0b82087573',1,'Job']]],
   ['_5fprioritymachines',['_priorityMachines',['../class_grid_manager.html#a7ec104678d8229a1357340c4ef49db43',1,'GridManager']]],
   ['_5freadpos',['_readPos',['../class_byte_buffer.html#ab537c5f39daa4da7dc5f0e5af7906458',1,'ByteBuffer']]],
   ['_5frealcurrtime',['_realCurrTime',['../class_grid_network.html#a70d5cf580d818ba2664c381838f063ba',1,'GridNetwork']]],
