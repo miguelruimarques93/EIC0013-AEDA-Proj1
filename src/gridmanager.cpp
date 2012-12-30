@@ -43,6 +43,10 @@ bool GridManager::Save(ByteBuffer& bb) const
     for (auto pMachine : _priorityMachines)
         pMachine->Save(bb);
 
+    bb.WriteUInt32(_waitingJobs.size());
+    for (std::queue<Job*> temp(_waitingJobs); !temp.empty(); temp.pop())
+        temp.front()->Save(bb);
+
     _idleUsers.Save(bb);
 
     return true;
@@ -67,6 +71,10 @@ GridManager* GridManager::Load(ByteBuffer& bb)
     uint32 priorityMachinesCount = bb.ReadUInt32();
     for (uint32 i = 0; i < priorityMachinesCount; ++i)
         gm->AddPriorityMachine(PriorityMachine::Load(bb));
+
+    uint32 waitingJobsCount = bb.ReadUInt32();
+    for (uint32 i = 0; i < waitingJobsCount; ++i)
+        gm->AddJob(Job::Load(bb));
 
     gm->_idleUsers = *IdleUserContainer::Load(bb);
 
