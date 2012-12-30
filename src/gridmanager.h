@@ -50,7 +50,7 @@ public:
 
     /**
     *   @brief Add a Priority Machine.
-    *   @param  machine a pointer to the priority machine to be added.
+    *   @param  pMachine a pointer to the priority machine to be added.
     *   @return The ID of the added machine.
     */
     uint AddPriorityMachine(PriorityMachine* pMachine);
