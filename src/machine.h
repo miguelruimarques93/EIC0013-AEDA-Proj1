@@ -55,7 +55,7 @@ public:
 
     /// Constructor
     IMachine(const std::string& machineName, uint maxJobs, double totalRAM, double totalDiskSpace) :
-        _id(0), _name(machineName), _maxJobs(maxJobs), _totalRAM(totalRAM), _totalDiskSpace(totalDiskSpace)
+        _id(0), _name(machineName), _maxJobs(maxJobs), _totalRAM(totalRAM), _totalDiskSpace(totalDiskSpace), _inUseRAM(0), _inUseDiskSpace(0)
     {
         if (_name.length() > _maxNameLength)
             _maxNameLength = _name.length();

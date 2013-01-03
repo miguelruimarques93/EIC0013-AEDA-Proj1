@@ -34,12 +34,12 @@ public:
     /// Returns the name of the Grid
     const std::string& GetName() const { return _name; }
     /// Modifies the name of the Grid with a new name
-    void ChangeName(const std::string& name) { _name = name; }
+    void ChangeName(const std::string& name);
 
     /// Returns the subject of the Grid
     const std::string& GetTopic() const { return _topic; }
     /// Modifies the subject of the Grid with a new subject
-    void ChangeTopic(const std::string& topic) { _topic = topic; }
+    void ChangeTopic(const std::string& topic);
 
     /// Returns the total amount of machines in the underlying GridManager.
     uint GetAvailableMachineCount() const;

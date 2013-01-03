@@ -95,3 +95,19 @@ void Grid::PrintHeader(std::ostream& os /*= std::cout*/)
        << "| " << std::setw(_maxNameLength) << "Name" << " | " << std::setw(_maxTopicLength) << "Topic" << " | Highest RAM (GB) | Disk space (GB) | # Machines |\n"
        << "--" << std::string(_maxNameLength, '-')    << "---" << std::string(_maxTopicLength, '-')     << "----------------------------------------------------\n";
 }
+
+void Grid::ChangeTopic(const std::string& topic)
+{
+    _topic = topic;
+
+    if (_topic.length() > _maxTopicLength)
+        _maxTopicLength = _topic.length();
+}
+
+void Grid::ChangeName(const std::string& name)
+{
+    _name = name;
+
+    if (_name.length() > _maxNameLength)
+        _maxNameLength = _name.length();
+}

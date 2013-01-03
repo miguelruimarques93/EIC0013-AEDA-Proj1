@@ -249,8 +249,8 @@ void SearchGrids(GridNetwork* gn)
     else
     {
         Grid::PrintHeader();
-        for (auto g : gn->GetContainer())
-            g.second->Print();
+        for (auto g : vec)
+            g->Print();
     }
 
     PauseConsole();
@@ -1864,11 +1864,11 @@ void ChangePriorityMachineInfo(GridManager* gm)
 
             switch (option)
             {
-            case 0:
+                case 0:
                 {
                     throw EOFCharacterValue();
                 }
-            case 1: // Change Machine Name
+                case 1: // Change Machine Name
                 {
                     std::string val = ReadValue<std::string>("New name (max 25 characters): ", _namePredicate);
                     pMachine->SetName(val);
@@ -1876,7 +1876,7 @@ void ChangePriorityMachineInfo(GridManager* gm)
                     success = true;
                     break;
                 }
-            case 2: // Change Machine Ram
+                case 2: // Change Machine Ram
                 {
                     double ram = ReadValue<double>("New RAM [0-99999](MB): ", [](double val)
                     {
@@ -1910,7 +1910,7 @@ void ChangePriorityMachineInfo(GridManager* gm)
                     success = true;
                     break;
                 }
-            case 3: // Change Machine Disk Space
+                case 3: // Change Machine Disk Space
                 {
                     double diskSpace = ReadValue<double>("New Disk Space [0-99999](MB): ", [](double val)
                     {
@@ -1942,7 +1942,7 @@ void ChangePriorityMachineInfo(GridManager* gm)
                     success = true;
                     break;
                 }
-            case 4: // Change Machine Max Jobs
+                case 4: // Change Machine Max Jobs
                 {
                     uint maxJobs = ReadValue<uint>("New Max Jobs [0-9999]: ", [](uint val)
                     {
@@ -1971,7 +1971,7 @@ void ChangePriorityMachineInfo(GridManager* gm)
                     success = true;
                     break;
                 }
-            case 5: // Add Software
+                case 5: // Add Software
                 {
                     bool successSW = false;
 
@@ -1993,7 +1993,7 @@ void ChangePriorityMachineInfo(GridManager* gm)
                     success = true;
                     break;
                 }
-            case 6: // Remove Software
+                case 6: // Remove Software
                 {
                     bool successSW = false;
 
@@ -2014,7 +2014,7 @@ void ChangePriorityMachineInfo(GridManager* gm)
                     success = true;
                     break;
                 }
-            case 7: // List Available Software
+                case 7: // List Available Software
                 {
                     if (pMachine->GetAvailableSoftware().size() == 0)
                         std::cout << "This priority machine doesn't have any software installed." << std::endl;
@@ -2028,7 +2028,7 @@ void ChangePriorityMachineInfo(GridManager* gm)
                     success = true;
                     break;
                 }
-            case 8: // List Machine Jobs
+                case 8: // List Machine Jobs
                 {
                     if (pMachine->GetNumberOfCurrentJobs() == 0)
                         std::cout << "No jobs on this machine." << std::endl;
@@ -2045,7 +2045,7 @@ void ChangePriorityMachineInfo(GridManager* gm)
                     success = true;
                     break;
                 }
-            case 9: // Remove Job From Machine
+                case 9: // Remove Job From Machine
                 {
                     uint JobId = ReadValue<uint>("Id (0 - Show list): ", [pMachine](uint val)
                     {
@@ -2075,7 +2075,7 @@ void ChangePriorityMachineInfo(GridManager* gm)
                     success = true;
                     break;
                 }
-            case 10: // Cancel All Jobs
+                case 10: // Cancel All Jobs
                 {
                     pMachine->RemoveAllJobs();
                     std::cout << "Jobs removed with success." << std::endl;
@@ -2083,7 +2083,7 @@ void ChangePriorityMachineInfo(GridManager* gm)
                     success = true;
                     break;
                 }
-            case 11: // List Job Required Software
+                case 11: // List Job Required Software
                 {
                     const Job* job = pMachine->GetJob(ReadValue<uint>("Id (0 - Show list): ", [pMachine](uint val)
                     {
@@ -2117,7 +2117,7 @@ void ChangePriorityMachineInfo(GridManager* gm)
                     success = true;
                     break;
                 }
-            case 12:
+                case 12:
                 {
                     const Job* job = pMachine->GetJob(ReadValue<uint>("Id (0 - Show list): ", [pMachine](uint val)
                     {
